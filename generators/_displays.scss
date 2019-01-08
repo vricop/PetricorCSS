@@ -1,0 +1,9 @@
+@mixin displays($hover:false, $breakpoint:null) {
+  @each $value in $display {
+    $prefixes: if($breakpoint, #{$breakpoint+'\\:'}, '');
+    $prefixes: $prefixes + if($hover, 'hover\\:', '');
+    $suffixes: if($hover, ':hover', '');
+
+    .#{$prefixes}#{$value}#{$suffixes} { display: $value; }
+  }
+}

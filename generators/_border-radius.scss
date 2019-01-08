@@ -1,0 +1,7 @@
+@mixin border-radius {
+  @each $suffix, $value in $border-radius {
+    $suffix: if($suffix == 'default', '', #{'-'+$suffix});
+    
+    .rounded#{$suffix} { border-radius: $value };
+  }
+}

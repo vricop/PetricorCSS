@@ -1,0 +1,5 @@
+@mixin tracking {
+  @each $suffix, $value in $tracking {
+    .tracking-#{$suffix} { letter-spacing: $value; }
+  }
+}

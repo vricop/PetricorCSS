@@ -1,0 +1,56 @@
+// TODO:
+// [ ] Check generator mixin comments
+// [ ] Implement :focus state in for required
+// [ ] Generate color generators for: border, text and background
+// [ ] Implement enabling/disabling for modules
+// [ ] Remove state arguments/parameters for hover and other features inside
+//    mixins, leave only $breakpoints for responsive
+// [x] Add flex alignments
+
+/*
++-------------------------------------------------------------------------------
+| INGREDIENTS CSS - AN UTILITY FIRST CSS GENERATOR BUILD IN SASS
++-------------------------------------------------------------------------------
+| Author: Víctor Rico
+| Author URL: N/A
+| Author email: vricop@gmail.com
+| License: N/A
+| Description: N/A
+| Version: N/A
++-------------------------------------------------------------------------------
+*/
+
+@import "config", "responsive", "generators";
+
+@include align-content;
+@include align-items;
+@include border-colors;
+@include border-colors($focus: true);
+@include border-colors($hover: true);
+@include border-radius;
+@include borders;
+@include borders($ems: true);
+@include borders($hover: true, $ems: true);
+@include borders($hover: true);
+@include displays;
+@include displays($hover: true);
+@include flex-directions;
+@include font-family;
+@include font-sizes;
+@include font-weights;
+@include leading;
+@include margins;
+@include margins($negative: true);
+@include opacities();
+@include paddings;
+@include paddings($ems: true);
+@include positions;
+@include text-align;
+@include text-colors();
+@include text-colors($hover: true);
+@include tracking;
+@include typography-features;
+@include vertical-alignment;
+@include z-index;
+
+@include responsive;

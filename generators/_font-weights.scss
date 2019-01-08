@@ -1,0 +1,5 @@
+@mixin font-weights {
+  @each $suffix, $value in $font-weights {
+    .font-#{$suffix} { font-weight: $value; }
+  }
+}

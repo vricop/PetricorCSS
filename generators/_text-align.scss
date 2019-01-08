@@ -1,0 +1,7 @@
+@mixin text-align($breakpoint:null) {
+  $prefix: if($breakpoint, '#{$breakpoint}\\:', null);
+
+  .#{$prefix}text-left { text-align: left; }
+  .#{$prefix}text-center { text-align: center; }
+  .#{$prefix}text-right { text-align: right; }
+}

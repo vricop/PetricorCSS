@@ -1,0 +1,17 @@
+@mixin align-content($breakpoint:null) {
+  $items-alignment: (
+    around: space-around,
+    between: space-between,
+    center: center,
+    end: flex-end,
+    evently: space-evently,
+    start: flex-start,
+  );
+
+  $prefix: if($breakpoint, #{$breakpoint+'\\:'}, '');
+
+  @each $suffix, $value in $items-alignment {
+    @if($suffix == 'evently') { /* Not supported in IE10+ */ }
+    .#{$prefix}content-#{$suffix} { justify-content: $value; }
+  }
+}

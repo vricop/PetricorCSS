@@ -1,0 +1,17 @@
+@mixin responsive {
+  @each $breakpoint, $map in $breakpoints {
+    @include mediaqueries($map) {
+      @include align-content($breakpoint);
+      @include align-items($breakpoint);
+      @include displays($breakpoint: $breakpoint);
+      @include flex-directions($breakpoint);
+      @include font-sizes($breakpoint: $breakpoint);  
+      @include leading($breakpoint: $breakpoint);
+      @include margins($breakpoint: $breakpoint);
+      @include margins($negative: true, $breakpoint: $breakpoint);
+      @include margins($negative: true);
+      @include paddings($breakpoint: $breakpoint);
+      @include paddings($ems: true, $breakpoint: $breakpoint);
+    }
+  }
+}

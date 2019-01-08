@@ -1,0 +1,21 @@
+@mixin margins($negative:false, $hover:false, $breakpoint:null) {
+  // User $margin or $negative-margin based on $negative parameter: true|false
+  $_margins: if($negative, $negative-margins, $margins);
+  
+  @each $suffix, $value in $_margins {
+    // Add prefixes or leave empty for every condition. Te resulting string for
+    // $prefixes and $suffixes will be concatenated to generate the selector
+    $prefixes: if($negative, '-', '');
+    $prefixes: $prefixes + if($breakpoint, #{$breakpoint+'\\:'}, '');
+    $prefixes: $prefixes + if($hover, 'hover\\:', '');
+    $suffixes: $suffix + if($hover, ':hover', '');
+
+    .#{$prefixes}m-#{$suffixes} { margin: $value; };
+    .#{$prefixes}mx-#{$suffixes} { margin: { left: $value; right: $value; } };
+    .#{$prefixes}my-#{$suffixes} { margin: { top: $value; bottom: $value; } };
+    .#{$prefixes}mt-#{$suffixes} { margin-top: $value };
+    .#{$prefixes}mr-#{$suffixes} { margin-right: $value };
+    .#{$prefixes}mb-#{$suffixes} { margin-bottom: $value };
+    .#{$prefixes}ml-#{$suffixes} { margin-left: $value };
+  }
+}

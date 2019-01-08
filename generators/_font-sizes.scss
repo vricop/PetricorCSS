@@ -1,0 +1,10 @@
+@mixin font-sizes($ems:false, $breakpoint:null) {
+  @each $suffix, $value in $font-sizes {
+    // Add prefixes or leave empty for every condition. Te resulting string for
+    // $prefixes and $suffixes will be concatenated to generate the selector
+    $prefixes: if($ems, '\\*', '');
+    $prefixes: $prefixes + if($breakpoint, #{$breakpoint+'\\:'}, '');
+
+    .#{$prefixes}text-#{$suffix} { font-size: $value; }
+  }
+}

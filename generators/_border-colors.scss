@@ -1,0 +1,17 @@
+@mixin border-colors($hover:false, $focus:false) {
+  @if($hover and $focus) {
+    @error "You cannot generate both ':hover' and ':focus' states, 
+    just one at a time";
+  }
+  
+  // Assign 'hover\:', 'focus\:' or an empty string if none is true
+  $prefixes: if($hover, 'hover\\:', null) or if($focus, 'focus\\:', null);
+
+  // Assign ':focus' or ':hover' suffix
+  $suffixes: if($focus, ':focus', null) or if($hover, ':hover', null);
+
+  // Done! ready to build 'border-color' selectors
+  @each $color, $value in $colors {
+    .#{$prefixes}border-#{$color}#{$suffixes} { border-color: $value; }
+  }
+}

@@ -1,0 +1,16 @@
+@mixin z-index($hover:false, $breakpoint:null) {
+  // Add '{breakpoint}\\:' prefix if argument passed, leave
+  // empty if not.
+  $prefixes: if($breakpoint, '#{$breakpoint}\\:', '');
+  // Add 'hover\\:' prefix if argument is true or an empty
+  // string if false. Prefixes are now ready to be
+  // inserted in selector
+  $prefixes: $prefixes + if($hover, 'hover\\:', '');
+  // Add ':hover' pseudo-class if argument is true or an
+  // empty string if false.
+  $hover: if($hover, ':hover', null);
+
+  @each $suffix, $number in $z-index {
+    .#{$prefixes}z-#{$suffix}#{$hover} { z-index: $number; }
+  }
+}

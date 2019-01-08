@@ -1,0 +1,9 @@
+@mixin leading($breakpoint:null) {
+  @each $suffix, $value in $leading {
+    // Add prefixes or leave empty for every condition. Te resulting string for
+    // $prefixes and $suffixes will be concatenated to generate the selector
+    $prefix: if($breakpoint, #{$breakpoint+'\\:'}, '');
+
+    .#{$prefix}leading-#{$suffix} { line-height: $value; }
+  }
+}

@@ -1,0 +1,15 @@
+@mixin align-items($breakpoint:null) {
+  $items-alignment: (
+    baseline: baseline,
+    center: center,
+    end: flex-end,
+    start: flex-start,
+    stretch: stretch,
+  );
+
+  $prefix: if($breakpoint, #{$breakpoint+'\\:'}, '');
+
+  @each $suffix, $value in $items-alignment {
+    .#{$prefix}items-#{$suffix} { align-items: $value; }
+  }
+}

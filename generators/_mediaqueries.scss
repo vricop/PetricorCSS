@@ -1,0 +1,22 @@
+// This generator packages all corresponding classes needed for different
+// breakpoints (defined in the config file) without duplicating mediauqery rule 
+// declarations. This is will save some bytes in the end.
+@mixin mediaqueries($brekpoint) {
+  @if map-has-key($brekpoint, 'min') && map-has-key($brekpoint, 'max') {
+    @include mediaquery($min: map-get($brekpoint, 'min'), $max: map-get($brekpoint, 'max')) {
+      @content;
+    }
+  }
+
+  @else if map-has-key($brekpoint, 'min') {
+    @include mediaquery($min: map-get($brekpoint, 'min')) {
+      @content;
+    }
+  }
+
+  @else if map-has-key($brekpoint, 'max') {
+    @include mediaquery($max: map-get($brekpoint, 'max')) {
+      @content;
+    }
+  }
+}

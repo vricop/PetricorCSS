@@ -1,0 +1,274 @@
+// +----------------------------------------------------------------------------
+// | Breakpoints                                                                        
+// +----------------------------------------------------------------------------
+// |
+$breakpoints: (
+  sm: (min: 576px),
+  md: (min: 768px),
+  lg: (min: 960px),
+  xl: (min: 1200px),
+);
+
+// +----------------------------------------------------------------------------
+// | Colors
+// +----------------------------------------------------------------------------
+// |
+$colors: (
+  black: black,
+  cornflowerblue: cornflowerblue,
+  darkgray: darkgray,
+  gold: gold,
+  gray: gray,
+  lightgray: lightgray,
+  transparent: transparent,
+  white: white,
+);
+
+// +----------------------------------------------------------------------------
+// │ Widths
+// +----------------------------------------------------------------------------
+// | 
+// | 
+// | Html class: w-{size}
+$widths: (
+  full: 100%,
+  screen: 100vw,
+);
+
+// +----------------------------------------------------------------------------
+// │ Margins
+// +----------------------------------------------------------------------------
+// | 
+// | 
+// | Html class: m-{side?}-{size}
+$margins: (
+  auto: auto,
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  7: 1.75rem,
+  8: 2rem,
+  9: 2.25rem,
+  10: 2.5rem,
+);
+
+// +----------------------------------------------------------------------------
+// │ Negative margins
+// +----------------------------------------------------------------------------
+// | 
+// | 
+// | Html class: -m-{side?}-{size}
+$negative-margins: (
+  1: -0.25rem,
+  2: -0.5rem,
+  3: -0.75rem,
+  4: -1rem,
+  5: -1.25rem,
+  6: -1.5rem,
+  7: -1.75rem,
+  8: -2rem,
+  9: -2.25rem,
+  10: -2.5rem,
+);
+
+// +----------------------------------------------------------------------------
+// │ Paddings in rems
+// +----------------------------------------------------------------------------
+// | Rems are very intuitive and used heavily for almost any kind of ui element.
+// | For buttons or elements that need to be scalable use Em paddings instead.
+// | 
+// | Html class: p-{side?}-{size}
+$paddings: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  7: 1.75rem,
+  8: 2rem,
+  9: 2.25rem,
+  10: 2.5rem,
+);
+
+// +----------------------------------------------------------------------------
+// │ Paddings in ems
+// +----------------------------------------------------------------------------
+// | Ems are very useful for scalable ui elements. Take buttons for example
+// | whenever you want a collection of buttons in different sizes, use paddings, 
+// | borders and position coordinates in ems. 
+// | 
+// | Html class: *p-{size?}-{size}
+$em-paddings: (
+  0: 0,
+  1: 0.25em,
+  2: 0.5em,
+  3: 0.75em,
+  4: 1em,
+  5: 1.25em,
+  6: 1.5em,
+  7: 1.75em,
+  8: 2em,
+  9: 2.25em,
+  10: 2.5em,
+);
+
+// +----------------------------------------------------------------------------
+// │ Display
+// +----------------------------------------------------------------------------
+// | 
+// |  
+// | Html class: {display-value}
+$display: (
+  block,
+  flex,
+  grid,
+  inline-block,
+  inline-flex,
+  inline,
+  none,
+  table-cell,
+  table-row,
+  table,
+);
+
+// +----------------------------------------------------------------------------
+// │ Borders
+// +----------------------------------------------------------------------------
+// | 
+// |  
+// | Html class: border-{side?}-{size}
+$border-widths: (
+  default: 1px,
+  0: 0,
+  2: 0.125rem,
+  4: 0.25rem,
+  8: 0.5rem,
+);
+
+$em-border-widths: (
+  0: 0,
+  2: 0.125em,
+  4: 0.25em,
+  8: 0.5em,
+);
+
+$border-radius: (
+  none: 0,
+  sm: .125rem,
+  default: .25rem,
+  lg: .5rem,
+  full: 9999px,
+);
+
+$em-border-widths: (
+  default: 0.0625em,
+  0: 0,
+  2: 0.125em,
+  4: 0.25em,
+  8: 0.5em,
+);
+
+$opacity: (
+  0: 0,
+  25: .25,
+  50: .5,
+  75: .75,
+  100: 1,
+);
+
+$positions: (
+  relative,
+  absolute,
+  static,
+  fixed,
+  sticky,
+);
+
+$z-index: (
+  auto: auto,
+  0: 0,
+  10: 10,
+  20: 20,
+  30: 30,
+  40: 40,
+  50: 50,
+);
+
+$font-sizes: (
+  xs: 0.75rem,    // 12px
+  sm: 0.875rem,   // 14px
+  base: 1rem,     // 16px <== base
+  lg: 1.125rem,   // 18px
+  xl: 1.25rem,    // 20px
+  2xl: 1.5rem,    // 24px
+  3xl: 1.875rem,  // 30px
+  4xl: 2.25rem,   // 36px
+  5xl: 2.622rem,  // 42px
+);
+
+$fonts: (
+  sans: (
+    'system-ui', 'BlinkMacSystemFont', '-apple-system',
+    'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans','Helvetica Neue','sans-serif',
+  ),
+  serif: (
+    'Constantia', 'Lucida Bright', 'Lucidabright',
+    'Lucida Serif', 'Lucida', 'DejaVu Serif',
+    'Bitstream Vera Serif','Liberation Serif','Georgia',
+    'serif',
+  ),
+  mono: (
+    'Menlo', 'Monaco', 'Consolas',
+    'Liberation Mono', 'Courier New', 'monospace',
+  ),
+);
+
+$leading: (
+  none: 1,
+  tight: 1.25,
+  normal: 1.5,
+  loose: 2,
+);
+
+
+$tracking: (
+  tight: -0.05em,
+  normal: 0,
+  wide: 0.05em,
+);
+
+$font-weights: (
+  thin: 100, 
+  extra-light: 200, 
+  light: 300,
+  normal: 400,
+  medium: 500,
+  semi-bold: 600,
+  bold: 700,
+  extra-bold: 800,
+  black: 900,
+);
+
+// +----------------------------------------------------------------------------
+// │ Enable/Disable which modules need to be generated
+// +----------------------------------------------------------------------------
+// | Explanation here...
+// |  
+$modules: (
+  colors: ('responsive', 'hover'),            // true|false|('responsive', 'hover')
+  font-leading: ('responsive'),               // true|false|('responsive')
+  font-sizes: ('responsive'),                 // true|false|('responsive')
+  font-weights: true,                         // true|false
+  margins: ('responsive', 'hover'),           // true|false|('responsive', 'hover')
+  negative-margins: ('responsive', 'hover'),  // true|false|('responsive', 'hover)
+  opacity: ('hover'),                         // true|false|('hover')
+  paddings: ('responsive', 'ems'),            // true|false|('responsive', 'ems')
+)

@@ -1,0 +1,20 @@
+@mixin borders($ems:false, $hover:false, $breakpoint:null) {
+  // User $margin or $negative-margin based on $negative parameter: true|false
+  $_border-widths: if($ems, $em-border-widths, $border-widths);
+
+  @each $suffix, $value in $_border-widths {
+    // Add prefixes or leave empty for every condition. Te resulting string for
+    // $prefixes and $suffixes will be concatenated to generate the selector
+    $prefixes: if($ems, '\\*', '');
+    $prefixes: $prefixes + if($breakpoint, #{$breakpoint+'\\:'}, '');
+    $prefixes: $prefixes + if($hover, 'hover\\:', '');
+    $suffixes: if($suffix == 'default', '', #{'-'+$suffix});
+    $suffixes: $suffixes + if($hover, ':hover', '');
+  
+    .#{$prefixes}border#{$suffixes}   { border-width: $value; }
+    .#{$prefixes}border-t#{$suffixes} { border-top-width: $value; }
+    .#{$prefixes}border-r#{$suffixes} { border-right-width: $value; }
+    .#{$prefixes}border-b#{$suffixes} { border-bottom-width: $value; }
+    .#{$prefixes}border-l#{$suffixes} { border-left-width: $value; }
+  }
+}
