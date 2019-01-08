@@ -261,8 +261,24 @@ $font-weights: (
 // │ Enable/Disable modules
 // +----------------------------------------------------------------------------
 // | You can disable/enable modules, this will determine file size. If you don't 
-// | need a specific module disable as it'll decrease file size. 
+// | need a specific module, disable it. 
 // |
+// | Values may have two or more options:  
+// | * true: enable default utility classes
+// | * false: disable default utility classes
+// | * (a,b,c,d...): A list of different variant utility classes. Modules may
+// |   have different variants available. These are based on my own experience,
+// |   You may find useful adding new variants by extending their mixin generator
+// |   
+// | Variants:
+// | * responsive:
+// | * hover:
+// | * focus:
+// | * negative:
+// | * ems:
+// |
+// | Important note: if you only need to enable one variant this must be followed
+// | by a trailing comma e.g. (hover,) or (responsive,).
 $modules: (
   colors: (responsive, hover),            // true|false|(responsive, hover)
   font-leading: (responsive),             // true|false|(responsive)
@@ -270,6 +286,6 @@ $modules: (
   font-weights: true,                     // true|false
   margins: (responsive, hover),           // true|false|(responsive, hover)
   negative-margins: (responsive, hover),  // true|false|(responsive, hover)
-  opacity: true,                       // true|false|(hover)
+  opacity: true,                          // true|false|(hover)
   paddings: (responsive, ems),            // true|false|(responsive, ems)
 )
