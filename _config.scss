@@ -258,17 +258,18 @@ $font-weights: (
 );
 
 // +----------------------------------------------------------------------------
-// │ Enable/Disable which modules need to be generated
+// │ Enable/Disable modules
 // +----------------------------------------------------------------------------
-// | Explanation here...
-// |  
+// | You can disable/enable modules, this will determine file size. If you don't 
+// | need a specific module disable as it'll decrease file size. 
+// |
 $modules: (
-  colors: ('responsive', 'hover'),            // true|false|('responsive', 'hover')
-  font-leading: ('responsive'),               // true|false|('responsive')
-  font-sizes: ('responsive'),                 // true|false|('responsive')
-  font-weights: true,                         // true|false
-  margins: ('responsive', 'hover'),           // true|false|('responsive', 'hover')
-  negative-margins: ('responsive', 'hover'),  // true|false|('responsive', 'hover)
-  opacity: ('hover'),                         // true|false|('hover')
-  paddings: ('responsive', 'ems'),            // true|false|('responsive', 'ems')
+  colors: (responsive, hover),            // true|false|(responsive, hover)
+  font-leading: (responsive),             // true|false|(responsive)
+  font-sizes: (responsive),               // true|false|(responsive)
+  font-weights: true,                     // true|false
+  margins: (responsive, hover),           // true|false|(responsive, hover)
+  negative-margins: (responsive, hover),  // true|false|(responsive, hover)
+  opacity: true,                       // true|false|(hover)
+  paddings: (responsive, ems),            // true|false|(responsive, ems)
 )

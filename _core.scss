@@ -41,7 +41,7 @@
 @include leading;
 @include margins;
 @include margins($negative: true);
-@include opacities();
+@include opacities;
 @include paddings;
 @include paddings($ems: true);
 @include positions;

@@ -1,45 +1,28 @@
 @mixin opacities {
-  // Check active modules for 'opacity'
-  $_opacity: map-get($modules, 'opacity');
-  $hover: index($_opacity, 'hover');
-  $prefix: if($hover, 'hover\\:', '');
+  $opacity-module: map-get($modules, 'opacity');
 
-  @if ($_opacity==true) or $hover {
+  // Check IF module is true or a map
+  @if ($opacity-module == true) or (type-of($opacity-module) == 'list') {
+/*
++-------------------------------------------------------------------------------
+| #1 OPACITIES
++-------------------------------------------------------------------------------
+*/
+    // Default classes
     @each $suffix, $value in $opacity {
-      $suffixes: $suffix + if($hover, ':hover', '');
-
-      .#{$prefix}opacity-#{$suffixes} { opacity: $value; }
+      .opacity-#{$suffix} { opacity: $value; }
+    }
+    
+    // IF module 'hover' is active, generate classes
+    @if index($opacity-module, 'hover') {
+/*
++-------------------------------------------------------------------------------
+| #2 OPACITIES: HOVER STATE
++-------------------------------------------------------------------------------
+*/
+      @each $suffix, $value in $opacity {
+        .hover\:opacity-#{$suffix}:hover { opacity: $value; }
+      }
     }
   }
 }
-
-// OLD METHOD
-// @mixin opacities($hover: false) {
-//   @each $suffix, $value in $opacity {
-//     $prefix: if($hover, 'hover\\:', '');
-//     $suffixes: $suffix + if($hover, ':hover', '');
-
-//     .#{$prefix}opacity-#{$suffixes} { opacity: $value; }
-//   }
-// }
-
-// TEMPOARARY APPROACH MODIFICATION
-// @mixin opacities {
-//   // Get opacity in '$modules' 
-//   $_opacity: map-get($modules, 'opacity');
-//   $hover: index($_opacity, 'hover');
-
-//   // If opacity module is set to 'true' generate default selector
-//   @if ($_opacity == true) or $hover {
-//     @each $suffix, $value in $opacity {
-//       .opacity-#{$suffix} { opacity: $value; }
-//     }
-//   }
-
-//   // If 'hover' is specified in 'opacity' module, generate selector
-//   @if $hover {
-//     @each $suffix, $value in $opacity {
-//       .hover\\:opacity-#{$suffix}:hover { opacity: $value; }
-//     }
-//   }
-// }
