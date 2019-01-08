@@ -3,11 +3,6 @@
 
   // Check IF module is true or a map
   @if ($opacity-module == true) or (type-of($opacity-module) == 'list') {
-/*
-+-------------------------------------------------------------------------------
-| #1 OPACITIES
-+-------------------------------------------------------------------------------
-*/
     // Default classes
     @each $suffix, $value in $opacity {
       .opacity-#{$suffix} { opacity: $value; }
@@ -15,11 +10,6 @@
     
     // IF module 'hover' is active, generate classes
     @if index($opacity-module, 'hover') {
-/*
-+-------------------------------------------------------------------------------
-| #2 OPACITIES: HOVER STATE
-+-------------------------------------------------------------------------------
-*/
       @each $suffix, $value in $opacity {
         .hover\:opacity-#{$suffix}:hover { opacity: $value; }
       }
