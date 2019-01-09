@@ -7,9 +7,7 @@
       @include flex-directions($breakpoint);
       @include font-sizes($breakpoint: $breakpoint);  
       @include leading($breakpoint: $breakpoint);
-      @include margins($breakpoint: $breakpoint);
-      @include margins($negative: true, $breakpoint: $breakpoint);
-      @include margins($negative: true);
+      @include margins($breakpoint);
       @include paddings($breakpoint);
     }
   }

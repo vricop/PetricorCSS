@@ -1,21 +1,67 @@
-@mixin margins($negative:false, $hover:false, $breakpoint:null) {
-  // User $margin or $negative-margin based on $negative parameter: true|false
-  $_margins: if($negative, $negative-margins, $margins);
-  
-  @each $suffix, $value in $_margins {
-    // Add prefixes or leave empty for every condition. Te resulting string for
-    // $prefixes and $suffixes will be concatenated to generate the selector
-    $prefixes: if($negative, '-', '');
-    $prefixes: $prefixes + if($breakpoint, #{$breakpoint+'\\:'}, '');
-    $prefixes: $prefixes + if($hover, 'hover\\:', '');
-    $suffixes: $suffix + if($hover, ':hover', '');
+// Get options from margins module
+$margins-module: map-get($modules, 'margins');
 
-    .#{$prefixes}m-#{$suffixes} { margin: $value; };
-    .#{$prefixes}mx-#{$suffixes} { margin: { left: $value; right: $value; } };
-    .#{$prefixes}my-#{$suffixes} { margin: { top: $value; bottom: $value; } };
-    .#{$prefixes}mt-#{$suffixes} { margin-top: $value };
-    .#{$prefixes}mr-#{$suffixes} { margin-right: $value };
-    .#{$prefixes}mb-#{$suffixes} { margin-bottom: $value };
-    .#{$prefixes}ml-#{$suffixes} { margin-left: $value };
+// Builds rules for margins classes. It takes three arguments suffix, value
+// and prefix (optional) to generate margin classes. It's used by margins()
+// mixin.
+@mixin margins-class-rules($suffix, $value, $prefix:null) {
+  .#{$prefix}m-#{$suffix} { margin: $value; };
+  .#{$prefix}mx-#{$suffix} { margin: { left: $value; right: $value; } };
+  .#{$prefix}my-#{$suffix} { margin: { top: $value; bottom: $value; } };
+  .#{$prefix}mt-#{$suffix} { margin-top: $value };
+  .#{$prefix}mr-#{$suffix} { margin-right: $value };
+  .#{$prefix}mb-#{$suffix} { margin-bottom: $value };
+  .#{$prefix}ml-#{$suffix} { margin-left: $value };
+}
+
+// Function helper: returns the index number if a module is found in 
+// $margins-module config, or null if it doesn't
+@function is-enabled($module) {
+  @return index($margins-module, $module);
+}
+
+// Builds different margin class variants based on config file values. It uses
+// margins-class-rules() mixin to generate them.
+// Variants: responsive, hover, negative
+@mixin margins($breakpoint:null) {
+  // Execute only if module is set to true or contains a list
+  @if ($margins-module == true) or (type-of($margins-module) == 'list') {
+    @each $suffix, $value in $margins {
+      // # DEFAULT CLASSES
+      // If no breakpoints arguments are passed, generate default classes
+      @if $breakpoint == null {
+        @include margins-class-rules($suffix, $value);
+      }
+
+      // # RESPONSIVE CLASSES
+      // Execute if reponsive module is enabled and breakpoint prefix argument
+      // it's not null
+      @if is-enabled('responsive') and ($breakpoint != null) {
+        // 1.
+        $prefix: '#{$breakpoint}\\:';
+        // 2.
+        @include margins-class-rules($suffix, $value, $prefix);
+      }
+      
+      // # HOVER CLASSES
+      // Execute if 'hover' module is enabled and if breakpoint argument is null
+      @if is-enabled('hover') and ($breakpoint == null) { 
+        // 1. Join $suffix with ':hover' pseudo-class
+        $suffix: '#{$suffix}:hover';
+        // 2. Use 'hover\:' as prefix
+        $prefix: 'hover\\:';
+        // 3. Generate hover state classes with 'hover' as suffix and prefix
+        @include margins-class-rules($suffix, $value, $prefix);
+      }
+
+    }
+
+    // # NEGATIVE MARGIN CLASSES
+    @each $suffix, $value in $negative-margins {
+      @if is-enabled('negative') and ($breakpoint == null) {
+        // Generate classes with '-' as prefix
+        @include margins-class-rules($suffix, $value, '-');
+      }
+    }
   }
 }

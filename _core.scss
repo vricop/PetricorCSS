@@ -1,11 +1,10 @@
 // TODO:
-// [ ] Check generator mixin comments
-// [ ] Implement :focus state in for required
-// [ ] Generate color generators for: border, text and background
-// [ ] Implement enabling/disabling for modules
-// [ ] Remove state arguments/parameters for hover and other features inside
-//    mixins, leave only $breakpoints for responsive
+// [-] Generate color generators for: border, text and background
+// [-] Implement enabling/disabling for modules
+// [-] Remove state arguments/parameters for hover and other features inside
+//     mixins, leave only $breakpoints for responsive
 // [x] Add flex alignments
+// [ ] Improve comments in _paddings.scss (look at _margins.scss)
 
 /*
 +-------------------------------------------------------------------------------
@@ -40,7 +39,6 @@
 @include font-weights;
 @include leading;
 @include margins;
-@include margins($negative: true);
 @include opacities;
 @include paddings;
 @include positions;
