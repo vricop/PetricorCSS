@@ -1,21 +1,69 @@
-@mixin paddings($ems:false, $hover:false, $breakpoint:null)  {
-  // User $margin or $negative-margin based on $negative parameter: true|false
-  $_paddings: if($ems, $em-paddings, $paddings);
+// Get variant options from paddings module
+$paddings-module: map-get($modules, 'paddings');
 
-  @each $suffix, $value in $_paddings {
-    // Add prefixes or leave empty for every condition. Te resulting string for
-    // $prefixes and $suffixes will be concatenated to generate the selector
-    $prefixes: if($ems, '\\*', '');
-    $prefixes: $prefixes + if($breakpoint, #{$breakpoint+'\\:'}, '');
-    $prefixes: $prefixes + if($hover, 'hover\\:', '');
-    $suffixes: $suffix + if($hover, ':hover', '');
+// Builds rules for paddings module. It takes three arguments suffix, value
+// and prefix (optional) to generate padding classes. It's used by paddings()
+// mixin.
+@mixin paddings-class-rules($suffix, $value, $prefix:null) {
+  .#{$prefix}p-#{$suffix}  { padding: $value; }
+  .#{$prefix}px-#{$suffix} { padding: { left: $value; right: $value; } } 
+  .#{$prefix}py-#{$suffix} { padding: { top: $value; bottom: $value; } }
+  .#{$prefix}pt-#{$suffix} { padding-top: $value; };
+  .#{$prefix}pr-#{$suffix} { padding-right: $value; };
+  .#{$prefix}pb-#{$suffix} { padding-bottom: $value; };
+  .#{$prefix}pl-#{$suffix} { padding-left: $value; };
+}
 
-    .#{$prefixes}p-#{$suffixes}  { padding: $value; }
-    .#{$prefixes}px-#{$suffixes} { padding: { left: $value; right: $value; } } 
-    .#{$prefixes}py-#{$suffixes} { padding: { top: $value; bottom: $value; } }
-    .#{$prefixes}pt-#{$suffixes} { padding-top: $value; };
-    .#{$prefixes}pr-#{$suffixes} { padding-right: $value; };
-    .#{$prefixes}pb-#{$suffixes} { padding-bottom: $value; };
-    .#{$prefixes}pl-#{$suffixes} { padding-left: $value; };
+// Function helper: returns the index number if a module is found in 
+// $paddings-module config, or null if it doesn't
+@function is-enabled($module) {
+  @return index($paddings-module, $module);
+}
+
+// Builds different padding class variants based on config file values. It uses
+// paddings-class-rules() mixin to generate them.
+// Variants: responsive, hover, em
+@mixin paddings($breakpoint:null)  {
+  // Execute only if module is set to true or contains a list
+  @if ($paddings-module == true) or (type-of($paddings-module) == 'list') {
+    // # DEFAULT CLASSES
+    @each $suffix, $value in $paddings {
+      // 1. If no breakpoints arguments are passed, generate default classes
+      @if $breakpoint == null {
+        @include paddings-class-rules($suffix, $value);
+      } 
+      // 2. Execute if reponsive module is enabled and breakpoint prefix argument
+      //    it's not null
+      @if is-enabled('responsive') and $breakpoint != null {
+        $prefix: '#{$breakpoint}\\:';
+        @include paddings-class-rules($suffix, $value, $prefix);
+      }
+    }
+
+    // # HOVER PSEUDO-CLASSES
+    @if is-enabled('hover') {
+      // 1. Execute if $breakpoint is null
+      @if $breakpoint == null {
+        @each $suffix, $value in $paddings {
+          // 2 Join $suffix with ':hover' pseudo-class
+          $suffix: '#{$suffix}:hover';
+          // 3 Use 'hover\:' as prefix
+          $prefix: 'hover\\:';
+          // 4 Generate hover state classes with 'hover' as suffix and prefix
+          @include paddings-class-rules($suffix, $value, $prefix);
+        }
+      }
+    }
+
+    // # EM CLASSES
+    // 1. Execute only if module 'ems' is enabled and $breakpoint is null 
+    //    is passed
+    @if is-enabled('ems') and $breakpoint == null {
+      @each $suffix, $value in $em-paddings {
+        // 2. Use '\*' as prefix
+        $prefix: '\\*';
+        @include paddings-class-rules($suffix, $value, $prefix);
+      }
+    }
   }
 }

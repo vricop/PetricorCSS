@@ -10,8 +10,7 @@
       @include margins($breakpoint: $breakpoint);
       @include margins($negative: true, $breakpoint: $breakpoint);
       @include margins($negative: true);
-      @include paddings($breakpoint: $breakpoint);
-      @include paddings($ems: true, $breakpoint: $breakpoint);
+      @include paddings($breakpoint);
     }
   }
 }
