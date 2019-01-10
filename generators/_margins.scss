@@ -1,9 +1,8 @@
 // Get options from margins module
 $margins-module: map-get($modules, 'margins');
 
-// Builds rules for margins classes. It takes three arguments suffix, value
-// and prefix (optional) to generate margin classes. It's used by margins()
-// mixin.
+// Builds rules for margin classes. It takes three arguments suffix, value
+// and prefix (optional). It's used by margins() mixin.
 @mixin margins-class-rules($suffix, $value, $prefix:null) {
   .#{$prefix}m-#{$suffix} { margin: $value; };
   .#{$prefix}mx-#{$suffix} { margin: { left: $value; right: $value; } };
@@ -14,15 +13,15 @@ $margins-module: map-get($modules, 'margins');
   .#{$prefix}ml-#{$suffix} { margin-left: $value };
 }
 
-// Function helper: returns the index number if a module is found in 
-// $margins-module config, or null if it doesn't
+// Function helper: checks if a module is defined in the margins module. Returns
+// a number (index position) if found or null if it doesn't
 @function is-enabled($module) {
   @return index($margins-module, $module);
 }
 
-// Builds different margin class variants based on config file values. It uses
-// margins-class-rules() mixin to generate them.
-// Variants: responsive, hover, negative
+// Generates different margin class variants based on config file values. It uses
+// margins-class-rules mixin to build variants based on arguments passed.
+// Variants for this module are: 'responsive', 'hover' and 'negative'
 @mixin margins($breakpoint:null) {
   // Execute only if module is set to true or contains a list
   @if ($margins-module == true) or (type-of($margins-module) == 'list') {
@@ -58,6 +57,8 @@ $margins-module: map-get($modules, 'margins');
 
     // # NEGATIVE MARGIN CLASSES
     @each $suffix, $value in $negative-margins {
+      // Execute if 'negative' module is enabled and breakpoint is null —meaning
+      // we won't generate responsive classes for this module
       @if is-enabled('negative') and ($breakpoint == null) {
         // Generate classes with '-' as prefix
         @include margins-class-rules($suffix, $value, '-');
