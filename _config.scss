@@ -277,8 +277,8 @@ $font-weights: (
 // | * negative:
 // | * ems:
 // |
-// | Important note: if you only need to enable one variant this must be followed
-// | by a trailing comma e.g. (hover,) or (responsive,).
+// | Very important note: if you only need to enable one variant for a module —
+// | other than true— leave a trailing comma e.g. ('hover',) or ('responsive',)
 $modules: (
   colors: ('responsive', 'hover'),
   font-leading: ('responsive'),
