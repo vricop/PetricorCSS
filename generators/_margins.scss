@@ -1,5 +1,7 @@
 // Get options from margins module
 $margins-module: map-get($modules, 'margins');
+// Get options from negative-margins module
+$negative-margins-module: map-get($modules, 'negative-margins');
 
 // Builds rules for margin classes. It takes three arguments suffix, value
 // and prefix (optional). It's used by margins() mixin.
@@ -13,60 +15,60 @@ $margins-module: map-get($modules, 'margins');
   .#{$prefix}ml-#{$suffix} { margin-left: $value };
 }
 
-// Helper function: checks if a module is defined in the margins module. Returns
-// a number (index position) if found or null if it doesn't
-@function is-module-active($module) {
-  @return index($margins-module, $module);
-}
-
-// Helper function: checks if $variables is a list
-@function is-list($variable) {
-  @return type-of($variable) == list;
-}
-
 // Generates different margin class variants based on config file values. It uses
-// margins-class-rules mixin to build variants based on arguments passed.
-// Variants for this module are: 'responsive', 'hover' and 'negative'
+// 'margins-class-rules' mixin to build variants based on arguments passed.
+// '$breakpoints' parameter is only used wen called from '_responsive.scss' file,
+// reponsible for building responsive variants.
 @mixin margins($breakpoint: null) {
-  // Execute only if module is set to true or contains a list
-  @if ($margins-module == true) or is-list($margins-module) {
+  // Execute only if module is set to true, is a string or contains a list
+  @if ($margins-module == true) or (type-of($margins-module) == list) or (type-of($margins-module) == string) {
     @each $suffix, $value in $margins {
       // # DEFAULT CLASSES
-      // If no breakpoints arguments are passed, generate default classes
+      // If '$breakpoint' is null, generate default classes
       @if $breakpoint == null {
         @include margins-class-rules($suffix, $value);
       }
 
       // # RESPONSIVE CLASSES
-      // Execute if reponsive module is enabled and breakpoint prefix argument
-      // it's not null
-      @if is-module-active('responsive') and is-list($breakpoint) {
-        // 1. Join '$breakpoint' with ':'
-        $prefix: '#{$breakpoint}\\:';
-        // 2. Generate classes with with prefixes for responsive variants
-        @include margins-class-rules($suffix, $value, $prefix);
+      // 1. Execute if reponsive module is enabled and '$breakpoint' isn't null
+      // 2. Add '$breakpoint\:' prefix for responsive variants
+      @if index($margins-module, 'responsive') and $breakpoint != null {
+        @include margins-class-rules($suffix, $value, '#{$breakpoint}\\:');
       }
       
       // # HOVER CLASSES
-      // Execute if 'hover' module is enabled and if breakpoint argument is null
-      @if is-module-active('hover') and $breakpoint == null {
-        // 1. Join $suffix with ':hover' pseudo-class
-        $suffix: '#{$suffix}:hover';
-        // 2. Use 'hover\:' for prefix
-        $prefix: 'hover\\:';
-        // 3. Generate hover state variant classes
-        @include margins-class-rules($suffix, $value, $prefix);
+      // 1. Execute if 'hover' module is enabled and if '$breakpoint' is null
+      // 2. Add ':hover' pseudo-selector and 'hover\:' prefix for hover variants
+      @if index($margins-module, 'hover') and $breakpoint == null {
+        @include margins-class-rules('#{$suffix}:hover', $value, 'hover\\:');
       }
-
     }
 
     // # NEGATIVE MARGIN CLASSES
-    @each $suffix, $value in $negative-margins {
-      // Execute if 'negative' module is enabled and breakpoint is null —meaning
-      // we won't generate responsive classes for this negative margins
-      @if is-module-active('negative') and $breakpoint == null {
-        // Generate classes with '-' as prefix
-        @include margins-class-rules($suffix, $value, '-');
+    // Execute only if module is set to true, a list or a string
+    @if ($negative-margins-module == true) or (type-of($negative-margins-module) == list) or (type-of($negative-margins-module) == string) {
+      @each $suffix, $value in $negative-margins {
+        // # DEFAULT CLASSES
+        // 1. Execute only if  '$breakpoint' is null
+        // 2. Generate classes with '-' as prefix
+        @if $breakpoint == null {
+          @include margins-class-rules($suffix, $value, '-');
+        }
+
+        // # RESPONSIVE NEGATIVE CLASSES
+        // 1. Execute if reponsive module is enabled and '$breakpoint' isn't null
+        // 2. Add '-' prefix variant for responsive negative margins
+        @if index($negative-margins-module, 'responsive') and ($breakpoint != null) {
+          @include margins-class-rules($suffix, $value, '#{$breakpoint}\\:-');
+        }
+
+        // # HOVER NEGATIVE CLASSES
+        // 1. Execute if 'hover' module is enabled and if '$breakpoint' is null
+        // 2. Add ':hover' pseudo-class, 'hover\:' prefix and 'hover\:-' suffix
+        //    for hover variants
+        @if index($negative-margins-module, 'hover') and ($breakpoint == null) {
+          @include margins-class-rules('#{$suffix}:hover', $value, 'hover\\:-');
+        }
       }
     }
   }
