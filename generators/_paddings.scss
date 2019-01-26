@@ -14,55 +14,41 @@ $paddings-module: map-get($modules, 'paddings');
   .#{$prefix}pl-#{$suffix} { padding-left: $value; };
 }
 
-// Function helper: returns the index number if a module is found in 
-// $paddings-module config, or null if it doesn't
-@function is-enabled($module) {
-  @return index($paddings-module, $module);
-}
-
-// Builds different padding class variants based on config file values. It uses
-// paddings-class-rules() mixin to generate them.
-// Variants: responsive, hover, em
+// Generates different padding class variants based on config file values. It uses
+// 'paddings-class-rules' mixin to build variants based on arguments passed.
+// '$breakpoint' parameter is only used wen called from '_responsive.scss' file,
+// reponsible for building responsive variants.
 @mixin paddings($breakpoint:null)  {
   // Execute only if module is set to true or contains a list
   @if ($paddings-module == true) or (type-of($paddings-module) == 'list') {
-    // # DEFAULT CLASSES
     @each $suffix, $value in $paddings {
+      // # DEFAULT CLASSES
       // 1. If no breakpoints arguments are passed, generate default classes
       @if $breakpoint == null {
         @include paddings-class-rules($suffix, $value);
-      } 
-      // 2. Execute if reponsive module is enabled and breakpoint prefix argument
-      //    it's not null
-      @if is-enabled('responsive') and $breakpoint != null {
-        $prefix: '#{$breakpoint}\\:';
-        @include paddings-class-rules($suffix, $value, $prefix);
       }
-    }
 
-    // # HOVER PSEUDO-CLASSES
-    @if is-enabled('hover') {
-      // 1. Execute if $breakpoint is null
-      @if $breakpoint == null {
-        @each $suffix, $value in $paddings {
-          // 2 Join $suffix with ':hover' pseudo-class
-          $suffix: '#{$suffix}:hover';
-          // 3 Use 'hover\:' as prefix
-          $prefix: 'hover\\:';
-          // 4 Generate hover state classes with 'hover' as suffix and prefix
-          @include paddings-class-rules($suffix, $value, $prefix);
-        }
+      // # RESPONSIVE CLASSES !!!
+      // 1. Execute if reponsive module is enabled and '$breakpoint' isn't null
+      // 2. Add 'breakpoint\:' for responsive variants
+      @if index($paddings-module, 'responsive') and ($breakpoint != null) {
+        @include paddings-class-rules($suffix, $value, '#{$breakpoint}\\:');
+      }
+      
+      // # HOVER CLASSES
+      // 1. Execute if 'hover' module is enabled and '$breakpoint' is null
+      // 2. Add ':hover' suffix and 'hover\:' prefix for hover variants
+      @if index($paddings-module, 'hover') and ($breakpoint == null) {
+        @include paddings-class-rules('#{$suffix}:hover', $value, 'hover\\:');
       }
     }
 
     // # EM CLASSES
     // 1. Execute only if module 'ems' is enabled and $breakpoint is null 
-    //    is passed
-    @if is-enabled('ems') and $breakpoint == null {
+    // 2. Add '\*' for prefix for em class variants
+    @if index($paddings-module, 'ems') and ($breakpoint == null) {
       @each $suffix, $value in $em-paddings {
-        // 2. Use '\*' as prefix
-        $prefix: '\\*';
-        @include paddings-class-rules($suffix, $value, $prefix);
+        @include paddings-class-rules($suffix, $value, '\\*');
       }
     }
   }

@@ -57,7 +57,7 @@ $negative-margins-module: map-get($modules, 'negative-margins');
 
         // # RESPONSIVE NEGATIVE CLASSES
         // 1. Execute if reponsive module is enabled and '$breakpoint' isn't null
-        // 2. Add '-' prefix variant for responsive negative margins
+        // 2. Add '-' prefix variant for responsive negative margins variant
         @if index($negative-margins-module, 'responsive') and ($breakpoint != null) {
           @include margins-class-rules($suffix, $value, '#{$breakpoint}\\:-');
         }
