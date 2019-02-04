@@ -3,7 +3,7 @@ $paddings-module: map-get($modules, 'paddings');
 // If '$paddings-module' is a string —single-element are treated
 // as strings—, convert into a list
 @if type-of($paddings-module == string) {
-  $paddings-module: append($paddings-module, (''));
+  $paddings-module: append($paddings-module, '');
 }
 
 // Builds rules for paddings module. It takes three arguments suffix, value
@@ -25,7 +25,7 @@ $paddings-module: map-get($modules, 'paddings');
 // reponsible for building responsive variants.
 @mixin paddings($breakpoint:null)  {
   // Execute only if module is set to true or contains a list
-  @if ($paddings-module == true) or (type-of($paddings-module) == 'list') {
+  @if ($paddings-module == true) or (type-of($paddings-module) == list) {
     @each $suffix, $value in $paddings {
       // # DEFAULT CLASSES
       // 1. If no breakpoints arguments are passed, generate default classes
