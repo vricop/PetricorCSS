@@ -1,18 +1,18 @@
 // TODO:
 // - Generate color generators for: border, text and background
 // - Decide whether or not negative margin variants must be included
+// - Remove variant parameters from generators. Generate them based on enabled/disabled modules
 
 /*!
-+-------------------------------------------------------------------------------
-| INGREDIENTS CSS - UTILITY CLASS GENERATOR BUILD IN SASS
-+-------------------------------------------------------------------------------
-| Author: Víctor Rico
-| Author URL: N/A
-| Author email: vricop@gmail.com
-| License: N/A
-| Description: N/A
-| Version: N/A
-+-------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+ NGREDIENTS CSS - UTILITY CLASS GENERATOR BUILD IN SASS
+--------------------------------------------------------------------------------
+ Author: Víctor Rico
+ Author URL: N/A
+ Author email: vricop@gmail.com
+ License: N/A
+ Description: N/A
+ Version: N/A
 */
 
 @import "config", "responsive", "generators";
