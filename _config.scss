@@ -279,12 +279,12 @@ $font-weights: (
 // | Very important note: if you only need to enable one variant for a module —
 // | other than true— leave a trailing comma e.g. ('hover',) or ('responsive',)
 $modules: (
-  colors: ('responsive', 'hover'),
-  font-leading: ('responsive'),
-  font-sizes: ('responsive'),
+  colors: [responsive hover],
+  font-leading: [responsive],
+  font-sizes: [responsive],
   font-weights: true,
-  margins: ('responsive', 'hover'),
-  negative-margins: ('responsive', 'hover'),
+  margins: [responsive hover],
+  negative-margins: [responsive hover],
   opacity: true,
-  paddings: [responsive ems],
+  paddings: [ems],
 )
