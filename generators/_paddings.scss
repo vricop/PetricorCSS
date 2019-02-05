@@ -1,16 +1,15 @@
-$padding-variants: (responsive hover ems);
+// Variants for padding classes
+$_available-padding-variants: (responsive hover ems);
 // Get variant options from paddings module
-$paddings-module: map-get($modules, 'paddings');
-// If '$paddings-module' is a string —single-element are treated
-// as strings—, convert into a list
-@if type-of($paddings-module) == string {
-  $paddings-module: append($paddings-module, '');
+$_paddings-module: map-get($modules, 'paddings');
+// Single-element lists are treated as strings in sass. If '$paddings' module
+// contains a string convert it to a list so we can check their values later.
+@if type-of($_paddings-module) == string {
+  $_paddings-module: append($_paddings-module, '');
 }
 
-// Builds rules for paddings module. It takes three arguments suffix, value
-// and prefix (optional) to generate padding classes. It's used by paddings()
-// mixin.
-@mixin paddings-class-rules($suffix, $value, $prefix:null) {
+// Builds padding class variants with suffixes and prefixes passed as arguments.
+@mixin _generate-padding-classes($suffix, $value, $prefix:null) {
   .#{$prefix}p-#{$suffix}  { padding: $value; }
   .#{$prefix}px-#{$suffix} { padding: { left: $value; right: $value; } } 
   .#{$prefix}py-#{$suffix} { padding: { top: $value; bottom: $value; } }
@@ -20,19 +19,23 @@ $paddings-module: map-get($modules, 'paddings');
   .#{$prefix}pl-#{$suffix} { padding-left: $value; };
 }
 
-// Generates different padding class variants based on config file values. It uses
-// 'paddings-class-rules' mixin to build variants based on arguments passed.
-// '$breakpoint' parameter is only used wen called from '_responsive.scss' file,
-// reponsible for building responsive variants.
+// Check which padding class variants are enabled in the config file. Then 
+// generates all classes using '_generate-padding-classes'.
+// Note: '$breakpoint' parameter is used for building responsive variants.
 @mixin paddings($breakpoint:null)  {
-  // Execute only if module is set to true or contains a list
-  @if ($paddings-module == true) or (type-of($paddings-module) == list) {
-    // Check if variant for paddings in config file is valid
-    @if type-of($paddings-module) == list {
+  // Execute only if module is set to true or contains a list of variants
+  @if ($_paddings-module == true) or (type-of($_paddings-module) == list) {
+    // 1. If user has enabled one or more variants, do some checking.
+    // 2. Check if a padding variant has been misspelled or is wrong.
+    // 3. Throw an error if previous conditions are met.
+    @if type-of($_paddings-module) == list {
       $i:1;      
-      @each $variant in $paddings-module {
-        @if not index($padding-variants, $variant) {
-          @error '"#{nth($paddings-module, $i)}" isn\'t valid. Check the paddings module in your "_config.scss" file.';
+      @each $variant in $_paddings-module {
+        @if not index($_available-padding-variants, $variant) {
+          @error 
+            "'#{nth($_paddings-module, $i)}' isn't valid. Either you misspelled\s" +
+            "it or have set an invalid variant for this module. Please, check\s" +
+            "the paddings module in '_config.scss' file.";
         }
         $i: $i + 1;
       }
@@ -40,32 +43,32 @@ $paddings-module: map-get($modules, 'paddings');
 
     @each $suffix, $value in $paddings {
       // # DEFAULT CLASSES
-      // 1. If no breakpoints arguments are passed, generate default classes
+      // 1. If no breakpoints have been passed, generate default classes.
       @if $breakpoint == null {
-        @include paddings-class-rules($suffix, $value);
+        @include _generate-padding-classes($suffix, $value);
       }
 
       // # RESPONSIVE CLASSES
-      // 1. Execute if reponsive module is enabled and '$breakpoint' isn't null
-      // 2. Add 'breakpoint\:' for responsive variants
-      @if index($paddings-module, 'responsive') and ($breakpoint != null) {
-        @include paddings-class-rules($suffix, $value, '#{$breakpoint}\\:');
+      // 1. Execute if reponsive variant is enabled and breakpoints have been passed.
+      // 2. Generate responsive variants.
+      @if index($_paddings-module, 'responsive') and ($breakpoint != null) {
+        @include _generate-padding-classes($suffix, $value, '#{$breakpoint}\\:');
       }
       
       // # HOVER CLASSES
-      // 1. Execute if 'hover' module is enabled and '$breakpoint' is null
-      // 2. Add ':hover' suffix and 'hover\:' prefix for hover variants
-      @if index($paddings-module, 'hover') and ($breakpoint == null) {
-        @include paddings-class-rules('#{$suffix}:hover', $value, 'hover\\:');
+      // 1. Execute if hover variant is enabled and breakpoints haven't been passed.
+      // 2. Generate hover variants.
+      @if index($_paddings-module, 'hover') and ($breakpoint == null) {
+        @include _generate-padding-classes('#{$suffix}:hover', $value, 'hover\\:');
       }
     }
 
     // # EM CLASSES
-    // 1. Execute only if module 'ems' is enabled and $breakpoint is null 
-    // 2. Add '\*' for prefix for em class variants
-    @if index($paddings-module, 'ems') and ($breakpoint == null) {
+    // 1. Execute if em variant is enabled and breakpoints haven't been passed.
+    // 2. Generate em variants.
+    @if index($_paddings-module, 'ems') and ($breakpoint == null) {
       @each $suffix, $value in $em-paddings {
-        @include paddings-class-rules($suffix, $value, '\\*');
+        @include _generate-padding-classes($suffix, $value, '\\*');
       }
     }
   }
