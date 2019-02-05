@@ -1,13 +1,6 @@
 // TODO:
-// [-] Generate color generators for: border, text and background
-// [-] Implement enabling/disabling for modules
-// [-] Remove state arguments/parameters for hover and other features inside
-//     mixins, leave only $breakpoints for responsive
-// [x] Add flex alignments
-// [ ] Improve comments in _paddings.scss (look at _margins.scss)
-// [ ] Negative margin classes don't have responsive variants at this moment. 
-//     Decide whether or not they should be included after some test building 
-//     some projects
+// - Generate color generators for: border, text and background
+// - Decide whether or not negative margin variants must be included
 
 /*!
 +-------------------------------------------------------------------------------
