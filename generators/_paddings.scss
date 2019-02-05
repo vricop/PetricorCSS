@@ -1,8 +1,9 @@
+$padding-variants: (responsive hover ems);
 // Get variant options from paddings module
 $paddings-module: map-get($modules, 'paddings');
 // If '$paddings-module' is a string —single-element are treated
 // as strings—, convert into a list
-@if type-of($paddings-module == string) {
+@if type-of($paddings-module) == string {
   $paddings-module: append($paddings-module, '');
 }
 
@@ -26,6 +27,17 @@ $paddings-module: map-get($modules, 'paddings');
 @mixin paddings($breakpoint:null)  {
   // Execute only if module is set to true or contains a list
   @if ($paddings-module == true) or (type-of($paddings-module) == list) {
+    // Check if variant for paddings in config file is valid
+    @if type-of($paddings-module) == list {
+      $i:1;      
+      @each $variant in $paddings-module {
+        @if not index($padding-variants, $variant) {
+          @error '"#{nth($paddings-module, $i)}" isn\'t valid. Check the paddings module in your "_config.scss" file.';
+        }
+        $i: $i + 1;
+      }
+    }
+
     @each $suffix, $value in $paddings {
       // # DEFAULT CLASSES
       // 1. If no breakpoints arguments are passed, generate default classes
