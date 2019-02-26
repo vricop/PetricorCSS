@@ -15,8 +15,8 @@
  Version: N/A
 */
 
+// config, responsive & generators must always be at the top
 @import "config", "responsive", "generators";
-
 @include align-content;
 @include align-items;
 @include border-colors;
@@ -45,5 +45,5 @@
 @include typography-features;
 @include vertical-alignment;
 @include z-index;
-
+// Responsive must always be at the end
 @include responsive;
