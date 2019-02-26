@@ -1,7 +1,8 @@
-// +----------------------------------------------------------------------------
-// | Breakpoints                                                                        
-// +----------------------------------------------------------------------------
-// |
+// -----------------------------------------------------------------------------
+// Breakpoints                                                                        
+// -----------------------------------------------------------------------------
+// Configure class name for your breakpoints prefixes. You can use se any valid
+// css you want. Then you set your breakpoint 
 $breakpoints: (
   sm: (min: 576px),
   md: (min: 768px),
@@ -9,10 +10,9 @@ $breakpoints: (
   xl: (min: 1200px),
 );
 
-// +----------------------------------------------------------------------------
-// | Colors
-// +----------------------------------------------------------------------------
-// |
+// -----------------------------------------------------------------------------
+// Colors
+// -----------------------------------------------------------------------------
 $colors: (
   black: black,
   cornflowerblue: cornflowerblue,
@@ -24,23 +24,18 @@ $colors: (
   white: white,
 );
 
-// +----------------------------------------------------------------------------
-// │ Widths
-// +----------------------------------------------------------------------------
-// | 
-// | 
-// | Html class: w-{size}
+// -----------------------------------------------------------------------------
+// Widths
+// -----------------------------------------------------------------------------
 $widths: (
   full: 100%,
   screen: 100vw,
 );
 
-// +----------------------------------------------------------------------------
-// │ Margins
-// +----------------------------------------------------------------------------
-// | 
-// | 
-// | Html class: m-{side?}-{size}
+// -----------------------------------------------------------------------------
+// Margins
+// -----------------------------------------------------------------------------
+// Class variants: m-{side?}-{size}
 $margins: (
   auto: auto,
   0: 0,
@@ -56,12 +51,10 @@ $margins: (
   10: 2.5rem,
 );
 
-// +----------------------------------------------------------------------------
-// │ Negative margins
-// +----------------------------------------------------------------------------
-// | 
-// | 
-// | Html class: -m-{side?}-{size}
+// -----------------------------------------------------------------------------
+// Negative margins
+// -----------------------------------------------------------------------------
+// Class variants: -m-{side?}-{size}
 $negative-margins: (
   1: -0.25rem,
   // 2: -0.5rem,
@@ -74,13 +67,13 @@ $negative-margins: (
   9: -2.25rem,
 );
 
-// +----------------------------------------------------------------------------
-// │ Paddings in rems
-// +----------------------------------------------------------------------------
-// | Rems are very intuitive and used heavily for almost any kind of ui element.
-// | For buttons or elements that need to be scalable use Em paddings instead.
-// | 
-// | Html class: p-{side?}-{size}
+// -----------------------------------------------------------------------------
+// Paddings in rems
+// -----------------------------------------------------------------------------
+// Rems are very intuitive and used heavily for almost any kind of ui element.
+// For buttons or elements that need to be scalable use em paddings instead.
+// 
+// Class variants: p-{side?}-{size}
 $paddings: (
   0: 0,
   1: 0.25rem,
@@ -95,14 +88,14 @@ $paddings: (
   10: 2.5rem,
 );
 
-// +----------------------------------------------------------------------------
-// │ Paddings in ems
-// +----------------------------------------------------------------------------
-// | Ems are very useful for scalable ui elements. Take buttons for example
-// | whenever you want a collection of buttons in different sizes, use paddings, 
-// | borders and position coordinates in ems. 
-// | 
-// | Html class: *p-{size?}-{size}
+// -----------------------------------------------------------------------------
+// Paddings in ems
+// -----------------------------------------------------------------------------
+// Ems are very useful for scalable ui elements. Take buttons for example
+// whenever you want a collection of buttons in different sizes, use paddings, 
+// borders and position coordinates in ems. 
+// 
+// Class variants: *p-{size?}-{size}
 $em-paddings: (
   0: 0,
   1: 0.25em,
@@ -117,12 +110,10 @@ $em-paddings: (
   10: 2.5em,
 );
 
-// +----------------------------------------------------------------------------
-// │ Display
-// +----------------------------------------------------------------------------
-// | 
-// |  
-// | Html class: {display-value}
+// -----------------------------------------------------------------------------
+// Display
+// -----------------------------------------------------------------------------
+// Class variants: display
 $display: (
   block,
   flex,
@@ -136,12 +127,13 @@ $display: (
   table,
 );
 
-// +----------------------------------------------------------------------------
-// │ Borders
-// +----------------------------------------------------------------------------
-// | 
-// |  
-// | Html class: border-{side?}-{size}
+// -----------------------------------------------------------------------------
+// Borders
+// -----------------------------------------------------------------------------
+// Class variants: 
+// — Default: border{-side?}{-n?}
+// — Responsive: {screen-size}:border-{side?}-{n?}
+// — Em borders: *border-{side?}-{n?}
 $border-widths: (
   default: 1px,
   0: 0,
@@ -212,7 +204,7 @@ $font-sizes: (
 );
 
 $fonts: (
-  sans: (
+  sans-serif: (
     'system-ui', 'BlinkMacSystemFont', '-apple-system',
     'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans',
@@ -224,7 +216,7 @@ $fonts: (
     'Bitstream Vera Serif','Liberation Serif','Georgia',
     'serif',
   ),
-  mono: (
+  monospace: (
     'Menlo', 'Monaco', 'Consolas',
     'Liberation Mono', 'Courier New', 'monospace',
   ),
@@ -236,7 +228,6 @@ $leading: (
   normal: 1.5,
   loose: 2,
 );
-
 
 $tracking: (
   tight: -0.05em,
@@ -256,35 +247,23 @@ $font-weights: (
   black: 900,
 );
 
-// +----------------------------------------------------------------------------
-// │ Enable/Disable modules
-// +----------------------------------------------------------------------------
-// | You can disable/enable modules, this will determine file size. If you don't 
-// | need a specific module, disable it. 
-// |
-// | Values may have two or more options:  
-// | * true: enable default utility classes
-// | * false: disable default utility classes
-// | * (a,b,c,d...): A list of different variant utility classes. Modules may
-// |   have different variants available. These are based on my own experience,
-// |   You may find useful adding new variants by extending their mixin generator
-// |   
-// | Variants:
-// | * responsive:
-// | * hover:
-// | * focus:
-// | * negative:
-// | * ems:
-// |
-// | Very important note: if you only need to enable one variant for a module —
-// | other than true— leave a trailing comma e.g. ('hover',) or ('responsive',)
+// -----------------------------------------------------------------------------
+// Enable/Disable modules
+// -----------------------------------------------------------------------------
+// Disable/enable modules by setting true or false. Some modules come with
+// different variants for responsive, hover and other special features.
+// You can see the available variants in a comment next to each module.
 $modules: (
   colors: [responsive hover],
   font-leading: [responsive],
-  font-sizes: [responsive],
-  font-weights: true,
-  margins: [responsive hover],
+  font-sizes: [responsive], // responsive
+  font-weights: true, // true, false
+  margins: [responsive hover], // responsive, hover, negative[1]
   negative-margins: [responsive hover],
-  opacity: true,
-  paddings: [ems],
-)
+  opacity: true, // true, false
+  paddings: [ems], // responsive, ems[2], hover
+);
+// Notes:
+// 1. `em` paddings can come in handy when designin buttons or any ui element
+//    that can be scaled by setting `font-size` in their parent element.
+// 2. Negative margins: disabled by default.

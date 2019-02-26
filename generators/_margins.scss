@@ -15,10 +15,10 @@ $negative-margins-module: map-get($modules, 'negative-margins');
   .#{$prefix}ml-#{$suffix} { margin-left: $value };
 }
 
-// Generates different margin class variants based on config file values. It uses
-// 'margins-class-rules' mixin to build variants based on arguments passed.
-// '$breakpoints' parameter is only used wen called from '_responsive.scss' file,
-// reponsible for building responsive variants.
+// Generates different margin class variants based on config file values. It 
+// uses 'margins-class-rules' mixin to build variants based on arguments passed.
+// '$breakpoints' parameter is only used wen called from '_responsive.scss' 
+// file, reponsible for building responsive variants.
 @mixin margins($breakpoint: null) {
   // Execute only if module is set to true, is a string or contains a list
   @if ($margins-module == true) or (type-of($margins-module) == list) or (type-of($margins-module) == string) {
