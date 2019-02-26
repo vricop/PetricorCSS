@@ -46,7 +46,9 @@ $negative-margins-module: map-get($modules, 'negative-margins');
 
     // # NEGATIVE MARGIN CLASSES
     // Execute only if module is set to true, a list or a string
-    @if ($negative-margins-module == true) or (type-of($negative-margins-module) == list) or (type-of($negative-margins-module) == string) {
+    @if ($negative-margins-module == true) or
+        (type-of($negative-margins-module) == list) or
+        (type-of($negative-margins-module) == string) {
       @each $suffix, $value in $negative-margins {
         // # DEFAULT CLASSES
         // 1. Execute only if  '$breakpoint' is null
