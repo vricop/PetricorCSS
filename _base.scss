@@ -27,20 +27,12 @@ textarea { font-size: 1rem; }
   cursor: pointer;
 }
 
-.nav-menu > a { transition: transform 400ms ease; }
+.nav-menu { &, & > a { transition: opacity 400ms ease; } }
 
 .nav-menu:hover > a {
   transition: 400ms ease;
   opacity: .5;
-  transform: translate3d(-15%, 0, 0);
 
-  &:hover { 
-    transform: scale3d(1.15, 1.15, 1.15);
-    opacity: 1;
-  }
-  
-  &:hover ~ * { 
-    transform: scale3d(1,1,1) translate3d(15%, 0, 0); 
-  }
+  &:hover { opacity: 1; }
 }
 
