@@ -1,11 +1,11 @@
 // Variants for padding classes
-$_available-padding-variants: (responsive hover ems);
+$_available-padding-variants: (responsive, hover, ems);
 // Get variant options from paddings module
 $_paddings-module: map-get($modules, 'paddings');
 // Single-element lists are treated as strings in sass. If '$paddings' module
 // contains a string convert it to a list so we can check their values later.
 @if type-of($_paddings-module) == string {
-  $_paddings-module: append($_paddings-module, '');
+  $_paddings-module: append($_paddings-module, ());
 }
 
 // Builds padding class variants with suffixes and prefixes passed as arguments.

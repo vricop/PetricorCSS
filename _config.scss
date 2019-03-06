@@ -254,16 +254,18 @@ $font-weights: (
 // different variants for responsive, hover and other special features.
 // You can see the available variants in a comment next to each module.
 $modules: (
-  colors: [responsive hover],
-  font-leading: [responsive],
-  font-sizes: [responsive], // responsive
+  colors: (responsive, hover),
+  font-leading: (responsive),
+  font-sizes: (responsive), // responsive
   font-weights: true, // true, false
-  margins: [responsive hover], // responsive, hover, negative[1]
-  negative-margins: [responsive hover],
+  margins: (responsive, hover), // responsive, hover, negative[1]
+  negative-margins: (responsive, hover),
   opacity: true, // true, false
-  paddings: [ems], // responsive, ems[2], hover
+  paddings: (ems,), //[2] responsive, ems[3], hover
 );
 // Notes:
 // 1. `em` paddings can come in handy when designing buttons or any ui element
 //    that can be scaled by setting `font-size` in their parent element.
-// 2. Negative margins: disabled by default.
+// 2. When you pick just one variant, you’ve need to add a traling comma
+//    to represent a single-element list in sass.
+// 3. Negative margins: disabled by default.
