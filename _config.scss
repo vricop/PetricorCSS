@@ -259,8 +259,8 @@ $modules: (
   font-leading: (responsive,),
   font-sizes: (responsive), // responsive
   font-weights: true, // true, false
-  margins: (responsive, hover), // responsive, hover, negative[1]
-  negative-margins: (responsive, hover),
+  margins: (responsive, hover), // responsive, hover
+  negative-margins: false, // responsive, hover
   opacity: true, // true, false
   paddings: (ems), //responsive, ems[2], hover
 );

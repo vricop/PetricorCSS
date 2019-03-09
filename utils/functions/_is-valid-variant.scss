@@ -1,6 +1,8 @@
 // Compare to lists: if `$user-variants` list has an item not present
 // in `$valid-variants` thrown an error, if not, return true.
 @function is-valid-variant($user-variants, $valid-variants) {
+  @if $user-variants == false { @return false; }
+
   @each $variant in $user-variants {
     @if not index($valid-variants, $variant) {
       @error "‘#{$variant}' isn’t valid. Either you've misspelled \
