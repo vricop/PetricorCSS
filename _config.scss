@@ -262,11 +262,9 @@ $modules: (
   margins: (responsive, hover), // responsive, hover, negative[1]
   negative-margins: (responsive, hover),
   opacity: true, // true, false
-  paddings: (ems), //[2] responsive, ems[3], hover
+  paddings: (ems), //responsive, ems[2], hover
 );
 // Notes:
-// 1. `em` paddings can come in handy when designing buttons or any ui element
+// 1. Negative margins: disabled by default.
+// 2. `em` paddings can come in handy when designing buttons or any ui element
 //    that can be scaled by setting `font-size` in their parent element.
-// 2. When you pick just one variant, you’ve need to add a traling comma
-//    to represent a single-element list in sass.
-// 3. Negative margins: disabled by default.
