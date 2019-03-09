@@ -1,12 +1,9 @@
+@import '../utils/functions/is-valid-variant';
+
 // Variants for padding classes
-$_available-padding-variants: (responsive, hover, ems);
+$_valid-padding-variants: ('responsive', 'hover', 'ems');
 // Get variant options from paddings module
 $_paddings-module: map-get($modules, 'paddings');
-// Single-element lists are treated as strings in sass. If '$paddings' module
-// contains a string convert it to a list so we can check their values later.
-@if type-of($_paddings-module) == string {
-  $_paddings-module: append($_paddings-module, ());
-}
 
 // Builds padding class variants with suffixes and prefixes passed as arguments.
 @mixin _generate-padding-classes($suffix, $value, $prefix:null) {
@@ -23,24 +20,10 @@ $_paddings-module: map-get($modules, 'paddings');
 // generates all classes using '_generate-padding-classes'.
 // Note: '$breakpoint' parameter is used for building responsive variants.
 @mixin paddings($breakpoint:null)  {
-  // Execute only if module is set to true or contains a list of variants
-  @if ($_paddings-module == true) or (type-of($_paddings-module) == list) {
-    // 1. If user has enabled one or more variants, do some checking.
-    // 2. Check if a padding variant has been misspelled or is wrong.
-    // 3. Throw an error if previous conditions are met.
-    @if type-of($_paddings-module) == list {
-      $i:1;      
-      @each $variant in $_paddings-module {
-        @if not index($_available-padding-variants, $variant) {
-          @error 
-            "'#{nth($_paddings-module, $i)}' isn't valid. Either you misspelled\s" +
-            "it or have set an invalid variant for this module. Please, check\s" +
-            "the paddings module in '_config.scss' file.";
-        }
-        $i: $i + 1;
-      }
-    }
-
+  // Execute only if module is set to true or contains a list with valid variants
+  // 1. Run if paddings modules is set to true or if variants are valid.
+  // 2. If some variants aren’t valid throw an error indicating wich variant caused it
+  @if ($_paddings-module == true) or is-valid-variant($_paddings-module, $_valid-padding-variants) {
     @each $suffix, $value in $paddings {
       // # DEFAULT CLASSES
       // 1. If no breakpoints have been passed, generate default classes.

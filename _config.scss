@@ -201,6 +201,7 @@ $font-sizes: (
   3xl: 1.875rem,  // 30px
   4xl: 2.25rem,   // 36px
   5xl: 2.622rem,  // 42px
+  9xl: 4.12rem,   // 66px
 );
 
 $fonts: (
@@ -255,13 +256,13 @@ $font-weights: (
 // You can see the available variants in a comment next to each module.
 $modules: (
   colors: (responsive, hover),
-  font-leading: (responsive),
+  font-leading: (responsive,),
   font-sizes: (responsive), // responsive
   font-weights: true, // true, false
   margins: (responsive, hover), // responsive, hover, negative[1]
   negative-margins: (responsive, hover),
   opacity: true, // true, false
-  paddings: (ems,), //[2] responsive, ems[3], hover
+  paddings: (ems), //[2] responsive, ems[3], hover
 );
 // Notes:
 // 1. `em` paddings can come in handy when designing buttons or any ui element
