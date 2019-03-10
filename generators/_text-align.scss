@@ -1,7 +1,29 @@
-@mixin text-align($breakpoint:null) {
-  $prefix: if($breakpoint, '#{$breakpoint}\\:', null);
+@import '../utils/functions/is-valid-variant';
 
+// Variants for text-align classes
+$_valid-text-align-variants: ('responsive');
+// Get options from text-align module
+$_text-align-module: map-get($modules, 'text-align');
+
+@mixin _text-align-builder($prefix: null) {
   .#{$prefix}text-left { text-align: left; }
   .#{$prefix}text-center { text-align: center; }
   .#{$prefix}text-right { text-align: right; }
+}
+
+@mixin text-align($breakpoint: null) {
+  @if ($_text-align-module == true) or is-valid-variant($_text-align-module, $_valid-text-align-variants) {
+    // # DEFAULT CLASSES
+    // If '$breakpoint' is null, generate default classes
+    @if $breakpoint == null {
+      @include _text-align-builder;
+    }
+
+    // # RESPONSIVE CLASSES
+    // 1. Execute if reponsive module is enabled and '$breakpoint' isn't null
+    // 2. Add '$breakpoint\:' prefix for responsive variants
+    @if index($_text-align-module, 'responsive') and $breakpoint != null {
+      @include _text-align-builder('#{$breakpoint}\\:');
+    }
+  }
 }

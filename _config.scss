@@ -249,20 +249,22 @@ $font-weights: (
 // -----------------------------------------------------------------------------
 // Enable/Disable modules
 // -----------------------------------------------------------------------------
-// Disable/enable modules by setting true or false. Some modules come with
-// different variants for responsive, hover and other special features.
-// You can see the available variants in a comment next to each module.
+// Modules come with different variants for responsive, hover and other special
+// features. You can see the available variants next to each module.
+
 $modules: (
-  border-radius: (responsive, hover),
-  colors: (responsive, hover),
-  font-leading: (responsive,),
-  font-sizes: (responsive), // responsive
-  font-weights: true, // true, false
-  margins: (responsive, hover), // responsive, hover
-  negative-margins: false, // responsive, hover
-  opacity: true, // true, false
-  paddings: (ems), //responsive, ems[2], hover,
+  border-radius: true, // true|false|(hover) — Default: true
+  colors: (hover), // true|false|(hover, focus) — Default: (hover)
+  font-leading: true, // true|false — Default: true
+  font-sizes: (responsive), // true|false|(responsive) — Default: 
+  font-weights: true, // true|false — Default: true
+  margins: (responsive), // true|false|(responsive, hover) — Default: true
+  negative-margins: false, // true|false(responsive, hover) — Default: false
+  opacity: true, // true|false — Default: true
+  paddings: (ems), // true|false|(responsive, hover, ems[2]) — Default: (ems)
+  text-align: true, // true|false|(responsive) — Default: true
 );
+
 // Notes:
 // 1. Negative margins: disabled by default.
 // 2. `em` paddings can come in handy when designing buttons or any ui element
