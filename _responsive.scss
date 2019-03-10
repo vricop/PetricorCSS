@@ -3,6 +3,7 @@
     @include mediaqueries($map) {
       @include align-content($breakpoint);
       @include align-items($breakpoint);
+      @include border-radius($breakpoint);
       @include displays($breakpoint: $breakpoint);
       @include flex-directions($breakpoint);
       @include font-sizes($breakpoint: $breakpoint);  

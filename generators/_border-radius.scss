@@ -1,3 +1,10 @@
+@import '../utils/functions/is-valid-variant';
+
+// Variants for border-radius classes
+$_valid-border-radius-variants: ('responsive', 'hover');
+// Get options from border-radiuss module
+$_border-radius-module: map-get($modules, 'border-radius');
+
 @mixin _border-radius-builder($suffix, $value, $prefix:null) {
   // If suffix is ‘default’ don’t add it
   $suffixes: if($suffix == 'default', '', #{'-'+$suffix});
@@ -9,16 +16,38 @@
   .#{$prefix}rounded-br#{$suffixes} { border-bottom-left-radius: #{$value}; }
 
   .#{$prefix}rounded-t#{$suffixes} { 
-    border: { top-left-radius: #{$value}; top-right-radius: #{$value}; }
+    border-top-left-radius: #{$value}; 
+    border-top-right-radius: #{$value};
   }
   
   .#{$prefix}rounded-b#{$suffixes} { 
-    border: { bottom-left-radius: #{$value}; bottom-right-radius: #{$value}; }
+    border-bottom-left-radius: #{$value}; 
+    border-bottom-right-radius: #{$value};
   }
 }
 
 @mixin border-radius($breakpoint: null) {
-  @each $suffix, $value in $border-radius {
-    @include _border-radius-builder($suffix, $value);
+  @if ($_border-radius-module == true) or is-valid-variant($_border-radius-module, $_valid-border-radius-variants) {
+    // # DEFAULT CLASSES
+    // If '$breakpoint' is null, generate default classes
+    @each $suffix, $value in $border-radius {
+      @if $breakpoint == null {
+        @include _border-radius-builder($suffix, $value);
+      }
+      
+      // # RESPONSIVE CLASSES
+      // 1. Execute if reponsive module is enabled and '$breakpoint' isn't null
+      // 2. Add '$breakpoint\:' prefix for responsive variants
+      @if index($_border-radius-module, 'responsive') and $breakpoint != null {
+        @include _border-radius-builder($suffix, $value, '#{$breakpoint}\\:');
+      }
+      
+      // # HOVER CLASSES
+      // 1. Execute if 'hover' module is enabled and if '$breakpoint' is null
+      // 2. Add ':hover' pseudo-selector and 'hover\:' prefix for hover variants
+      @if index($_border-radius-module, 'hover') and $breakpoint == null {
+        @include _border-radius-builder('#{$suffix}:hover', $value, 'hover\\:');
+      }
+    }
   }
 }

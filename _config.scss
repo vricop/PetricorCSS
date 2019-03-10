@@ -151,18 +151,16 @@ $em-border-widths: (
 
 $border-radius: (
   none: 0,
-  sm: .125rem,
   default: .25rem,
-  lg: .5rem,
+  lg: 0.5rem,
+  sm: .125rem,
   full: 9999px,
 );
 
 $em-border-widths: (
-  default: 0.0625em,
-  0: 0,
-  2: 0.125em,
-  4: 0.25em,
-  8: 0.5em,
+  default: 0.25em,
+  sm: 0.125em,
+  lg: 0.5rem,
 );
 
 $opacity: (
@@ -255,6 +253,7 @@ $font-weights: (
 // different variants for responsive, hover and other special features.
 // You can see the available variants in a comment next to each module.
 $modules: (
+  border-radius: (responsive, hover),
   colors: (responsive, hover),
   font-leading: (responsive,),
   font-sizes: (responsive), // responsive
@@ -262,7 +261,7 @@ $modules: (
   margins: (responsive, hover), // responsive, hover
   negative-margins: false, // responsive, hover
   opacity: true, // true, false
-  paddings: (ems), //responsive, ems[2], hover
+  paddings: (ems), //responsive, ems[2], hover,
 );
 // Notes:
 // 1. Negative margins: disabled by default.
