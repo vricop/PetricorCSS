@@ -13,7 +13,7 @@ $_border-radius-module: map-get($modules, 'border-radius');
   .#{$prefix}rounded-tl#{$suffixes} { border-top-left-radius: #{$value}; }
   .#{$prefix}rounded-tr#{$suffixes} { border-top-right-radius: #{$value}; }
   .#{$prefix}rounded-bl#{$suffixes} { border-bottom-left-radius: #{$value}; }
-  .#{$prefix}rounded-br#{$suffixes} { border-bottom-left-radius: #{$value}; }
+  .#{$prefix}rounded-br#{$suffixes} { border-bottom-right-radius: #{$value}; }
 
   .#{$prefix}rounded-t#{$suffixes} { 
     border-top-left-radius: #{$value}; 
