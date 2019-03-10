@@ -1,7 +1,15 @@
-@mixin border-radius {
+@mixin _border-radius-builder($suffix, $value, $prefix:null) {
+  // If suffix is ‘default’ don’t add it
+  $suffixes: if($suffix == 'default', '', #{'-'+$suffix});
+
+  .#{$prefixes}rounded-tl#{$suffixes} { border-top-left-radius: #{$value}; }
+  .#{$prefixes}rounded-tr#{$suffixes} { border-top-right-radius: #{$value}; }
+  .#{$prefixes}rounded-bl#{$suffixes} { border-bottom-left-radius: #{$value}; }
+  .#{$prefixes}rounded-br#{$suffixes} { border-bottom-left-radius: #{$value}; }
+}
+
+@mixin border-radius($breakpoint: null) {
   @each $suffix, $value in $border-radius {
-    $suffix: if($suffix == 'default', '', #{'-'+$suffix});
-    
-    .rounded#{$suffix} { border-radius: $value };
+    @include _border-radius-builder($suffix, $value);
   }
 }
