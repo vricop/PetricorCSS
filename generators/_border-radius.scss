@@ -2,10 +2,19 @@
   // If suffix is ‘default’ don’t add it
   $suffixes: if($suffix == 'default', '', #{'-'+$suffix});
 
-  .#{$prefixes}rounded-tl#{$suffixes} { border-top-left-radius: #{$value}; }
-  .#{$prefixes}rounded-tr#{$suffixes} { border-top-right-radius: #{$value}; }
-  .#{$prefixes}rounded-bl#{$suffixes} { border-bottom-left-radius: #{$value}; }
-  .#{$prefixes}rounded-br#{$suffixes} { border-bottom-left-radius: #{$value}; }
+  .#{$prefix}rounded#{$suffixes} { border-radius: #{$value}; }
+  .#{$prefix}rounded-tl#{$suffixes} { border-top-left-radius: #{$value}; }
+  .#{$prefix}rounded-tr#{$suffixes} { border-top-right-radius: #{$value}; }
+  .#{$prefix}rounded-bl#{$suffixes} { border-bottom-left-radius: #{$value}; }
+  .#{$prefix}rounded-br#{$suffixes} { border-bottom-left-radius: #{$value}; }
+
+  .#{$prefix}rounded-t#{$suffixes} { 
+    border: { top-left-radius: #{$value}; top-right-radius: #{$value}; }
+  }
+  
+  .#{$prefix}rounded-b#{$suffixes} { 
+    border: { bottom-left-radius: #{$value}; bottom-right-radius: #{$value}; }
+  }
 }
 
 @mixin border-radius($breakpoint: null) {
