@@ -5,7 +5,7 @@
 
   @each $variant in $user-variants {
     @if not index($valid-variants, $variant) {
-      @error "‘#{$variant}' isn’t valid. Either you've misspelled \
+      @error "‘#{$variant}’ isn’t valid. Either you’ve misspelled \
       it or have set an invalid variant for this module. Please, check \
       the paddings module in '_config.scss' file.";
     }
