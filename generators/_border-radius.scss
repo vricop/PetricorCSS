@@ -20,9 +20,19 @@ $_border-radius-module: map-get($modules, 'border-radius');
     border-top-right-radius: #{$value};
   }
   
+  .#{$prefix}rounded-r#{$suffixes} { 
+    border-top-right-radius: #{$value}; 
+    border-bottom-right-radius: #{$value};
+  }
+
   .#{$prefix}rounded-b#{$suffixes} { 
     border-bottom-left-radius: #{$value}; 
     border-bottom-right-radius: #{$value};
+  }
+  
+  .#{$prefix}rounded-l#{$suffixes} { 
+    border-top-left-radius: #{$value}; 
+    border-bottom-left-radius: #{$value};
   }
 }
 
