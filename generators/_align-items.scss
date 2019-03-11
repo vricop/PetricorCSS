@@ -1,15 +1,31 @@
-@mixin align-items($breakpoint:null) {
-  $items-alignment: (
-    baseline: baseline,
-    center: center,
-    end: flex-end,
-    start: flex-start,
-    stretch: stretch,
-  );
+@import '../utils/functions/is-valid-variant';
 
-  $prefix: if($breakpoint, #{$breakpoint+'\\:'}, '');
+// Variants for align-items classes
+$_valid-align-items-variants: ('responsive');
+// Get options from align-items module
+$_align-items-module: map-get($modules, 'align-items');
 
-  @each $suffix, $value in $items-alignment {
-    .#{$prefix}items-#{$suffix} { align-items: $value; }
+@mixin _align-items-builder($prefix: null) {
+  .#{$prefix}items-baseline { align-items: baseline; }
+  .#{$prefix}items-center { align-items: center; }
+  .#{$prefix}items-start { align-items: flex-start; }
+  .#{$prefix}items-end { align-items: flex-end; }
+  .#{$prefix}items-stretch { align-items: stretch; }
+}
+
+@mixin align-items($breakpoint: null) {
+  @if ($_align-items-module == true) or is-valid-variant($_align-items-module, $_valid-align-items-variants) {
+    // # DEFAULT CLASSES
+    // If '$breakpoint' is null, generate default classes
+    @if $breakpoint == null {
+      @include _align-items-builder;
+    }
+    
+    // # RESPONSIVE CLASSES
+    // 1. Execute if reponsive module is enabled and '$breakpoint' isn’t null
+    // 2. Add '$breakpoint\:' prefix for responsive variants
+    @if index($_align-items-module, 'responsive') and $breakpoint != null {
+      @include _align-items-builder('#{$breakpoint}\\:');
+    }
   }
 }
