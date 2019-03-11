@@ -1,17 +1,32 @@
-@mixin align-content($breakpoint:null) {
-  $items-alignment: (
-    around: space-around,
-    between: space-between,
-    center: center,
-    end: flex-end,
-    evently: space-evently,
-    start: flex-start,
-  );
+@import '../utils/functions/is-valid-variant';
 
-  $prefix: if($breakpoint, #{$breakpoint+'\\:'}, '');
+// Variants for align-content classes
+$_valid-align-content-variants: ('responsive');
+// Get options from align-contents module
+$_align-content-module: map-get($modules, 'align-content');
 
-  @each $suffix, $value in $items-alignment {
-    @if($suffix == 'evently') { /* Not supported in IE10+ */ }
-    .#{$prefix}content-#{$suffix} { justify-content: $value; }
+@mixin _align-content-builder($prefix: null) {
+  .#{$prefix}content-around { justify-content: space-around; }
+  .#{$prefix}content-between { justify-content: space-between; }
+  .#{$prefix}content-evently { justify-content: space-evenly; }
+  .#{$prefix}content-center { justify-content: center; }
+  .#{$prefix}content-start { justify-content: flex-start; }
+  .#{$prefix}content-end { justify-content: flex-end; }
+}
+
+@mixin align-content($breakpoint: null) {
+  @if ($_align-content-module == true) or is-valid-variant($_align-content-module, $_valid-align-content-variants) {
+    // # DEFAULT CLASSES
+    // If '$breakpoint' is null, generate default classes
+    @if $breakpoint == null {
+      @include _align-content-builder;
+    }
+    
+    // # RESPONSIVE CLASSES
+    // 1. Execute if reponsive module is enabled and '$breakpoint' isn’t null
+    // 2. Add '$breakpoint\:' prefix for responsive variants
+    @if index($_align-content-module, 'responsive') and $breakpoint != null {
+      @include _align-content-builder('#{$breakpoint}\\:');
+    }
   }
 }

@@ -253,6 +253,8 @@ $font-weights: (
 // features. You can see the available variants next to each module.
 
 $modules: (
+  align-content: true, // true|false|(false) — Default: true
+  align-items: true, // true|false|(false) — Default: true
   border-radius: true, // true|false|(hover) — Default: true
   colors: (hover), // true|false|(hover, focus) — Default: (hover)
   font-leading: true, // true|false — Default: true
@@ -261,11 +263,15 @@ $modules: (
   margins: (responsive), // true|false|(responsive, hover) — Default: true
   negative-margins: false, // true|false(responsive, hover) — Default: false
   opacity: true, // true|false — Default: true
-  paddings: (ems), // true|false|(responsive, hover, ems[2]) — Default: (ems)
+  paddings: (ems), // true|false|(responsive, hover, ems) — Default: (ems)
   text-align: true, // true|false|(responsive) — Default: true
 );
 
 // Notes:
-// 1. Negative margins: disabled by default.
-// 2. `em` paddings can come in handy when designing buttons or any ui element
-//    that can be scaled by setting `font-size` in their parent element.
+// * true: enables default classes
+// * false: disables all classes
+// * responsive: enables responsive classes besides default ones
+// * hover: enables hover classes besides default ones
+// * focus: enables focus classes besides default ones
+// * ems: enables ems classes besides rem clases and default ones
+// * negative: enables negative margins classes besides default ones
