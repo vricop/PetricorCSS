@@ -269,18 +269,18 @@ $font-weights: (
 // - negative
 
 $modules: (
-  align-content: true, // true|false|(false) — Default: true
-  align-items: true, // true|false|(false) — Default: true
-  border-width: (responsive, hover, focus, ems), // true|false|(responsive, hover, focus, ems) — Default: true
-  border-color: (focus), // true|false|(responsive, hover, focus) — Default: true
-  border-radius: true, // true|false|(hover) — Default: true
-  colors: (hover), // true|false|(hover, focus) — Default: (hover)
-  font-leading: true, // true|false — Default: true
-  font-sizes: (responsive), // true|false|(responsive) — Default: 
-  font-weights: true, // true|false — Default: true
-  margins: (responsive), // true|false|(responsive, hover) — Default: true
-  negative-margins: false, // true|false(responsive, hover) — Default: false
-  opacity: true, // true|false — Default: true
-  paddings: (ems), // true|false|(responsive, hover, ems) — Default: (ems)
-  text-align: true, // true|false|(responsive) — Default: true
+  align-content: true, // true|false|(false)
+  align-items: true, // true|false|(false)
+  border-width: (ems), // true|false|(responsive, hover, focus, ems)
+  border-color: (focus), // true|false|(responsive, hover, focus)
+  border-radius: true, // true|false|(hover)
+  colors: (hover), // true|false|(hover, focus)
+  font-leading: true, // true|false
+  font-sizes: (responsive), // true|false|(responsive)
+  font-weights: true, // true|false
+  margins: (responsive), // true|false|(responsive, hover)
+  negative-margins: false, // true|false(responsive, hover)
+  opacity: true, // true|false
+  paddings: (ems), // true|false|(responsive, hover, ems)
+  text-align: true, // true|false|(responsive)
 );

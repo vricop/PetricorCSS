@@ -1,20 +1,59 @@
-@mixin border-width($ems:false, $hover:false, $breakpoint:null) {
-  // User $margin or $negative-margin based on $negative parameter: true|false
-  $_border-widths: if($ems, $em-border-widths, $border-widths);
+@import '../utils/functions/is-valid-variant';
 
-  @each $suffix, $value in $_border-widths {
-    // Add prefixes or leave empty for every condition. Te resulting string for
-    // $prefixes and $suffixes will be concatenated to generate the selector
-    $prefixes: if($ems, '\\*', '');
-    $prefixes: $prefixes + if($breakpoint, #{$breakpoint+'\\:'}, '');
-    $prefixes: $prefixes + if($hover, 'hover\\:', '');
-    $suffixes: if($suffix == 'default', '', #{'-'+$suffix});
-    $suffixes: $suffixes + if($hover, ':hover', '');
-  
-    .#{$prefixes}border#{$suffixes}   { border-width: $value; }
-    .#{$prefixes}border-t#{$suffixes} { border-top-width: $value; }
-    .#{$prefixes}border-r#{$suffixes} { border-right-width: $value; }
-    .#{$prefixes}border-b#{$suffixes} { border-bottom-width: $value; }
-    .#{$prefixes}border-l#{$suffixes} { border-left-width: $value; }
+// Variants for border-width classes
+$_valid-border-width-variants: ('responsive', 'hover', 'focus', 'ems');
+// Get options from border-width module
+$_border-width-module: map-get($modules, 'border-width');
+
+@mixin _border-width-builder($suffix, $value, $prefix: null) {
+  // If suffix is ‘default’, leave empty
+  $suffix: if($suffix == 'default', '', #{'-'+$suffix});
+
+  .#{$prefix}border#{$suffix}   { border-width: $value; }
+  .#{$prefix}border-t#{$suffix} { border-top-width: $value; }
+  .#{$prefix}border-r#{$suffix} { border-right-width: $value; }
+  .#{$prefix}border-b#{$suffix} { border-bottom-width: $value; }
+  .#{$prefix}border-l#{$suffix} { border-left-width: $value; }
+}
+
+@mixin border-width($breakpoint: null) {
+  @if ($_border-width-module == true) or is-valid-variant($_border-width-module, $_valid-border-width-variants) {
+    // # DEFAULT CLASSES
+    // If '$breakpoint' is null, generate default classes
+    @each $suffix, $value in $border-widths {
+      @if $breakpoint == null {
+        @include _border-width-builder($suffix, $value);
+      }
+      
+      // # RESPONSIVE CLASSES
+      // 1. Execute if reponsive module is enabled and '$breakpoint' isn't null
+      // 2. Add '$breakpoint\:' prefix for responsive variants
+      @if index($_border-width-module, 'responsive') and $breakpoint != null {
+        @include _border-width-builder($suffix, $value, '#{$breakpoint}\\:');
+      }
+      
+      // # HOVER CLASSES
+      // 1. Execute if 'hover' module is enabled and if '$breakpoint' is null
+      // 2. Add ':hover' pseudo-selector and 'hover\:' prefix variants
+      @if index($_border-width-module, 'hover') and $breakpoint == null {
+        @include _border-width-builder('#{$suffix}:hover', $value, 'hover\\:');
+      }
+
+      // # FOCUS CLASSES
+      // 1. Execute if 'focus' module is enabled and if '$breakpoint' is null
+      // 2. Add ':focus' pseudo-selector and 'focus\:' prefix variants
+      @if index($_border-width-module, 'focus') and $breakpoint == null {
+        @include _border-width-builder('#{$suffix}:focus', $value, 'focus\\:');
+      }
+    }
+  }
+
+  // # EM CLASSES
+  // 1. Execute if em variant is enabled and breakpoints haven't been passed.
+  // 2. Generate em variants.
+  @if index($_border-width-module, 'ems') and ($breakpoint == null) {
+    @each $suffix, $value in $em-border-widths {
+      @include _border-width-builder($suffix, $value, '\\*');
+    }
   }
 }

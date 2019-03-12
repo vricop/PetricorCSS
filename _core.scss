@@ -23,9 +23,6 @@
 @include border-color;
 @include border-radius;
 @include border-width;
-@include border-width($ems: true);
-@include border-width($hover: true, $ems: true);
-@include border-width($hover: true);
 @include displays;
 @include displays($hover: true);
 @include flex-directions;
