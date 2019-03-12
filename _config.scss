@@ -1,6 +1,5 @@
-// -----------------------------------------------------------------------------
-// Breakpoints                                                                        
-// -----------------------------------------------------------------------------
+//  # BREAKPOINTS                                                                        
+//
 // Configure class name for your breakpoints prefixes. You can use se any valid
 // css you want. Then you set your breakpoint 
 $breakpoints: (
@@ -10,9 +9,7 @@ $breakpoints: (
   xl: (min: 1200px),
 );
 
-// -----------------------------------------------------------------------------
-// Colors
-// -----------------------------------------------------------------------------
+// # COLORS
 $colors: (
   black: black,
   cornflowerblue: cornflowerblue,
@@ -24,18 +21,17 @@ $colors: (
   white: white,
 );
 
-// -----------------------------------------------------------------------------
-// Widths
-// -----------------------------------------------------------------------------
+// # WIDTHS
 $widths: (
   full: 100%,
   screen: 100vw,
 );
 
-// -----------------------------------------------------------------------------
-// Margins
-// -----------------------------------------------------------------------------
-// Class variants: m-{side?}-{size}
+// # MARGINS
+//
+// Class variants: .m-{side?}-{size}
+// CSS property: margin
+
 $margins: (
   auto: auto,
   0: 0,
@@ -51,10 +47,11 @@ $margins: (
   10: 2.5rem,
 );
 
-// -----------------------------------------------------------------------------
-// Negative margins
-// -----------------------------------------------------------------------------
+// # NEGATIVE MARGINS
+//
 // Class variants: -m-{side?}-{size}
+// CSS property: margin
+
 $negative-margins: (
   1: -0.25rem,
   // 2: -0.5rem,
@@ -67,13 +64,14 @@ $negative-margins: (
   9: -2.25rem,
 );
 
-// -----------------------------------------------------------------------------
-// Paddings in rems
-// -----------------------------------------------------------------------------
+// # PADDINGS (rems)
+//
 // Rems are very intuitive and used heavily for almost any kind of ui element.
 // For buttons or elements that need to be scalable use em paddings instead.
 // 
 // Class variants: p-{side?}-{size}
+// CSS property: padding
+
 $paddings: (
   0: 0,
   1: 0.25rem,
@@ -88,14 +86,13 @@ $paddings: (
   10: 2.5rem,
 );
 
-// -----------------------------------------------------------------------------
-// Paddings in ems
-// -----------------------------------------------------------------------------
-// Ems are very useful for scalable ui elements. Take buttons for example
-// whenever you want a collection of buttons in different sizes, use paddings, 
-// borders and position coordinates in ems. 
+// # PADDINGS (ems)
+// 
+// Ems are very useful for scalable ui elements like buttons.
 // 
 // Class variants: *p-{size?}-{size}
+// CSS property: padding
+
 $em-paddings: (
   0: 0,
   1: 0.25em,
@@ -110,30 +107,30 @@ $em-paddings: (
   10: 2.5em,
 );
 
-// -----------------------------------------------------------------------------
-// Display
-// -----------------------------------------------------------------------------
-// Class variants: display
+// # DISPLAY
+//
+// Class name: .{layout}
+// CSS property: display
+
 $display: (
   block,
   flex,
   grid,
   inline-block,
-  inline-flex,
+  inline-flex
+  inline-grid,
   inline,
   none,
-  table-cell,
-  table-row,
-  table,
 );
 
-// -----------------------------------------------------------------------------
-// Borders
-// -----------------------------------------------------------------------------
-// Class variants: 
-// — Default: border{-side?}{-n?}
-// — Responsive: {screen-size}:border-{side?}-{n?}
-// — Em borders: *border-{side?}-{n?}
+// # BORDERS
+//
+// Class name: .{*?}border{-side?}{-width?}
+// CSS property: border-width
+//
+// Note: if we prefix it with ‘*’ and ems variant are enabled we can use em 
+// borders besides rem variants.
+
 $border-widths: (
   default: 1px,
   0: 0,
@@ -143,7 +140,7 @@ $border-widths: (
 );
 
 $em-border-widths: (
-  0: 0,
+  default: 0.25em,
   2: 0.125em,
   4: 0.25em,
   8: 0.5em,
@@ -155,12 +152,6 @@ $border-radius: (
   lg: 0.5rem,
   sm: .125rem,
   full: 9999px,
-);
-
-$em-border-widths: (
-  default: 0.25em,
-  sm: 0.125em,
-  lg: 0.5rem,
 );
 
 $opacity: (
@@ -269,15 +260,19 @@ $font-weights: (
   black: 900,
 );
 
-// -----------------------------------------------------------------------------
-// Enable/Disable modules
-// -----------------------------------------------------------------------------
-// Modules come with different variants for responsive, hover and other special
-// features. You can see the available variants next to each module.
+// # VARIANT MODULES
+//
+// - responsive
+// - hover
+// - focus
+// - ems
+// - negative
 
 $modules: (
   align-content: true, // true|false|(false) — Default: true
   align-items: true, // true|false|(false) — Default: true
+  border-width: (responsive, hover, focus, ems), // true|false|(responsive, hover, focus, ems) — Default: true
+  border-color: (focus), // true|false|(responsive, hover, focus) — Default: true
   border-radius: true, // true|false|(hover) — Default: true
   colors: (hover), // true|false|(hover, focus) — Default: (hover)
   font-leading: true, // true|false — Default: true
@@ -289,12 +284,3 @@ $modules: (
   paddings: (ems), // true|false|(responsive, hover, ems) — Default: (ems)
   text-align: true, // true|false|(responsive) — Default: true
 );
-
-// Notes:
-// * true: enables default classes
-// * false: disables all classes
-// * responsive: enables responsive classes besides default ones
-// * hover: enables hover classes besides default ones
-// * focus: enables focus classes besides default ones
-// * ems: enables ems classes besides rem clases and default ones
-// * negative: enables negative margins classes besides default ones

@@ -1,4 +1,4 @@
-@mixin borders($ems:false, $hover:false, $breakpoint:null) {
+@mixin border-width($ems:false, $hover:false, $breakpoint:null) {
   // User $margin or $negative-margin based on $negative parameter: true|false
   $_border-widths: if($ems, $em-border-widths, $border-widths);
 

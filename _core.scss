@@ -1,10 +1,8 @@
 // TODO:
-// - Review paddings generator
-// - Review margins generator
 // - Refactor _responsive.scss
 // - Generate color generators for: border, text and background
-// - Decide whether or not negative margin variants must be included
 // - Remove variant parameters from generators. Generate them based on enabled/disabled modules
+// - Singularise mixin generators and files
 
 /*!
 --------------------------------------------------------------------------------
@@ -22,14 +20,12 @@
 @import "config", "responsive", "generators";
 @include align-content;
 @include align-items;
-@include border-colors;
-@include border-colors($focus: true);
-@include border-colors($hover: true);
+@include border-color;
 @include border-radius;
-@include borders;
-@include borders($ems: true);
-@include borders($hover: true, $ems: true);
-@include borders($hover: true);
+@include border-width;
+@include border-width($ems: true);
+@include border-width($hover: true, $ems: true);
+@include border-width($hover: true);
 @include displays;
 @include displays($hover: true);
 @include flex-directions;
