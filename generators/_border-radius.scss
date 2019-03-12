@@ -2,7 +2,7 @@
 
 // Variants for border-radius classes
 $_valid-border-radius-variants: ('responsive', 'hover');
-// Get options from border-radiuss module
+// Get options from border-radius module
 $_border-radius-module: map-get($modules, 'border-radius');
 
 @mixin _border-radius-builder($suffix, $value, $prefix:null) {
@@ -54,7 +54,7 @@ $_border-radius-module: map-get($modules, 'border-radius');
       
       // # HOVER CLASSES
       // 1. Execute if 'hover' module is enabled and if '$breakpoint' is null
-      // 2. Add ':hover' pseudo-selector and 'hover\:' prefix for hover variants
+      // 2. Add ':hover' pseudo-selector and 'hover\:' prefix variants
       @if index($_border-radius-module, 'hover') and $breakpoint == null {
         @include _border-radius-builder('#{$suffix}:hover', $value, 'hover\\:');
       }
