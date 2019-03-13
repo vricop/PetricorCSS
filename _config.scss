@@ -271,11 +271,12 @@ $font-weights: (
 $modules: (
   align-content: true, // true|false|(false)
   align-items: true, // true|false|(false)
-  border-width: (ems), // true|false|(responsive, hover, focus, ems)
-  border-style: false, // true|false|(responsive, hover, focus)
   border-color: (focus), // true|false|(responsive, hover, focus)
   border-radius: true, // true|false|(hover)
+  border-style: false, // true|false|(responsive, hover, focus)
+  border-width: (ems), // true|false|(responsive, hover, focus, ems)
   colors: (hover), // true|false|(hover, focus)
+  flex-direction: true, // true|false|(responsive)
   font-leading: true, // true|false
   font-sizes: (responsive), // true|false|(responsive)
   font-weights: true, // true|false

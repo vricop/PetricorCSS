@@ -8,7 +8,7 @@
       @include border-width($breakpoint);
       @include border-style($breakpoint);
       @include displays($breakpoint: $breakpoint);
-      @include flex-directions($breakpoint);
+      @include flex-direction($breakpoint);
       @include font-sizes($breakpoint: $breakpoint);  
       @include leading($breakpoint: $breakpoint);
       @include margins($breakpoint);
