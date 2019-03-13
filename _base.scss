@@ -7,26 +7,6 @@ button { font-size: 1rem; }
 input,
 textarea { font-size: 1rem; }
 
-.menu-button {
-  @include mediaquery($max: 578px) {
-    position: fixed;
-    bottom: .5rem;
-    right: .5rem;
-  };
-
-  width:1.75em;
-  height:1.75em;
-  background: gold linear-gradient(
-  black, black 2px,
-    transparent 2px, transparent 6px,
-  black 6px, black 8px,
-    transparent 8px, transparent 12px,
-  black 12px, black 14px
-  ) no-repeat 50% 50%;
-  background-size: 22px 14px;
-  cursor: pointer;
-}
-
 .nav-menu { &, & > a { transition: opacity 400ms ease; } }
 
 .nav-menu:hover > a {
@@ -37,6 +17,4 @@ textarea { font-size: 1rem; }
 }
 
 /* Inherit font-size in form elements */
-.sign-up > * {
-  font-size: inherit;
-}
+.sign-up > * { font-size: inherit; }

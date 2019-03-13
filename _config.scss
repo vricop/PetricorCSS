@@ -272,6 +272,7 @@ $modules: (
   align-content: true, // true|false|(false)
   align-items: true, // true|false|(false)
   border-width: (ems), // true|false|(responsive, hover, focus, ems)
+  border-style: false, // true|false|(responsive, hover, focus)
   border-color: (focus), // true|false|(responsive, hover, focus)
   border-radius: true, // true|false|(hover)
   colors: (hover), // true|false|(hover, focus)

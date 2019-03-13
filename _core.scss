@@ -22,6 +22,7 @@
 @include align-items;
 @include border-color;
 @include border-radius;
+@include border-style;
 @include border-width;
 @include displays;
 @include displays($hover: true);

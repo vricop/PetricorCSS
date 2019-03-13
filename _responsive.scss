@@ -6,6 +6,7 @@
       @include border-color($breakpoint);
       @include border-radius($breakpoint);
       @include border-width($breakpoint);
+      @include border-style($breakpoint);
       @include displays($breakpoint: $breakpoint);
       @include flex-directions($breakpoint);
       @include font-sizes($breakpoint: $breakpoint);  
