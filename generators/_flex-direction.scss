@@ -1,6 +1,6 @@
 @import '../utils/functions/is-valid-variant';
 
-// Variants for border-width classes
+// Variants for flex-direction classes
 $_valid-flex-direction-variants: ('responsive');
 // Get options from flex-direction module
 $_flex-direction-module: map-get($modules, 'flex-direction');
