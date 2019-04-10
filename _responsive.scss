@@ -5,8 +5,9 @@
       @include align-items($breakpoint);
       @include border-color($breakpoint);
       @include border-radius($breakpoint);
-      @include border-width($breakpoint);
       @include border-style($breakpoint);
+      @include border-width($breakpoint);
+      @include container($map);
       @include displays($breakpoint: $breakpoint);
       @include flex-direction($breakpoint);
       @include font-sizes($breakpoint: $breakpoint);  
