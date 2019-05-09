@@ -1,20 +1,4 @@
 // # BREAKPOINTS                                                                        
-//
-// ## Todo
-//
-//  1. Configure class names for your breakpoints prefixes. You can use any valid
-//     css you want. Then you set your breakpoint ???
-//  2. Add `group-hover` prefix for variants eg:
-//    ```css
-//      *:hover .group-hover\:{$variang}:hover { … }
-//    ```
-//
-//    ```html
-//      <div>
-//        <a class="group-hover:{$variant}:hover" href="#">Link</a>
-//      </div>
-//    ```
-//  3. Rename '$modules' config for '$variants'.
 $breakpoints: (
   sm: (min: 576px),
   md: (min: 768px),
