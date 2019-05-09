@@ -14,3 +14,4 @@
      </div>
    ```
  - [ ] Rename '$modules' config for '$variants'.
+ - [ ] Improve config file
