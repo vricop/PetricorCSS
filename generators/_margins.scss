@@ -5,7 +5,7 @@ $_valid-negative-margin-variants: ('responsive', 'hover');
 $_margins-module: map-get($modules, 'margins');
 $_negative-margins-module: map-get($modules, 'negative-margins');
 
-@mixin margins-class-rules($suffix, $value, $prefix:null) {
+@mixin _margin($suffix, $value, $prefix:null) {
   .#{$prefix}m-#{$suffix} { margin: $value; };
   .#{$prefix}mx-#{$suffix} { margin: { left: $value; right: $value; } };
   .#{$prefix}my-#{$suffix} { margin: { top: $value; bottom: $value; } };
@@ -20,17 +20,17 @@ $_negative-margins-module: map-get($modules, 'negative-margins');
     @each $suffix, $value in $margins {
       // # DEFAULT VARIANTS
       @if $breakpoint == null {
-        @include margins-class-rules($suffix, $value);
+        @include _margin($suffix, $value);
       }
 
       // # RESPONSIVE VARIANTS
       @if index($_margins-module, 'responsive') and $breakpoint != null {
-        @include margins-class-rules($suffix, $value, '#{$breakpoint}\\:');
+        @include _margin($suffix, $value, '#{$breakpoint}\\:');
       }
       
       // # HOVER VARIANTS
       @if index($_margins-module, 'hover') and $breakpoint == null {
-        @include margins-class-rules('#{$suffix}:hover', $value, 'hover\\:');
+        @include _margin('#{$suffix}:hover', $value, 'hover\\:');
       }
     }
 
@@ -38,15 +38,15 @@ $_negative-margins-module: map-get($modules, 'negative-margins');
     @if ($_negative-margins-module == true) or is-valid-variant($_negative-margins-module, $_valid-negative-margin-variants) {
       @each $suffix, $value in $negative-margins {
         @if $breakpoint == null {
-          @include margins-class-rules($suffix, $value, '-');
+          @include _margin($suffix, $value, '-');
         }
 
         @if index($_negative-margins-module, 'responsive') and ($breakpoint != null) {
-          @include margins-class-rules($suffix, $value, '#{$breakpoint}\\:-');
+          @include _margin($suffix, $value, '#{$breakpoint}\\:-');
         }
 
         @if index($_negative-margins-module, 'hover') and ($breakpoint == null) {
-          @include margins-class-rules('#{$suffix}:hover', $value, 'hover\\:-');
+          @include _margin('#{$suffix}:hover', $value, 'hover\\:-');
         }
       }
     }
