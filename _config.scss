@@ -8,17 +8,19 @@ $breakpoints: (
 
 // # COLORS
 $colors: (
-  black: black,
+  // Brand colors
   cornflowerblue: cornflowerblue,
   darkgray: darkgray,
   gold: gold,
   gray: gray,
   lightgray: lightgray,
   transparent: transparent,
+  
+  // Basic colors
+  black: #212121,
   white: white,
 
   // Grayscale colors
-  gray-700: #212121,
   gray-600: #3B3B3B,
   gray-500: #616161,
   gray-400: #767676,
