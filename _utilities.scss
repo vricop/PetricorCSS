@@ -1,8 +1,3 @@
-// This is where all generator mixins are gathered for easy importing in the
-// core file, where all class generators run. You can generate your own
-// generators and import them in here, then call you generators in the core file.
-// Generators are mixins with some sass logic to build related-class families
-// usgin the DRY (Don't Repeat Yourself) and Functional programming paradigms.
 @import 'utilities/align-content';
 @import 'utilities/align-items';
 @import 'utilities/background-color';
