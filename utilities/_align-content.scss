@@ -6,12 +6,12 @@ $_valid-align-content-variants: ('responsive');
 $_align-content-module: map-get($modules, 'align-content');
 
 @mixin _align-content-builder($prefix: null) {
-  .#{$prefix}content-around { justify-content: space-around; }
-  .#{$prefix}content-between { justify-content: space-between; }
-  .#{$prefix}content-evently { justify-content: space-evenly; }
-  .#{$prefix}content-center { justify-content: center; }
-  .#{$prefix}content-start { justify-content: flex-start; }
-  .#{$prefix}content-end { justify-content: flex-end; }
+  .#{$prefix}justify-around { justify-content: space-around; }
+  .#{$prefix}justify-between { justify-content: space-between; }
+  .#{$prefix}justify-evently { justify-content: space-evenly; }
+  .#{$prefix}justify-center { justify-content: center; }
+  .#{$prefix}justify-start { justify-content: flex-start; }
+  .#{$prefix}justify-end { justify-content: flex-end; }
 }
 
 @mixin align-content($breakpoint: null) {
