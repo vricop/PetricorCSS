@@ -17,7 +17,7 @@
 */
 
 // config, responsive & generators must always be at the top
-@import "config", "responsive", "generators";
+@import "config", "responsive", "utilities";
 @include align-content;
 @include align-items;
 @include background-color;
