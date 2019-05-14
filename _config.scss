@@ -274,30 +274,23 @@ $font-weights: (
   black: 900,
 );
 
-// # VARIANT MODULES
-//
-// - responsive (sm, md, lg, xl…)
-// - hover/group-hover (not implemented yet)
-// - focus
-// - ems/rems
-// - negative (-)
-
+// ENABLE/DISABLE VARIANTS
 $modules: (
-  align-content: true, // true|false|(false)
-  align-items: true, // true|false|(false)
+  align-content: true,
+  align-items: true,
   background-color: (responsive, hover, group-hover),
-  border-color: (focus), // true|false|(responsive, hover, focus)
-  border-radius: true, // true|false|(hover)
-  border-style: false, // true|false|(responsive, hover, focus)
-  border-width: (ems), // true|false|(responsive, hover, focus, ems)
-  colors: (hover), // true|false|(hover, focus)
-  flex-direction: true, // true|false|(responsive)
-  font-leading: true, // true|false
-  font-sizes: (responsive), // true|false|(responsive)
-  font-weights: true, // true|false
+  border-color: (focus),
+  border-radius: true,
+  border-style: false,
+  border-width: (ems),
+  colors: (hover),
+  flex-direction: true,
+  font-leading: true,
+  font-sizes: (responsive),
+  font-weights: true,
   margins: (responsive),
   negative-margins: false,
-  opacity: true, // true|false
-  paddings: (ems), // true|false|(responsive, hover, ems)
-  text-align: true, // true|false|(responsive)
+  opacity: true,
+  paddings: (ems),
+  text-align: true,
 );
