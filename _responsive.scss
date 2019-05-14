@@ -14,7 +14,7 @@
       @include font-sizes($breakpoint: $breakpoint);  
       @include leading($breakpoint: $breakpoint);
       @include margins($breakpoint);
-      @include paddings($breakpoint);
+      @include padding($breakpoint);
       @include text-align($breakpoint);
     }
   }

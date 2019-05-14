@@ -1,0 +1,36 @@
+
+@mixin _padding($suffix, $value, $prefix: '.') {
+  #{$prefix}p-#{$suffix}  { padding: $value; }
+  #{$prefix}px-#{$suffix} { padding: { left: $value; right: $value; } } 
+  #{$prefix}py-#{$suffix} { padding: { top: $value; bottom: $value; } }
+  #{$prefix}pt-#{$suffix} { padding-top: $value; };
+  #{$prefix}pr-#{$suffix} { padding-right: $value; };
+  #{$prefix}pb-#{$suffix} { padding-bottom: $value; };
+  #{$prefix}pl-#{$suffix} { padding-left: $value; };
+}
+
+@mixin padding($breakpoint: null)  {
+  $_paddings: map-get($modules, 'padding');
+
+  @if $_paddings != false {
+    @each $suffix, $value in $paddings {
+      @if $breakpoint == null {
+        @include _padding($suffix, $value);
+      }
+
+      @if index($_paddings, 'responsive') and ($breakpoint != null) {
+        @include _padding($suffix, $value, '.#{$breakpoint}\\:');
+      }
+      
+      @if index($_paddings, 'hover') and ($breakpoint == null) {
+        @include _padding('#{$suffix}:hover', $value, '.hover\\:');
+      }
+    }
+
+    @if index($_paddings, 'ems') and ($breakpoint == null) {
+      @each $suffix, $value in $em-paddings {
+        @include _padding($suffix, $value, '.\\*');
+      }
+    }
+  }
+}
