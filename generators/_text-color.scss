@@ -1,8 +1,8 @@
 @mixin text-colors($hover:false, $focus:false) {
-  @if($hover and $focus) {
-    @error "You cannot generate both ':hover' and ':focus' states, 
-    just one at a time";
-  }
+  // @if($hover and $focus) {
+  //   @error "You cannot generate both ':hover' and ':focus' states, 
+  //   just one at a time";
+  // }
 
   // Assign 'hover\:' or 'focus\:' prefixes
   $prefixes: if($hover, 'hover\\:', null) or if($focus, 'focus\\:', null);
