@@ -285,6 +285,7 @@ $font-weights: (
 $modules: (
   align-content: true, // true|false|(false)
   align-items: true, // true|false|(false)
+  background-color: (responsive, hover, group-hover),
   border-color: (focus), // true|false|(responsive, hover, focus)
   border-radius: true, // true|false|(hover)
   border-style: false, // true|false|(responsive, hover, focus)

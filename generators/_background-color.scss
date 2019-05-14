@@ -1,0 +1,28 @@
+$_background-color: map-get($modules, 'background-color');
+
+@mixin _background-color($suffix, $value, $prefix: '.') {
+  #{$prefix}bg-#{$suffix} { background-color: #{$value}; }
+}
+
+@mixin background-color($breakpoint: null) {
+  @if $_background-color != false {
+    @each $color, $value in $colors {
+      // # DEFAULT VARIANTS
+      @if $breakpoint == null {
+        @include _background-color($color, $value);
+      }
+  
+      @if index($_background-color, 'responsive') and $breakpoint != null {
+        @include _background-color($color, $value, '.#{$breakpoint}\\:');
+      }
+      
+      @if index($_background-color, 'hover') and $breakpoint == null {
+        @include _background-color('#{$color}:hover', $value, '.hover\\:');
+      }
+      
+      @if index($_background-color, 'group-hover') and $breakpoint == null {
+        @include _background-color('#{$color}:hover', $value, '.group:hover .group-hover\\:');
+      }
+    }
+  }
+}
