@@ -294,8 +294,8 @@ $modules: (
   font-leading: true, // true|false
   font-sizes: (responsive), // true|false|(responsive)
   font-weights: true, // true|false
-  margins: (responsive), // true|false|(responsive, hover)
-  negative-margins: false, // true|false(responsive, hover)
+  margins: (responsive),
+  negative-margins: false,
   opacity: true, // true|false
   paddings: (ems), // true|false|(responsive, hover, ems)
   text-align: true, // true|false|(responsive)

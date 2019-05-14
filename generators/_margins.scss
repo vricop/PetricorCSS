@@ -1,52 +1,46 @@
-@import '../utils/functions/is-valid-variant';
+$_margins: map-get($modules, 'margins');
+$_negative-margins: map-get($modules, 'negative-margins');
 
-$_valid-margin-variants: ('responsive', 'hover');
-$_valid-negative-margin-variants: ('responsive', 'hover');
-$_margins-module: map-get($modules, 'margins');
-$_negative-margins-module: map-get($modules, 'negative-margins');
-
-@mixin _margin($suffix, $value, $prefix:null) {
-  .#{$prefix}m-#{$suffix} { margin: $value; };
-  .#{$prefix}mx-#{$suffix} { margin: { left: $value; right: $value; } };
-  .#{$prefix}my-#{$suffix} { margin: { top: $value; bottom: $value; } };
-  .#{$prefix}mt-#{$suffix} { margin-top: $value };
-  .#{$prefix}mr-#{$suffix} { margin-right: $value };
-  .#{$prefix}mb-#{$suffix} { margin-bottom: $value };
-  .#{$prefix}ml-#{$suffix} { margin-left: $value };
+@mixin _margin($suffix, $value, $prefix: '.') {
+  #{$prefix}m-#{$suffix} { margin: $value; };
+  #{$prefix}mx-#{$suffix} { margin: { left: $value; right: $value; } };
+  #{$prefix}my-#{$suffix} { margin: { top: $value; bottom: $value; } };
+  #{$prefix}mt-#{$suffix} { margin-top: $value };
+  #{$prefix}mr-#{$suffix} { margin-right: $value };
+  #{$prefix}mb-#{$suffix} { margin-bottom: $value };
+  #{$prefix}ml-#{$suffix} { margin-left: $value };
 }
 
 @mixin margins($breakpoint: null) {
-  @if ($_margins-module == true) or is-valid-variant($_margins-module, $_valid-margin-variants) {
+  @if $_margins != false {
     @each $suffix, $value in $margins {
       // # DEFAULT VARIANTS
       @if $breakpoint == null {
         @include _margin($suffix, $value);
       }
 
-      // # RESPONSIVE VARIANTS
-      @if index($_margins-module, 'responsive') and $breakpoint != null {
-        @include _margin($suffix, $value, '#{$breakpoint}\\:');
+      @if index($_margins, 'responsive') and $breakpoint != null {
+        @include _margin($suffix, $value, '.#{$breakpoint}\\:');
       }
       
-      // # HOVER VARIANTS
-      @if index($_margins-module, 'hover') and $breakpoint == null {
-        @include _margin('#{$suffix}:hover', $value, 'hover\\:');
+      @if index($_margins, 'hover') and $breakpoint == null {
+        @include _margin('#{$suffix}:hover', $value, '.hover\\:');
+      }
+      
+      @if index($_margins, 'group-hover') and $breakpoint == null {
+        @include _margin('#{$suffix}:hover', $value, '.group:hover .group-hover\\:');
       }
     }
 
-    // # NEGATIVE MARGIN VARIANTS
-    @if ($_negative-margins-module == true) or is-valid-variant($_negative-margins-module, $_valid-negative-margin-variants) {
+    // # NEGATIVE VARIANTS
+    @if $_negative-margins != false {
       @each $suffix, $value in $negative-margins {
         @if $breakpoint == null {
-          @include _margin($suffix, $value, '-');
+          @include _margin($suffix, $value, '.-');
         }
 
-        @if index($_negative-margins-module, 'responsive') and ($breakpoint != null) {
-          @include _margin($suffix, $value, '#{$breakpoint}\\:-');
-        }
-
-        @if index($_negative-margins-module, 'hover') and ($breakpoint == null) {
-          @include _margin('#{$suffix}:hover', $value, 'hover\\:-');
+        @if index($_negative-margins, 'responsive') and ($breakpoint != null) {
+          @include _margin($suffix, $value, '.#{$breakpoint}\\:-');
         }
       }
     }
