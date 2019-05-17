@@ -18,6 +18,7 @@
       @include margins($breakpoint);
       @include padding($breakpoint);
       @include text-align($breakpoint);
+      @include overflow($breakpoint);
     }
   }
 }

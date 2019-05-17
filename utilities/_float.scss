@@ -10,7 +10,7 @@
       }
   
       @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\\:float-#{$side} {
+        .#{$breakpoint}\:float-#{$side} {
           float: $side;
         };
       }

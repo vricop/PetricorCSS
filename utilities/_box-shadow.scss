@@ -13,31 +13,31 @@
 			};
 
 			@if index($variants, 'hover') {
-				.hover\\:shadow#{$size}:hover {
+				.hover\:shadow#{$size}:hover {
 					box-shadow: $value;
 				};
 			}
 			
 			@if index($variants, 'group-hover') {
-				.group:hover .group-hover\\:shadow#{$size} {
+				.group:hover .group-hover\:shadow#{$size} {
 					box-shadow: $value;
 				};
 			}
 		}
 
 		@if index($variants, 'responsive') and $breakpoint != null {
-			.#{$breakpoint}\\:shadow#{$size} {
+			.#{$breakpoint}\:shadow#{$size} {
 				box-shadow: $value;
 			};
 
 			@if index($variants, 'hover') {
-				.hover\\:#{$breakpoint}\\:shadow#{$size}:hover {
+				.hover\:#{$breakpoint}\:shadow#{$size}:hover {
 					box-shadow: $value;
 				};
 			}
 			
 			@if index($variants, 'group-hover') {
-				.group:hover .group-hover\\:#{$breakpoint}\\:shadow#{$size} {
+				.group:hover .group-hover\:#{$breakpoint}\:shadow#{$size} {
 					box-shadow: $value;
 				};
 			}
