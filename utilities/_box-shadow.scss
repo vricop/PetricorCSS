@@ -8,36 +8,36 @@
 		$value: unquote($value);
 
 		@if $variants != false and $breakpoint == null {
-			@include build-css-rule('.shadow#{$size}') {
+			.shadow#{$size} {
 				box-shadow: $value;
 			};
 
 			@if index($variants, 'hover') {
-				@include build-css-rule('.hover\\:shadow#{$size}:hover') {
+				.hover\\:shadow#{$size}:hover {
 					box-shadow: $value;
 				};
 			}
 			
 			@if index($variants, 'group-hover') {
-				@include build-css-rule('.group:hover .group-hover\\:shadow#{$size}') {
+				.group:hover .group-hover\\:shadow#{$size} {
 					box-shadow: $value;
 				};
 			}
 		}
 
 		@if index($variants, 'responsive') and $breakpoint != null {
-			@include build-css-rule('.#{$breakpoint}\\:shadow#{$size}') {
+			.#{$breakpoint}\\:shadow#{$size} {
 				box-shadow: $value;
 			};
 
 			@if index($variants, 'hover') {
-				@include build-css-rule('.hover\\:#{$breakpoint}\\:shadow#{$size}:hover') {
+				.hover\\:#{$breakpoint}\\:shadow#{$size}:hover {
 					box-shadow: $value;
 				};
 			}
 			
 			@if index($variants, 'group-hover') {
-				@include build-css-rule('.group:hover .group-hover\\:#{$breakpoint}\\:shadow#{$size}') {
+				.group:hover .group-hover\\:#{$breakpoint}\\:shadow#{$size} {
 					box-shadow: $value;
 				};
 			}
