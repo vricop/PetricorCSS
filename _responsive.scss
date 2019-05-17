@@ -12,6 +12,7 @@
       @include container($map);
       @include displays($breakpoint: $breakpoint);
       @include flex-direction($breakpoint);
+      @include float($breakpoint);
       @include font-sizes($breakpoint: $breakpoint);  
       @include leading($breakpoint: $breakpoint);
       @include margins($breakpoint);

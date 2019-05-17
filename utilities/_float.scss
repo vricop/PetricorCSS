@@ -1,0 +1,19 @@
+@mixin float($breakpoint: null) {
+  $variants: map-get($modules, 'float');
+    
+  @if $variants != false {
+    @each $side in (left, right, none) {
+      @if $breakpoint == null {
+        .float-#{$side} {
+          float: $side;
+        };
+      }
+  
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\\:float-#{$side} {
+          float: $side;
+        };
+      }
+    }
+  }
+}

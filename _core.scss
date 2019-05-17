@@ -29,6 +29,7 @@
 @include displays;
 @include displays($hover: true);
 @include flex-direction;
+@include float;
 @include font-family;
 @include font-sizes;
 @include font-weights;

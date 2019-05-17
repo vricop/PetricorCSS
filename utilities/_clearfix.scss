@@ -1,0 +1,9 @@
+$float-variants: map-get($modules, 'float');
+
+@if $float-variants != false or index($float-variants, 'responsive') {
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
