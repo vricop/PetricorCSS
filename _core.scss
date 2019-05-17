@@ -25,6 +25,7 @@
 @include border-radius;
 @include border-style;
 @include border-width;
+@include box-shadow;
 @include displays;
 @include displays($hover: true);
 @include flex-direction;

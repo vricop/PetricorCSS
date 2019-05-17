@@ -8,6 +8,7 @@
       @include border-radius($breakpoint);
       @include border-style($breakpoint);
       @include border-width($breakpoint);
+      @include box-shadow($breakpoint);
       @include container($map);
       @include displays($breakpoint: $breakpoint);
       @include flex-direction($breakpoint);

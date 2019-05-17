@@ -1,0 +1,46 @@
+@import '../utils/mixins/build-css-rule';
+
+@mixin box-shadow($breakpoint: null) {
+	$variants: map-get($modules, 'box-shadow');
+	
+	@each $size, $value in $box-shadow {
+		$size: if($size == 'default', null, '-'+$size);
+		$value: unquote($value);
+
+		@if $variants != false and $breakpoint == null {
+			@include build-css-rule('.shadow#{$size}') {
+				box-shadow: $value;
+			};
+
+			@if index($variants, 'hover') {
+				@include build-css-rule('.hover\\:shadow#{$size}:hover') {
+					box-shadow: $value;
+				};
+			}
+			
+			@if index($variants, 'group-hover') {
+				@include build-css-rule('.group:hover .group-hover\\:shadow#{$size}') {
+					box-shadow: $value;
+				};
+			}
+		}
+
+		@if index($variants, 'responsive') and $breakpoint != null {
+			@include build-css-rule('.#{$breakpoint}\\:shadow#{$size}') {
+				box-shadow: $value;
+			};
+
+			@if index($variants, 'hover') {
+				@include build-css-rule('.hover\\:#{$breakpoint}\\:shadow#{$size}:hover') {
+					box-shadow: $value;
+				};
+			}
+			
+			@if index($variants, 'group-hover') {
+				@include build-css-rule('.group:hover .group-hover\\:#{$breakpoint}\\:shadow#{$size}') {
+					box-shadow: $value;
+				};
+			}
+		}
+	} 
+}
