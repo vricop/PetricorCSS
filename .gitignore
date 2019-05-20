@@ -5,6 +5,7 @@
 *.css
 *.css.map
 *.html
+*.scssc
 
 # Don't track sass file for testing
 _base.scss
