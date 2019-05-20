@@ -2,12 +2,14 @@
   $variants: map-get($modules, display);
 
   @each $value in (block, flex, grid, inline-block, inline-flex, inline-grid, inline, none) {
-    @if $variants != false and $breakpoint == null {
-      .#{$value} { display: $value; }  
-    }
-
-    @if index($variants, 'responsive') and $breakpoint != null {
-      .#{$breakpoint}\:#{$value} { display: $value; }
+    @if $variants != false or type-of($variants) == list {
+      @if $breakpoint == null {
+        .#{$value} { display: $value; }  
+      }
+ 
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\:#{$value} { display: $value; }
+      }
     }
   }
 }
