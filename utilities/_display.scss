@@ -1,7 +1,7 @@
 @mixin display($breakpoint: null) {
   $variants: map-get($modules, display);
 
-  @each $value in (block, flex, grid, inline-block, inline-flex inline-grid, inline, none) {
+  @each $value in (block, flex, grid, inline-block, inline-flex, inline-grid, inline, none) {
     @if $variants != false and $breakpoint == null {
       .#{$value} { display: $value; }  
     }
