@@ -26,8 +26,7 @@
 @include border-style;
 @include border-width;
 @include box-shadow;
-@include displays;
-@include displays($hover: true);
+@include display;
 @include flex-direction;
 @include float;
 @include font-family;

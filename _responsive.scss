@@ -10,7 +10,7 @@
       @include border-width($breakpoint);
       @include box-shadow($breakpoint);
       @include container($map);
-      @include displays($breakpoint: $breakpoint);
+      @include display($breakpoint);
       @include flex-direction($breakpoint);
       @include float($breakpoint);
       @include font-sizes($breakpoint: $breakpoint);  

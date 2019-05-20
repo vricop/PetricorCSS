@@ -1,9 +1,9 @@
 // # BREAKPOINTS                                                                        
 $breakpoints: (
-  sm: (min: 576px),
+  sm: (min: 640px),
   md: (min: 768px),
-  lg: (min: 960px),
-  xl: (min: 1200px),
+  lg: (min: 1024px),
+  xl: (min: 1280px),
 );
 
 // # COLORS
@@ -132,22 +132,6 @@ $em-paddings: (
   8: 2em,
   9: 2.25em,
   10: 2.5em,
-);
-
-// # DISPLAY
-//
-// Class name: .{layout}
-// CSS property: display
-
-$display: (
-  block,
-  flex,
-  grid,
-  inline-block,
-  inline-flex
-  inline-grid,
-  inline,
-  none,
 );
 
 // # BORDERS
@@ -299,6 +283,7 @@ $modules: (
   border-width: (ems),
   box-shadow: true,
   colors: (hover),
+  display: (responsive),
   flex-direction: true,
   font-leading: true,
   float: false,
