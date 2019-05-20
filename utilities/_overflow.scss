@@ -1,7 +1,7 @@
 @mixin overflow($breakpoint: null) {
   $variants: map-get($modules, 'overflow');
 
-  @if $variants == true or type-of($variants) == map {
+  @if $variants == true or type-of($variants) == list {
     @each $value in (auto, hidden, visible, scroll) {
       @each $prop in (overflow, overflow-x, overflow-y) {
         @if $breakpoint == null {
