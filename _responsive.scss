@@ -21,6 +21,7 @@
       @include padding($breakpoint);
       @include position($breakpoint);
       @include text-align($breakpoint);
+      @include visibility($breakpoint);
     }
   }
 }
