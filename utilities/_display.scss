@@ -2,8 +2,8 @@
   $variants: map-get($modules, display);
   $variants: join($variants, ());
 
-  @each $value in (block, flex, grid, inline-block, inline-flex, inline-grid, inline, none) {
-    @if $variants != false {
+  @if $variants != false {
+    @each $value in (block, flex, grid, inline-block, inline-flex, inline-grid, inline, none) {
       @if $breakpoint == null { 
         .#{$value} { display: $value; }
       }
