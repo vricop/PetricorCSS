@@ -1,16 +1,14 @@
 @mixin overflow($breakpoint: null) {
   $variants: map-get($modules, 'overflow');
 
-  @if $variants == true or type-of($variants) == list {
+  @if $variants != false {
     @each $value in (auto, hidden, visible, scroll) {
       @each $prop in (overflow, overflow-x, overflow-y) {
         @if $breakpoint == null {
           .#{$prop}-#{$value} { #{$prop}: $value; }
     
           @if index($variants, 'hover') {
-            .hover\:#{$prop}-#{$value}:hover {
-              #{$prop}: $value;
-            }
+            .hover\:#{$prop}-#{$value}:hover { #{$prop}: $value; }
           }
           
           @if index($variants, 'group-hover') {
@@ -21,9 +19,7 @@
         }
 
         @if index($variants, 'responsive') and $breakpoint != null {
-          .#{$breakpoint}\:#{$prop}-#{$value} {
-            #{$prop}: $value;
-          }
+          .#{$breakpoint}\:#{$prop}-#{$value} { #{$prop}: $value; }
       
           @if index($variants, 'hover') {
             .hover\:#{$breakpoint}\:#{$prop}-#{$value}:hover {
