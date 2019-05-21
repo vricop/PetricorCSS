@@ -1,15 +1,3 @@
-@mixin _sides($suffix, $val, $prefix: '.') { 
-  // Insets
-  #{$prefix}inset-#{$suffix} { top: $val; right: $val; bottom: $val; left: $val; }
-  #{$prefix}inset-x-#{$suffix} { left: $val; right: $val; }
-  #{$prefix}inset-y-#{$suffix} { top: $val; bottom: $val; }
-
-  // Sides
-  @each $side in (top, right, bottom, left) {
-    #{$prefix}#{$side}-#{$suffix} { #{$side}: $val; }
-  }
-}
-
 @mixin _position($prefix: '.') {
   @each $position in (relative, absolute, static, fixed, sticky) {
     #{$prefix}#{$position} { position: $position; }
@@ -23,19 +11,10 @@
     @each $suffix, $val in $inset {
       @if not($breakpoint) {
         @include _position;
-        @include _sides(
-          $suffix: $suffix,
-          $val: $val
-        );
       }
     
       @if index($variants, 'responsive') and $breakpoint != null {
         @include _position('.#{$breakpoint}\\:');
-        @include _sides(
-          $prefix: '.#{$breakpoint}\\:',
-          $suffix: $suffix,
-          $val: $val
-        );
       }
     }
   }
