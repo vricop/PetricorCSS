@@ -1,10 +1,11 @@
 @mixin display($breakpoint: null) {
   $variants: map-get($modules, display);
+  $variants: join($variants, ());
 
   @each $value in (block, flex, grid, inline-block, inline-flex, inline-grid, inline, none) {
-    @if $variants != false or type-of($variants) == list {
-      @if $breakpoint == null {
-        .#{$value} { display: $value; }  
+    @if $variants != false {
+      @if $breakpoint == null { 
+        .#{$value} { display: $value; }
       }
  
       @if index($variants, 'responsive') and $breakpoint != null {
