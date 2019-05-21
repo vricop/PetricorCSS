@@ -37,7 +37,7 @@
 @include opacities;
 @include overflow;
 @include padding;
-@include positions;
+@include position;
 @include text-align;
 @include text-colors();
 @include text-colors($hover: true);
