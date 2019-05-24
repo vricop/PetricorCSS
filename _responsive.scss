@@ -22,6 +22,7 @@
       @include position($breakpoint);
       @include text-align($breakpoint);
       @include visibility($breakpoint);
+      @include z-index($breakpoint);
     }
   }
 }

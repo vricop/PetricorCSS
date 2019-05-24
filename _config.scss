@@ -192,13 +192,14 @@ $inset: (
  );
 
 $z-index: (
-  auto: auto,
-  0: 0,
-  10: 10,
-  20: 20,
-  30: 30,
-  40: 40,
-  50: 50,
+  'auto': auto,
+  '0': 0,
+  '10': 10,
+  '20': 20,
+  '30': 30,
+  '40': 40,
+  '50': 50,
+  '-10': -10
 );
 
 $font-sizes: (
@@ -296,14 +297,15 @@ $modules: (
   flex-direction: true,
   float: false,
   font-leading: true,
-  font-sizes: (responsive),
+  font-sizes: (responsive,),
   font-weights: true,
-  margins: (responsive),
+  margins: (responsive,),
   negative-margins: false,
   opacity: true,
   overflow: true,
   padding: (ems, hover),
   position: true,
   text-align: true,
-  visibility: true
+  visibility: true,
+  z-index: true
 );
