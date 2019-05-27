@@ -1,0 +1,41 @@
+@mixin width($breakpoint: null) {
+  $variants: map-get($modules, 'width');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $suffix, $value in $widths {
+      // DEFAULT
+      @if $breakpoint == null {
+        .w-#{$suffix} { width: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:w-#{$suffix}:hover { width: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .group:hover .group-hover\:w-#{$suffix} { width: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:w-#{$suffix} { width: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\:w-#{$suffix} { width: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$breakpoint}\:hover\:w-#{$suffix}:hover { width: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .#{$breakpoint}\:group:hover .group-hover\:w-#{$suffix} { width: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$breakpoint}\:focus\:w-#{$suffix} { width: $value; }
+        }
+      }
+    }
+  }
+}
