@@ -196,8 +196,13 @@ $max-width: (
   '4xl': 56rem,
   '5xl': 64rem,
   '6xl': 72rem,
-  'full': 100%,
-); 
+  'full': 100%
+);
+
+$min-width: (
+  '0': 0,
+  'full': 100%
+);
 
 // # BORDERS
 //
@@ -363,6 +368,7 @@ $modules: (
   font-weights: true,
   margins: [responsive],
   max-width: [responsive],
+  min-width: [responsive],
   negative-margins: false,
   opacity: true,
   overflow: true,

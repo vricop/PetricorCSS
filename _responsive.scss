@@ -17,6 +17,8 @@
       @include inset($breakpoint);
       @include leading($breakpoint: $breakpoint);
       @include margins($breakpoint);
+      @include max-width($breakpoint);
+      @include min-width($breakpoint);
       @include overflow($breakpoint);
       @include padding($breakpoint);
       @include position($breakpoint);
@@ -24,7 +26,6 @@
       @include visibility($breakpoint);
       @include width($breakpoint);
       @include z-index($breakpoint);
-      @include max-width($breakpoint);
     }
   }
 }

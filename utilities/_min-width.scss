@@ -1,0 +1,41 @@
+@mixin min-width($breakpoint: null) {
+  $variants: map-get($modules, 'min-width');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $suffix, $value in $min-width {
+      // DEFAULT
+      @if $breakpoint == null {
+        .min-w-#{$suffix} { min-width: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:min-w-#{$suffix}:hover { min-width: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .group:hover .group-hover\:min-w-#{$suffix} { min-width: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:min-w-#{$suffix} { min-width: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\:min-w-#{$suffix} { min-width: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$breakpoint}\:hover\:min-w-#{$suffix}:hover { min-width: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .#{$breakpoint}\:group:hover .group-hover\:min-w-#{$suffix} { min-width: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$breakpoint}\:focus\:min-w-#{$suffix} { min-width: $value; }
+        }
+      }
+    }
+  }
+}
