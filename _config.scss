@@ -288,17 +288,21 @@ $z-index: (
   -10
 );
 
+// TYPE SCALE
+//   1. 1.2 — Minor third <==
+//   2. 1.25 — Major third
+//   3. 1.333 — Perfect fourth
 $font-sizes: (
-  xs: 0.75rem,  // 12px
-  sm: 0.875rem, // 14px
-  base: 1rem,   // 16px <== base
-  lg: 1.125rem, // 18px
-  xl: 1.25rem,  // 20px
-  2xl: 1.5rem,  // 24px
-  3xl: 1.875rem,// 30px
-  4xl: 2.25rem, // 36px
-  5xl: 2.622rem,// 42px
-  9xl: 4.12rem, // 66px
+  sm: 0.833rem,  // 13px <== small
+  base: 1rem,    // 16px <== base
+  lg: 1.2rem,    // 19px <== h6
+  xl: 1.44rem,   // 20px <== h5
+  2xl: 1.728rem, // 23px <== h4
+  3xl: 2.074rem, // 27px <== h3
+  4xl: 2.488rem, // 33px <== h2
+  5xl: 2.985rem, // 47px <== h1
+  6xl: 3.582rem, // 57px
+  hero: 3.582rem // 57px <== Hero header
 );
 
 $fonts: (
