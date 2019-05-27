@@ -303,43 +303,36 @@ $font-sizes: (
 
 $fonts: (
   sans: (
-    'system-ui',
-    'BlinkMacSystemFont',
     '-apple-system',
+    'BlinkMacSystemFont',
     'Segoe UI',
     'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
-    'Fira Sans',
-    'Droid Sans',
-    'Futura',
     'Helvetica Neue',
-    'Helvetica',
+    'Arial',
+    'Noto Sans',
     'sans-serif',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji'
   ),
+
   serif: (
     'Georgia',
-    'Baskerville',
-    'Garamond',
+    'Garamond'
+    'Cambria',
     'Times New Roman',
     'Times',
-    'Constantia',
-    'Lucida Bright',
-    'Lucidabright',
-    'Lucida Serif',
-    'Lucida',
-    'DejaVu Serif',
-    'Bitstream Vera Serif','Liberation Serif',
-    'serif',
+    'serif'
   ),
+
   monospace: (
     'Menlo',
     'Monaco',
     'Consolas',
     'Liberation Mono',
     'Courier New',
-    'monospace',
+    'monospace'
   ),
 );
 
