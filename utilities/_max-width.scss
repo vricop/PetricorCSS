@@ -1,0 +1,41 @@
+@mixin max-width($breakpoint: null) {
+  $variants: map-get($modules, 'max-width');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $suffix, $value in $max-width {
+      // DEFAULT
+      @if $breakpoint == null {
+        .max-w-#{$suffix} { max-width: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:max-w-#{$suffix}:hover { max-width: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .group:hover .group-hover\:max-w-#{$suffix} { max-width: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:max-w-#{$suffix} { max-width: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\:max-w-#{$suffix} { max-width: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$breakpoint}\:hover\:max-w-#{$suffix}:hover { max-width: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .#{$breakpoint}\:group:hover .group-hover\:max-w-#{$suffix} { max-width: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$breakpoint}\:focus\:max-w-#{$suffix} { max-width: $value; }
+        }
+      }
+    }
+  }
+}
