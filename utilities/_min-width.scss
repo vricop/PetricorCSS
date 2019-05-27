@@ -16,7 +16,7 @@
         }
 
         @if index($variants, 'focus') {
-          .focus\:min-w-#{$suffix} { min-width: $value; }
+          .focus\:min-w-#{$suffix}:focus { min-width: $value; }
         }
       }
 
@@ -33,7 +33,7 @@
         }
 
         @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:min-w-#{$suffix} { min-width: $value; }
+          .#{$breakpoint}\:focus\:min-w-#{$suffix}:focus { min-width: $value; }
         }
       }
     }

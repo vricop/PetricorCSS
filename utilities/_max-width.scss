@@ -16,7 +16,7 @@
         }
 
         @if index($variants, 'focus') {
-          .focus\:max-w-#{$suffix} { max-width: $value; }
+          .focus\:max-w-#{$suffix}:focus { max-width: $value; }
         }
       }
 
@@ -33,7 +33,7 @@
         }
 
         @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:max-w-#{$suffix} { max-width: $value; }
+          .#{$breakpoint}\:focus\:max-w-#{$suffix}:focus { max-width: $value; }
         }
       }
     }

@@ -19,7 +19,7 @@
         }
 
         @if index($variants, 'focus') {
-          .focus\:#{$utility}#{$value} { z-index: $value; }
+          .focus\:#{$utility}#{$value}:focus { z-index: $value; }
         }
       }
 
@@ -36,7 +36,7 @@
         }
 
         @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:#{$utility}#{$value} { z-index: $value; }
+          .#{$breakpoint}\:focus\:#{$utility}#{$value}:focus { z-index: $value; }
         }
       }
     }
