@@ -283,7 +283,7 @@ $font-weights: (
 $modules: (
   align-content: true,
   align-items: true,
-  background-color: [responsive, hover, group-hover],
+  background-color: [responsive hover group-hover],
   border-color: [focus],
   border-radius: true,
   border-style: false,
@@ -294,15 +294,15 @@ $modules: (
   flex-direction: true,
   float: false,
   font-leading: true,
-  font-sizes: [responsive,],
+  font-sizes: [responsive],
   font-weights: true,
-  margins: [responsive,],
+  margins: [responsive],
   negative-margins: false,
   opacity: true,
   overflow: true,
-  padding: [ems, hover],
+  padding: [ems hover],
   position: true,
   text-align: true,
   visibility: true,
-  z-index: true
+  z-index: [responsive]
 );

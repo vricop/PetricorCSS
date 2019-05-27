@@ -1,13 +1,10 @@
 @mixin z-index($breakpoint: null) {
   $variants: map-get($modules, 'z-index');
-  $utility: 'z-';
 
   @if $variants == true or type-of($variants) == list {
     @each $value in $z-index {
       // NEGATIVE VARIANT UTILITY SUFFIX
-      @if ($value != 'auto') and ($value < 0) {
-        $utility: '-z';
-      }
+      $utility: if(($value != 'auto') and ($value < 0), '-z', 'z-');
 
       // DEFAULT
       @if $breakpoint == null {
@@ -20,20 +17,26 @@
         @if index($variants, 'group-hover') {
           .group:hover .group-hover\:#{$utility}#{$value} { z-index: $value; }
         }
+
+        @if index($variants, 'focus') {
+          .focus\:#{$utility}#{$value} { z-index: $value; }
+        }
       }
 
       // RESPONSIVE
       @if index($variants, 'responsive') and $breakpoint != null {
-        @if index($variants, 'hover') {
-          .#{$breakpoint}\:#{$utility}#{$value} { z-index: $value; }
-        }
+        .#{$breakpoint}\:#{$utility}#{$value} { z-index: $value; }
   
         @if index($variants, 'hover') {
           .#{$breakpoint}\:hover\:#{$utility}#{$value}:hover { z-index: $value; }
         }
         
-        @if index($variants, 'hover') {
+        @if index($variants, 'group-hover') {
           .#{$breakpoint}\:group:hover .group-hover\:#{$utility}#{$value} { z-index: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$breakpoint}\:focus\:#{$utility}#{$value} { z-index: $value; }
         }
       }
     }
