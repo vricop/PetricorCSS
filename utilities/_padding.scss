@@ -8,27 +8,46 @@
   #{$prefix}pl-#{$suffix} { padding-left: $value; };
 }
 
-@mixin padding($breakpoint: null)  {
-  $_paddings: map-get($modules, 'padding');
+@mixin padding($breakpoint: null) {
+  $variants: map-get($modules, 'padding');
 
-  @if $_paddings != false {
-    @each $suffix, $value in $paddings {
+  @if $variants == true or type-of($variants) == list {
+    @each $suffix, $value in $padding {
+      // EM VARIANT PREFIX
+      $em: if(unit($value) == 'em', '\\*', null);
+
+      // DEFAULT
       @if $breakpoint == null {
-        @include _padding($suffix, $value);
+        @include _padding($suffix, $value, '.#{$em}');
+
+        @if index($variants, 'hover') {
+          @include _padding('#{$suffix}:hover', $value, '.hover\\:#{$em}');
+        }
+
+        @if index($variants, 'group-hover') {
+          @include _padding($suffix, $value, '.group:hover .group-hover\\:#{$em}');
+        }
+
+        @if index($variants, 'focus') {
+          @include _padding('#{$suffix}:focus', $value, '.focus\\:#{$em}');
+        }
       }
 
-      @if index($_paddings, 'responsive') and ($breakpoint != null) {
-        @include _padding($suffix, $value, '.#{$breakpoint}\\:');
-      }
-      
-      @if index($_paddings, 'hover') and ($breakpoint == null) {
-        @include _padding('#{$suffix}:hover', $value, '.hover\\:');
-      }
-    }
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        @include _padding($suffix, $value, '.#{$breakpoint}\\:#{$em}');
 
-    @if index($_paddings, 'ems') and ($breakpoint == null) {
-      @each $suffix, $value in $em-paddings {
-        @include _padding($suffix, $value, '.\\*');
+        @if index($variants, 'hover') {
+          @include _padding('#{$suffix}:hover', $value, '.#{$breakpoint}\\:hover\\:#{$em}');
+        }
+
+        @if index($variants, 'group-hover') {
+          @include _padding($suffix, $value, '.#{$breakpoint}\\:group:hover .group-hover\\:#{$em}');
+        }
+
+        @if index($variants, 'focus') {
+          @include _padding('#{$suffix}:focus', $value, '.#{$breakpoint}\\:focus\\:#{$em}');
+        }
       }
     }
   }

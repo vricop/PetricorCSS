@@ -78,7 +78,11 @@ $margin: (
 // Class variants: p-{side?}-{size}
 // CSS property: padding
 
-$paddings: (
+// EM VS REMS
+// Ems are still useful for building scalable elements.
+// Keys for em variants are strings not numbers. This 
+// way there won't be any conflict with key number (rem variants).
+$padding: (
   0: 0,
   1: 0.25rem,
   2: 0.5rem,
@@ -90,27 +94,17 @@ $paddings: (
   8: 2rem,
   9: 2.25rem,
   10: 2.5rem,
-);
-
-// # PADDINGS (ems)
-// 
-// Ems are very useful for scalable ui elements like buttons.
-// 
-// Class variants: *p-{size?}-{size}
-// CSS property: padding
-
-$em-paddings: (
-  0: 0,
-  1: 0.25em,
-  2: 0.5em,
-  3: 0.75em,
-  4: 1em,
-  5: 1.25em,
-  6: 1.5em,
-  7: 1.75em,
-  8: 2em,
-  9: 2.25em,
-  10: 2.5em,
+  '0': 0,
+  '1': 0.25em,
+  '2': 0.5em,
+  '3': 0.75em,
+  '4': 1em,
+  '5': 1.25em,
+  '6': 1.5em,
+  '7': 1.75em,
+  '8': 2em,
+  '9': 2.25em,
+  '10': 2.5em,
 );
 
 $widths: (
@@ -373,7 +367,7 @@ $modules: (
   negative-margins: false,
   opacity: true,
   overflow: true,
-  padding: [ems hover],
+  padding: [responsive],
   position: true,
   text-align: true,
   visibility: true,
