@@ -70,15 +70,7 @@ $margin: (
   -2: -0.5rem
 );
 
-// # PADDINGS (rems)
-//
-// Rems are very intuitive and used heavily for almost any kind of ui element.
-// For buttons or elements that need to be scalable use em paddings instead.
-// 
-// Class variants: p-{side?}-{size}
-// CSS property: padding
-
-// EM VS REMS
+// # EM VS REMS
 // Ems are still useful for building scalable elements.
 // Keys for em variants are strings not numbers. This 
 // way there won't be any conflict with key number (rem variants).
