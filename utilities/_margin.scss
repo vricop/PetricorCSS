@@ -1,0 +1,55 @@
+@mixin _margin($suffix, $value, $prefix: '.') {
+  #{$prefix}m-#{$suffix} { margin: $value; };
+  #{$prefix}mx-#{$suffix} { margin: { left: $value; right: $value; } };
+  #{$prefix}my-#{$suffix} { margin: { top: $value; bottom: $value; } };
+  #{$prefix}mt-#{$suffix} { margin-top: $value };
+  #{$prefix}mr-#{$suffix} { margin-right: $value };
+  #{$prefix}mb-#{$suffix} { margin-bottom: $value };
+  #{$prefix}ml-#{$suffix} { margin-left: $value };
+}
+
+@mixin margin($breakpoint: null) {
+  $variants: map-get($modules, 'margin');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $suffix, $value in $margin {
+      // NEGATIVE VARIANT UTILITY PREFIX & SUFFIX
+      $suffix: if(($suffix != auto) and ($suffix < 0), abs($suffix), $suffix);
+      $n: if(($value != auto) and ($value < 0), '-', null);
+
+      // DEFAULT
+      @if $breakpoint == null {
+        @include _margin($suffix, $value, '.#{$n}');
+
+        @if index($variants, 'hover') {
+          @include _margin('#{$suffix}:hover', $value, '.hover\\:#{$n}');
+        }
+
+        @if index($variants, 'group-hover') {
+          @include _margin($suffix, $value, '.group:hover .group-hover\\:#{$n}');
+        }
+
+        @if index($variants, 'focus') {
+          @include _margin('#{$suffix}:focus', $value, '.focus\\:#{$n}');
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        @include _margin($suffix, $value, '.#{$breakpoint}\\:#{$n}');
+
+        @if index($variants, 'hover') {
+          @include _margin('#{$suffix}:hover', $value, '.#{$breakpoint}\\:hover\\:#{$n}');
+        }
+
+        @if index($variants, 'group-hover') {
+          @include _margin($suffix, $value, '.#{$breakpoint}\\:group:hover .group-hover\\:#{$n}');
+        }
+
+        @if index($variants, 'focus') {
+          @include _margin('#{$suffix}:focus', $value, '.#{$breakpoint}\\:focus\\:#{$n}');
+        }
+      }
+    }
+  }
+}

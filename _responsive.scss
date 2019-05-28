@@ -17,7 +17,7 @@
       @include height($breakpoint);
       @include inset($breakpoint);
       @include leading($breakpoint: $breakpoint);
-      @include margins($breakpoint);
+      @include margin($breakpoint);
       @include max-width($breakpoint);
       @include min-width($breakpoint);
       @include overflow($breakpoint);
