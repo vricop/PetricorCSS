@@ -1,0 +1,41 @@
+@mixin cursor($breakpoint: null) {
+  $variants: map-get($modules, 'cursor');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $prop in $cursor {
+      // DEFAULT
+      @if $breakpoint == null {
+        .cursor-#{$prop} { cursor: $prop; }
+
+        @if index($variants, 'hover') {
+          .hover\:cursor-#{$prop}:hover { cursor: $prop; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .group:hover .group-hover\:cursor-#{$prop} { cursor: $prop; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:cursor-#{$prop}:focus { cursor: $prop; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\:cursor-#{$prop} { cursor: $prop; }
+
+        @if index($variants, 'hover') {
+          .#{$breakpoint}\:hover\:cursor-#{$prop}:hover { cursor: $prop; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .#{$breakpoint}\:group:hover .group-hover\:cursor-#{$prop} { cursor: $prop; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$breakpoint}\:focus\:cursor-#{$prop}:focus { cursor: $prop; }
+        }
+      }
+    }
+  }
+}

@@ -345,6 +345,16 @@ $font-weights: (
   black: 900,
 );
 
+$cursor: (
+  auto,
+  default,
+  pointer,
+  wait,
+  text,
+  move,
+  not-allowed,
+);
+
 // ENABLE/DISABLE VARIANTS
 $modules: (
   align-content: true,
@@ -357,6 +367,7 @@ $modules: (
   border-width: [ems],
   box-shadow: true,
   colors: [hover],
+  cursor: false,
   display: [responsive],
   flex-direction: true,
   float: false,
@@ -375,5 +386,5 @@ $modules: (
   text-align: true,
   visibility: true,
   width: [responsive],
-  z-index: [responsive],
+  z-index: [responsive]
 );
