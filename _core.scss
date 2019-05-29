@@ -45,6 +45,7 @@
 @include overflow;
 @include padding;
 @include position;
+@include resize;
 @include text-align;
 @include text-colors();
 @include text-colors($hover: true);

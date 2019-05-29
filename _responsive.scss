@@ -25,6 +25,7 @@
       @include overflow($breakpoint);
       @include padding($breakpoint);
       @include position($breakpoint);
+      @include resize($breakpoint);
       @include text-align($breakpoint);
       @include visibility($breakpoint);
       @include width($breakpoint);

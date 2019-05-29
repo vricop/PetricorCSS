@@ -1,0 +1,22 @@
+@mixin _resize($prefix: '.', $suffix: null) {
+  @each $class, $prop in (none: none, default: both, y: vertical, x: horizontal) {
+    $class: if($class == default, null, -$class);
+    #{$prefix}resize#{$class}#{$suffix} { resize: $prop; }
+  }
+}
+
+@mixin resize($breakpoint: null) {
+  $variants: map-get($modules, 'resize');
+
+  @if $variants == true or type-of($variants) == list {
+    // DEFAULT
+    @if $breakpoint == null {
+      @include _resize;
+    }
+
+    // RESPONSIVE
+    @if index($variants, 'responsive') and $breakpoint != null {
+      @include _resize('.#{$breakpoint}\\:');
+    }
+  }
+}
