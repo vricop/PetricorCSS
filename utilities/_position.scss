@@ -1,20 +1,44 @@
-@mixin _position($prefix: '.') {
+@mixin _position($prefix: '.', $suffix: null) {
   @each $position in (relative, absolute, static, fixed, sticky) {
-    #{$prefix}#{$position} { position: $position; }
+    #{$prefix}#{$position}#{$suffix} { position: $position; }
   }
 }
 
 @mixin position($breakpoint: null) {
   $variants: map-get($modules, 'position');
 
-  @if $variants != false {
-    @each $suffix, $val in $inset {
-      @if not($breakpoint) {
-        @include _position;
+  @if $variants == true or type-of($variants) == list {
+    // DEFAULT
+    @if $breakpoint == null {
+      @include _position;
+
+      @if index($variants, 'hover') {
+        @include _position('.hover\\:', ':hover');
       }
-    
-      @if index($variants, 'responsive') and $breakpoint != null {
-        @include _position('.#{$breakpoint}\\:');
+
+      @if index($variants, 'group-hover') {
+        @include _position('.group:hover .group-hover\\:');
+      }
+
+      @if index($variants, 'focus') {
+        @include _position('.focus\\:', ':focus');
+      }
+    }
+
+    // RESPONSIVE
+    @if index($variants, 'responsive') and $breakpoint != null {
+      @include _position('.#{$breakpoint}\\:');
+
+      @if index($variants, 'hover') {
+        @include _position('.#{$breakpoint}\\:', ':hover');
+      }
+
+      @if index($variants, 'group-hover') {
+        @include _position('.#{$breakpoint}\\:group:hover .group-hover\\:');
+      }
+
+      @if index($variants, 'focus') {
+        @include _position('.#{$breakpoint}\\:focus\\:', ':focus');
       }
     }
   }
