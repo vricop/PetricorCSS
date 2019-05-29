@@ -1,13 +1,16 @@
-@mixin _container-builder($value) {
-  .container { max-width: $value; }
-}
-
 // Thig generator will only be used in '_responsive.scss'
 @mixin container($breakpoints) {
   // # ADAPTIVE CONTAINERS
   // Generate adaptive containers: set the `max-width` of an element
   // to match the `min-width` of the current breakpoint.
-  @if map-has-key($breakpoints, 'min') and not map-has-key($breakpoints, 'max') {
-    @include _container-builder(map-get($breakpoints, 'min'));
+  @if map-has-key($breakpoints, 'min') and not
+      map-has-key($breakpoints, 'max') {
+    $width: map-get($breakpoints, 'min');
+
+    .container {
+      margin-left: auto;
+      margin-right: auto;
+      width: $width;
+    }
   }
 }

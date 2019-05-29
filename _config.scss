@@ -9,16 +9,16 @@ $breakpoints: (
 // # COLORS
 $colors: (
   // Brand colors
-  cornflowerblue: 'cornflowerblue',
-  darkgray: 'darkgray',
-  gold: 'gold',
-  gray: 'gray',
-  lightgray: 'lightgray',
-  transparent: 'transparent',
+  'cornflowerblue': cornflowerblue,
+  'darkgray': darkgray,
+  'gold': gold,
+  'gray': gray,
+  'lightgray': lightgray,
+  'transparent': transparent,
   
   // Black & White
-  black: #212121,
-  white: #fff,
+  'black': #212121,
+  'white': #fff,
 
   // Grayscale colors
   gray-600: #3B3B3B,
@@ -200,7 +200,8 @@ $height: (
   auto: auto,
   px: 1px,
   full: 100%,
-  screen: 100vh
+  screen: 100vh,
+  half-screen: 50vh
 );
 
 // # BORDERS
