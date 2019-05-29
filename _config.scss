@@ -380,11 +380,12 @@ $modules: (
   min-width: [responsive],
   negative-margins: false,
   opacity: true,
+  outline: [focus],
   overflow: true,
   padding: [responsive],
   position: true,
   text-align: true,
   visibility: true,
   width: [responsive],
-  z-index: [responsive]
+  z-index: [responsive],
 );

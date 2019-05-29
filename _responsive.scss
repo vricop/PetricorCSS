@@ -21,6 +21,7 @@
       @include margin($breakpoint);
       @include max-width($breakpoint);
       @include min-width($breakpoint);
+      @include outline($breakpoint);
       @include overflow($breakpoint);
       @include padding($breakpoint);
       @include position($breakpoint);

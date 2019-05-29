@@ -1,0 +1,31 @@
+@mixin outline($breakpoint: null) {
+  $variants: map-get($modules, 'outline');
+
+  @if $variants == true or type-of($variants) == list {
+    // DEFAULT
+    @if $breakpoint == null {
+      .outline-none { outline: 0; }
+
+      @if index($variants, 'hover') {
+        .hover\:outline-none:hover { outline: 0; }
+      }
+
+      @if index($variants, 'focus') {
+        .focus\:outline-none:focus { outline: 0; }
+      }
+    }
+
+    // RESPONSIVE
+    @if index($variants, 'responsive') and $breakpoint != null {
+      .#{$breakpoint}\:outline-none { outline: 0; }
+
+      @if index($variants, 'hover') {
+        .#{$breakpoint}\:hover\:outline-none:hover { outline: 0; }
+      }
+
+      @if index($variants, 'focus') {
+        .#{$breakpoint}\:focus\:outline-none:focus { outline: 0; }
+      }
+    }
+  }
+}
