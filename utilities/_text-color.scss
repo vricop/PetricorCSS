@@ -1,15 +1,49 @@
-@mixin text-colors($hover:false, $focus:false) {
-  // @if($hover and $focus) {
-  //   @error "You cannot generate both ':hover' and ':focus' states, 
-  //   just one at a time";
-  // }
+@mixin text-color($breakpoint: null) {
+  $variants: map-get($modules, 'text-color');
 
-  // Assign 'hover\:' or 'focus\:' prefixes
-  $prefixes: if($hover, 'hover\\:', null) or if($focus, 'focus\\:', null);
-  // Assign ':hover' or ':focus' state suffix
-  $suffixes: if($hover, ':hover', null) or if($focus, ':focus', null);
+  @if $variants == true or type-of($variants) == list {
+    @each $suffix, $value in $colors {
+      // DEFAULT
+      @if $breakpoint == null {
+        .text-#{$suffix} { color: $value; }
 
-  @each $color, $value in $colors {
-    .#{$prefixes}text-#{$color}#{$suffixes} { color: $value; }
+        @if index($variants, 'hover') {
+          .hover\:text-#{$suffix}:hover { color: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .group:hover .group-hover\:text-#{$suffix} { color: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:text-#{$suffix}:focus { color: $value; }
+        }
+
+        @if index($variants, 'active') {
+          .active\:text-#{$suffix}:active { color: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\:text-#{$suffix} { color: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$breakpoint}\:hover\:text-#{$suffix}:hover { color: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .#{$breakpoint}\:group:hover .group-hover\:text-#{$suffix} { color: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$breakpoint}\:focus\:text-#{$suffix}:focus { color: $value; }
+        }
+
+        @if index($variants, 'active') {
+          .#{$breakpoint}\:active\:text-#{$suffix}:active { color: $value; }
+        }
+      }
+    }
   }
 }

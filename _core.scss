@@ -47,8 +47,7 @@
 @include position;
 @include resize;
 @include text-align;
-@include text-colors();
-@include text-colors($hover: true);
+@include text-color;
 @include tracking;
 @include typography-features;
 @include vertical-alignment;

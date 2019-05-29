@@ -27,6 +27,7 @@
       @include position($breakpoint);
       @include resize($breakpoint);
       @include text-align($breakpoint);
+      @include text-color($breakpoint);
       @include visibility($breakpoint);
       @include width($breakpoint);
       @include z-index($breakpoint);
