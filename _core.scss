@@ -20,6 +20,7 @@
 @import "config", "responsive", "utilities";
 @include align-content;
 @include align-items;
+@include appearance;
 @include background-color;
 @include border-color;
 @include border-radius;

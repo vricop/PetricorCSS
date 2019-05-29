@@ -1,0 +1,7 @@
+@mixin appearance() {
+  $variants: map-get($modules, 'appearance');
+
+  @if $variants == true {
+    .appearance-none { appearance: none; }
+  }
+}
