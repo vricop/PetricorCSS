@@ -1,11 +1,9 @@
 @mixin typography-features {
   .capitalize { text-transform: capitalize; }
-  .italic { font-style: italic; }
   .line-through { text-decoration: line-through; }
   .lowercase { text-transform: lowercase; }
   .no-underline { text-decoration: none; }
   .normal-case { text-transform: none; }
-  .roman { font-style: normal; }
   .underline { text-decoration: underline; }
   .uppercase { text-transform: uppercase; }
 }
