@@ -1,36 +1,36 @@
 @mixin responsive {
-  @each $breakpoint, $map in $breakpoints {
-    @include mediaqueries($map) {
-      @include align-content($breakpoint);
-      @include align-items($breakpoint);
-      @include background-color($breakpoint);
-      @include border-color($breakpoint);
-      @include border-radius($breakpoint);
-      @include border-style($breakpoint);
-      @include border-width($breakpoint);
-      @include box-shadow($breakpoint);
-      @include container($map);
-      @include cursor($breakpoint);
-      @include display($breakpoint);
-      @include flex-direction($breakpoint);
-      @include float($breakpoint);
-      @include font-size($breakpoint);  
-      @include height($breakpoint);
-      @include inset($breakpoint);
-      @include leading($breakpoint: $breakpoint);
-      @include margin($breakpoint);
-      @include max-width($breakpoint);
-      @include min-width($breakpoint);
-      @include outline($breakpoint);
-      @include overflow($breakpoint);
-      @include padding($breakpoint);
-      @include position($breakpoint);
-      @include resize($breakpoint);
-      @include text-align($breakpoint);
-      @include text-color($breakpoint);
-      @include visibility($breakpoint);
-      @include width($breakpoint);
-      @include z-index($breakpoint);
+  @each $screen, $breakpoint in $breakpoints {
+    @include mediaqueries($breakpoint) {
+      @include align-content($screen);
+      @include align-items($screen);
+      @include background-color($screen);
+      @include border-color($screen);
+      @include border-radius($screen);
+      @include border-style($screen);
+      @include border-width($screen);
+      @include box-shadow($screen);
+      @include container($breakpoint);
+      @include cursor($screen);
+      @include display($screen);
+      @include flex-direction($screen);
+      @include float($screen);
+      @include font-size($screen);  
+      @include height($screen);
+      @include inset($screen);
+      @include leading($breakpoint: $screen);
+      @include margin($screen);
+      @include max-width($screen);
+      @include min-width($screen);
+      @include outline($screen);
+      @include overflow($screen);
+      @include padding($screen);
+      @include position($screen);
+      @include resize($screen);
+      @include text-align($screen);
+      @include text-color($screen);
+      @include visibility($screen);
+      @include width($screen);
+      @include z-index($screen);
     }
   }
 }
