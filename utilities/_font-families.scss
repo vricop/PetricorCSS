@@ -1,5 +1,0 @@
-@mixin font-family {
-  @each $style, $stack in $fonts {
-    .font-#{$style} { font-family: $stack; }
-  }
-}

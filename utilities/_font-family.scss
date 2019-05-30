@@ -1,0 +1,9 @@
+@mixin font-family {
+  $variants: map-get($modules, 'font-family');
+
+  @if $variants == true {
+    @each $type, $stack in $fonts {
+      .font-#{$type} { font-family: $stack; }
+    }
+  }
+}
