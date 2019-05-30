@@ -1,0 +1,22 @@
+@mixin _font-smoothing($prefix: '.', $suffix: null) {
+  #{$prefix}antialiased#{$suffix} {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;    
+  }
+}
+
+@mixin font-smoothing($breakpoint: null) {
+  $variants: map-get($modules, 'font-smoothing');
+
+  @if $variants == true or type-of($variants) == list {
+    // DEFAULT
+    @if $breakpoint == null {
+      @include _font-smoothing;
+    }
+
+    // RESPONSIVE
+    @if index($variants, 'responsive') and $breakpoint != null {
+      @include _font-smoothing('.#{$breakpoint}\\:');
+    }
+  }
+}

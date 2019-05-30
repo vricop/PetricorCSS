@@ -1,5 +1,4 @@
 @mixin typography-features {
-  .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
   .capitalize { text-transform: capitalize; }
   .italic { font-style: italic; }
   .line-through { text-decoration: line-through; }
@@ -7,7 +6,6 @@
   .no-underline { text-decoration: none; }
   .normal-case { text-transform: none; }
   .roman { font-style: normal; }
-  .subpixel-antialiased { -webkit-font-smoothing: auto; -moz-osx-font-smoothing: auto; }
   .underline { text-decoration: underline; }
   .uppercase { text-transform: uppercase; }
 }

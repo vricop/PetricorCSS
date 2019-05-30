@@ -14,7 +14,8 @@
       @include display($screen);
       @include flex-direction($screen);
       @include float($screen);
-      @include font-size($screen);  
+      @include font-size($screen);
+      @include font-smoothing($screen);
       @include height($screen);
       @include inset($screen);
       @include leading($breakpoint: $screen);
