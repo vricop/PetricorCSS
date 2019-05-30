@@ -14,7 +14,7 @@
       @include display($breakpoint);
       @include flex-direction($breakpoint);
       @include float($breakpoint);
-      @include font-sizes($breakpoint: $breakpoint);  
+      @include font-size($breakpoint);  
       @include height($breakpoint);
       @include inset($breakpoint);
       @include leading($breakpoint: $breakpoint);
