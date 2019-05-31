@@ -1,9 +1,33 @@
-@mixin leading($breakpoint:null) {
-  @each $suffix, $value in $leading {
-    // Add prefixes or leave empty for every condition. Te resulting string for
-    // $prefixes and $suffixes will be concatenated to generate the selector
-    $prefix: if($breakpoint, #{$breakpoint+'\\:'}, '');
+@mixin line-height($breakpoint: null) {
+  $variants: map-get($modules, 'line-height');
 
-    .#{$prefix}leading-#{$suffix} { line-height: $value; }
+  @if $variants == true or type-of($variants) == list {
+    @each $suffix, $value in $leading {
+      // DEFAULT
+      @if $breakpoint == null {
+        .leading-#{$suffix} { line-height: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:leading-#{$suffix}:hover { line-height: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:leading-#{$suffix}:focus { line-height: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\:leading-#{$suffix} { line-height: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$breakpoint}\:hover\:leading-#{$suffix}:hover { line-height: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$breakpoint}\:focus\:leading-#{$suffix}:focus { line-height: $value; }
+        }
+      }
+    }
   }
 }

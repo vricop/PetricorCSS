@@ -323,7 +323,9 @@ $fonts: (
 $leading: (
   none: 1,
   tight: 1.25,
+  snug: 1.375,
   normal: 1.5,
+  relaxed: 1.625,
   loose: 2,
 );
 
@@ -376,13 +378,13 @@ $modules: (
   flex-direction: true,
   float: false,
   font-family: true,
-  font-leading: true,
   font-size: [responsive],
   font-smoothing: true,
   font-style: [responsive],
   font-weight: true,
   height: [responsive],
   letter-spacing: [responsive],
+  line-height: [responsive],
   margin: [responsive],
   max-width: [responsive],
   min-width: [responsive],
