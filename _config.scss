@@ -333,7 +333,7 @@ $tracking: (
   wide: 0.05em,
 );
 
-$font-weights: (
+$font-weight: (
   thin: 100, 
   extra-light: 200, 
   light: 300,
@@ -376,7 +376,7 @@ $modules: (
   font-size: [responsive],
   font-smoothing: true,
   font-style: [responsive],
-  font-weights: true,
+  font-weight: true,
   height: [responsive],
   margin: [responsive],
   max-width: [responsive],

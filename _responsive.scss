@@ -17,6 +17,7 @@
       @include font-size($screen);
       @include font-smoothing($screen);
       @include font-style($screen);
+      @include font-weight($screen);
       @include height($screen);
       @include inset($screen);
       @include leading($breakpoint: $screen);

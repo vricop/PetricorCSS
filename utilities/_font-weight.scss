@@ -1,0 +1,41 @@
+@mixin font-weight($breakpoint: null) {
+  $variants: map-get($modules, 'font-weight');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $suffix, $value in $font-weight {
+      // DEFAULT
+      @if $breakpoint == null {
+        .font-#{$suffix} { font-weight: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:font-#{$suffix}:hover { font-weight: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .group:hover .group-hover\:font-#{$suffix} { font-weight: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:font-#{$suffix}:focus { font-weight: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\:font-#{$suffix} { font-weight: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$breakpoint}\:hover\:font-#{$suffix}:hover { font-weight: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .#{$breakpoint}\:group:hover .group-hover\:font-#{$suffix} { font-weight: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$breakpoint}\:focus\:font-#{$suffix}:focus { font-weight: $value; }
+        }
+      }
+    }
+  }
+}
