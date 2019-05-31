@@ -351,6 +351,12 @@ $font-weight: (
   black: 900,
 );
 
+$list-type: (
+  none: none,
+  disc: disc,
+  decimal: decimal,
+);
+
 $cursor: (
   auto,
   default,
@@ -385,6 +391,7 @@ $modules: (
   height: [responsive],
   letter-spacing: [responsive],
   line-height: [responsive],
+  list-style-type: true,
   margin: [responsive],
   max-width: [responsive],
   min-width: [responsive],
