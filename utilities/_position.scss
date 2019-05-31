@@ -1,44 +1,40 @@
-@mixin _position($prefix: '.', $suffix: null) {
-  @each $position in (relative, absolute, static, fixed, sticky) {
-    #{$prefix}#{$position}#{$suffix} { position: $position; }
-  }
-}
-
-@mixin position($breakpoint: null) {
+@mixin position($screen: null) {
   $variants: map-get($modules, 'position');
 
   @if $variants == true or type-of($variants) == list {
-    // DEFAULT
-    @if $breakpoint == null {
-      @include _position;
-
-      @if index($variants, 'hover') {
-        @include _position('.hover\\:', ':hover');
+    @each $position in (relative, absolute, static, fixed, sticky) {
+      // DEFAULT
+      @if $screen == null {
+        .#{$position} { position: $position; }
+        
+        @if index($variants, 'hover') {
+          .hover\:#{$position}:hover { position: $position; }
+        }
+        
+        @if index($variants, 'group-hover') {
+          .group:hover .group-hover\:#{$position} { position: $position; }
+        }
+        
+        @if index($variants, 'focus') {
+          .focus\:#{$position}:focus { position: $position; }
+        }
       }
 
-      @if index($variants, 'group-hover') {
-        @include _position('.group:hover .group-hover\\:');
-      }
-
-      @if index($variants, 'focus') {
-        @include _position('.focus\\:', ':focus');
-      }
-    }
-
-    // RESPONSIVE
-    @if index($variants, 'responsive') and $breakpoint != null {
-      @include _position('.#{$breakpoint}\\:');
-
-      @if index($variants, 'hover') {
-        @include _position('.#{$breakpoint}\\:', ':hover');
-      }
-
-      @if index($variants, 'group-hover') {
-        @include _position('.#{$breakpoint}\\:group:hover .group-hover\\:');
-      }
-
-      @if index($variants, 'focus') {
-        @include _position('.#{$breakpoint}\\:focus\\:', ':focus');
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:#{$position} { position: $position; }
+        
+        @if index($variants, 'hover') {
+          .#{$screen}\:hover\:#{$position}:hover { position: $position; }
+        }
+        
+        @if index($variants, 'group-hover') {
+          .#{$screen}\:group:hover .group-hover\:#{$position} { position: $position; }
+        }
+        
+        @if index($variants, 'focus') {
+          .#{$screen}\:focus\:#{$position}:focus { position: $position; }
+        }
       }
     }
   }
