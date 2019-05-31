@@ -1,5 +1,33 @@
-@mixin tracking {
-  @each $suffix, $value in $tracking {
-    .tracking-#{$suffix} { letter-spacing: $value; }
+@mixin letter-spacing($breakpoint: null) {
+  $variants: map-get($modules, 'letter-spacing');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $suffix, $value in $tracking {
+      // DEFAULT
+      @if $breakpoint == null {
+        .tracking-#{$suffix} { letter-spacing: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:tracking-#{$suffix}:hover { letter-spacing: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:tracking-#{$suffix}:focus { letter-spacing: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\:tracking-#{$suffix} { letter-spacing: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$breakpoint}\:hover\:tracking-#{$suffix}:hover { letter-spacing: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$breakpoint}\:focus\:tracking-#{$suffix}:focus { letter-spacing: $value; }
+        }
+      }
+    }
   }
 }

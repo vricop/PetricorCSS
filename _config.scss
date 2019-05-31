@@ -327,10 +327,14 @@ $leading: (
   loose: 2,
 );
 
+// LETTER SPACING
 $tracking: (
-  tight: -0.05em,
+  tighter: -0.05em,
+  tight: -0.025em,
   normal: 0,
-  wide: 0.05em,
+  wide: 0.025em,
+  wider: 0.05em,
+  widest: 0.1em,
 );
 
 $font-weight: (
@@ -378,6 +382,7 @@ $modules: (
   font-style: [responsive],
   font-weight: true,
   height: [responsive],
+  letter-spacing: [responsive],
   margin: [responsive],
   max-width: [responsive],
   min-width: [responsive],

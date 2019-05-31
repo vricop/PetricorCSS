@@ -39,6 +39,7 @@
 @include height;
 @include inset;
 @include leading;
+@include letter-spacing;
 @include margin;
 @include max-width;
 @include min-width;
@@ -50,7 +51,6 @@
 @include resize;
 @include text-align;
 @include text-color;
-@include tracking;
 @include typography-features;
 @include vertical-alignment;
 @include visibility;
