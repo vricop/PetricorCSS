@@ -1,9 +1,0 @@
-@mixin vertical-alignment($breakpoint:null) {
-  // Add '{breakpoint}\\:' prefix if argument passed or an
-  // empty string if not.
-  $prefix: if($breakpoint, '#{$breakpoint}\\:', null);
-  
-  .#{$prefix}align-top { vertical-align: top; }
-  .#{$prefix}align-top { vertical-align: middle; }
-  .#{$prefix}align-top { vertical-align: bottom; }
-}

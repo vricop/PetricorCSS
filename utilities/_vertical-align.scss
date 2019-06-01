@@ -1,0 +1,35 @@
+@mixin vertical-align($breakpoint: null) {
+  $variants: map-get($modules, 'vertical-align');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $value in (baseline, top, middle, bottom, text-top, text-bottom) {
+      $suffix: $value;
+
+      // DEFAULT
+      @if $breakpoint == null {
+        .align-#{$suffix} { vertical-align: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:align-#{$suffix}:hover { vertical-align: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:align-#{$suffix}:focus { vertical-align: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\:align-#{$suffix} { vertical-align: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$breakpoint}\:hover\:align-#{$suffix}:hover { vertical-align: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$breakpoint}\:focus\:align-#{$suffix}:focus { vertical-align: $value; }
+        }
+      }
+    }
+  }
+}
