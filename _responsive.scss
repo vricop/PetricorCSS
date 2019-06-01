@@ -35,6 +35,7 @@
       @include text-align($screen);
       @include text-color($screen);
       @include text-decoration($screen);
+      @include text-transform($screen);
       @include visibility($screen);
       @include width($screen);
       @include z-index($screen);

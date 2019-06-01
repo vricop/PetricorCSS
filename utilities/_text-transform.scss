@@ -1,0 +1,47 @@
+@mixin text-transform($breakpoint: null) {
+  $variants: map-get($modules, 'text-transform');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $value in (uppercase, lowercase, capitalize, none) {
+      $class: if($value == none, normal-case, $value);
+
+      // DEFAULT
+      @if $breakpoint == null {
+        .#{$class} { 
+          text-transform: $value;
+        }
+
+        @if index($variants, 'hover') {
+          .hover\:#{$class}:hover { 
+            text-transform: $value;
+          }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:#{$class}:focus { 
+            text-transform: $value;
+          }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\:#{$class} { 
+          text-transform: $value;
+        }
+
+        @if index($variants, 'hover') {
+          .#{$breakpoint}\:hover\:#{$class}:hover { 
+            text-transform: $value;
+          }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$breakpoint}\:focus\:#{$class}:focus { 
+            text-transform: $value;
+          }
+        }
+      }
+    }
+  }
+}
