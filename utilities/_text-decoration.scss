@@ -1,0 +1,59 @@
+@mixin text-decoration($breakpoint: null) {
+  $variants: map-get($modules, 'text-decoration');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $prop in (underline, line-through, none) {
+      $class: if($prop == none, no-underline, $prop);
+
+      // DEFAULT
+      @if $breakpoint == null {
+        .#{$class} { 
+          text-decoration: $prop;
+        }
+
+        @if index($variants, 'hover') {
+          .hover\:#{$class}:hover { 
+            text-decoration: $prop;
+          }
+        }
+
+        @if index($variants, 'group-hover') {
+          .group:hover .group-hover\:#{$class} { 
+            text-decoration: $prop;
+          }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:#{$class}:focus { 
+            text-decoration: $prop;
+          }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\:#{$class} { 
+          text-decoration: $prop;
+        }
+
+        @if index($variants, 'hover') {
+          .#{$breakpoint}\:hover\:#{$class}:hover { 
+            text-decoration: $prop;
+          }
+        }
+
+        @if index($variants, 'group-hover') {
+          .#{$breakpoint}\:group:hover .group-hover\:#{$class} { 
+            text-decoration: $prop;
+          }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$breakpoint}\:focus\:#{$class}:focus { 
+            text-decoration: $prop;
+          }
+        }
+      }
+    }
+  }
+}

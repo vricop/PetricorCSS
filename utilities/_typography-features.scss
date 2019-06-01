@@ -1,9 +1,6 @@
 @mixin typography-features {
   .capitalize { text-transform: capitalize; }
-  .line-through { text-decoration: line-through; }
   .lowercase { text-transform: lowercase; }
-  .no-underline { text-decoration: none; }
   .normal-case { text-transform: none; }
-  .underline { text-decoration: underline; }
   .uppercase { text-transform: uppercase; }
 }
