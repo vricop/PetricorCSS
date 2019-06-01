@@ -1,15 +1,34 @@
-@mixin display($breakpoint: null) {
-  $variants: map-get($modules, display);
-  $variants: join($variants, ());
+@mixin display($screen: null) {
+  $variants: map-get($modules, 'display');
 
-  @if $variants != false {
+  @if $variants == true or type-of($variants) == list {
     @each $value in (block, flex, grid, inline-block, inline-flex, inline-grid, inline, none) {
-      @if $breakpoint == null { 
-        .#{$value} { display: $value; }
+      $class: $value;
+
+      // DEFAULT
+      @if $screen == null {
+        .#{$class} { display: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:#{$class}:hover { display: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:#{$class}:focus { display: $value; }
+        }
       }
- 
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:#{$value} { display: $value; }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:#{$class} { display: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$screen}\:hover\:#{$class}:hover { display: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$screen}\:focus\:#{$class}:focus { display: $value; }
+        }
       }
     }
   }
