@@ -5,18 +5,18 @@
   }
 }
 
-@mixin font-smoothing($breakpoint: null) {
+@mixin font-smoothing($screen: null) {
   $variants: map-get($modules, 'font-smoothing');
 
   @if $variants == true or type-of($variants) == list {
     // DEFAULT
-    @if $breakpoint == null {
+    @if $screen == null {
       @include _font-smoothing;
     }
 
     // RESPONSIVE
-    @if index($variants, 'responsive') and $breakpoint != null {
-      @include _font-smoothing('.#{$breakpoint}\\:');
+    @if index($variants, 'responsive') and $screen != null {
+      @include _font-smoothing('.#{$screen}\\:');
     }
   }
 }

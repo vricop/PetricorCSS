@@ -1,4 +1,4 @@
-@mixin vertical-align($breakpoint: null) {
+@mixin vertical-align($screen: null) {
   $variants: map-get($modules, 'vertical-align');
 
   @if $variants == true or type-of($variants) == list {
@@ -6,7 +6,7 @@
       $suffix: $value;
 
       // DEFAULT
-      @if $breakpoint == null {
+      @if $screen == null {
         .align-#{$suffix} { vertical-align: $value; }
 
         @if index($variants, 'hover') {
@@ -19,15 +19,15 @@
       }
 
       // RESPONSIVE
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:align-#{$suffix} { vertical-align: $value; }
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:align-#{$suffix} { vertical-align: $value; }
 
         @if index($variants, 'hover') {
-          .#{$breakpoint}\:hover\:align-#{$suffix}:hover { vertical-align: $value; }
+          .#{$screen}\:hover\:align-#{$suffix}:hover { vertical-align: $value; }
         }
 
         @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:align-#{$suffix}:focus { vertical-align: $value; }
+          .#{$screen}\:focus\:align-#{$suffix}:focus { vertical-align: $value; }
         }
       }
     }

@@ -1,16 +1,16 @@
-@mixin list-style-type($breakpoint: null) {
+@mixin list-style-type($screen: null) {
   $variants: map-get($modules, 'list-style-type');
 
   @if $variants == true or type-of($variants) == list {
     @each $suffix, $value in $list-type {
       // DEFAULT
-      @if $breakpoint == null {
+      @if $screen == null {
         .list-#{$suffix} { list-style-type: $value; }
       }
 
       // RESPONSIVE
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:list-#{$suffix} { list-style-type: $value; }
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:list-#{$suffix} { list-style-type: $value; }
       }
     }
   }

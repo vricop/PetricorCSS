@@ -1,4 +1,4 @@
-@mixin white-space($breakpoint: null) {
+@mixin white-space($screen: null) {
   $variants: map-get($modules, 'white-space');
 
   @if $variants == true or type-of($variants) == list {
@@ -6,7 +6,7 @@
       $class: if($value == nowrap, no-wrap, $value);
 
       // DEFAULT
-      @if $breakpoint == null {
+      @if $screen == null {
         .whitespace-#{$class} { white-space: $value; }
 
         @if index($variants, 'hover') {
@@ -19,15 +19,15 @@
       }
 
       // RESPONSIVE
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:whitespace-#{$class} { white-space: $value; }
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:whitespace-#{$class} { white-space: $value; }
 
         @if index($variants, 'hover') {
-          .#{$breakpoint}\:hover\:whitespace-#{$class}:hover { white-space: $value; }
+          .#{$screen}\:hover\:whitespace-#{$class}:hover { white-space: $value; }
         }
         
         @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:whitespace-#{$class}:focus { white-space: $value; }
+          .#{$screen}\:focus\:whitespace-#{$class}:focus { white-space: $value; }
         }
       }
     }

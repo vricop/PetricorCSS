@@ -1,4 +1,4 @@
-@mixin text-decoration($breakpoint: null) {
+@mixin text-decoration($screen: null) {
   $variants: map-get($modules, 'text-decoration');
 
   @if $variants == true or type-of($variants) == list {
@@ -6,7 +6,7 @@
       $class: if($prop == none, no-underline, $prop);
 
       // DEFAULT
-      @if $breakpoint == null {
+      @if $screen == null {
         .#{$class} { 
           text-decoration: $prop;
         }
@@ -31,25 +31,25 @@
       }
 
       // RESPONSIVE
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:#{$class} { 
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:#{$class} { 
           text-decoration: $prop;
         }
 
         @if index($variants, 'hover') {
-          .#{$breakpoint}\:hover\:#{$class}:hover { 
+          .#{$screen}\:hover\:#{$class}:hover { 
             text-decoration: $prop;
           }
         }
 
         @if index($variants, 'group-hover') {
-          .#{$breakpoint}\:group:hover .group-hover\:#{$class} { 
+          .#{$screen}\:group:hover .group-hover\:#{$class} { 
             text-decoration: $prop;
           }
         }
 
         @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:#{$class}:focus { 
+          .#{$screen}\:focus\:#{$class}:focus { 
             text-decoration: $prop;
           }
         }

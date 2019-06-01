@@ -1,10 +1,10 @@
-@mixin letter-spacing($breakpoint: null) {
+@mixin letter-spacing($screen: null) {
   $variants: map-get($modules, 'letter-spacing');
 
   @if $variants == true or type-of($variants) == list {
     @each $suffix, $value in $tracking {
       // DEFAULT
-      @if $breakpoint == null {
+      @if $screen == null {
         .tracking-#{$suffix} { letter-spacing: $value; }
 
         @if index($variants, 'hover') {
@@ -17,15 +17,15 @@
       }
 
       // RESPONSIVE
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:tracking-#{$suffix} { letter-spacing: $value; }
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:tracking-#{$suffix} { letter-spacing: $value; }
 
         @if index($variants, 'hover') {
-          .#{$breakpoint}\:hover\:tracking-#{$suffix}:hover { letter-spacing: $value; }
+          .#{$screen}\:hover\:tracking-#{$suffix}:hover { letter-spacing: $value; }
         }
 
         @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:tracking-#{$suffix}:focus { letter-spacing: $value; }
+          .#{$screen}\:focus\:tracking-#{$suffix}:focus { letter-spacing: $value; }
         }
       }
     }

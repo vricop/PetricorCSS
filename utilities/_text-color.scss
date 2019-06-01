@@ -1,10 +1,10 @@
-@mixin text-color($breakpoint: null) {
+@mixin text-color($screen: null) {
   $variants: map-get($modules, 'text-color');
 
   @if $variants == true or type-of($variants) == list {
     @each $suffix, $value in $colors {
       // DEFAULT
-      @if $breakpoint == null {
+      @if $screen == null {
         .text-#{$suffix} { color: $value; }
 
         @if index($variants, 'hover') {
@@ -25,23 +25,23 @@
       }
 
       // RESPONSIVE
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:text-#{$suffix} { color: $value; }
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:text-#{$suffix} { color: $value; }
 
         @if index($variants, 'hover') {
-          .#{$breakpoint}\:hover\:text-#{$suffix}:hover { color: $value; }
+          .#{$screen}\:hover\:text-#{$suffix}:hover { color: $value; }
         }
 
         @if index($variants, 'group-hover') {
-          .#{$breakpoint}\:group:hover .group-hover\:text-#{$suffix} { color: $value; }
+          .#{$screen}\:group:hover .group-hover\:text-#{$suffix} { color: $value; }
         }
 
         @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:text-#{$suffix}:focus { color: $value; }
+          .#{$screen}\:focus\:text-#{$suffix}:focus { color: $value; }
         }
 
         @if index($variants, 'active') {
-          .#{$breakpoint}\:active\:text-#{$suffix}:active { color: $value; }
+          .#{$screen}\:active\:text-#{$suffix}:active { color: $value; }
         }
       }
     }

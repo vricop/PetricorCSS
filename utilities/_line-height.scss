@@ -1,10 +1,10 @@
-@mixin line-height($breakpoint: null) {
+@mixin line-height($screen: null) {
   $variants: map-get($modules, 'line-height');
 
   @if $variants == true or type-of($variants) == list {
     @each $suffix, $value in $leading {
       // DEFAULT
-      @if $breakpoint == null {
+      @if $screen == null {
         .leading-#{$suffix} { line-height: $value; }
 
         @if index($variants, 'hover') {
@@ -17,15 +17,15 @@
       }
 
       // RESPONSIVE
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:leading-#{$suffix} { line-height: $value; }
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:leading-#{$suffix} { line-height: $value; }
 
         @if index($variants, 'hover') {
-          .#{$breakpoint}\:hover\:leading-#{$suffix}:hover { line-height: $value; }
+          .#{$screen}\:hover\:leading-#{$suffix}:hover { line-height: $value; }
         }
 
         @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:leading-#{$suffix}:focus { line-height: $value; }
+          .#{$screen}\:focus\:leading-#{$suffix}:focus { line-height: $value; }
         }
       }
     }

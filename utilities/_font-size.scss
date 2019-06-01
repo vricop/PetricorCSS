@@ -1,10 +1,10 @@
-@mixin font-size($breakpoint: null) {
+@mixin font-size($screen: null) {
   $variants: map-get($modules, 'font-size');
 
   @if $variants == true or type-of($variants) == list {
     @each $suffix, $value in $font-size {
       // DEFAULT
-      @if $breakpoint == null {
+      @if $screen == null {
         .text-#{$suffix} { font-size: $value; }
 
         @if index($variants, 'hover') {
@@ -21,19 +21,19 @@
       }
 
       // RESPONSIVE
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:text-#{$suffix} { font-size: $value; }
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:text-#{$suffix} { font-size: $value; }
 
         @if index($variants, 'hover') {
-          .#{$breakpoint}\:hover\:text-#{$suffix}:hover { font-size: $value; }
+          .#{$screen}\:hover\:text-#{$suffix}:hover { font-size: $value; }
         }
 
         @if index($variants, 'group-hover') {
-          .#{$breakpoint}\:group:hover .group-hover\:text-#{$suffix} { font-size: $value; }
+          .#{$screen}\:group:hover .group-hover\:text-#{$suffix} { font-size: $value; }
         }
 
         @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:text-#{$suffix}:focus { font-size: $value; }
+          .#{$screen}\:focus\:text-#{$suffix}:focus { font-size: $value; }
         }
       }
     }

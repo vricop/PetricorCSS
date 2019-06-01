@@ -1,10 +1,10 @@
-@mixin font-weight($breakpoint: null) {
+@mixin font-weight($screen: null) {
   $variants: map-get($modules, 'font-weight');
 
   @if $variants == true or type-of($variants) == list {
     @each $suffix, $value in $font-weight {
       // DEFAULT
-      @if $breakpoint == null {
+      @if $screen == null {
         .font-#{$suffix} { font-weight: $value; }
 
         @if index($variants, 'hover') {
@@ -21,19 +21,19 @@
       }
 
       // RESPONSIVE
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:font-#{$suffix} { font-weight: $value; }
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:font-#{$suffix} { font-weight: $value; }
 
         @if index($variants, 'hover') {
-          .#{$breakpoint}\:hover\:font-#{$suffix}:hover { font-weight: $value; }
+          .#{$screen}\:hover\:font-#{$suffix}:hover { font-weight: $value; }
         }
 
         @if index($variants, 'group-hover') {
-          .#{$breakpoint}\:group:hover .group-hover\:font-#{$suffix} { font-weight: $value; }
+          .#{$screen}\:group:hover .group-hover\:font-#{$suffix} { font-weight: $value; }
         }
 
         @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:font-#{$suffix}:focus { font-weight: $value; }
+          .#{$screen}\:focus\:font-#{$suffix}:focus { font-weight: $value; }
         }
       }
     }
