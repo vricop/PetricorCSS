@@ -1,0 +1,35 @@
+@mixin white-space($breakpoint: null) {
+  $variants: map-get($modules, 'white-space');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $value in (normal, nowrap, pre, pre-line, pre-wrap) {
+      $class: if($value == nowrap, no-wrap, $value);
+
+      // DEFAULT
+      @if $breakpoint == null {
+        .whitespace-#{$class} { white-space: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:whitespace-#{$class}:hover { white-space: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:whitespace-#{$class}:focus { white-space: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $breakpoint != null {
+        .#{$breakpoint}\:whitespace-#{$class} { white-space: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$breakpoint}\:hover\:whitespace-#{$class}:hover { white-space: $value; }
+        }
+        
+        @if index($variants, 'focus') {
+          .#{$breakpoint}\:focus\:whitespace-#{$class}:focus { white-space: $value; }
+        }
+      }
+    }
+  }
+}

@@ -1,23 +1,6 @@
-// TODO:
-// - Refactor _responsive.scss
-// - Generate color generators for: border, text and background
-// - Remove variant parameters from generators. Generate them based on enabled/disabled modules
-// - Singularise mixin generators and files
-
-/*!
---------------------------------------------------------------------------------
- NGREDIENTS CSS - UTILITY CLASS GENERATOR BUILD IN SASS
---------------------------------------------------------------------------------
- Author: Víctor Rico
- Author URL: N/A
- Author email: vricop@gmail.com
- License: N/A
- Description: N/A
- Version: N/A
-*/
-
 // config, responsive & generators must always be at the top
 @import "config", "responsive", "utilities";
+
 @include align-content;
 @include align-items;
 @include appearance;
@@ -57,7 +40,9 @@
 @include text-transform;
 @include vertical-align;
 @include visibility;
+@include white-space;
 @include width;
 @include z-index;
+
 // Responsive must always be at the end
 @include responsive;
