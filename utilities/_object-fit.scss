@@ -1,0 +1,41 @@
+@mixin object-fit($screen: null) {
+  $variants: map-get($modules, 'object-fit');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $fit in (contain, cover, fill, none, scale-down) {
+      // DEFAULT
+      @if $screen == null {
+        .object-#{$fit} { object-fit: $fit; }
+
+        @if index($variants, 'hover') {
+          .hover\:object-#{$fit}:hover { object-fit: $fit; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .group:hover .group-hover\:object-#{$fit} { object-fit: $fit; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:object-#{$fit}:focus { object-fit: $fit; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:object-#{$fit} { object-fit: $fit; }
+
+        @if index($variants, 'hover') {
+          .#{$screen}\:hover\:object-#{$fit}:hover { object-fit: $fit; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .#{$screen}\:group:hover .group-hover\:object-#{$fit} { object-fit: $fit; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$screen}\:focus\:object-#{$fit}:focus { object-fit: $fit; }
+        }
+      }
+    }
+  }
+}
