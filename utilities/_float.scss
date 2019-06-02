@@ -1,18 +1,42 @@
-@mixin float($breakpoint: null) {
+@mixin clearfix($prefix: '.', $suffix: null) {
+  #{$prefix}clearfix#{$suffix} {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin float($screen: null) {
   $variants: map-get($modules, 'float');
-    
-  @if $variants != false {
+
+  @if $variants == true or type-of($variants) == list {
     @each $side in (left, right, none) {
-      @if $breakpoint == null {
-        .float-#{$side} {
-          float: $side;
-        };
+      // DEFAULT
+      @if $screen == null {
+        .float-#{$side} { float: $side; }
+
+        @if index($variants, 'hover') {
+          .hover\:float-#{$side}:hover { float: $side; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:float-#{$side}:focus { float: $side; }
+        }
       }
-  
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:float-#{$side} {
-          float: $side;
-        };
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:float-#{$side} { float: $side; }
+
+        @if index($variants, 'hover') {
+          .#{$screen}\:hover\:float-#{$side}:hover { float: $side; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$screen}\:focus\:float-#{$side}:focus { float: $side; }
+        }
+
+        @include clearfix('.#{$screen}\\:');
       }
     }
   }
