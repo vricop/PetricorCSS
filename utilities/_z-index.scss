@@ -1,4 +1,4 @@
-@mixin z-index($breakpoint: null) {
+@mixin z-index($screen: null) {
   $variants: map-get($modules, 'z-index');
 
   @if $variants == true or type-of($variants) == list {
@@ -7,7 +7,7 @@
       $utility: if(($value != 'auto') and ($value < 0), '-z', 'z-');
 
       // DEFAULT
-      @if $breakpoint == null {
+      @if $screen == null {
         .#{$utility}#{$value} { z-index: $value; }
   
         @if index($variants, 'hover') {
@@ -24,19 +24,19 @@
       }
 
       // RESPONSIVE
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:#{$utility}#{$value} { z-index: $value; }
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:#{$utility}#{$value} { z-index: $value; }
   
         @if index($variants, 'hover') {
-          .#{$breakpoint}\:hover\:#{$utility}#{$value}:hover { z-index: $value; }
+          .#{$screen}\:hover\:#{$utility}#{$value}:hover { z-index: $value; }
         }
         
         @if index($variants, 'group-hover') {
-          .#{$breakpoint}\:group:hover .group-hover\:#{$utility}#{$value} { z-index: $value; }
+          .#{$screen}\:group:hover .group-hover\:#{$utility}#{$value} { z-index: $value; }
         }
 
         @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:#{$utility}#{$value}:focus { z-index: $value; }
+          .#{$screen}\:focus\:#{$utility}#{$value}:focus { z-index: $value; }
         }
       }
     }
