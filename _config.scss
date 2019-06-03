@@ -357,6 +357,17 @@ $list-type: (
   decimal: decimal,
 );
 
+$object-position: (
+  top: top,
+  right: right,
+  bottom: bottom,
+  left: left,
+  top-right: 'top right',
+  top-left: 'top left',
+  bottom-right: 'bottom right',
+  bottom-left: 'bottom left'
+);
+
 $cursor: (
   auto,
   default,
@@ -398,6 +409,7 @@ $modules: (
   max-width: [responsive],
   min-width: [responsive],
   object-fit: true,
+  object-position: true,
   opacity: true,
   outline: [focus],
   overflow: true,

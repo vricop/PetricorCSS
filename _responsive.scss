@@ -28,6 +28,7 @@
       @include max-width($screen);
       @include min-width($screen);
       @include object-fit($screen);
+      @include object-position($screen);
       @include outline($screen);
       @include overflow($screen);
       @include padding($screen);
