@@ -1,33 +1,65 @@
 @mixin _inset($suffix, $val, $prefix: '.') { 
   // Insets
-  #{$prefix}inset-#{$suffix} { top: $val; right: $val; bottom: $val; left: $val; }
-  #{$prefix}inset-x-#{$suffix} { left: $val; right: $val; }
-  #{$prefix}inset-y-#{$suffix} { top: $val; bottom: $val; }
+  #{$prefix}inset-#{$suffix} { 
+    top: $val; 
+    right: $val; 
+    bottom: $val; 
+    left: $val;
+  }
 
+  #{$prefix}inset-x-#{$suffix} { 
+    left: $val; 
+    right: $val;
+  }
+
+  #{$prefix}inset-y-#{$suffix} { 
+    top: $val; 
+    bottom: $val;
+  }
+  
   // Sides
   @each $side in (top, right, bottom, left) {
     #{$prefix}#{$side}-#{$suffix} { #{$side}: $val; }
   }
 }
 
-@mixin inset($breakpoint: null) {
-  $variants: map-get($modules, 'position');
+@mixin inset($screen: null) {
+  $variants: map-get($modules, 'inset');
 
-  @if $variants != false {
-    @each $suffix, $val in $inset {
-      @if not($breakpoint) {
-        @include _inset(
-          $suffix: $suffix,
-          $val: $val
-        );
+  @if $variants == true or type-of($variants) == list {
+    @each $suffix, $value in $inset {
+      // DEFAULT
+      @if $screen == null {
+        @include _inset($suffix, $value);
+
+        @if index($variants, 'hover') {
+          @include _inset('#{$suffix}:hover', $value, '.hover\\:');
+        }
+        
+        @if index($variants, 'group-hover') {
+          @include _inset($suffix, $value, '.group:hover .group-hover\\:');
+        }
+        
+        @if index($variants, 'focus') {
+          @include _inset('#{$suffix}:focus', $value, '.focus\\:');
+        }
       }
-    
-      @if index($variants, 'responsive') and $breakpoint != null {
-        @include _inset(
-          $prefix: '.#{$breakpoint}\\:',
-          $suffix: $suffix,
-          $val: $val
-        );
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        @include _inset($suffix, $value, '.#{$screen}\\:');
+
+        @if index($variants, 'hover') {
+          @include _inset('#{$suffix}:hover', $value, '.#{$screen}\\:hover\\:');
+        }
+        
+        @if index($variants, 'group-hover') {
+          @include _inset($suffix, $value, '.#{$screen}\\:group:hover .group-hover\\:');
+        }
+        
+        @if index($variants, 'focus') {
+          @include _inset('#{$suffix}:focus', $value, '.#{$screen}\\:focus\\:');
+        }
       }
     }
   }
