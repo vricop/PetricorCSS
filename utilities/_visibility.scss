@@ -3,16 +3,16 @@
   #{$prefix}invisible { visibility: hidden; }
 }
 
-@mixin visibility($breakpoint: null) {
+@mixin visibility($screen: null) {
   $variants: map-get($modules, 'visibility');
 
-  @if $variants != false {
-    @if not($breakpoint) {
+  @if $variants == true or type-of($variants) == list {
+    @if $screen == null {
       @include _visibility;
     }
 
-    @if index($variants, 'responsive') and $breakpoint != null {
-      @include _visibility('.#{$breakpoint}\\:');
+    @if index($variants, 'responsive') and $screen != null {
+      @include _visibility('.#{$screen}\\:');
     }
   }
 }
