@@ -295,16 +295,17 @@ $fonts: (
     'Apple Color Emoji',
     'Segoe UI Emoji',
     'Segoe UI Symbol',
-    'Noto Color Emoji'
+    'Noto Color Emoji',
+    sans-serif
   ),
 
   serif: (
     'Georgia',
-    'Garamond'
+    'Garamond',
     'Cambria',
     'Times New Roman',
     'Times',
-    'serif'
+    serif
   ),
 
   monospace: (
@@ -313,7 +314,7 @@ $fonts: (
     'Consolas',
     'Liberation Mono',
     'Courier New',
-    'monospace'
+    monospace
   ),
 );
 
