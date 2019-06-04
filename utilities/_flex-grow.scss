@@ -1,0 +1,33 @@
+@mixin flex-grow($screen: null) {
+  $variants: map-get($modules, 'flex-grow');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $suffix, $value in (grow: 1, grow-0: 0) {
+      // DEFAULT
+      @if $screen == null {
+        .flex-#{$suffix} { flex-grow: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:flex-#{$suffix}:hover { flex-grow: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:flex-#{$suffix}:focus { flex-grow: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:flex-#{$suffix} { flex-grow: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$screen}\:hover\:flex-#{$suffix}:hover { flex-grow: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$screen}\:focus\:flex-#{$suffix}:focus { flex-grow: $value; }
+        }
+      }
+    }
+  }
+}
