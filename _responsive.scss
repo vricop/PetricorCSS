@@ -13,6 +13,7 @@
       @include cursor($screen);
       @include display($screen);
       @include flex-direction($screen);
+      @include flex-wrap($screen);
       @include float($screen);
       @include font-size($screen);
       @include font-smoothing($screen);
