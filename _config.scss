@@ -378,7 +378,7 @@ $cursor: (
 
 // ENABLE/DISABLE VARIANTS
 $modules: (
-  align-content: true,
+  align-content: [responsive],
   align-items: [responsive],
   appearance: false,
   background-color: [responsive hover group-hover],

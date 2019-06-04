@@ -1,32 +1,37 @@
-@import '../utils/functions/is-valid-variant';
+@mixin align-content($screen: null) {
+  $variants: map-get($modules, 'align-content');
 
-// Variants for align-content classes
-$_valid-align-content-variants: ('responsive');
-// Get options from align-contents module
-$_align-content-module: map-get($modules, 'align-content');
+  @if $variants == true or type-of($variants) == list {
+    @each $value in (space-around, space-between, space-evenly, center, flex-start, flex-end) {
+      $suffix: value;
+      @if $value == flex-start { $suffix: 'start'; }
+      @if $value == flex-end { $suffix: 'end'; }
 
-@mixin _align-content-builder($prefix: null) {
-  .#{$prefix}justify-around { justify-content: space-around; }
-  .#{$prefix}justify-between { justify-content: space-between; }
-  .#{$prefix}justify-evently { justify-content: space-evenly; }
-  .#{$prefix}justify-center { justify-content: center; }
-  .#{$prefix}justify-start { justify-content: flex-start; }
-  .#{$prefix}justify-end { justify-content: flex-end; }
-}
+      // DEFAULT
+      @if $screen == null {
+        .content-#{$suffix} { align-content: $value; }
 
-@mixin align-content($breakpoint: null) {
-  @if ($_align-content-module == true) or is-valid-variant($_align-content-module, $_valid-align-content-variants) {
-    // # DEFAULT CLASSES
-    // If '$breakpoint' is null, generate default classes
-    @if $breakpoint == null {
-      @include _align-content-builder;
-    }
-    
-    // # RESPONSIVE CLASSES
-    // 1. Execute if reponsive module is enabled and '$breakpoint' isn’t null
-    // 2. Add '$breakpoint\:' prefix for responsive variants
-    @if index($_align-content-module, 'responsive') and $breakpoint != null {
-      @include _align-content-builder('#{$breakpoint}\\:');
+        @if index($variants, 'hover') {
+          .hover\:content-#{$suffix}:hover { align-content: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:content-#{$suffix}:focus { align-content: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:content-#{$suffix} { align-content: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$screen}\:hover\:content-#{$suffix}:hover { align-content: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$screen}\:focus\:content-#{$suffix}:focus { align-content: $value; }
+        }
+      }
     }
   }
 }
