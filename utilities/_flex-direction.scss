@@ -1,30 +1,33 @@
-@import '../utils/functions/is-valid-variant';
+@mixin flex-direction($screen: null) {
+  $variants: map-get($modules, 'flex-direction');
 
-// Variants for flex-direction classes
-$_valid-flex-direction-variants: ('responsive');
-// Get options from flex-direction module
-$_flex-direction-module: map-get($modules, 'flex-direction');
+  @if $variants == true or type-of($variants) == list {
+    @each $direction in (row, row-reverse, column, column-reverse) {
+      // DEFAULT
+      @if $screen == null {
+        .flex-#{$direction} { flex-direction: $direction; }
 
-@mixin _flex-direction-builder($prefix: null, $suffix: null) {
-  .#{$prefix}flex-col-reverse#{$suffix} { flex-direction: column-reverse; }
-  .#{$prefix}flex-col#{$suffix} { flex-direction: column; }
-  .#{$prefix}flex-row-reverse#{$suffix} { flex-direction: row-reverse; }
-  .#{$prefix}flex-row#{$suffix} { flex-direction: row; }
-}
+        @if index($variants, 'hover') {
+          .hover\:flex-#{$direction}:hover { flex-direction: $direction; }
+        }
 
-@mixin flex-direction($breakpoint: null) {
-  @if ($_flex-direction-module == true) or is-valid-variant($_flex-direction-module, $_valid-flex-direction-variants) {
-    // # DEFAULT CLASSES
-    // If '$breakpoint' is null, generate default classes
-    @if $breakpoint == null {
-      @include _flex-direction-builder;
-    }
-    
-    // # RESPONSIVE CLASSES
-    // 1. Execute if reponsive module is enabled and '$breakpoint' isn't null
-    // 2. Add '$breakpoint\:' prefix for responsive variants
-    @if index($_flex-direction-module, 'responsive') and $breakpoint != null {
-      @include _flex-direction-builder('#{$breakpoint}\\:');
+        @if index($variants, 'focus') {
+          .focus\:flex-#{$direction}:focus { flex-direction: $direction; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:flex-#{$direction} { flex-direction: $direction; }
+
+        @if index($variants, 'hover') {
+          .#{$screen}\:hover\:flex-#{$direction}:hover { flex-direction: $direction; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$screen}\:focus\:flex-#{$direction}:focus { flex-direction: $direction; }
+        }
+      }
     }
   }
 }
