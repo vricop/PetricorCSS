@@ -4,6 +4,8 @@
   @if $variants == true or type-of($variants) == list {
     @each $value in (stretch, flex-start, flex-end, center, baseline) {
       $suffix: $value;
+      @if $value == flex-start { $suffix: start; }
+      @if $value == flex-end { $suffix: end; }
       
       // DEFAULT
       @if $screen == null {
