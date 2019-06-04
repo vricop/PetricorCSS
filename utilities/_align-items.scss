@@ -1,31 +1,35 @@
-@import '../utils/functions/is-valid-variant';
+@mixin align-items($screen: null) {
+  $variants: map-get($modules, 'align-items');
 
-// Variants for align-items classes
-$_valid-align-items-variants: ('responsive');
-// Get options from align-items module
-$_align-items-module: map-get($modules, 'align-items');
+  @if $variants == true or type-of($variants) == list {
+    @each $value in (stretch, flex-start, flex-end, center, baseline) {
+      $suffix: $value;
+      
+      // DEFAULT
+      @if $screen == null {
+        .items-#{$suffix} { align-items: $value; }
 
-@mixin _align-items-builder($prefix: null) {
-  .#{$prefix}items-baseline { align-items: baseline; }
-  .#{$prefix}items-center { align-items: center; }
-  .#{$prefix}items-start { align-items: flex-start; }
-  .#{$prefix}items-end { align-items: flex-end; }
-  .#{$prefix}items-stretch { align-items: stretch; }
-}
+        @if index($variants, 'hover') {
+          .hover\:items-#{$suffix}:hover { align-items: $value; }
+        }
 
-@mixin align-items($breakpoint: null) {
-  @if ($_align-items-module == true) or is-valid-variant($_align-items-module, $_valid-align-items-variants) {
-    // # DEFAULT CLASSES
-    // If '$breakpoint' is null, generate default classes
-    @if $breakpoint == null {
-      @include _align-items-builder;
-    }
-    
-    // # RESPONSIVE CLASSES
-    // 1. Execute if reponsive module is enabled and '$breakpoint' isn’t null
-    // 2. Add '$breakpoint\:' prefix for responsive variants
-    @if index($_align-items-module, 'responsive') and $breakpoint != null {
-      @include _align-items-builder('#{$breakpoint}\\:');
+        @if index($variants, 'focus') {
+          .focus\:items-#{$suffix}:focus { align-items: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:items-#{$suffix} { align-items: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$screen}\:hover\:items-#{$suffix}:hover { align-items: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$screen}\:focus\:items-#{$suffix}:focus { align-items: $value; }
+        }
+      }
     }
   }
 }
