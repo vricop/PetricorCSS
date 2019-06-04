@@ -3,6 +3,7 @@
     @include mediaqueries($breakpoint) {
       @include align-content($screen);
       @include align-items($screen);
+      @include align-self($screen);
       @include background-color($screen);
       @include border-color($screen);
       @include border-radius($screen);

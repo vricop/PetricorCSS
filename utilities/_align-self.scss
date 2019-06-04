@@ -1,0 +1,37 @@
+@mixin align-self($screen: null) {
+  $variants: map-get($modules, 'align-self');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $value in (auto, flex-start, center, flex-end, stretch) {
+      $suffix: value;
+      @if $value == flex-start { $suffix: 'start'; }
+      @if $value == flex-end { $suffix: 'end'; }
+
+      // DEFAULT
+      @if $screen == null {
+        .self-#{$suffix} { align-self: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:self-#{$suffix}:hover { align-self: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:self-#{$suffix}:focus { align-self: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:self-#{$suffix} { align-self: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$screen}\:hover\:self-#{$suffix}:hover { align-self: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$screen}\:focus\:self-#{$suffix}:focus { align-self: $value; }
+        }
+      }
+    }
+  }
+}
