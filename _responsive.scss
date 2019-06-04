@@ -22,6 +22,7 @@
       @include font-weight($screen);
       @include height($screen);
       @include inset($screen);
+      @include justify-content($screen);
       @include letter-spacing($screen);
       @include line-height($screen);
       @include list-style-position($screen);
