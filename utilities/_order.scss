@@ -1,0 +1,41 @@
+@mixin order($screen: null) {
+  $variants: map-get($modules, 'order');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $suffix, $value in $order {
+      // DEFAULT
+      @if $screen == null {
+        .order-#{$suffix} { order: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:order-#{$suffix}:hover { order: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .group:hover .group-hover\:order-#{$suffix} { order: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:order-#{$suffix}:focus { order: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:order-#{$suffix} { order: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$screen}\:hover\:order-#{$suffix}:hover { order: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .#{$screen}\:group:hover .group-hover\:order-#{$suffix} { order: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$screen}\:focus\:order-#{$suffix}:focus { order: $value; }
+        }
+      }
+    }
+  }
+}

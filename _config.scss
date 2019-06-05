@@ -276,6 +276,12 @@ $flex-shrink: (
   'default': 1,
 );
 
+$order: (
+  'first': -1,
+  'last': 999,
+  'none': 0,
+);
+
 // TYPE SCALE
 //   1. 1.2 — Minor third <==
 //   2. 1.25 — Major third
@@ -425,6 +431,7 @@ $modules: (
   object-fit: true,
   object-position: true,
   opacity: true,
+  order: false,
   outline: [focus],
   overflow: true,
   padding: [responsive],
