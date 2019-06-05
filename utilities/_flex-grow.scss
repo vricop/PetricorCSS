@@ -2,30 +2,32 @@
   $variants: map-get($modules, 'flex-grow');
 
   @if $variants == true or type-of($variants) == list {
-    @each $suffix, $value in (grow: 1, grow-0: 0) {
+    @each $suffix, $value in $flex-grow {
+      $suffix: if($suffix=='default', null, '-#{$suffix}');
+
       // DEFAULT
       @if $screen == null {
-        .flex-#{$suffix} { flex-grow: $value; }
+        .flex-grow#{$suffix} { flex-grow: $value; }
 
         @if index($variants, 'hover') {
-          .hover\:flex-#{$suffix}:hover { flex-grow: $value; }
+          .hover\:flex-grow#{$suffix}:hover { flex-grow: $value; }
         }
 
         @if index($variants, 'focus') {
-          .focus\:flex-#{$suffix}:focus { flex-grow: $value; }
+          .focus\:flex-grow#{$suffix}:focus { flex-grow: $value; }
         }
       }
 
       // RESPONSIVE
       @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:flex-#{$suffix} { flex-grow: $value; }
+        .#{$screen}\:flex-grow#{$suffix} { flex-grow: $value; }
 
         @if index($variants, 'hover') {
-          .#{$screen}\:hover\:flex-#{$suffix}:hover { flex-grow: $value; }
+          .#{$screen}\:hover\:flex-grow#{$suffix}:hover { flex-grow: $value; }
         }
 
         @if index($variants, 'focus') {
-          .#{$screen}\:focus\:flex-#{$suffix}:focus { flex-grow: $value; }
+          .#{$screen}\:focus\:flex-grow#{$suffix}:focus { flex-grow: $value; }
         }
       }
     }

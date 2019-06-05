@@ -266,6 +266,11 @@ $z-index: (
   -10
 );
 
+$flex-grow: (
+  '0': 0,
+  'default': 1,
+);
+
 $flex-shrink: (
   '0': 0,
   'default': 1,
