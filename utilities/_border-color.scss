@@ -1,42 +1,48 @@
-@import '../utils/functions/is-valid-variant';
+@mixin border-color($screen: null) {
+  $variants: map-get($modules, 'border-color');
 
-// Variants for border-color classes
-$_valid-border-color-variants: ('responsive', 'hover', 'focus', 'ems');
-// Get colors module
-$_border-module: map-get($modules, 'border-color');
-
-@mixin _border-color-builder($suffix, $value, $prefix: null) {
-  .#{$prefix}border-#{$suffix} { border-color: $value; }
-}
-
-@mixin border-color($breakpoint: null) {
-  @if ($_border-module == true) or is-valid-variant($_border-module, $_valid-border-color-variants) {
-    // # DEFAULT CLASSES
-    // If '$breakpoint' is null, generate default classes
+  @if $variants == true or type-of($variants) == list {
     @each $suffix, $value in $colors {
-      @if $breakpoint == null {
-        @include _border-color-builder($suffix, $value);
+      // DEFAULT
+      @if $screen == null {
+        .border-#{$suffix} { border-color: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:border-#{$suffix}:hover { border-color: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .group:hover .group-hover\:border-#{$suffix} { border-color: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:border-#{$suffix}:focus { border-color: $value; }
+        }
+        
+        @if index($variants, 'active') {
+          .active\:border-#{$suffix}:active { border-color: $value; }
+        }
       }
-      
-      // # RESPONSIVE CLASSES
-      // 1. Execute if reponsive module is enabled and '$breakpoint' isn't null
-      // 2. Add '$breakpoint\:' prefix for responsive variants
-      @if index($_border-module, 'responsive') and $breakpoint != null {
-        @include _border-color-builder($suffix, $value, '#{$breakpoint}\\:');
-      }
-      
-      // # HOVER CLASSES
-      // 1. Execute if 'hover' module is enabled and if '$breakpoint' is null
-      // 2. Add ':hover' pseudo-selector and 'hover\:' prefix variants
-      @if index($_border-module, 'hover') and $breakpoint == null {
-        @include _border-color-builder('#{$suffix}:hover', $value, 'hover\\:');
-      }
-      
-      // # FOCUS CLASSES
-      // 1. Execute if 'focus' module is enabled and if '$breakpoint' is null
-      // 2. Add ':focus' pseudo-selector and 'focus\:' prefix variants
-      @if index($_border-module, 'focus') and $breakpoint == null {
-        @include _border-color-builder('#{$suffix}:focus', $value, 'focus\\:');
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:border-#{$suffix} { border-color: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$screen}\:hover\:border-#{$suffix}:hover { border-color: $value; }
+        }
+
+        @if index($variants, 'group-hover') {
+          .#{$screen}\:group:hover .group-hover\:border-#{$suffix} { border-color: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$screen}\:focus\:border-#{$suffix}:focus { border-color: $value; }
+        }
+
+        @if index($variants, 'active') {
+          .#{$screen}\:active\:border-#{$suffix}:active { border-color: $value; }
+        }
       }
     }
   }
