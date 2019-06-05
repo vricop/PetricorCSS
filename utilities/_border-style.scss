@@ -1,44 +1,35 @@
-@import '../utils/functions/is-valid-variant';
+@mixin border-style($screen: null) {
+  $variants: map-get($modules, 'border-style');
 
-// Variants for border-style classes
-$_valid-border-style-variants: ('responsive', 'hover', 'focus');
-// Get options from border-style module
-$_border-style-module: map-get($modules, 'border-style');
+  @if $variants == true or type-of($variants) == list {
+    @each $value in (solid, dashed, dotted, none) {
+      $suffix: $value;
 
-@mixin _border-style-builder($prefix: null, $suffix: null) {
-  .#{$prefix}border-solid#{$suffix} { border-style: solid; }
-  .#{$prefix}border-dashed#{$suffix} { border-style: dashed; }
-  .#{$prefix}border-dotted#{$suffix} { border-style: dotted; }
-  .#{$prefix}border-none#{$suffix} { border-style: none; }
-}
+      // DEFAULT
+      @if $screen == null {
+        .border-#{$suffix} { border-style: $value; }
 
-@mixin border-style($breakpoint: null) {
-  @if ($_border-style-module == true) or is-valid-variant($_border-style-module, $_valid-border-style-variants) {
-    // # DEFAULT CLASSES
-    // If '$breakpoint' is null, generate default classes
-    @if $breakpoint == null {
-      @include _border-style-builder;
-    }
-    
-    // # RESPONSIVE CLASSES
-    // 1. Execute if reponsive module is enabled and '$breakpoint' isn't null
-    // 2. Add '$breakpoint\:' prefix for responsive variants
-    @if index($_border-style-module, 'responsive') and $breakpoint != null {
-      @include _border-style-builder('#{$breakpoint}\\:');
-    }
-    
-    // # HOVER CLASSES
-    // 1. Execute if 'hover' module is enabled and if '$breakpoint' is null
-    // 2. Add ':hover' pseudo-selector and 'hover\:' prefix variants
-    @if index($_border-style-module, 'hover') and $breakpoint == null {
-      @include _border-style-builder('hover\\:', ':hover');
-    }
+        @if index($variants, 'hover') {
+          .hover\:border-#{$suffix}:hover { border-style: $value; }
+        }
 
-    // # FOCUS CLASSES
-    // 1. Execute if 'focus' module is enabled and if '$breakpoint' is null
-    // 2. Add ':focus' pseudo-selector and 'focus\:' prefix variants
-    @if index($_border-style-module, 'focus') and $breakpoint == null {
-      @include _border-style-builder('focus\\:', ':focus');
+        @if index($variants, 'focus') {
+          .focus\:border-#{$suffix}:focus { border-style: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:border-#{$suffix} { border-style: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$screen}\:hover\:border-#{$suffix}:hover { border-style: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$screen}\:focus\:border-#{$suffix}:focus { border-style: $value; }
+        }
+      }
     }
   }
 }
