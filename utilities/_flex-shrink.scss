@@ -1,0 +1,35 @@
+@mixin flex-shrink($screen: null) {
+  $variants: map-get($modules, 'flex-shrink');
+
+  @if $variants == true or type-of($variants) == list {
+    @each $suffix, $value in $flex-shrink {
+      $suffix: if($suffix == 'default', null, '-#{$suffix}');
+
+      // DEFAULT
+      @if $screen == null {
+        .flex-shrink#{$suffix} { flex-shrink: $value; }
+
+        @if index($variants, 'hover') {
+          .hover\:flex-shrink#{$suffix}:hover { flex-shrink: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .focus\:flex-shrink#{$suffix}:focus { flex-shrink: $value; }
+        }
+      }
+
+      // RESPONSIVE
+      @if index($variants, 'responsive') and $screen != null {
+        .#{$screen}\:flex-shrink#{$suffix} { flex-shrink: $value; }
+
+        @if index($variants, 'hover') {
+          .#{$screen}\:hover\:flex-shrink#{$suffix}:hover { flex-shrink: $value; }
+        }
+
+        @if index($variants, 'focus') {
+          .#{$screen}\:focus\:flex-shrink#{$suffix}:focus { flex-shrink: $value; }
+        }
+      }
+    }
+  }
+}

@@ -266,6 +266,11 @@ $z-index: (
   -10
 );
 
+$flex-shrink: (
+  '0': 0,
+  'default': 1,
+);
+
 // TYPE SCALE
 //   1. 1.2 — Minor third <==
 //   2. 1.25 — Major third
@@ -394,6 +399,7 @@ $modules: (
   display: [responsive],
   flex-direction: [responsive],
   flex-grow: true,
+  flex-shrink: true,
   flex-wrap: true,
   float: false,
   font-family: true,
