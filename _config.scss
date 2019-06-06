@@ -204,27 +204,20 @@ $height: (
   half-screen: 50vh
 );
 
-// # BORDERS
-//
-// Class name: .{*?}border{-side?}{-width?}
-// CSS property: border-width
-//
-// Note: if we prefix it with ‘*’ and ems variant are enabled we can use em 
-// borders besides rem variants.
-
-$border-widths: (
-  default: 1px,
-  0: 0,
-  2: 0.125rem,
-  4: 0.25rem,
-  8: 0.5rem,
-);
-
-$em-border-widths: (
-  default: 0.25em,
-  2: 0.125em,
-  4: 0.25em,
-  8: 0.5em,
+$border-width: (
+  rem: (
+    '0': 0,
+    'default': 0.0625rem,
+    '2': 0.125rem,
+    '4': 0.25rem,
+    '8': 0.5rem,
+  ),
+  em: (
+    'default': 0.0625em,
+    '2': 0.125em,
+    '4': 0.25em,
+    '8': 0.5em,
+  )
 );
 
 $border-radius: (
@@ -402,7 +395,7 @@ $modules: (
   border-color: [hover],
   border-radius: true,
   border-style: true,
-  border-width: [ems],
+  border-width: true,
   box-shadow: true,
   colors: [hover],
   container: true,
