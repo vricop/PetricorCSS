@@ -6,6 +6,7 @@
       @include align-self($screen);
       @include background-color($screen);
       @include border-color($screen);
+      @include border-radius-em($screen);
       @include border-radius($screen);
       @include border-style($screen);
       @include border-width($screen);

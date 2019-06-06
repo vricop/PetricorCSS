@@ -228,6 +228,12 @@ $border-radius: (
   full: 9999px,
 );
 
+$border-radius-em: (
+  default: .25em,
+  lg: 0.5em,
+  sm: .125em,
+);
+
 $opacity: (
   0: 0,
   25: .25,
@@ -393,6 +399,7 @@ $modules: (
   appearance: false,
   background-color: [responsive hover group-hover],
   border-color: [hover],
+  border-radius-em: true,
   border-radius: true,
   border-style: true,
   border-width: true,
