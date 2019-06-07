@@ -1,0 +1,43 @@
+@mixin border-radius-sides($suffix, $value, $prefix: '.') {
+  $suffix: if($suffix == 'default', null, '-#{$suffix}');
+
+  #{$prefix}rounded#{$suffix} {
+    border-radius: $value;
+  }
+
+  #{$prefix}rounded-t#{$suffix} {
+    border-top-left-radius: $value;
+    border-top-right-radius: $value;
+  }
+
+  #{$prefix}rounded-r#{$suffix} {
+    border-top-right-radius: $value;
+    border-bottom-right-radius: $value;
+  }
+
+  #{$prefix}rounded-b#{$suffix} {
+    border-bottom-left-radius: $value;
+    border-bottom-right-radius: $value;
+  }
+
+  #{$prefix}rounded-l#{$suffix} {
+    border-top-left-radius: $value;
+    border-bottom-left-radius: $value;
+  }
+
+  #{$prefix}rounded-tl#{$suffix} {
+    border-top-left-radius: $value;
+  }
+
+  #{$prefix}rounded-tr#{$suffix} {
+    border-top-right-radius: $value;
+  }
+
+  #{$prefix}rounded-bl#{$suffix} {
+    border-bottom-left-radius: $value;
+  }
+
+  #{$prefix}rounded-br#{$suffix} {
+    border-bottom-right-radius: $value;
+  }
+}

@@ -1,62 +1,57 @@
-@mixin _border-radius-em($suffix, $value, $prefix: '.') {
-  #{$prefix}\*rounded-t#{$suffix} { 
-    border-top-left-radius: #{$value}; 
-    border-top-right-radius: #{$value};
-  }
-  
-  #{$prefix}\*rounded-r#{$suffix} { 
-    border-top-right-radius: #{$value}; 
-    border-bottom-right-radius: #{$value};
-  }
-
-  #{$prefix}\*rounded-b#{$suffix} { 
-    border-bottom-left-radius: #{$value}; 
-    border-bottom-right-radius: #{$value};
-  }
-  
-  #{$prefix}\*rounded-l#{$suffix} { 
-    border-top-left-radius: #{$value}; 
-    border-bottom-left-radius: #{$value};
-  }
-
-  #{$prefix}rounded#{$suffix} { border-radius: #{$value}; }
-  
-  #{$prefix}\*rounded-tl#{$suffix} { border-top-left-radius: #{$value}; }
-  #{$prefix}\*rounded-tr#{$suffix} { border-top-right-radius: #{$value}; }
-  #{$prefix}\*rounded-bl#{$suffix} { border-bottom-left-radius: #{$value}; }
-  #{$prefix}\*rounded-br#{$suffix} { border-bottom-right-radius: #{$value}; }
-}
+@import '../utils/mixins/border-radius-sides';
 
 @mixin border-radius-em($screen: null) {
   $variants: map-get($modules, 'border-radius-em');
 
   @if $variants == true or type-of($variants) == list {
     @each $suffix, $value in $border-radius-em {
-      $suffix: if($suffix == default, null, '-#{$suffix}');
-
       // DEFAULT
       @if $screen == null {
-        @include _border-radius-em($suffix, $value);
-        
+        @include border-radius-sides(
+          $prefix: '.\\*',
+          $value: $value,
+          $suffix: $suffix
+        );
+
         @if index($variants, 'hover') {
-          @include _border-radius-em('#{$suffix}:hover', $value, '.hover\\:');
+          @include border-radius-sides(
+            $prefix: '.hover\\:\\*',
+            $value: $value,
+            $suffix: '#{$suffix}:hover'
+          );
         }
-        
+
         @if index($variants, 'focus') {
-          @include _border-radius-em('#{$suffix}:focus', $value, '.focus\\:');
+          @include border-radius-sides(
+            $prefix: '.focus\\:\\*',
+            $value: $value,
+            $suffix: '#{$suffix}:focus'
+          );
         }
       }
 
       // RESPONSIVE
       @if index($variants, 'responsive') and $screen != null {
-        @include _border-radius-em('$#{$screen}\\:#{$suffix}', $value, $suffix);
+        @include border-radius-sides(
+          $prefix: '.#{$screen}\\:\\*',
+          $value: $value,
+          $suffix: $suffix
+        );
 
         @if index($variants, 'hover') {
-          @include _border-radius-em('$#{$screen}\\:hover\\:#{$suffix}', $value, '#{$suffix}:hover');
+          @include border-radius-sides(
+            $prefix: '.#{$screen}\\:hover\\:\\*',
+            $value: $value,
+            $suffix: '#{$suffix}:hover'
+          );
         }
-        
+
         @if index($variants, 'focus') {
-          @include _border-radius-em('$#{$screen}\\:focus\\:#{$suffix}', $value, '#{$suffix}:focus');
+          @include border-radius-sides(
+            $prefix: '.#{$screen}\\:focus\\:\\*',
+            $value: $value,
+            $suffix: '#{$suffix}:focus'
+          );
         }
       }
     }

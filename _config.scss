@@ -201,7 +201,7 @@ $height: (
   px: 1px,
   full: 100%,
   screen: 100vh,
-  half-screen: 50vh
+  'screen-1\\/2': 50vh
 );
 
 $border-width: (
@@ -398,8 +398,8 @@ $modules: (
   align-self: false,
   appearance: false,
   background-color: [responsive hover group-hover],
-  border-color: [hover],
-  border-radius-em: true,
+  border-color: true,
+  border-radius-em: false,
   border-radius: true,
   border-style: true,
   border-width: true,
