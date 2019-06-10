@@ -15,6 +15,6 @@
     @include padding-classes($prefix, $modifier, $state, $value);
   };
   @include build-variants($padding-em, 'padding-em', $screen) using ($prefix, $modifier, $state, $value) {
-    @include padding-classes($prefix, $modifier, $state, $value);
+    @include padding-classes('#{$prefix}\\*', $modifier, $state, $value);
   };
 }
