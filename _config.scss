@@ -49,20 +49,23 @@ $box-shadow: (
 );
 
 $margin: (
-  auto: auto,
-  0: 0,
-  1: 0.25rem,
-  2: 0.5rem,
-  3: 0.75rem,
-  4: 1rem,
-  5: 1.25rem,
-  6: 1.5rem,
-  7: 1.75rem,
-  8: 2rem,
-  9: 2.25rem,
-  10: 2.5rem,
-  -1: -0.25rem,
-  -2: -0.5rem
+  'auto': auto,
+  '0': 0,
+  '1': 0.25rem,
+  '2': 0.5rem,
+  '3': 0.75rem,
+  '4': 1rem,
+  '5': 1.25rem,
+  '6': 1.5rem,
+  '7': 1.75rem,
+  '8': 2rem,
+  '9': 2.25rem,
+  '10': 2.5rem,
+);
+  
+$margin-negative: (    
+  '1': -0.25rem,
+  '2': -0.5rem,
 );
 
 $padding: (
@@ -173,28 +176,29 @@ $min-width: (
 );
 
 $height: (
-  0: 0,
-  1: 0.25rem,
-  2: 0.5rem,
-  3: 0.75rem,
-  4: 1rem,
-  5: 1.25rem,
-  6: 1.5rem,
-  8: 2rem,
-  10: 2.5rem,
-  12: 3rem,
-  16: 4rem,
-  20: 5rem,
-  24: 6rem,
-  32: 8rem,
-  40: 10rem,
-  48: 12rem,
-  56: 14rem,
-  64: 16rem,
-  auto: auto,
-  px: 1px,
-  full: 100%,
-  screen: 100vh,
+  '0': 0,
+  '1': 0.25rem,
+  '2': 0.5rem,
+  '3': 0.75rem,
+  '4': 1rem,
+  '5': 1.25rem,
+  '6': 1.5rem,
+  '8': 2rem,
+  '10': 2.5rem,
+  '12': 3rem,
+  '16': 4rem,
+  '20': 5rem,
+  '24': 6rem,
+  '32': 8rem,
+  '40': 10rem,
+  '48': 12rem,
+  '56': 14rem,
+  '64': 16rem,
+  'auto': auto,
+  'px': 1px,
+  'full': 100%,
+  'half': 50%,
+  'screen': 100vh,
   'screen-1\\/2': 50vh
 );
 
@@ -214,25 +218,25 @@ $border-width-em: (
 );
 
 $border-radius: (
-  none: 0,
-  default: .25rem,
-  lg: 0.5rem,
-  sm: .125rem,
-  full: 9999px,
+  'none': 0,
+  'default': .25rem,
+  'lg': 0.5rem,
+  'sm': .125rem,
+  'full': 9999px,
 );
 
 $border-radius-em: (
-  default: .25em,
-  lg: 0.5em,
-  sm: .125em,
+  'default': .25em,
+  'lg': 0.5em,
+  'sm': .125em,
 );
 
 $opacity: (
-  0: 0,
-  25: .25,
-  50: .5,
-  75: .75,
-  100: 1,
+  '0': 0,
+  '25': .25,
+  '50': .5,
+  '75': .75,
+  '100': 1,
 );
 
   
@@ -265,15 +269,15 @@ $order: (
 );
 
 $font-size: (
-  sm: 0.833rem,  // 13px <== small
-  base: 1rem,    // 16px <== base
-  lg: 1.2rem,    // 19px <== h6
-  xl: 1.44rem,   // 20px <== h5
-  2xl: 1.728rem, // 23px <== h4
-  3xl: 2.074rem, // 27px <== h3
-  4xl: 2.488rem, // 33px <== h2
-  5xl: 2.985rem, // 47px <== h1
-  6xl: 3.582rem, // 57px
+  'sm': 0.833rem,  // 13px <== small
+  'base': 1rem,    // 16px <== base
+  'lg': 1.2rem,    // 19px <== h6
+  'xl': 1.44rem,   // 20px <== h5
+  '2xl': 1.728rem, // 23px <== h4
+  '3xl': 2.074rem, // 27px <== h3
+  '4xl': 2.488rem, // 33px <== h2
+  '5xl': 2.985rem, // 47px <== h1
+  '6xl': 3.582rem, // 57px
 );
 
 $fonts: (
@@ -313,50 +317,50 @@ $fonts: (
 );
 
 $leading: (
-  none: 1,
-  tight: 1.25,
-  snug: 1.375,
-  normal: 1.5,
-  relaxed: 1.625,
-  loose: 2,
+  'none': 1,
+  'tight': 1.25,
+  'snug': 1.375,
+  'normal': 1.5,
+  'relaxed': 1.625,
+  'loose': 2,
 );
 
 $tracking: (
-  tighter: -0.05em,
-  tight: -0.025em,
-  normal: 0,
-  wide: 0.025em,
-  wider: 0.05em,
-  widest: 0.1em,
+  'tighter': -0.05em,
+  'tight': -0.025em,
+  'normal': 0,
+  'wide': 0.025em,
+  'wider': 0.05em,
+  'widest': 0.1em,
 );
 
 $font-weight: (
-  thin: 100, 
-  extra-light: 200, 
-  light: 300,
-  normal: 400,
-  medium: 500,
-  semi-bold: 600,
-  bold: 700,
-  extra-bold: 800,
-  black: 900,
+  'thin': 100, 
+  'extra-light': 200, 
+  'light': 300,
+  'normal': 400,
+  'medium': 500,
+  'semi-bold': 600,
+  'bold': 700,
+  'extra-bold': 800,
+  'black': 900,
 );
 
 $list-type: (
-  none: none,
-  disc: disc,
-  decimal: decimal,
+  'none': none,
+  'disc': disc,
+  'decimal': decimal,
 );
 
 $object-position: (
-  top: top,
-  right: right,
-  bottom: bottom,
-  left: left,
-  top-right: 'top right',
-  top-left: 'top left',
-  bottom-right: 'bottom right',
-  bottom-left: 'bottom left'
+  'top': top,
+  'right': right,
+  'bottom': bottom,
+  'left': left,
+  'top-right': top right,
+  'top-left': top left,
+  'bottom-right': bottom right,
+  'bottom-left': bottom left
 );
 
 $cursor: (
@@ -404,6 +408,7 @@ $modules: (
   line-height: [responsive],
   list-style-position: true,
   list-style-type: true,
+  margin-negative: true,
   margin: [responsive],
   max-width: [responsive],
   min-width: [responsive],
