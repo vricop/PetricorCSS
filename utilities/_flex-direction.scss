@@ -1,33 +1,10 @@
+@import '../utils/mixins/build-simple-variants';
+
 @mixin flex-direction($screen: null) {
-  $variants: map-get($modules, 'flex-direction');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $direction in (row, row-reverse, column, column-reverse) {
-      // DEFAULT
-      @if $screen == null {
-        .flex-#{$direction} { flex-direction: $direction; }
-
-        @if index($variants, 'hover') {
-          .hover\:flex-#{$direction}:hover { flex-direction: $direction; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:flex-#{$direction}:focus { flex-direction: $direction; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:flex-#{$direction} { flex-direction: $direction; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:flex-#{$direction}:hover { flex-direction: $direction; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:flex-#{$direction}:focus { flex-direction: $direction; }
-        }
-      }
-    }
+  @include build-simple-variants('flex-direction', $screen) using ($prefix, $state) {
+    .#{$prefix}flex-row#{$state} { flex-direction: row; }
+    .#{$prefix}flex-row-reverse#{$state} { flex-direction: row-reverse; }
+    .#{$prefix}flex-col#{$state} { flex-direction: column; }
+    .#{$prefix}flex-col-reverse#{$state} { flex-direction: column-reverse; }
   }
 }
