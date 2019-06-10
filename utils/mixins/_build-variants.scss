@@ -3,44 +3,49 @@
 
   @if $variants == true or type-of($variants) == list {
     @each $modifier, $value in $utility-config {
-      $modifier: if($modifier == 'default', null, '-#{$modifier}');
-      $prefix: null;
-      
-      @if type-of($value) == 'number' and unit($value) == 'em' { 
-        $prefix: '\\*';
-      }
+      $modifier: if(
+        $modifier == 'default' and $utility-variants != 'cursor', 
+        null,
+        '-#{$modifier}'
+      );
+
+      $em-prefix: if(
+        type-of($value) == 'number' and unit($value) == 'em',
+        $em-prefix: '\\*',
+        null
+      );
       
       // DEFAULT
       @if $screen == null {
-        @content($prefix, $modifier, null, $value);
+        @content($em-prefix, $modifier, null, $value);
 
         @if index($variants, 'hover') {
-          @content('hover\\:#{$prefix}', $modifier, ':hover', $value);
+          @content('hover\\:#{$em-prefix}', $modifier, ':hover', $value);
         }
 
         @if index($variants, 'group-hover') {
-          @content('group:hover .group-hover\\:#{$prefix}', $modifier, null, $value);
+          @content('group:hover .group-hover\\:#{$em-prefix}', $modifier, null, $value);
         }
 
         @if index($variants, 'focus') {
-          @content('focus\\:#{$prefix}', $modifier, ':focus', $value);
+          @content('focus\\:#{$em-prefix}', $modifier, ':focus', $value);
         }
       }
       
       // RESPONSIVE
       @if index($variants, 'responsive') and $screen != null {
-        @content('#{$screen}\\:#{$prefix}', $modifier, null, $value);
+        @content('#{$screen}\\:#{$em-prefix}', $modifier, null, $value);
 
         @if index($variants, 'hover') {
-          @content('#{$screen}\\:hover\\:#{$prefix}', $modifier, ':hover', $value);
+          @content('#{$screen}\\:hover\\:#{$em-prefix}', $modifier, ':hover', $value);
         }
 
         @if index($variants, 'group-hover') {
-          @content('#{$screen}\\:.group:hover .group-hover\\:#{$prefix}', $modifier, null, $value);
+          @content('#{$screen}\\:.group:hover .group-hover\\:#{$em-prefix}', $modifier, null, $value);
         }
 
         @if index($variants, 'focus') {
-          @content('#{$screen}\\:focus\\:#{$prefix}', $modifier, ':focus', $value);
+          @content('#{$screen}\\:focus\\:#{$em-prefix}', $modifier, ':focus', $value);
         }
       }
     }

@@ -360,13 +360,13 @@ $object-position: (
 );
 
 $cursor: (
-  auto,
-  default,
-  pointer,
-  wait,
-  text,
-  move,
-  not-allowed,
+  'auto': auto,
+  'default': default,
+  'pointer': pointer,
+  'wait': wait,
+  'text': text,
+  'move': move,
+  'not-allowed': not-allowed,
 );
 
 // ENABLE/DISABLE VARIANTS
