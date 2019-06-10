@@ -1,49 +1,7 @@
+@import '../utils/mixins/build-variants';
+
 @mixin border-color($screen: null) {
-  $variants: map-get($modules, 'border-color');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $suffix, $value in $colors {
-      // DEFAULT
-      @if $screen == null {
-        .border-#{$suffix} { border-color: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:border-#{$suffix}:hover { border-color: $value; }
-        }
-
-        @if index($variants, 'group-hover') {
-          .group:hover .group-hover\:border-#{$suffix} { border-color: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:border-#{$suffix}:focus { border-color: $value; }
-        }
-        
-        @if index($variants, 'active') {
-          .active\:border-#{$suffix}:active { border-color: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:border-#{$suffix} { border-color: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:border-#{$suffix}:hover { border-color: $value; }
-        }
-
-        @if index($variants, 'group-hover') {
-          .#{$screen}\:group:hover .group-hover\:border-#{$suffix} { border-color: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:border-#{$suffix}:focus { border-color: $value; }
-        }
-
-        @if index($variants, 'active') {
-          .#{$screen}\:active\:border-#{$suffix}:active { border-color: $value; }
-        }
-      }
-    }
-  }
+  @include build-variants($colors, 'border-color', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}border#{$modifier}#{$state} { border-color: $value; }
+  };
 }
