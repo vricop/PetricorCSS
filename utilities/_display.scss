@@ -1,35 +1,9 @@
+@import '../utils/mixins/build-simple-variants';
+
 @mixin display($screen: null) {
-  $variants: map-get($modules, 'display');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $value in (block, flex, grid, inline-block, inline-flex, inline-grid, inline, none) {
-      $class: $value;
-
-      // DEFAULT
-      @if $screen == null {
-        .#{$class} { display: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:#{$class}:hover { display: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:#{$class}:focus { display: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:#{$class} { display: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:#{$class}:hover { display: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:#{$class}:focus { display: $value; }
-        }
-      }
+  @include build-simple-variants('display', $screen) using ($prefix, $state) {
+    @each $type in (block, flex, grid, inline-block, inline-flex, inline-grid, inline, none) {
+      .#{$prefix}#{$type}#{$state} { display: $type; }
     }
   }
 }
