@@ -1,43 +1,9 @@
-@mixin clearfix($prefix: '.', $suffix: null) {
-  #{$prefix}clearfix#{$suffix} {
-    content: '';
-    display: table;
-    clear: both;
-  }
-}
+@import '../utils/mixins/build-simple-variants';
 
 @mixin float($screen: null) {
-  $variants: map-get($modules, 'float');
-
-  @if $variants == true or type-of($variants) == list {
+  @include build-simple-variants('float', $screen) using ($prefix, $state) {
     @each $side in (left, right, none) {
-      // DEFAULT
-      @if $screen == null {
-        .float-#{$side} { float: $side; }
-
-        @if index($variants, 'hover') {
-          .hover\:float-#{$side}:hover { float: $side; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:float-#{$side}:focus { float: $side; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:float-#{$side} { float: $side; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:float-#{$side}:hover { float: $side; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:float-#{$side}:focus { float: $side; }
-        }
-
-        @include clearfix('.#{$screen}\\:');
-      }
+      .#{$prefix}float-#{$side}#{$state} { float: $side; }
     }
   }
 }
