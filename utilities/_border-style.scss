@@ -1,35 +1,9 @@
+@import '../utils/mixins/build-simple-variants';
+
 @mixin border-style($screen: null) {
-  $variants: map-get($modules, 'border-style');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $value in (solid, dashed, dotted, none) {
-      $suffix: $value;
-
-      // DEFAULT
-      @if $screen == null {
-        .border-#{$suffix} { border-style: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:border-#{$suffix}:hover { border-style: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:border-#{$suffix}:focus { border-style: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:border-#{$suffix} { border-style: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:border-#{$suffix}:hover { border-style: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:border-#{$suffix}:focus { border-style: $value; }
-        }
-      }
+  @include build-simple-variants('border-style', $screen) using ($prefix, $state) {
+    @each $style in (solid dashed dotted none) {
+      .#{$prefix}border-#{$style}#{$state} {  border-style: $style; }
     }
   }
 }
