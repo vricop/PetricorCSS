@@ -14,6 +14,6 @@
   };
   
   @include build-variants($border-width-em, 'border-width-em', $screen) using ($prefix, $modifier, $state, $value) {
-    @include border-width-classes($prefix, $modifier, $state, $value);
+    @include border-width-classes('#{$prefix}\\*', $modifier, $state, $value);
   };
 }
