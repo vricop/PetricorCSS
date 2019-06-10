@@ -1,37 +1,11 @@
+@import '../utils/mixins/build-simple-variants';
+
 @mixin align-items($screen: null) {
-  $variants: map-get($modules, 'align-items');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $value in (stretch, flex-start, flex-end, center, baseline) {
-      $suffix: $value;
-      @if $value == flex-start { $suffix: start; }
-      @if $value == flex-end { $suffix: end; }
-      
-      // DEFAULT
-      @if $screen == null {
-        .items-#{$suffix} { align-items: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:items-#{$suffix}:hover { align-items: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:items-#{$suffix}:focus { align-items: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:items-#{$suffix} { align-items: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:items-#{$suffix}:hover { align-items: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:items-#{$suffix}:focus { align-items: $value; }
-        }
-      }
-    }
-  }
+  @include build-simple-variants('align-items', $screen) using ($prefix, $state) {
+    .#{$prefix}items-stretch#{$state} { align-items: stretch; }
+    .#{$prefix}items-start#{$state} { align-items: flex-start; }
+    .#{$prefix}items-center#{$state} { align-items: center; }
+    .#{$prefix}items-end#{$state} { align-items: flex-end; }
+    .#{$prefix}items-baseline#{$state} { align-items: baseline; }
+  };
 }
