@@ -205,19 +205,18 @@ $height: (
 );
 
 $border-width: (
-  rem: (
-    '0': 0,
-    'default': 0.0625rem,
-    '2': 0.125rem,
-    '4': 0.25rem,
-    '8': 0.5rem,
-  ),
-  em: (
-    'default': 0.0625em,
-    '2': 0.125em,
-    '4': 0.25em,
-    '8': 0.5em,
-  )
+  '0': 0,
+  'default': 0.0625rem,
+  '2': 0.125rem,
+  '4': 0.25rem,
+  '8': 0.5rem,
+);
+
+$border-width-em: (
+  'default': 0.0625em,
+  '2': 0.125em,
+  '4': 0.25em,
+  '8': 0.5em,
 );
 
 $border-radius: (
@@ -399,10 +398,11 @@ $modules: (
   appearance: false,
   background-color: [responsive hover group-hover],
   border-color: true,
-  border-radius-em: false,
-  border-radius: true,
+  border-radius-em: true,
+  border-radius: [responsive],
   border-style: true,
-  border-width: true,
+  border-width-em: false,
+  border-width: false,
   box-shadow: true,
   colors: [hover],
   container: true,
