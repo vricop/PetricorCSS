@@ -1,54 +1,20 @@
-@mixin _padding($suffix, $value, $prefix: '.') {
-  #{$prefix}p-#{$suffix}  { padding: $value; }
-  #{$prefix}px-#{$suffix} { padding: { left: $value; right: $value; } } 
-  #{$prefix}py-#{$suffix} { padding: { top: $value; bottom: $value; } }
-  #{$prefix}pt-#{$suffix} { padding-top: $value; };
-  #{$prefix}pr-#{$suffix} { padding-right: $value; };
-  #{$prefix}pb-#{$suffix} { padding-bottom: $value; };
-  #{$prefix}pl-#{$suffix} { padding-left: $value; };
+@import '../utils/mixins/build-variants';
+
+@mixin padding-classes($prefix, $modifier, $state, $value) {
+  .#{$prefix}p#{$modifier}#{$state}  { padding: $value; }
+  .#{$prefix}px#{$modifier}#{$state} { padding: { left: $value; right: $value; } } 
+  .#{$prefix}py#{$modifier}#{$state} { padding: { top: $value; bottom: $value; } }
+  .#{$prefix}pt#{$modifier}#{$state} { padding-top: $value; };
+  .#{$prefix}pr#{$modifier}#{$state} { padding-right: $value; };
+  .#{$prefix}pb#{$modifier}#{$state} { padding-bottom: $value; };
+  .#{$prefix}pl#{$modifier}#{$state} { padding-left: $value; };
 }
 
-@mixin padding($breakpoint: null) {
-  $variants: map-get($modules, 'padding');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $suffix, $value in $padding {
-      // EM VARIANT PREFIX
-      $em: if(unit($value) == 'em', '\\*', null);
-
-      // DEFAULT
-      @if $breakpoint == null {
-        @include _padding($suffix, $value, '.#{$em}');
-
-        @if index($variants, 'hover') {
-          @include _padding('#{$suffix}:hover', $value, '.hover\\:#{$em}');
-        }
-
-        @if index($variants, 'group-hover') {
-          @include _padding($suffix, $value, '.group:hover .group-hover\\:#{$em}');
-        }
-
-        @if index($variants, 'focus') {
-          @include _padding('#{$suffix}:focus', $value, '.focus\\:#{$em}');
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $breakpoint != null {
-        @include _padding($suffix, $value, '.#{$breakpoint}\\:#{$em}');
-
-        @if index($variants, 'hover') {
-          @include _padding('#{$suffix}:hover', $value, '.#{$breakpoint}\\:hover\\:#{$em}');
-        }
-
-        @if index($variants, 'group-hover') {
-          @include _padding($suffix, $value, '.#{$breakpoint}\\:group:hover .group-hover\\:#{$em}');
-        }
-
-        @if index($variants, 'focus') {
-          @include _padding('#{$suffix}:focus', $value, '.#{$breakpoint}\\:focus\\:#{$em}');
-        }
-      }
-    }
-  }
+@mixin padding($screen: null) {
+  @include build-variants($padding, 'padding', $screen) using ($prefix, $modifier, $state, $value) {
+    @include padding-classes($prefix, $modifier, $state, $value);
+  };
+  @include build-variants($padding-em, 'padding-em', $screen) using ($prefix, $modifier, $state, $value) {
+    @include padding-classes($prefix, $modifier, $state, $value);
+  };
 }

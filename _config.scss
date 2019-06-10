@@ -70,31 +70,30 @@ $margin: (
   -2: -0.5rem
 );
 
-// # EM VS REMS
-// Ems are still useful for building scalable elements.
-// Keys for em variants are strings not numbers. This 
-// way there won't be any conflict with key number (rem variants).
 $padding: (
-  0: 0,
-  1: 0.125rem,
-  2: 0.25rem,
-  3: 0.5rem,
-  4: 0.75rem,
-  5: 1rem,
-  6: 1.25rem,
-  7: 1.5rem,
-  8: 2rem,
-  9: 2.5rem,
-  10: 3rem,
-  11: 4rem,
-  12: 5rem,
-  13: 6rem,
-  14: 8rem,
-  15: 10rem,
-  16: 12rem,
-  17: 14rem,
-  18: 16rem,
-  px: 1px,
+  '0': 0,
+  '1': 0.125rem,
+  '2': 0.25rem,
+  '3': 0.5rem,
+  '4': 0.75rem,
+  '5': 1rem,
+  '6': 1.25rem,
+  '7': 1.5rem,
+  '8': 2rem,
+  '9': 2.5rem,
+  '10': 3rem,
+  '11': 4rem,
+  '12': 5rem,
+  '13': 6rem,
+  '14': 8rem,
+  '15': 10rem,
+  '16': 12rem,
+  '17': 14rem,
+  '18': 16rem,
+  'px': 1px,
+);
+
+$padding-em: (  
   '0': 0,
   '1': 0.125em,
   '2': 0.25em,
@@ -434,6 +433,7 @@ $modules: (
   order: false,
   outline: [focus],
   overflow: true,
+  padding-em: true,
   padding: [responsive],
   position: true,
   resize: [responsive],
