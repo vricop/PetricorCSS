@@ -1,28 +1,7 @@
-@mixin _background-color($suffix, $value, $prefix: '.') {
-  #{$prefix}bg-#{$suffix} { background-color: #{$value}; }
-}
+@import '../utils/mixins/build-simple-variants';
 
-@mixin background-color($breakpoint: null) {
-  $background-color: map-get($modules, 'background-color');
-
-  @if $background-color != false {
-    @each $color, $value in $colors {
-      // # DEFAULT VARIANTS
-      @if $breakpoint == null {
-        @include _background-color($color, $value);
-      }
-  
-      @if index($background-color, 'responsive') and $breakpoint != null {
-        @include _background-color($color, $value, '.#{$breakpoint}\\:');
-      }
-      
-      @if index($background-color, 'hover') and $breakpoint == null {
-        @include _background-color('#{$color}:hover', $value, '.hover\\:');
-      }
-      
-      @if index($background-color, 'group-hover') and $breakpoint == null {
-        @include _background-color('#{$color}:hover', $value, '.group:hover .group-hover\\:');
-      }
-    }
+@mixin background-color($screen: null) {
+  @include build-variants($colors, 'background-color', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}bg#{$modifier}#{$state} { background-color: $value; }
   }
 }

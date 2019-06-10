@@ -5,7 +5,9 @@
     @each $modifier, $value in $utility-config {
       $modifier: if($modifier == 'default', null, '-#{$modifier}');
       $prefix: null;
-      @if unit($value) == 'em' { $prefix: '\\*';  }
+      @if type-of($value) == 'number' and unit($value) == 'em' { 
+        $prefix: '\\*';
+      }
       
       // DEFAULT
       @if $screen == null {
