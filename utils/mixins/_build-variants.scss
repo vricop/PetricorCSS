@@ -5,6 +5,7 @@
     @each $modifier, $value in $utility-config {
       $modifier: if($modifier == 'default', null, '-#{$modifier}');
       $prefix: null;
+      
       @if type-of($value) == 'number' and unit($value) == 'em' { 
         $prefix: '\\*';
       }
