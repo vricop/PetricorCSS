@@ -1,37 +1,11 @@
+@import '../utils/mixins/build-simple-variants';
+
 @mixin align-content($screen: null) {
-  $variants: map-get($modules, 'align-content');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $value in (space-around, space-between, space-evenly, center, flex-start, flex-end) {
-      $suffix: value;
-      @if $value == flex-start { $suffix: 'start'; }
-      @if $value == flex-end { $suffix: 'end'; }
-
-      // DEFAULT
-      @if $screen == null {
-        .content-#{$suffix} { align-content: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:content-#{$suffix}:hover { align-content: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:content-#{$suffix}:focus { align-content: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:content-#{$suffix} { align-content: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:content-#{$suffix}:hover { align-content: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:content-#{$suffix}:focus { align-content: $value; }
-        }
-      }
-    }
+  @include build-simple-variants('align-content', $screen) using ($prefix, $state) {
+    .#{$prefix}content-start#{$state} { align-content: flex-start; }
+    .#{$prefix}content-center#{$state} { align-content: center; }
+    .#{$prefix}content-end#{$state} { align-content: flex-end; }
+    .#{$prefix}content-between#{$state} { align-content: space-between; }
+    .#{$prefix}content-around#{$state} { align-content: space-around; }
   }
 }
