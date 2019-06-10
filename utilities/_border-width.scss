@@ -1,56 +1,19 @@
+@import '../utils/mixins/build-variants';
+
+@mixin border-width-classes($prefix, $modifier, $state, $value) {
+  .#{$prefix}border#{$modifier}#{$state} { border-width: $value; }
+  .#{$prefix}border-t#{$modifier}#{$state} { border-top-width: $value;}
+  .#{$prefix}border-r#{$modifier}#{$state} { border-right-width: $value;}
+  .#{$prefix}border-b#{$modifier}#{$state} { border-bottom-width: $value;}
+  .#{$prefix}border-l#{$modifier}#{$state} { border-left-width: $value;}
+}
+
 @mixin border-width($screen: null) {
-  $variants: map-get($modules, 'border-width');
-
-  /* BORDER WIDTH */
-  @if $variants == true or type-of($variants) == list {
-    @each $side-suffix, $side in ('all': null, 't': top, 'r': right, 'b': bottom, 'l': left) {
-      $side-suffix: if($side-suffix == 'all', null, '-#{$side-suffix}');
-      $side: if($side == null, $side, '#{$side}-');
-      
-      @each $unit, $values in $border-width {
-        @each $suffix, $value in $values {
-          $prefix: if($unit == em, '\\*', null);
-          $suffix: if($suffix == 'default', null, '-#{$suffix}');
-
-          // DEFAULT
-          @if $screen == null {
-            .#{$prefix}border#{$side-suffix}#{$suffix} { 
-              border-#{$side}width: $value;
-            }
-    
-            @if index($variants, 'hover') {
-              .hover\:#{$prefix}border#{$side-suffix}#{$suffix}:hover {
-                border-#{$side}width: $value;
-              }
-            }
-    
-            @if index($variants, 'focus') {
-              .focus\:#{$prefix}border#{$side-suffix}#{$suffix}:focus {
-                border-#{$side}width: $value;
-              }
-            }
-          }
-    
-          // RESPONSIVE
-          @if index($variants, 'responsive') and $screen != null {
-            .#{$screen}\:#{$prefix}border#{$side-suffix}#{$suffix} {
-              border-#{$side}width: $value;
-            }
-    
-            @if index($variants, 'hover') {
-              .#{$screen}\:hover\:#{$prefix}border#{$side-suffix}#{$suffix}:hover { 
-                border-#{$side}width: $value;
-              }
-            }
-    
-            @if index($variants, 'focus') {
-              .#{$screen}\:focus\:#{$prefix}border#{$side-suffix}#{$suffix}:focus { 
-                border-#{$side}width: $value;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  @include build-variants($border-width, 'border-width', $screen) using ($prefix, $modifier, $state, $value) {
+    @include border-width-classes($prefix, $modifier, $state, $value);
+  };
+  
+  @include build-variants($border-width-em, 'border-width-em', $screen) using ($prefix, $modifier, $state, $value) {
+    @include border-width-classes($prefix, $modifier, $state, $value);
+  };
 }
