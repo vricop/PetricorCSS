@@ -46,6 +46,7 @@
       @include padding($screen);
       @include position($screen);
       @include resize($screen);
+      @include table-layout($screen);
       @include text-align($screen);
       @include text-color($screen);
       @include text-decoration($screen);
