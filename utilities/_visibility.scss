@@ -1,18 +1,8 @@
-@mixin _visibility($prefix: '.') {
-  #{$prefix}visible { visibility: visible; }
-  #{$prefix}invisible { visibility: hidden; }
-}
+@import '../utils/mixins/build-simple-variants';
 
 @mixin visibility($screen: null) {
-  $variants: map-get($modules, 'visibility');
-
-  @if $variants == true or type-of($variants) == list {
-    @if $screen == null {
-      @include _visibility;
-    }
-
-    @if index($variants, 'responsive') and $screen != null {
-      @include _visibility('.#{$screen}\\:');
-    }
+  @include build-simple-variants('vertical-align', $screen) using ($prefix, $state) {
+    .#{$prefix}visible#{$state} { visibility: visible; }
+    .#{$prefix}invisible#{$state} { visibility: hidden; }
   }
 }
