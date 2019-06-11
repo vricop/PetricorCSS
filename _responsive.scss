@@ -4,6 +4,7 @@
       @include align-content($screen);
       @include align-items($screen);
       @include align-self($screen);
+      @include background-attachment($screen);
       @include background-color($screen);
       @include border-color($screen);
       @include border-radius($screen);
