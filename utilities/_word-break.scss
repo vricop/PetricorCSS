@@ -1,47 +1,15 @@
-@mixin _word-break($prefix: '.', $suffix: null) {
-  #{$prefix}break-normal#{$suffix} {
-    word-break: normal;
-    overflow-wrap: normal
-  }
-  
-  #{$prefix}break-words#{$suffix} { overflow-wrap: break-word; }
-  #{$prefix}break-all#{$suffix} { word-break: break-all; }
-  
-  #{$prefix}truncate#{$suffix} {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-}
+@import '../utils/mixins/build-simple-variants';
 
 @mixin word-break($screen: null) {
-  $variants: map-get($modules, 'word-break');
-
-  @if $variants == true or type-of($variants) == list {
-    // DEFAULT
-    @if $screen == null {
-      @include _word-break;
-
-      @if index($variants, 'hover') {
-        @include _word-break('.hover\\:', ':hover');
-      }
-
-      @if index($variants, 'focus') {
-        @include _word-break('.focus\\:', ':focus');
-      }
-    }
-
-    // RESPONSIVE
-    @if index($variants, 'responsive') and $screen != null {
-      @include _word-break('.#{$screen}\\:');
-
-      @if index($variants, 'hover') {
-        @include _word-break('.#{$screen}\\:hover\\:', ':hover')
-      }
-
-      @if index($variants, 'focus') {
-        @include _word-break('.#{$screen}\\:focus\\:', ':focus')
-      }
+  @include build-simple-variants('word-break', $screen) using ($prefix, $state) {
+    .#{$prefix}break-normal#{$state} { word-break: normal; overflow-wrap: normal }
+    .#{$prefix}break-words#{$state} { overflow-wrap: break-word; }
+    .#{$prefix}break-all#{$state} { word-break: break-all; }
+    
+    .#{$prefix}truncate#{$state} {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }
