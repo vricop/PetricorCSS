@@ -1,41 +1,11 @@
+@import '../utils/mixins/build-simple-variants';
+
 @mixin justify-content($screen: null) {
-  $variants: map-get($modules, 'justify-content');
-
-  @if $variants == true or type-of($variants) == list {
-    $positions: (
-      start: flex-start, 
-      end: flex-end, 
-      center: center, 
-      between: space-between, 
-      around: space-around
-    );
-
-    @each $suffix, $value in $positions {
-      // DEFAULT
-      @if $screen == null {
-        .justify-#{$suffix} { justify-content: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:justify-#{$suffix}:hover { justify-content: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:justify-#{$suffix}:focus { justify-content: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:justify-#{$suffix} { justify-content: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:justify-#{$suffix}:hover { justify-content: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:justify-#{$suffix}:focus { justify-content: $value; }
-        }
-      }
-    }
+  @include build-simple-variants('justify-content', $screen) using ($prefix, $state) {
+    .#{$prefix}justify-start#{$state} { justify-content: flex-start; }
+    .#{$prefix}justify-end#{$state} { justify-content: flex-end; }
+    .#{$prefix}justify-center#{$state} { justify-content: center; }
+    .#{$prefix}justify-between#{$state} { justify-content: space-between; }
+    .#{$prefix}justify-around#{$state} { justify-content: space-around; }
   }
 }
