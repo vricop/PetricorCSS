@@ -1,9 +1,7 @@
-@mixin font-family {
-  $variants: map-get($modules, 'font-family');
+@import '../utils/mixins/build-variants';
 
-  @if $variants == true {
-    @each $type, $stack in $fonts {
-      .font-#{$type} { font-family: $stack; }
-    }
+@mixin font-family($screen: null) {
+  @include build-variants($font-family, 'font-family', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}font#{$modifier}#{$state} { font-family: $value; }
   }
 }
