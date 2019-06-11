@@ -1,0 +1,7 @@
+@import '../utils/mixins/build-simple-variants';
+
+@mixin fill($screen: null) {
+  @include build-simple-variants('fill', $screen) using ($prefix, $state) {
+    .#{$prefix}fill-current#{$state} { fill: currentColor; }
+  }
+}
