@@ -1,43 +1,9 @@
+@import '../utils/mixins/build-simple-variants';
+
 @mixin flex-wrap($screen: null) {
-  $variants: map-get($modules, 'flex-wrap');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $val in (wrap, nowrap, wrap-reverse) {
-      $suffix: if($val == nowrap, 'no-wrapp', $val);
-
-      // DEFAULT
-      @if $screen == null {
-        .flex-#{$suffix} { flex-wrap: $val; }
-
-        @if index($variants, 'hover') {
-          .hover\:flex-#{$suffix}:hover { flex-wrap: $val; }
-        }
-
-        @if index($variants, 'group-hover') {
-          .group:hover .group-hover\:flex-#{$suffix} { flex-wrap: $val; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:flex-#{$suffix}:focus { flex-wrap: $val; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:flex-#{$suffix} { flex-wrap: $val; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:flex-#{$suffix}:hover { flex-wrap: $val; }
-        }
-
-        @if index($variants, 'group-hover') {
-          .#{$screen}\:group:hover .group-hover\:flex-#{$suffix} { flex-wrap: $val; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:flex-#{$suffix}:focus { flex-wrap: $val; }
-        }
-      }
-    }
+  @include build-simple-variants('flex-wrap', $screen) using ($prefix, $state) {
+    .#{$prefix}flex-wrap#{$state} { flex-wrap: wrap; }
+    .#{$prefix}flex-no-wrap#{$state} { flex-wrap: nowrap; }
+    .#{$prefix}flex-wrap-reverse#{$state} { flex-wrap: wrap-reverse; }
   }
 }
