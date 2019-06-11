@@ -1,7 +1,7 @@
-@mixin appearance() {
-  $variants: map-get($modules, 'appearance');
+@import '../utils/mixins/build-simple-variants';
 
-  @if $variants == true {
-    .appearance-none { appearance: none; }
+@mixin appearance($screen: null) {
+  @include build-simple-variants('appearance', $screen) using ($prefix, $state) {
+    .#{$prefix}appearance-none#{$state} { appearance: none; }
   }
 }
