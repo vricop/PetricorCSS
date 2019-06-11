@@ -1,44 +1,8 @@
-@mixin _font-style($prefix: '.', $suffix: null) {
-  #{$prefix}italic#{$suffix}{ font-style: italic; }
-  #{$prefix}non-italic#{$suffix} { font-style: normal; }
-}
+@import '../utils/mixins/build-simple-variants';
 
 @mixin font-style($screen: null) {
-  $variants: map-get($modules, 'font-style');
-
-  @if $variants == true or type-of($variants) == list {
-    // DEFAULT
-    @if $screen == null {
-      @include _font-style;
-
-      @if index($variants, 'hover') {
-        @include _font-style('.hover\\:', ':hover');
-      }
-
-      @if index($variants, 'group-hover') {
-        @include _font-style('.group:hover .group-hover\\:');
-      }
-
-      @if index($variants, 'focus') {
-        @include _font-style('.focus\\:', ':focus');
-      }
-    }
-
-    // RESPONSIVE
-    @if index($variants, 'responsive') and $screen != null {
-      @include _font-style('.#{$screen}\\:');
-
-      @if index($variants, 'hover') {
-        @include _font-style('.#{$screen}\\:hover\\:', ':hover');
-      }
-
-      @if index($variants, 'group-hover') {
-        @include _font-style('.#{$screen}\\:group:hover .group-hover');
-      }
-
-      @if index($variants, 'focus') {
-        @include _font-style('.#{$screen}\\:focus\\:', ':focus');
-      }
-    }
+  @include build-simple-variants('font-style', $screen) using ($prefix, $state) {
+    .#{$prefix}italic#{$state}{ font-style: italic; }
+    .#{$prefix}non-italic#{$state} { font-style: normal; }
   }
 }
