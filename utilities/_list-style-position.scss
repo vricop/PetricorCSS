@@ -1,20 +1,8 @@
-@mixin _list-style-position($prefix: '.') {
-  #{$prefix}list-inside { list-style-position: inside; }
-  #{$prefix}list-outside { list-style-position: inside; }
-}
+@import '../utils/mixins/build-simple-variants';
 
 @mixin list-style-position($screen: null) {
-  $variants: map-get($modules, 'list-style-position');
-
-  @if $variants == true or type-of($variants) == list {
-    // DEFAULT
-    @if $screen == null {
-      @include _list-style-position;
-    }
-
-    // RESPONSIVE
-    @if index($variants, 'responsive') and $screen != null {
-      @include _list-style-position('.#{$screen}\\:');
-    }
+  @include build-simple-variants('list-style-position', $screen) using ($prefix, $state) {
+    .#{$prefix}list-inside#{$state} { list-style-position: inside; }
+    .#{$prefix}list-outside#{$state} { list-style-position: inside; }
   }
 }
