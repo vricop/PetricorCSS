@@ -1,47 +1,9 @@
+@import '../utils/mixins/build-simple-variants';
+
 @mixin text-transform($screen: null) {
-  $variants: map-get($modules, 'text-transform');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $value in (uppercase, lowercase, capitalize, none) {
-      $class: if($value == none, normal-case, $value);
-
-      // DEFAULT
-      @if $screen == null {
-        .#{$class} { 
-          text-transform: $value;
-        }
-
-        @if index($variants, 'hover') {
-          .hover\:#{$class}:hover { 
-            text-transform: $value;
-          }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:#{$class}:focus { 
-            text-transform: $value;
-          }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:#{$class} { 
-          text-transform: $value;
-        }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:#{$class}:hover { 
-            text-transform: $value;
-          }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:#{$class}:focus { 
-            text-transform: $value;
-          }
-        }
-      }
+  @include build-simple-variants('text-transform', $screen) using ($prefix, $state) {
+    @each $text-case in (uppercase, lowercase, capitalize, none) {
+      .#{$prefix}#{$text-case}#{$state} { text-transform: $text-case; }
     }
   }
 }
