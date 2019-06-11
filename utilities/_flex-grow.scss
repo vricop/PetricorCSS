@@ -1,35 +1,7 @@
+@import '../utils/mixins/build-variants';
+
 @mixin flex-grow($screen: null) {
-  $variants: map-get($modules, 'flex-grow');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $suffix, $value in $flex-grow {
-      $suffix: if($suffix=='default', null, '-#{$suffix}');
-
-      // DEFAULT
-      @if $screen == null {
-        .flex-grow#{$suffix} { flex-grow: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:flex-grow#{$suffix}:hover { flex-grow: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:flex-grow#{$suffix}:focus { flex-grow: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:flex-grow#{$suffix} { flex-grow: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:flex-grow#{$suffix}:hover { flex-grow: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:flex-grow#{$suffix}:focus { flex-grow: $value; }
-        }
-      }
-    }
+  @include build-variants($flex-grow, 'flex-grow', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}flex-grow#{$modifier}#{$state} { flex-grow: $value; }
   }
 }
