@@ -1,35 +1,9 @@
+@import '../utils/mixins/build-simple-variants';
+
 @mixin vertical-align($screen: null) {
-  $variants: map-get($modules, 'vertical-align');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $value in (baseline, top, middle, bottom, text-top, text-bottom) {
-      $suffix: $value;
-
-      // DEFAULT
-      @if $screen == null {
-        .align-#{$suffix} { vertical-align: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:align-#{$suffix}:hover { vertical-align: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:align-#{$suffix}:focus { vertical-align: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:align-#{$suffix} { vertical-align: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:align-#{$suffix}:hover { vertical-align: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:align-#{$suffix}:focus { vertical-align: $value; }
-        }
-      }
+  @include build-simple-variants('vertical-align', $screen) using ($prefix, $state) {
+    @each $position in (baseline, top, middle, bottom, text-top, text-bottom) {
+      .#{$prefix}align-#{$position}#{$state} { vertical-align: $position; }
     }
   }
 }
