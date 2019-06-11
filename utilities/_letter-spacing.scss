@@ -1,33 +1,7 @@
+@import '../utils/mixins/build-variants';
+
 @mixin letter-spacing($screen: null) {
-  $variants: map-get($modules, 'letter-spacing');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $suffix, $value in $tracking {
-      // DEFAULT
-      @if $screen == null {
-        .tracking-#{$suffix} { letter-spacing: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:tracking-#{$suffix}:hover { letter-spacing: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:tracking-#{$suffix}:focus { letter-spacing: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:tracking-#{$suffix} { letter-spacing: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:tracking-#{$suffix}:hover { letter-spacing: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:tracking-#{$suffix}:focus { letter-spacing: $value; }
-        }
-      }
-    }
+  @include build-variants($tracking, 'letter-spacing', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}tracking#{$modifier}#{$state} { letter-spacing: $value; }
   }
 }
