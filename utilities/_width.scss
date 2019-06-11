@@ -1,41 +1,7 @@
-@mixin width($breakpoint: null) {
-  $variants: map-get($modules, 'width');
+@import '../utils/mixins/build-variants';
 
-  @if $variants == true or type-of($variants) == list {
-    @each $suffix, $value in $widths {
-      // DEFAULT
-      @if $breakpoint == null {
-        .w-#{$suffix} { width: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:w-#{$suffix}:hover { width: $value; }
-        }
-
-        @if index($variants, 'group-hover') {
-          .group:hover .group-hover\:w-#{$suffix} { width: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:w-#{$suffix}:focus { width: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:w-#{$suffix} { width: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$breakpoint}\:hover\:w-#{$suffix}:hover { width: $value; }
-        }
-
-        @if index($variants, 'group-hover') {
-          .#{$breakpoint}\:group:hover .group-hover\:w-#{$suffix} { width: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:w-#{$suffix}:focus { width: $value; }
-        }
-      }
-    }
+@mixin width($screen: null) {
+  @include build-variants($width, 'width', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}w#{$modifier}#{$state} { width: $value; }
   }
 }
