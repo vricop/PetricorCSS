@@ -1,33 +1,7 @@
+@import '../utils/mixins/build-variants';
+
 @mixin line-height($screen: null) {
-  $variants: map-get($modules, 'line-height');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $suffix, $value in $leading {
-      // DEFAULT
-      @if $screen == null {
-        .leading-#{$suffix} { line-height: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:leading-#{$suffix}:hover { line-height: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:leading-#{$suffix}:focus { line-height: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:leading-#{$suffix} { line-height: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:leading-#{$suffix}:hover { line-height: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:leading-#{$suffix}:focus { line-height: $value; }
-        }
-      }
-    }
+  @include build-variants($leading, 'line-height', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}leading#{$modifier}#{$state} { line-height: $value; }
   }
 }
