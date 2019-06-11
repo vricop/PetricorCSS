@@ -246,10 +246,15 @@ $inset: (
  );
 
 $z-index: (
-  auto,
-  0,
-  10,
-  20,
+  'auto': auto,
+  '0': 0,
+  '10': 10,
+  '20': 20,
+);
+
+$z-index-negative: (
+  '10': -10,
+  '20': -20,
 );
 
 $order: (
@@ -460,5 +465,6 @@ $modules: (
   white-space: true,
   width: [responsive],
   word-break: true,
+  z-index-negative: [responsive],
   z-index: [responsive],
 );

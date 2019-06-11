@@ -1,44 +1,10 @@
+@import '../utils/mixins/build-variants';
+
 @mixin z-index($screen: null) {
-  $variants: map-get($modules, 'z-index');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $value in $z-index {
-      // NEGATIVE VARIANT UTILITY SUFFIX
-      $utility: if(($value != 'auto') and ($value < 0), '-z', 'z-');
-
-      // DEFAULT
-      @if $screen == null {
-        .#{$utility}#{$value} { z-index: $value; }
-  
-        @if index($variants, 'hover') {
-          .hover\:#{$utility}#{$value}:hover { z-index: $value; }
-        }
-  
-        @if index($variants, 'group-hover') {
-          .group:hover .group-hover\:#{$utility}#{$value} { z-index: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:#{$utility}#{$value}:focus { z-index: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:#{$utility}#{$value} { z-index: $value; }
-  
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:#{$utility}#{$value}:hover { z-index: $value; }
-        }
-        
-        @if index($variants, 'group-hover') {
-          .#{$screen}\:group:hover .group-hover\:#{$utility}#{$value} { z-index: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:#{$utility}#{$value}:focus { z-index: $value; }
-        }
-      }
-    }
+  @include build-variants($z-index, 'z-index', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}z#{$modifier}#{$state} { z-index: $value; }
+  }
+  @include build-variants($z-index-negative, 'z-index-negative', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}-z#{$modifier}#{$state} { z-index: $value; }
   }
 }
