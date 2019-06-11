@@ -1,33 +1,7 @@
+@import '../utils/mixins/build-variants';
+
 @mixin object-position($screen: null) {
-  $variants: map-get($modules, 'object-position');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $class, $side in $object-position {
-      // DEFAULT
-      @if $screen == null {
-        .object-#{$side} { object-position: $side; }
-
-        @if index($variants, 'hover') {
-          .hover\:object-#{$side}:hover { object-position: $side; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:object-#{$side}:focus { object-position: $side; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:object-#{$side} { object-position: $side; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:object-#{$side}:hover { object-position: $side; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:object-#{$side}:focus { object-position: $side; }
-        }
-      }
-    }
+  @include build-variants($object-position, 'object-position', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}object#{$modifier}#{$state} { object-position: $value; }
   }
 }
