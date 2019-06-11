@@ -1,41 +1,9 @@
+@import '../utils/mixins/build-simple-variants';
+
 @mixin position($screen: null) {
-  $variants: map-get($modules, 'position');
-
-  @if $variants == true or type-of($variants) == list {
+  @include build-simple-variants('position', $screen) using ($prefix, $state) {
     @each $position in (relative, absolute, static, fixed, sticky) {
-      // DEFAULT
-      @if $screen == null {
-        .#{$position} { position: $position; }
-        
-        @if index($variants, 'hover') {
-          .hover\:#{$position}:hover { position: $position; }
-        }
-        
-        @if index($variants, 'group-hover') {
-          .group:hover .group-hover\:#{$position} { position: $position; }
-        }
-        
-        @if index($variants, 'focus') {
-          .focus\:#{$position}:focus { position: $position; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:#{$position} { position: $position; }
-        
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:#{$position}:hover { position: $position; }
-        }
-        
-        @if index($variants, 'group-hover') {
-          .#{$screen}\:group:hover .group-hover\:#{$position} { position: $position; }
-        }
-        
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:#{$position}:focus { position: $position; }
-        }
-      }
+    .#{$prefix}#{$position}#{$state} { position: $position; }
     }
   }
 }
