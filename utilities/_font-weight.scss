@@ -1,41 +1,7 @@
+@import '../utils/mixins/build-variants';
+
 @mixin font-weight($screen: null) {
-  $variants: map-get($modules, 'font-weight');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $suffix, $value in $font-weight {
-      // DEFAULT
-      @if $screen == null {
-        .font-#{$suffix} { font-weight: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:font-#{$suffix}:hover { font-weight: $value; }
-        }
-
-        @if index($variants, 'group-hover') {
-          .group:hover .group-hover\:font-#{$suffix} { font-weight: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:font-#{$suffix}:focus { font-weight: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:font-#{$suffix} { font-weight: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:font-#{$suffix}:hover { font-weight: $value; }
-        }
-
-        @if index($variants, 'group-hover') {
-          .#{$screen}\:group:hover .group-hover\:font-#{$suffix} { font-weight: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:font-#{$suffix}:focus { font-weight: $value; }
-        }
-      }
-    }
+  @include build-variants($font-weight, 'font-weight', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}font#{$modifier}#{$state} { font-weight: $value; }
   }
 }
