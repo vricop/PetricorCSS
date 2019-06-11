@@ -1,22 +1,10 @@
-@mixin _font-smoothing($prefix: '.', $suffix: null) {
-  #{$prefix}antialiased#{$suffix} {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;    
-  }
-}
+@import '../utils/mixins/build-simple-variants';
 
 @mixin font-smoothing($screen: null) {
-  $variants: map-get($modules, 'font-smoothing');
-
-  @if $variants == true or type-of($variants) == list {
-    // DEFAULT
-    @if $screen == null {
-      @include _font-smoothing;
-    }
-
-    // RESPONSIVE
-    @if index($variants, 'responsive') and $screen != null {
-      @include _font-smoothing('.#{$screen}\\:');
+  @include build-simple-variants('font-smoothing', $screen) using ($prefix, $state) {
+    .#{$prefix}antialiased#{$state} {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
   }
 }
