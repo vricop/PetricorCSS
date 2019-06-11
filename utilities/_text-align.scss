@@ -1,25 +1,9 @@
+@import '../utils/mixins/build-simple-variants';
+
 @mixin text-align($screen: null) {
-  $variants: map-get($modules, 'text-align');
-
-  @if $variants == true or type-of($variants) == list {
+  @include build-simple-variants('text-align', $screen) using ($prefix, $state) {
     @each $side in (left, center, right) {
-      // DEFAULT
-      @if $screen == null {
-        .text-#{$side} { text-align: $side; }
-        
-        @if index($variants, 'hover') {
-          .hover\:text-#{$side}:hover { text-align: $side; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:text-#{$side} { text-align: $side; }
-        
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:text-#{$side}:hover { text-align: $side; }
-        }
-      }
+      .#{$prefix}text-#{$side}#{$state} { text-align: $side; }
     }
   }
 }
