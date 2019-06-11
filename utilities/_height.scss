@@ -1,41 +1,7 @@
-@mixin height($breakpoint: null) {
-  $variants: map-get($modules, 'height');
+@import '../utils/mixins/build-variants';
 
-  @if $variants == true or type-of($variants) == list {
-    @each $suffix, $value in $height {
-      // DEFAULT
-      @if $breakpoint == null {
-        .h-#{$suffix} { height: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:h-#{$suffix}:hover { height: $value; }
-        }
-
-        @if index($variants, 'group-hover') {
-          .group:hover .group-hover\:h-#{$suffix} { height: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:h-#{$suffix}:focus { height: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $breakpoint != null {
-        .#{$breakpoint}\:h-#{$suffix} { height: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$breakpoint}\:hover\:h-#{$suffix}:hover { height: $value; }
-        }
-
-        @if index($variants, 'group-hover') {
-          .#{$breakpoint}\:group:hover .group-hover\:h-#{$suffix} { height: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$breakpoint}\:focus\:h-#{$suffix}:focus { height: $value; }
-        }
-      }
-    }
+@mixin height($screen: null) {
+  @include build-variants($height, 'height', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}h#{$modifier}#{$state} { height: $value; }
   }
 }
