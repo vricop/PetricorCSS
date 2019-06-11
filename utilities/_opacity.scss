@@ -1,0 +1,7 @@
+@import '../utils/mixins/build-variants';
+
+@mixin opacity($screen: null) {
+  @include build-variants($opacity, 'opacity', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}opacity#{$modifier}#{$state} { opacity: value; }
+  }
+}
