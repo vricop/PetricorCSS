@@ -8,6 +8,7 @@
       @include background-color($screen);
       @include background-position($screen);
       @include background-repeat($screen);
+      @include background-size($screen);
       @include border-color($screen);
       @include border-radius($screen);
       @include border-style($screen);
