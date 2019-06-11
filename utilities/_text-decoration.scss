@@ -1,59 +1,11 @@
+@import '../utils/mixins/build-simple-variants';
+
 @mixin text-decoration($screen: null) {
-  $variants: map-get($modules, 'text-decoration');
+  @include build-simple-variants('text-decoration', $screen) using ($prefix, $state) {
+    $decorations: ('underline': underline, 'line-through': line-through, 'no-underline': none);
 
-  @if $variants == true or type-of($variants) == list {
-    @each $prop in (underline, line-through, none) {
-      $class: if($prop == none, no-underline, $prop);
-
-      // DEFAULT
-      @if $screen == null {
-        .#{$class} { 
-          text-decoration: $prop;
-        }
-
-        @if index($variants, 'hover') {
-          .hover\:#{$class}:hover { 
-            text-decoration: $prop;
-          }
-        }
-
-        @if index($variants, 'group-hover') {
-          .group:hover .group-hover\:#{$class} { 
-            text-decoration: $prop;
-          }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:#{$class}:focus { 
-            text-decoration: $prop;
-          }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:#{$class} { 
-          text-decoration: $prop;
-        }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:#{$class}:hover { 
-            text-decoration: $prop;
-          }
-        }
-
-        @if index($variants, 'group-hover') {
-          .#{$screen}\:group:hover .group-hover\:#{$class} { 
-            text-decoration: $prop;
-          }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:#{$class}:focus { 
-            text-decoration: $prop;
-          }
-        }
-      }
+    @each $decoration, $value in $decorations {
+      .#{$prefix}#{$decoration}#{$state} { text-decoration: $value; }
     }
   }
 }
