@@ -280,6 +280,18 @@ $font-size: (
   '6xl': 3.582rem, // 57px
 );
 
+$font-size-em: (
+  'sm': 0.833em,  // 13px <== small
+  'base': 1em,    // 16px <== base
+  'lg': 1.2em,    // 19px <== h6
+  'xl': 1.44em,   // 20px <== h5
+  '2xl': 1.728em, // 23px <== h4
+  '3xl': 2.074em, // 27px <== h3
+  '4xl': 2.488em, // 33px <== h2
+  '5xl': 2.985em, // 47px <== h1
+  '6xl': 3.582em, // 57px
+);
+
 $font-family: (
   sans: (
     '-apple-system',
@@ -397,6 +409,7 @@ $modules: (
   flex-wrap: true,
   float: false,
   font-family: true,
+  font-size-em: false,
   font-size: [responsive],
   font-smoothing: true,
   font-style: [responsive],

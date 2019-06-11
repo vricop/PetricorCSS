@@ -1,41 +1,11 @@
+@import '../utils/mixins/build-variants';
+
 @mixin font-size($screen: null) {
-  $variants: map-get($modules, 'font-size');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $suffix, $value in $font-size {
-      // DEFAULT
-      @if $screen == null {
-        .text-#{$suffix} { font-size: $value; }
-
-        @if index($variants, 'hover') {
-          .hover\:text-#{$suffix}:hover { font-size: $value; }
-        }
-
-        @if index($variants, 'group-hover') {
-          .group:hover .group-hover\:text-#{$suffix} { font-size: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .focus\:text-#{$suffix}:focus { font-size: $value; }
-        }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:text-#{$suffix} { font-size: $value; }
-
-        @if index($variants, 'hover') {
-          .#{$screen}\:hover\:text-#{$suffix}:hover { font-size: $value; }
-        }
-
-        @if index($variants, 'group-hover') {
-          .#{$screen}\:group:hover .group-hover\:text-#{$suffix} { font-size: $value; }
-        }
-
-        @if index($variants, 'focus') {
-          .#{$screen}\:focus\:text-#{$suffix}:focus { font-size: $value; }
-        }
-      }
-    }
+  @include build-variants($font-size, 'font-size', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}text#{$modifier}#{$state} { font-size: $value; }
+  }
+  
+  @include build-variants($font-size-em, 'font-size-em', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}\*text#{$modifier}#{$state} { font-size: $value; }
   }
 }
