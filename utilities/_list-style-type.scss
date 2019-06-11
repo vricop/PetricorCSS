@@ -1,17 +1,7 @@
+@import '../utils/mixins/build-variants';
+
 @mixin list-style-type($screen: null) {
-  $variants: map-get($modules, 'list-style-type');
-
-  @if $variants == true or type-of($variants) == list {
-    @each $suffix, $value in $list-type {
-      // DEFAULT
-      @if $screen == null {
-        .list-#{$suffix} { list-style-type: $value; }
-      }
-
-      // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
-        .#{$screen}\:list-#{$suffix} { list-style-type: $value; }
-      }
-    }
+  @include build-variants($list-style-type, 'list-style-type', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}list#{$modifier}#{$state} { list-style-type: $value; }
   }
 }
