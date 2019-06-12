@@ -48,6 +48,7 @@
       @include pointer-events($screen);
       @include position($screen);
       @include resize($screen);
+      @include stroke($screen);
       @include table-layout($screen);
       @include text-align($screen);
       @include text-color($screen);
