@@ -1,7 +1,7 @@
 @mixin build-variants($utility-config, $utility-variants, $screen) {
-  $variants: map-get($modules, $utility-variants);
+  $utility-variants: map-get($variants, $utility-variants);
 
-  @if $variants == true or type-of($variants) == list {
+  @if $utility-variants == true or type-of($utility-variants) == list {
     @each $modifier, $value in $utility-config {
       @if $modifier == 'default' and $utility-variants != 'cursor' {
         $modifier: null;
@@ -13,32 +13,32 @@
       @if $screen == null {
         @content(null, $modifier, null, $value);
 
-        @if index($variants, 'hover') {
+        @if index($utility-variants, 'hover') {
           @content('hover\\:', $modifier, ':hover', $value);
         }
 
-        @if index($variants, 'group-hover') {
+        @if index($utility-variants, 'group-hover') {
           @content('group:hover .group-hover\\:', $modifier, null, $value);
         }
 
-        @if index($variants, 'focus') {
+        @if index($utility-variants, 'focus') {
           @content('focus\\:', $modifier, ':focus', $value);
         }
       }
       
       // RESPONSIVE
-      @if index($variants, 'responsive') and $screen != null {
+      @if index($utility-variants, 'responsive') and $screen != null {
         @content('#{$screen}\\:', $modifier, null, $value);
 
-        @if index($variants, 'hover') {
+        @if index($utility-variants, 'hover') {
           @content('#{$screen}\\:hover\\:', $modifier, ':hover', $value);
         }
 
-        @if index($variants, 'group-hover') {
+        @if index($utility-variants, 'group-hover') {
           @content('#{$screen}\\:.group:hover .group-hover\\:', $modifier, null, $value);
         }
 
-        @if index($variants, 'focus') {
+        @if index($utility-variants, 'focus') {
           @content('#{$screen}\\:focus\\:', $modifier, ':focus', $value);
         }
       }

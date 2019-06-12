@@ -1,7 +1,7 @@
 @mixin container($breakpoint: null) {
-  $variants: map-get($modules, 'container');
+  $utility-variants: map-get($variants, 'container');
   
-  @if $variants == true {
+  @if $utility-variants == true {
     // DEFAULT
     @if $breakpoint == null {
       .container { width: 100%; }

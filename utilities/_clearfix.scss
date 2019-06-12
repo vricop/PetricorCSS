@@ -1,6 +1,6 @@
 @mixin clearfix {
-  $variants: map-get($modules, 'float');
-  @if $variants == true or typeof($variants) == 'list' {
+  $utility-variants: map-get($variants, 'float');
+  @if $utility-variants == true or typeof($utility-variants) == 'list' {
     .clearfix::after {
       content: "";
       display: table;
