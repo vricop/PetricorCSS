@@ -1,4 +1,3 @@
-// # BREAKPOINTS                                                                        
 $breakpoints: (
   sm: (min: 640px),
   md: (min: 768px),
@@ -6,29 +5,25 @@ $breakpoints: (
   xl: (min: 1280px),
 );
 
-// # COLORS
 $colors: (
-  // Brand colors
+  // BRAND COLORS
   'cornflowerblue': cornflowerblue,
   'darkgray': darkgray,
   'gold': gold,
   'gray': gray,
   'lightgray': lightgray,
   'transparent': transparent,
-  
-  // Black & White
+  // BLACK & WHITE
   'black': #212121,
   'white': #fff,
-
-  // Grayscale colors
+  // GRAYSCALE COLORS
   'gray-600': #3B3B3B,
   'gray-500': #616161,
   'gray-400': #767676,
   'gray-300': #ABABAB,
   'gray-200': #DBDBDB,
   'gray-100': #F5F5F5,
-
-  // State colors
+  // STATE COLORS
   'success': #28A745,
   'info': #17A2B8,
   'warning': #FFC107,
@@ -314,7 +309,7 @@ $font-size-em: (
 );
 
 $font-family: (
-  sans: (
+  'sans': (
     '-apple-system',
     'BlinkMacSystemFont',
     'Segoe UI',
@@ -330,7 +325,7 @@ $font-family: (
     sans-serif
   ),
 
-  serif: (
+  'serif': (
     'Georgia',
     'Garamond',
     'Cambria',
@@ -339,7 +334,7 @@ $font-family: (
     serif
   ),
 
-  monospace: (
+  'monospace': (
     'Menlo',
     'Monaco',
     'Consolas',
