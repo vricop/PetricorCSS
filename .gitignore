@@ -4,6 +4,7 @@
 # Css files and maps
 *.css
 *.css.map
+*.scssc
 *.html
 
 # Don't track sass file for testing
