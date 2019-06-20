@@ -1,5 +1,5 @@
 // config, responsive & generators must always be at the top
-@import "config", "responsive", "utilities";
+@import 'config', 'responsive', 'utilities';
 
 @include align-content;
 @include align-items;
@@ -39,7 +39,9 @@
 @include list-style-position;
 @include list-style-type;
 @include margin;
+@include max-height;
 @include max-width;
+@include min-height;
 @include min-width;
 @include object-fit;
 @include object-position;

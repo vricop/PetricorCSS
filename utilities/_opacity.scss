@@ -2,6 +2,6 @@
 
 @mixin opacity($screen: null) {
   @include build-variants($opacity, 'opacity', $screen) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}opacity#{$modifier}#{$state} { opacity: value; }
+    .#{$prefix}opacity#{$modifier}#{$state} { opacity: $value; }
   }
 }

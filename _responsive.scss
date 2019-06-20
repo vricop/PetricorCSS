@@ -36,7 +36,9 @@
       @include list-style-position($screen);
       @include list-style-type($screen);
       @include margin($screen);
+      @include max-height($screen);
       @include max-width($screen);
+      @include min-height($screen);
       @include min-width($screen);
       @include object-fit($screen);
       @include object-position($screen);

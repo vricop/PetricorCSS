@@ -27,7 +27,7 @@ $colors: (
   'success': #28A745,
   'info': #17A2B8,
   'warning': #FFC107,
-  'danger': #DC3545
+  'danger': #DC3545,
 );
 
 $box-shadow: (
@@ -61,20 +61,22 @@ $margin: (
 $margin-negative: (    
   '1': -0.25rem,
   '2': -0.5rem,
+  '3': -0.75rem,
+  '4': -1rem,
 );
 
 $padding: (
   '0': 0,
-  '1': 0.125rem,
-  '2': 0.25rem,
-  '3': 0.5rem,
-  '4': 0.75rem,
-  '5': 1rem,
-  '6': 1.25rem,
-  '7': 1.5rem,
+  '1': 0.25rem,
+  '2': 0.5rem,
+  '3': 0.75rem,
+  '4': 1rem,
+  '5': 1.25rem,
+  '6': 1.5rem,
+  '7': 1.75rem,
   '8': 2rem,
-  '9': 2.5rem,
-  '10': 3rem,
+  '9': 2.25rem,
+  '10': 2.5rem,
   '11': 4rem,
   '12': 5rem,
   '13': 6rem,
@@ -171,31 +173,42 @@ $min-width: (
 );
 
 $height: (
-  '0': 0,
-  '1': 0.25rem,	  // 4px
-  '2': 0.50rem,	  // 8px
-  '3': 1.00rem,	  // 16px
-  '4': 1.50rem,	  // 24px
-  '5': 2.00rem,	  // 32px
-  '6': 2.50rem,	  // 40px
-  '7': 3.00rem,	  // 48px
-  '8': 3.50rem,	  // 56px
-  '9': 4.00rem,	  // 64px
-  '10':	4.50rem,	// 72px
-  '11':	5.00rem,	// 80px
-  '12':	5.50rem,	// 88px
-  '13':	6.00rem,	// 96px
-  '17':	8.00rem,	// 128px
-  '21':	10.00rem	// 160px
-  '25':	12.00rem	// 192px
-  '29':	14.00rem	// 224px
-  '33':	16.00rem	// 256px
+  '0': 0,       // 0   	
+  '1': 0.25rem,	// 4px 	
+  '2': 0.5rem,	// 8px 
+  '3': 0.75rem,	// 12px
+  '4': 1rem,	  // 16px
+  '5': 1.25rem,	// 20px
+  '6': 1.5rem,	// 24px
+  '7': 1.75rem,	// 28p
+  '8': 2rem,   	// 32px
+  '9': 2.25rem,	// 36p
+  '10':	2.5rem,	// 40px
+  '12':	3rem,	  // 48px
+  '16':	4rem,	  // 64px
+  '20':	5rem,	  // 80px
+  '24':	6rem,	  // 96px
+  '32':	8rem,	  // 128px
+  '40':	10rem,	// 160px
+  '48':	12rem,	// 192px
+  '56':	14rem,	// 224px
+  '64':	16rem,	// 256px
   'auto': auto,
   'px': 1px,
   'full': 100%,
   'half': 50%,
   'screen': 100vh,
-  'screen-1\\/2': 50vh
+);
+
+$max-height: (
+  'full': 100%,
+  'screen': 100vh,
+);
+
+$min-height: (
+  '0': 0, 
+  'full': 100%,
+  'screen': 100vh,
 );
 
 $border-width: (
@@ -254,6 +267,8 @@ $z-index-negative: (
 );
 
 $order: (
+  'first': -1,
+  'last': 999,
   'none': 0,
   '1': 1,
   '2': 2,
@@ -277,12 +292,6 @@ $flex-grow: (
 $flex-shrink: (
   '0': 0,
   'default': 1,
-);
-
-$order: (
-  'first': -1,
-  'last': 999,
-  'none': 0,
 );
 
 $font-size: (
@@ -422,13 +431,13 @@ $variants: (
   'box-shadow': true,
   'colors': [hover],
   'container': true,
-  'cursor': false,
+  'cursor': true,
   'display': [responsive],
   'fill': true,
   'flex-direction': [responsive],
   'flex-grow': true,
   'flex-shrink': true,
-  'flex-wrap': true,
+  'flex-wrap': [responsive],
   'float': false,
   'font-family': true,
   'font-size-em': false,
@@ -443,9 +452,11 @@ $variants: (
   'line-height': [responsive],
   'list-style-position': true,
   'list-style-type': true,
-  'margin-negative': false,
+  'margin-negative': [responsive],
   'margin': [responsive],
   'max-width': [responsive],
+  'min-height': false,
+  'max-height': false,
   'min-width': [responsive],
   'object-fit': true,
   'object-position': true,
