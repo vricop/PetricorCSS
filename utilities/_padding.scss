@@ -12,9 +12,9 @@
 
 @mixin padding($screen: null) {
   @include build-variants($padding, 'padding', $screen) using ($prefix, $modifier, $state, $value) {
-    @include padding-classes($prefix, $modifier, $state, $value);
+    @include padding-classes($prefix, $modifier, $state, $value * 1rem);
   };
   @include build-variants($padding-em, 'padding-em', $screen) using ($prefix, $modifier, $state, $value) {
-    @include padding-classes('#{$prefix}\\*', $modifier, $state, $value);
+    @include padding-classes('#{$prefix}\\*', $modifier, $state, $value * 1em);
   };
 }

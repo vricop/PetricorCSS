@@ -12,10 +12,11 @@
 
 @mixin margin($screen: null) {
   @include build-variants($margin, 'margin', $screen) using ($prefix, $modifier, $state, $value) {
+    $value: if($value == auto, $value, $value * 1rem);
     @include margin-classes($prefix, $modifier, $state, $value);
   }
   
   @include build-variants($margin-negative, 'margin-negative', $screen) using ($prefix, $modifier, $state, $value) {
-    @include margin-classes('#{$prefix}-', $modifier, $state, $value);
+    @include margin-classes('#{$prefix}-', $modifier, $state, -$value * 1rem);
   }
 }
