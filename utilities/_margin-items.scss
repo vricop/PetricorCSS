@@ -2,7 +2,7 @@
 
 @mixin margin-items($screen: null) {
   @include build-variants($spacing, 'spacing', $screen) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}margin-items-x#{$modifier}#{$state} > * + * { margin-left: $value * 1rem; };
-    .#{$prefix}margin-items-y#{$modifier}#{$state} > * + * { margin-top: $value * 1rem;  };
+    .#{$prefix}m-items-x#{$modifier}#{$state} > * + * { margin-left: $value * 1rem; };
+    .#{$prefix}m-items-y#{$modifier}#{$state} > * + * { margin-top: $value * 1rem;  };
   }
 }
