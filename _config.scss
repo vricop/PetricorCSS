@@ -261,6 +261,13 @@ $order: (
   '12': 12,
 );
 
+$flex: (
+  'initial': 0 1 auto,
+  '1': 1 1 0%,
+  'auto': 1 1 auto,
+  'none': none,
+);
+
 $flex-grow: (
   '0': 0,
   'default': 1,
@@ -415,6 +422,7 @@ $variants: (
   'flex-grow': true,
   'flex-shrink': true,
   'flex-wrap': [responsive],
+  'flex': [responsive],
   'float': true,
   'font-family': true,
   'font-size-em': false,
@@ -429,6 +437,7 @@ $variants: (
   'line-height': [responsive],
   'list-style-position': true,
   'list-style-type': true,
+  'margin-items': [responsive],
   'margin-negative': [responsive],
   'margin': [responsive],
   'max-height': false,
