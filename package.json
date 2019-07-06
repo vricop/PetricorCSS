@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently -k 'npm run utilities' 'npm run utilities-dist'",
+    "start": "concurrently -k 'npm run utilities' 'npm run utilities-dist' 'npm run dev'",
     "dev": "lite-server",
     "utilities": "sass --watch main.scss:main.css --style expanded",
     "utilities-dist": "sass --watch main.scss:main.min.css --style compressed --no-source-map"
