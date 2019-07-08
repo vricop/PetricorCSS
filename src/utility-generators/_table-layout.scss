@@ -1,0 +1,8 @@
+
+
+@mixin table-layout($screen: null) {
+  @include build-simple-variants('table-layout', $screen) using ($prefix, $state) {
+    .#{$prefix}table-auto#{$state} { table-layout: auto; }
+    .#{$prefix}table-fixed#{$state} { table-layout: fixed; }
+  }
+}

@@ -1,7 +1,0 @@
-@import '../utils/mixins/build-variants';
-
-@mixin font-weight($screen: null) {
-  @include build-variants($font-weight, 'font-weight', $screen) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}font#{$modifier}#{$state} { font-weight: $value; }
-  }
-}

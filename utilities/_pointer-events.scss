@@ -1,8 +1,0 @@
-@import '../utils/mixins/build-simple-variants';
-
-@mixin pointer-events($screen: null) {
-  @include build-simple-variants('pointer-events', $screen) using ($prefix, $state) {
-    .#{$prefix}pointer-events-none#{$state} { pointer-events: none; }
-    .#{$prefix}pointer-events-auto#{$state} { pointer-events: auto; }
-  }
-}

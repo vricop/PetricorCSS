@@ -1,7 +1,0 @@
-@import '../utils/mixins/build-variants';
-
-@mixin width($screen: null) {
-  @include build-variants($width, 'width', $screen) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}w#{$modifier}#{$state} { width: $value; }
-  }
-}

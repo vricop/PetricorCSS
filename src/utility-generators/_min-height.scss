@@ -1,0 +1,9 @@
+
+
+@mixin min-height($screen: null) {
+  @include build-variants($min-height, 'min-height', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}min-h#{$modifier}#{$state} {
+      min-height: $value;
+    }
+  }
+}

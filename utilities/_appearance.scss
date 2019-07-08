@@ -1,7 +1,0 @@
-@import '../utils/mixins/build-simple-variants';
-
-@mixin appearance($screen: null) {
-  @include build-simple-variants('appearance', $screen) using ($prefix, $state) {
-    .#{$prefix}appearance-none#{$state} { appearance: none; }
-  }
-}

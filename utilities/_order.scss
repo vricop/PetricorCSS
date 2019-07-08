@@ -1,7 +1,0 @@
-@import '../utils/mixins/build-variants';
-
-@mixin order($screen: null) {
-  @include build-variants($order, 'order', $screen) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}order#{$modifier}#{$state} { order: $value; }
-  }
-}

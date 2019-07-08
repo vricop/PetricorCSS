@@ -1,0 +1,9 @@
+
+
+@mixin flex-wrap($screen: null) {
+  @include build-simple-variants('flex-wrap', $screen) using ($prefix, $state) {
+    .#{$prefix}flex-wrap#{$state} { flex-wrap: wrap; }
+    .#{$prefix}flex-no-wrap#{$state} { flex-wrap: nowrap; }
+    .#{$prefix}flex-wrap-reverse#{$state} { flex-wrap: wrap-reverse; }
+  }
+}

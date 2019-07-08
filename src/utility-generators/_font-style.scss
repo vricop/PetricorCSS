@@ -1,0 +1,8 @@
+
+
+@mixin font-style($screen: null) {
+  @include build-simple-variants('font-style', $screen) using ($prefix, $state) {
+    .#{$prefix}italic#{$state}{ font-style: italic; }
+    .#{$prefix}non-italic#{$state} { font-style: normal; }
+  }
+}

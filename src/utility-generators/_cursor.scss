@@ -1,0 +1,7 @@
+
+
+@mixin cursor($screen: null) {
+  @include build-variants($cursor, 'cursor', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}cursor#{$modifier}#{$state} { cursor: $value; }
+  }
+}

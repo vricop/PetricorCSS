@@ -1,0 +1,7 @@
+
+
+@mixin max-width($screen: null) {
+  @include build-variants($max-width, 'max-width', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}max-w#{$modifier}#{$state} { max-width: $value; }
+  }
+}

@@ -1,8 +1,0 @@
-@import '../utils/mixins/build-simple-variants';
-
-@mixin visibility($screen: null) {
-  @include build-simple-variants('vertical-align', $screen) using ($prefix, $state) {
-    .#{$prefix}visible#{$state} { visibility: visible; }
-    .#{$prefix}invisible#{$state} { visibility: hidden; }
-  }
-}

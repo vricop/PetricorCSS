@@ -1,0 +1,7 @@
+
+
+@mixin min-width($screen: null) {
+  @include build-variants($min-width, 'min-width', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}min-w#{$modifier}#{$state} { min-width: $value; }
+  }
+}

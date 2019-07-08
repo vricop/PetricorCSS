@@ -1,9 +1,0 @@
-@import '../utils/mixins/build-simple-variants';
-
-@mixin background-attachment($screen: null) {
-  @include build-simple-variants('background-attachment', $screen) using ($prefix, $state) {
-    .#{$prefix}bg-fixed#{$state} { background-attachment: fixed; }
-    .#{$prefix}bg-local#{$state} { background-attachment: local; }
-    .#{$prefix}bg-scroll#{$state} { background-attachment: scroll; }
-  }
-}

@@ -1,7 +1,0 @@
-@import '../utils/mixins/build-variants';
-
-@mixin flex-grow($screen: null) {
-  @include build-variants($flex-grow, 'flex-grow', $screen) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}flex-grow#{$modifier}#{$state} { flex-grow: $value; }
-  }
-}

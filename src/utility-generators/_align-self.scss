@@ -1,0 +1,9 @@
+@mixin align-self($screen: null) {
+  @include build-simple-variants('align-self', $screen) using ($prefix, $state) {
+    .#{$prefix}self-auto#{$state} { align-self: auto; }
+    .#{$prefix}self-start#{$state} { align-self: flex-start; }
+    .#{$prefix}self-center#{$state} { align-self: center; }
+    .#{$prefix}self-end#{$state} { align-self: flex-end; }
+    .#{$prefix}self-stretch#{$state} { align-self: stretch; }
+  };
+}

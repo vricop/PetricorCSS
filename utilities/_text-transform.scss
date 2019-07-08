@@ -1,9 +1,0 @@
-@import '../utils/mixins/build-simple-variants';
-
-@mixin text-transform($screen: null) {
-  @include build-simple-variants('text-transform', $screen) using ($prefix, $state) {
-    @each $text-case in (uppercase, lowercase, capitalize, none) {
-      .#{$prefix}#{$text-case}#{$state} { text-transform: $text-case; }
-    }
-  }
-}

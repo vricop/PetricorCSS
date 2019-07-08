@@ -1,0 +1,10 @@
+
+
+@mixin user-select($screen: null) {
+  @include build-simple-variants('user-select', $screen) using ($prefix, $state) {
+    .#{$prefix}select-none#{$state} { user-select: none; }
+    .#{$prefix}select-text#{$state} { user-select: text; }
+    .#{$prefix}select-all#{$state} { user-select: all; }
+    .#{$prefix}select-auto#{$state} { user-select: auto; }
+  }
+}

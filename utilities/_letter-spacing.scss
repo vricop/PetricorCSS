@@ -1,7 +1,0 @@
-@import '../utils/mixins/build-variants';
-
-@mixin letter-spacing($screen: null) {
-  @include build-variants($tracking, 'letter-spacing', $screen) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}tracking#{$modifier}#{$state} { letter-spacing: $value; }
-  }
-}

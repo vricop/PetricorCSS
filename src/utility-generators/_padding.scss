@@ -1,0 +1,20 @@
+
+
+@mixin padding-classes($prefix, $modifier, $state, $value) {
+  .#{$prefix}p#{$modifier}#{$state}  { padding: $value; }
+  .#{$prefix}px#{$modifier}#{$state} { padding: { left: $value; right: $value; } } 
+  .#{$prefix}py#{$modifier}#{$state} { padding: { top: $value; bottom: $value; } }
+  .#{$prefix}pt#{$modifier}#{$state} { padding-top: $value; };
+  .#{$prefix}pr#{$modifier}#{$state} { padding-right: $value; };
+  .#{$prefix}pb#{$modifier}#{$state} { padding-bottom: $value; };
+  .#{$prefix}pl#{$modifier}#{$state} { padding-left: $value; };
+}
+
+@mixin padding($screen: null) {
+  @include build-variants($padding, 'padding', $screen) using ($prefix, $modifier, $state, $value) {
+    @include padding-classes($prefix, $modifier, $state, $value * 1rem);
+  };
+  @include build-variants($padding-em, 'padding-em', $screen) using ($prefix, $modifier, $state, $value) {
+    @include padding-classes('#{$prefix}\\*', $modifier, $state, $value * 1em);
+  };
+}

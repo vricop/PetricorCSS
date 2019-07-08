@@ -1,0 +1,9 @@
+@mixin align-items($screen: null) {
+  @include build-simple-variants('align-items', $screen) using ($prefix, $state) {
+    .#{$prefix}items-stretch#{$state} { align-items: stretch; }
+    .#{$prefix}items-start#{$state} { align-items: flex-start; }
+    .#{$prefix}items-center#{$state} { align-items: center; }
+    .#{$prefix}items-end#{$state} { align-items: flex-end; }
+    .#{$prefix}items-baseline#{$state} { align-items: baseline; }
+  };
+}

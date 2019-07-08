@@ -1,0 +1,32 @@
+
+
+@mixin inset-classes($prefix, $modifier, $state, $value) { 
+  // Insets
+  .#{$prefix}inset#{$modifier}#{$state} { 
+    top: $value; 
+    right: $value; 
+    bottom: $value; 
+    left: $value;
+  }
+
+  .#{$prefix}inset-x#{$modifier}#{$state} { 
+    left: $value; 
+    right: $value;
+  }
+
+  .#{$prefix}inset-y#{$modifier}#{$state} { 
+    top: $value; 
+    bottom: $value;
+  }
+  
+  // Sides
+  @each $side in (top, right, bottom, left) {
+    .#{$prefix}#{$side}#{$modifier}#{$state} { #{$side}: $value; }
+  }
+}
+
+@mixin inset($screen: null) {
+  @include build-variants($inset, 'inset', $screen) using ($prefix, $modifier, $state, $value) {
+    @include inset-classes($prefix, $modifier, $state, $value);
+  }
+}

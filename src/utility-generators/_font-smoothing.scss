@@ -1,0 +1,10 @@
+
+
+@mixin font-smoothing($screen: null) {
+  @include build-simple-variants('font-smoothing', $screen) using ($prefix, $state) {
+    .#{$prefix}antialiased#{$state} {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+}

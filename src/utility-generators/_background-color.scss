@@ -1,0 +1,7 @@
+
+
+@mixin background-color($screen: null) {
+  @include build-variants($colors, 'background-color', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}bg#{$modifier}#{$state} { background-color: $value; }
+  }
+}

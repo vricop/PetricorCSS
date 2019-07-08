@@ -1,0 +1,11 @@
+
+
+@mixin text-decoration($screen: null) {
+  @include build-simple-variants('text-decoration', $screen) using ($prefix, $state) {
+    $decorations: ('underline': underline, 'line-through': line-through, 'no-underline': none);
+
+    @each $decoration, $value in $decorations {
+      .#{$prefix}#{$decoration}#{$state} { text-decoration: $value; }
+    }
+  }
+}

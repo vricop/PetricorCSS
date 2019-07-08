@@ -1,7 +1,0 @@
-@import '../utils/mixins/build-variants';
-
-@mixin box-shadow($screen: null) {
-	@include build-variants($box-shadow, 'box-shadow', $screen) using ($prefix, $modifier, $state, $value) {
-		.#{$prefix}shadow#{$modifier}#{$state} { box-shadow: unquote($value); }
-	} 
-}

@@ -1,7 +1,0 @@
-@import '../utils/mixins/build-simple-variants';
-
-@mixin stroke($screen: null) {
-  @include build-simple-variants('stroke', $screen) using ($prefix, $state) {
-    .#{$prefix}stroke-current#{$state} { stroke: currentColor; }
-  }
-}
