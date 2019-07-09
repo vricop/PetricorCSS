@@ -1,7 +1,7 @@
 
 
 @mixin object-position($screen: null) {
-  @include build-variants($object-position, 'object-position', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config($object-position, 'object-position', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}object#{$modifier}#{$state} { object-position: $value; }
   }
 }

@@ -1,5 +1,5 @@
 @mixin align-content($screen: null) {
-  @include build-simple-variants('align-content', $screen) using ($prefix, $state) {
+  @include generate-variants('align-content', $screen) using ($prefix, $state) {
     .#{$prefix}content-start#{$state} { align-content: flex-start; }
     .#{$prefix}content-center#{$state} { align-content: center; }
     .#{$prefix}content-end#{$state} { align-content: flex-end; }

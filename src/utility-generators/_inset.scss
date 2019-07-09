@@ -26,7 +26,7 @@
 }
 
 @mixin inset($screen: null) {
-  @include build-variants($inset, 'inset', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config($inset, 'inset', $screen) using ($prefix, $modifier, $state, $value) {
     @include inset-classes($prefix, $modifier, $state, $value);
   }
 }

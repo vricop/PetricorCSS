@@ -1,7 +1,7 @@
 
 
 @mixin outline($screen: null) {
-  @include build-simple-variants('outline', $screen) using ($prefix, $state) {
+  @include generate-variants('outline', $screen) using ($prefix, $state) {
     .#{$prefix}outline-none#{$state} { outline: 0; }
   }
 }

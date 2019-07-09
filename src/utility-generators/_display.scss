@@ -1,7 +1,7 @@
 
 
 @mixin display($screen: null) {
-  @include build-simple-variants('display', $screen) using ($prefix, $state) {
+  @include generate-variants('display', $screen) using ($prefix, $state) {
     @each $type in (block, flex, grid, inline-block, inline-flex, inline-grid, inline, none) {
       .#{$prefix}#{$type}#{$state} { display: $type; }
     }

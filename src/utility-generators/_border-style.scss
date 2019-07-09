@@ -1,7 +1,7 @@
 
 
 @mixin border-style($screen: null) {
-  @include build-simple-variants('border-style', $screen) using ($prefix, $state) {
+  @include generate-variants('border-style', $screen) using ($prefix, $state) {
     @each $style in (solid dashed dotted none) {
       .#{$prefix}border-#{$style}#{$state} {  border-style: $style; }
     }

@@ -1,7 +1,7 @@
 
 
 @mixin resize($screen: null) {
-  @include build-simple-variants('resize', $screen) using ($prefix, $state) {
+  @include generate-variants('resize', $screen) using ($prefix, $state) {
     .#{$prefix}resize-none#{$state} { resize: none; }
     .#{$prefix}resize#{$state} { resize: both; }
     .#{$prefix}resize-y#{$state} { resize: vertical; }

@@ -1,7 +1,7 @@
 
 
 @mixin border-color($screen: null) {
-  @include build-variants($colors, 'border-color', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config($colors, 'border-color', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}border#{$modifier}#{$state} { border-color: $value; }
   };
 }

@@ -1,7 +1,7 @@
 
 
 @mixin list-style-type($screen: null) {
-  @include build-variants($list-style-type, 'list-style-type', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config($list-style-type, 'list-style-type', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}list#{$modifier}#{$state} { list-style-type: $value; }
   }
 }

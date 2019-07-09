@@ -1,7 +1,7 @@
 
 
 @mixin letter-spacing($screen: null) {
-  @include build-variants($tracking, 'letter-spacing', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config($tracking, 'letter-spacing', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}tracking#{$modifier}#{$state} { letter-spacing: $value; }
   }
 }

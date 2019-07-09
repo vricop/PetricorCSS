@@ -1,7 +1,7 @@
 
 
 @mixin text-color($screen: null) {
-  @include build-variants($colors, 'text-color', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config($colors, 'text-color', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}text#{$modifier}#{$state} { color: $value; }
   }
 }

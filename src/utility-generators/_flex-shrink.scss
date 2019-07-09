@@ -1,7 +1,7 @@
 
 
 @mixin flex-shrink($screen: null) {
-  @include build-variants($flex-shrink, 'flex-shrink', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config($flex-shrink, 'flex-shrink', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}flex-shrink#{$modifier}#{$state} {
       flex-shrink: $value;
     }

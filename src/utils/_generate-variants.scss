@@ -1,4 +1,4 @@
-@mixin build-simple-variants($utility-variants, $screen) {
+@mixin generate-variants($utility-variants, $screen) {
   $utility-variants: map-get($variants, $utility-variants);
 
   @if $utility-variants == true or type-of($utility-variants) == list {

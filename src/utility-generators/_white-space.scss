@@ -1,7 +1,7 @@
 
 
 @mixin white-space($screen: null) {
-  @include build-simple-variants('white-space', $screen) using ($prefix, $state) {
+  @include generate-variants('white-space', $screen) using ($prefix, $state) {
     @each $whitespace in (normal, nowrap, pre, pre-line, pre-wrap) {
       .#{$prefix}whitespace-#{$whitespace}#{$state} { white-space: $whitespace; }
     }

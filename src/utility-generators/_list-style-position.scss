@@ -1,7 +1,7 @@
 
 
 @mixin list-style-position($screen: null) {
-  @include build-simple-variants('list-style-position', $screen) using ($prefix, $state) {
+  @include generate-variants('list-style-position', $screen) using ($prefix, $state) {
     .#{$prefix}list-inside#{$state} { list-style-position: inside; }
     .#{$prefix}list-outside#{$state} { list-style-position: inside; }
   }

@@ -1,0 +1,19 @@
+@mixin bundle-responsive-utilities($breakpoint) {
+  @if map-has-key($breakpoint, 'min') and map-has-key($breakpoint, 'max') {
+    @include mediaquery($min: map-get($breakpoint, 'min'), $max: map-get($breakpoint, 'max')) {
+      @content;
+    }
+  }
+
+  @else if map-has-key($breakpoint, 'min') {
+    @include mediaquery($min: map-get($breakpoint, 'min')) {
+      @content;
+    }
+  }
+
+  @else if map-has-key($breakpoint, 'max') {
+    @include mediaquery($max: map-get($breakpoint, 'max')) {
+      @content;
+    }
+  }
+}

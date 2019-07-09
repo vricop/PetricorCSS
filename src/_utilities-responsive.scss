@@ -1,5 +1,5 @@
 @each $screen, $breakpoint in $breakpoints {
-  @include build-responsive-utilities($breakpoint) {
+  @include bundle-responsive-utilities($breakpoint) {
     @include align-content($screen);
     @include align-items($screen);
     @include align-self($screen);

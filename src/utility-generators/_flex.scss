@@ -1,7 +1,7 @@
 
 
 @mixin flex($screen: null) {
-  @include build-variants($flex, 'flex', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config($flex, 'flex', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}flex#{$modifier}#{$state} { flex: $value; }
   }
 }

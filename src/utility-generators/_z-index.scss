@@ -1,10 +1,10 @@
 
 
 @mixin z-index($screen: null) {
-  @include build-variants($z-index, 'z-index', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config($z-index, 'z-index', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}z#{$modifier}#{$state} { z-index: $value; }
   }
-  @include build-variants($z-index-negative, 'z-index-negative', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config($z-index-negative, 'z-index-negative', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}-z#{$modifier}#{$state} { z-index: $value; }
   }
 }

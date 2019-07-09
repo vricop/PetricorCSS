@@ -1,7 +1,7 @@
 
 
 @mixin background-size($screen: null) {
-  @include build-simple-variants('background-size', $screen) using ($prefix, $state) {
+  @include generate-variants('background-size', $screen) using ($prefix, $state) {
     .#{$prefix}bg-atuo#{$state} { background-size: auto; }
     .#{$prefix}bg-cover#{$state} { background-size: cover; }
     .#{$prefix}bg-contain#{$state} { background-size: contain; }

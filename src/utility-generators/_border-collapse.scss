@@ -1,7 +1,7 @@
 
 
 @mixin border-collapse($screen: null) {
-  @include build-simple-variants('border-collapse', $screen) using ($prefix, $state) {
+  @include generate-variants('border-collapse', $screen) using ($prefix, $state) {
     .#{$prefix}border-collapse#{$state} { border-collapse: collapse; }
     .#{$prefix}border-separate#{$state} { border-collapse: separate; }
   }  

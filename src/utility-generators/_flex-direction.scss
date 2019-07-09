@@ -1,7 +1,7 @@
 
 
 @mixin flex-direction($screen: null) {
-  @include build-simple-variants('flex-direction', $screen) using ($prefix, $state) {
+  @include generate-variants('flex-direction', $screen) using ($prefix, $state) {
     .#{$prefix}flex-row#{$state} { flex-direction: row; }
     .#{$prefix}flex-row-reverse#{$state} { flex-direction: row-reverse; }
     .#{$prefix}flex-col#{$state} { flex-direction: column; }

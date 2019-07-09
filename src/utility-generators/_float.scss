@@ -1,7 +1,7 @@
 
 
 @mixin float($screen: null) {
-  @include build-simple-variants('float', $screen) using ($prefix, $state) {
+  @include generate-variants('float', $screen) using ($prefix, $state) {
     @each $side in (left, right, none) {
       .#{$prefix}float-#{$side}#{$state} { float: $side; }
     }
