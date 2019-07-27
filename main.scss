@@ -1,1 +1,22 @@
 @import 'src/index', 'base';
+
+.test {
+  margin-top: m(1);
+  margin-left: -m(3);
+  padding-right: p(8);
+  padding-right: p-em(8);
+  box-sizing: shadow('lg');
+  color: color('gold');
+  width: w('1\\/2');
+  height: h('screen');
+  border: border('4') solid red;
+  border-radius: rounded-em('sm');
+  opacity: opacity(25);
+  z-index: -z('20');
+  order: order('3');
+  font-size: text-em('xl');
+  font-family: font-stack('serif');
+  line-height: leading('snug');
+  letter-spacing: tracking('wide');
+  font-weight: font-weight('light');
+}
