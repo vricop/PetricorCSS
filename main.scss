@@ -9,11 +9,11 @@
   color: color('gold');
   width: w('1\\/2');
   height: h('screen');
-  border: border('4') solid red;
+  border: border(4) solid red;
   border-radius: rounded-em('sm');
   opacity: opacity(25);
-  z-index: -z('20');
-  order: order('3');
+  z-index: -z(20);
+  order: order(3);
   font-size: text-em('xl');
   font-family: font-stack('serif');
   line-height: leading('snug');
