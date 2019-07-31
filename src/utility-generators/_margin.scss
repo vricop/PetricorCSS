@@ -1,6 +1,7 @@
 
 
 @mixin margin-classes($prefix, $modifier, $state, $value) {
+  // DEFAULT
   .#{$prefix}m#{$modifier}#{$state} { margin: $value; };
   .#{$prefix}mx#{$modifier}#{$state} { margin: { left: $value; right: $value; } };
   .#{$prefix}my#{$modifier}#{$state} { margin: { top: $value; bottom: $value; } };
@@ -8,6 +9,17 @@
   .#{$prefix}mr#{$modifier}#{$state} { margin-right: $value };
   .#{$prefix}mb#{$modifier}#{$state} { margin-bottom: $value };
   .#{$prefix}ml#{$modifier}#{$state} { margin-left: $value };
+  // CHILD ITEMS: LOBOTOMIZED OWL
+  .#{$prefix}mt#{$modifier}\>\*\+\*#{$state} > * + * { margin-top: $value; }
+  .#{$prefix}ml#{$modifier}\>\*\+\*#{$state} > * + * { margin-left: $value; }
+  // CHILD ITEMS
+  .#{$prefix}m#{$modifier}\>\*#{$state} > * { margin: $value; };
+  .#{$prefix}mx#{$modifier}\>\*#{$state} > * { margin: { left: $value; right: $value; } };
+  .#{$prefix}my#{$modifier}\>\*#{$state} > * { margin: { top: $value; bottom: $value; } };
+  .#{$prefix}mt#{$modifier}\>\*#{$state} > * { margin-top: $value };
+  .#{$prefix}mr#{$modifier}\>\*#{$state} > * { margin-right: $value };
+  .#{$prefix}mb#{$modifier}\>\*#{$state} > * { margin-bottom: $value };
+  .#{$prefix}ml#{$modifier}\>\*#{$state} > * { margin-left: $value };
 }
 
 @mixin margin($screen: null) {

@@ -1,8 +1,0 @@
-
-
-@mixin margin-items($screen: null) {
-  @include generate-variants-with-config($spacing, 'spacing', $screen) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}m-items-x#{$modifier}#{$state} > * + * { margin-left: $value * 1rem; };
-    .#{$prefix}m-items-y#{$modifier}#{$state} > * + * { margin-top: $value * 1rem;  };
-  }
-}
