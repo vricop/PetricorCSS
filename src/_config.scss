@@ -68,12 +68,7 @@ $margin: map-merge(
   $spacing
 );
 
-$margin-negative: (    
-  1: map-get($spacing, 1),
-  2: map-get($spacing, 2),
-  3: map-get($spacing, 3),
-  4: map-get($spacing, 4),
-);
+$margin-negative: map-remove($spacing, 0);
 
 $padding: $spacing;
 

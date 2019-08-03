@@ -1,34 +1,36 @@
-
-
-@mixin margin-classes($prefix, $modifier, $state, $value) {
-  // DEFAULT
-  .#{$prefix}m#{$modifier}#{$state} { margin: $value; };
-  .#{$prefix}mx#{$modifier}#{$state} { margin: { left: $value; right: $value; } };
-  .#{$prefix}my#{$modifier}#{$state} { margin: { top: $value; bottom: $value; } };
-  .#{$prefix}mt#{$modifier}#{$state} { margin-top: $value };
-  .#{$prefix}mr#{$modifier}#{$state} { margin-right: $value };
-  .#{$prefix}mb#{$modifier}#{$state} { margin-bottom: $value };
-  .#{$prefix}ml#{$modifier}#{$state} { margin-left: $value };
-  // CHILD ITEMS: LOBOTOMIZED OWL
-  .#{$prefix}mt#{$modifier}\>\*\+\*#{$state} > * + * { margin-top: $value; }
-  .#{$prefix}ml#{$modifier}\>\*\+\*#{$state} > * + * { margin-left: $value; }
-  // CHILD ITEMS
-  .#{$prefix}m#{$modifier}\>\*#{$state} > * { margin: $value; };
-  .#{$prefix}mx#{$modifier}\>\*#{$state} > * { margin: { left: $value; right: $value; } };
-  .#{$prefix}my#{$modifier}\>\*#{$state} > * { margin: { top: $value; bottom: $value; } };
-  .#{$prefix}mt#{$modifier}\>\*#{$state} > * { margin-top: $value };
-  .#{$prefix}mr#{$modifier}\>\*#{$state} > * { margin-right: $value };
-  .#{$prefix}mb#{$modifier}\>\*#{$state} > * { margin-bottom: $value };
-  .#{$prefix}ml#{$modifier}\>\*#{$state} > * { margin-left: $value };
-}
-
 @mixin margin($screen: null) {
   @include generate-variants-with-config($margin, 'margin', $screen) using ($prefix, $modifier, $state, $value) {
     $value: if($value == auto, $value, $value * 1rem);
-    @include margin-classes($prefix, $modifier, $state, $value);
+    // DEFAULT
+    .#{$prefix}m#{$modifier}#{$state} { margin: $value; };
+    .#{$prefix}mx#{$modifier}#{$state} { margin: { left: $value; right: $value; } };
+    .#{$prefix}my#{$modifier}#{$state} { margin: { top: $value; bottom: $value; } };
+    .#{$prefix}mt#{$modifier}#{$state} { margin-top: $value };
+    .#{$prefix}mr#{$modifier}#{$state} { margin-right: $value };
+    .#{$prefix}mb#{$modifier}#{$state} { margin-bottom: $value };
+    .#{$prefix}ml#{$modifier}#{$state} { margin-left: $value };
+    // CHILD ITEMS: LOBOTOMIZED OWL
+    .#{$prefix}mt#{$modifier}\>\*\+\*#{$state} > * + * { margin-top: $value; }
+    .#{$prefix}ml#{$modifier}\>\*\+\*#{$state} > * + * { margin-left: $value; }
+    // CHILD ITEMS
+    .#{$prefix}m#{$modifier}\>\*#{$state} > * { margin: $value; };
+    .#{$prefix}mx#{$modifier}\>\*#{$state} > * { margin: { left: $value; right: $value; } };
+    .#{$prefix}my#{$modifier}\>\*#{$state} > * { margin: { top: $value; bottom: $value; } };
+    .#{$prefix}mt#{$modifier}\>\*#{$state} > * { margin-top: $value };
+    .#{$prefix}mr#{$modifier}\>\*#{$state} > * { margin-right: $value };
+    .#{$prefix}mb#{$modifier}\>\*#{$state} > * { margin-bottom: $value };
+    .#{$prefix}ml#{$modifier}\>\*#{$state} > * { margin-left: $value };
   }
   
   @include generate-variants-with-config($margin-negative, 'margin-negative', $screen) using ($prefix, $modifier, $state, $value) {
-    @include margin-classes('#{$prefix}-', $modifier, $state, -$value * 1rem);
+    // DEFAULT
+    $value: $value * -1rem;
+    .#{$prefix}-m#{$modifier}#{$state} { margin: $value; };
+    .#{$prefix}-mx#{$modifier}#{$state} { margin: { left: $value; right: $value; } };
+    .#{$prefix}-my#{$modifier}#{$state} { margin: { top: $value; bottom: $value; } };
+    .#{$prefix}-mt#{$modifier}#{$state} { margin-top: $value };
+    .#{$prefix}-mr#{$modifier}#{$state} { margin-right: $value };
+    .#{$prefix}-mb#{$modifier}#{$state} { margin-bottom: $value };
+    .#{$prefix}-ml#{$modifier}#{$state} { margin-left: $value };
   }
 }
