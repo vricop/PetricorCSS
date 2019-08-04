@@ -2,7 +2,20 @@
 
 @mixin display($screen: null) {
   @include generate-variants('display', $screen) using ($prefix, $state) {
-    @each $type in (block, flex, grid, inline-block, inline-flex, inline-grid, inline, none) {
+    $formats: (
+      block,
+      flex,
+      grid,
+      inline-block,
+      inline-flex,
+      inline-grid,
+      inline,
+      none,
+      table-cell
+      table,
+    );
+
+    @each $type in $formats {
       $class: if($type == 'none', 'hidden', $type);
       
       .#{$prefix}#{$class}#{$state} { display: $type; }
