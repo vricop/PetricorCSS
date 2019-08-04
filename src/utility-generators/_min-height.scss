@@ -1,5 +1,3 @@
-
-
 @mixin min-height($screen: null) {
   @include generate-variants-with-config($min-height, 'min-height', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}min-h#{$modifier}#{$state} {

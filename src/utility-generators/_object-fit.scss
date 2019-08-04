@@ -1,5 +1,3 @@
-
-
 @mixin object-fit($screen: null) {
   @include generate-variants('object-fit', $screen) using ($prefix, $state) {
     @each $fit-type in (contain, cover, fill, none, scale-down) {

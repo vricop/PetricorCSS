@@ -1,5 +1,3 @@
-
-
 @mixin display($screen: null) {
   @include generate-variants('display', $screen) using ($prefix, $state) {
     $formats: (

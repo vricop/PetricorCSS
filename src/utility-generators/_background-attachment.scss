@@ -1,5 +1,3 @@
-
-
 @mixin background-attachment($screen: null) {
   @include generate-variants('background-attachment', $screen) using ($prefix, $state) {
     .#{$prefix}bg-fixed#{$state} { background-attachment: fixed; }

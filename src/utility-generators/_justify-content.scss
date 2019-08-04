@@ -1,5 +1,3 @@
-
-
 @mixin justify-content($screen: null) {
   @include generate-variants('justify-content', $screen) using ($prefix, $state) {
     .#{$prefix}justify-start#{$state} { justify-content: flex-start; }

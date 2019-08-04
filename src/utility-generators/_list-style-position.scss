@@ -1,5 +1,3 @@
-
-
 @mixin list-style-position($screen: null) {
   @include generate-variants('list-style-position', $screen) using ($prefix, $state) {
     .#{$prefix}list-inside#{$state} { list-style-position: inside; }

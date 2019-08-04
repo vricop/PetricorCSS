@@ -1,5 +1,3 @@
-
-
 @mixin cursor($screen: null) {
   @include generate-variants-with-config($cursor, 'cursor', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}cursor#{$modifier}#{$state} { cursor: $value; }

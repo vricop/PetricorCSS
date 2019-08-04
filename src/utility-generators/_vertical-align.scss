@@ -1,5 +1,3 @@
-
-
 @mixin vertical-align($screen: null) {
   @include generate-variants('vertical-align', $screen) using ($prefix, $state) {
     @each $position in (baseline, top, middle, bottom, text-top, text-bottom) {

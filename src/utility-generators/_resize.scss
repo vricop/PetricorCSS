@@ -1,5 +1,3 @@
-
-
 @mixin resize($screen: null) {
   @include generate-variants('resize', $screen) using ($prefix, $state) {
     .#{$prefix}resize-none#{$state} { resize: none; }

@@ -1,5 +1,3 @@
-
-
 @mixin outline($screen: null) {
   @include generate-variants('outline', $screen) using ($prefix, $state) {
     .#{$prefix}outline-none#{$state} { outline: 0; }

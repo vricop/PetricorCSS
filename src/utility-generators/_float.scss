@@ -1,5 +1,3 @@
-
-
 @mixin float($screen: null) {
   @include generate-variants('float', $screen) using ($prefix, $state) {
     @each $side in (left, right, none) {

@@ -1,5 +1,3 @@
-
-
 @mixin white-space($screen: null) {
   @include generate-variants('white-space', $screen) using ($prefix, $state) {
     @each $whitespace in (normal, nowrap, pre, pre-line, pre-wrap) {

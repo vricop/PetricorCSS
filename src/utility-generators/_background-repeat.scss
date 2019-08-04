@@ -1,5 +1,3 @@
-
-
 @mixin background-repeat($screen: null) {
   @include generate-variants('background-repeat', $screen) using ($prefix, $state) {
     .#{$prefix}bg-repeat#{$state} { background-repeat: repeat; }

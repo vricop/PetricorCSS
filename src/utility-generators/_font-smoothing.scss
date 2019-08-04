@@ -1,5 +1,3 @@
-
-
 @mixin font-smoothing($screen: null) {
   @include generate-variants('font-smoothing', $screen) using ($prefix, $state) {
     .#{$prefix}antialiased#{$state} {

@@ -1,5 +1,3 @@
-
-
 @mixin appearance($screen: null) {
   @include generate-variants('appearance', $screen) using ($prefix, $state) {
     .#{$prefix}appearance-none#{$state} { appearance: none; }

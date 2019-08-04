@@ -1,5 +1,3 @@
-
-
 @mixin line-height($screen: null) {
   @include generate-variants-with-config($leading, 'line-height', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}leading#{$modifier}#{$state} { line-height: $value; }

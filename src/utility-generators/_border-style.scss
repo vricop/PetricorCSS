@@ -1,5 +1,3 @@
-
-
 @mixin border-style($screen: null) {
   @include generate-variants('border-style', $screen) using ($prefix, $state) {
     @each $style in (solid dashed dotted none) {

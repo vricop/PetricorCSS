@@ -1,5 +1,3 @@
-
-
 @mixin table-layout($screen: null) {
   @include generate-variants('table-layout', $screen) using ($prefix, $state) {
     .#{$prefix}table-auto#{$state} { table-layout: auto; }

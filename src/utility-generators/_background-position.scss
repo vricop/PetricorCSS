@@ -1,5 +1,3 @@
-
-
 @mixin background-position($screen: null) {
   @include generate-variants('background-position', $screen) using ($prefix, $state) {
     .#{$prefix}bg-bottom#{$state} { background-position: bottom; }

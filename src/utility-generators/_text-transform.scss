@@ -1,5 +1,3 @@
-
-
 @mixin text-transform($screen: null) {
   @include generate-variants('text-transform', $screen) using ($prefix, $state) {
     @each $text-case in (uppercase, lowercase, capitalize, none) {

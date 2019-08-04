@@ -1,5 +1,3 @@
-
-
 @mixin pointer-events($screen: null) {
   @include generate-variants('pointer-events', $screen) using ($prefix, $state) {
     .#{$prefix}pointer-events-none#{$state} { pointer-events: none; }

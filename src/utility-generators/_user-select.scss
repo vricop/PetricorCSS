@@ -1,5 +1,3 @@
-
-
 @mixin user-select($screen: null) {
   @include generate-variants('user-select', $screen) using ($prefix, $state) {
     .#{$prefix}select-none#{$state} { user-select: none; }

@@ -1,5 +1,3 @@
-
-
 @mixin flex-wrap($screen: null) {
   @include generate-variants('flex-wrap', $screen) using ($prefix, $state) {
     .#{$prefix}flex-wrap#{$state} { flex-wrap: wrap; }

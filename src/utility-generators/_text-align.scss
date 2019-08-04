@@ -1,5 +1,3 @@
-
-
 @mixin text-align($screen: null) {
   @include generate-variants('text-align', $screen) using ($prefix, $state) {
     @each $side in (left, center, right) {

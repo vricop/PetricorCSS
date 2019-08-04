@@ -1,5 +1,3 @@
-
-
 @mixin visibility($screen: null) {
   @include generate-variants('vertical-align', $screen) using ($prefix, $state) {
     .#{$prefix}visible#{$state} { visibility: visible; }

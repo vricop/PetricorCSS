@@ -1,5 +1,3 @@
-
-
 @mixin stroke($screen: null) {
   @include generate-variants('stroke', $screen) using ($prefix, $state) {
     .#{$prefix}stroke-current#{$state} { stroke: currentColor; }

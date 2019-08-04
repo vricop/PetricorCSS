@@ -1,5 +1,3 @@
-
-
 @mixin width($screen: null) {
   @include generate-variants-with-config($width, 'width', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}w#{$modifier}#{$state} { width: $value; }

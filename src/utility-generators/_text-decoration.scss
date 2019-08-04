@@ -1,5 +1,3 @@
-
-
 @mixin text-decoration($screen: null) {
   @include generate-variants('text-decoration', $screen) using ($prefix, $state) {
     $decorations: ('underline': underline, 'line-through': line-through, 'no-underline': none);

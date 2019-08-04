@@ -1,5 +1,3 @@
-
-
 @mixin background-size($screen: null) {
   @include generate-variants('background-size', $screen) using ($prefix, $state) {
     .#{$prefix}bg-atuo#{$state} { background-size: auto; }

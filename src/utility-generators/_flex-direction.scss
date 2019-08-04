@@ -1,5 +1,3 @@
-
-
 @mixin flex-direction($screen: null) {
   @include generate-variants('flex-direction', $screen) using ($prefix, $state) {
     .#{$prefix}flex-row#{$state} { flex-direction: row; }

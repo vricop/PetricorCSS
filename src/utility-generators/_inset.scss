@@ -1,5 +1,3 @@
-
-
 @mixin inset-classes($prefix, $modifier, $state, $value) { 
   // Insets
   .#{$prefix}inset#{$modifier}#{$state} { 
