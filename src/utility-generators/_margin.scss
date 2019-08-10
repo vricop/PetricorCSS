@@ -1,14 +1,7 @@
 @mixin margin($screen: null) {
   @include generate-variants-with-config($margin, 'margin', $screen) using ($prefix, $modifier, $state, $value) {
     $value: if($value == auto, $value, $value * 1rem);
-    // CHILD ITEMS
-    .#{$prefix}m#{$modifier}\>\*#{$state} > * { margin: $value; };
-    .#{$prefix}mx#{$modifier}\>\*#{$state} > * { margin: { left: $value; right: $value; } };
-    .#{$prefix}my#{$modifier}\>\*#{$state} > * { margin: { top: $value; bottom: $value; } };
-    .#{$prefix}mt#{$modifier}\>\*#{$state} > * { margin-top: $value };
-    .#{$prefix}mr#{$modifier}\>\*#{$state} > * { margin-right: $value };
-    .#{$prefix}mb#{$modifier}\>\*#{$state} > * { margin-bottom: $value };
-    .#{$prefix}ml#{$modifier}\>\*#{$state} > * { margin-left: $value };
+
     // CHILD ITEMS: LOBOTOMIZED OWL
     .#{$prefix}mt#{$modifier}\>\*\+\*#{$state} > * + * { margin-top: $value; }
     .#{$prefix}ml#{$modifier}\>\*\+\*#{$state} > * + * { margin-left: $value; }
