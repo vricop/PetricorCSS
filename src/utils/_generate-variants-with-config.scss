@@ -24,6 +24,22 @@
         @if index($utility-variants, 'focus') {
           @content('focus\\:', $modifier, ':focus', $value);
         }
+
+        @if index($utility-variants, 'first') {
+          @content('first\\:', '#{$modifier}\\>\\* > *', ':first-child', $value);
+        }
+        
+        @if index($utility-variants, 'last') {
+          @content('last\\:', '#{$modifier}\\>\\* > *', ':last-child', $value);
+        }
+        
+        @if index($utility-variants, 'even') {
+          @content('even\\:', '#{$modifier}\\>\\* > *', ':nth-child(even)', $value);
+        }
+        
+        @if index($utility-variants, 'odd') {
+          @content('odd\\:', '#{$modifier}\\>\\* > *', ':nth-child(odd)', $value);
+        }
       }
       
       // RESPONSIVE
@@ -40,6 +56,22 @@
 
         @if index($utility-variants, 'focus') {
           @content('#{$screen}\\:focus\\:', $modifier, ':focus', $value);
+        }
+        
+        @if index($utility-variants, 'first') {
+          @content('#{$screen}\\:first\\:', '#{$modifier}\\>\\* > *', ':first-child', $value);
+        }
+        
+        @if index($utility-variants, 'last') {
+          @content('#{$screen}\\:last\\:', '#{$modifier}\\>\\* > *', ':last-child', $value);
+        }
+        
+        @if index($utility-variants, 'even') {
+          @content('#{$screen}\\:even\\:', '#{$modifier}\\>\\* > *', ':nth-child(even)', $value);
+        }
+        
+        @if index($utility-variants, 'odd') {
+          @content('#{$screen}\\:odd\\:', '#{$modifier}\\>\\* > *', ':nth-child(odd)', $value);
         }
       }
     }
