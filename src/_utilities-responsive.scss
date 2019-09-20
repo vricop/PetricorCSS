@@ -56,6 +56,7 @@
     @include text-color($screen);
     @include text-decoration($screen);
     @include text-transform($screen);
+    @include transition($screen);
     @include user-select($screen);
     @include vertical-align($screen);
     @include visibility($screen);

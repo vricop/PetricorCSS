@@ -48,6 +48,37 @@ $box-shadow: (
   'none': none,
 );
 
+$transition-duration: (
+ 'slower': 0.75s,
+ 'slow': 0.5s,
+ 'fast': 0.15s,
+ 'faster': 0.075s,
+);
+
+$transition-property: (
+  'all': all,
+  'none': none,
+  'bg': background-color,
+  'text': color,
+  'opacity': opacity,
+  'shadow': box-shadow,
+);
+
+$transition-function: (
+  'linear': linear,
+  'ease': ease,
+  'ease-in': ease-in,
+  'ease-out': ease-out,
+  'ease-in-out': ease-in-out,
+);
+
+$transition-delay: (
+  'delay-long': 0.2s,
+  'delay-longer': 0.3s,
+  'delay-longest': 0.4s,
+  'delay-none': 0s,
+);
+
 $spacing: (
   0: 0,        //	0px
   1: 0.25,     //	4px
@@ -464,6 +495,7 @@ $variants: (
   'stroke': [responsive],
   'table-layout': true,
   'text-align': true,
+  'transition': [hover focus],
   'text-color': [responsive hover focus],
   'text-decoration': true,
   'text-transform': true,
