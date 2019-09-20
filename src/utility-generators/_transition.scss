@@ -1,15 +1,6 @@
 @mixin transition($screen: null) {
-  // Idea takgen form this source: https://github.com/StackExchange/Stacks/pull/191
-  // Provide a sensible default
-  @include generate-variants('transition', $screen) using ($prefix, $state) {
-    .#{$prefix}t#{$state} {
-      transition-duration: .25s;
-      transition-property: all;
-      transition-timing-function: ease-in-out;
-      transition-delay: .1s;
-    }
-  }
-
+  // Idea taken form this source: https://github.com/StackExchange/Stacks/pull/191
+  
   @include generate-variants-with-config($transition-duration, 'transition', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}t#{$modifier}#{$state} { transition-duration: $value; }
   }
