@@ -99,11 +99,19 @@ $margin: map-merge(
   $spacing
 );
 
-$margin-negative: map-remove($spacing, 0);
-
 $padding: $spacing;
 
+$margin-negative: map-remove($spacing, 0);
+
 $padding-em: map-remove($spacing, 0);
+
+$padding-ch: (
+  1: 1ch,
+  2: 1.5ch,
+  3: 2ch,
+  4: 2.5ch,
+  5: 3ch
+);
 
 $width: (
   // REMS
@@ -117,16 +125,16 @@ $width: (
   7:  1.75rem, // 28px
   8:  2rem,    // 32px
   9:  2.25rem, // 36px
-  10:	2.5rem,	 // 40px
-  12:	3rem,	   // 48px
-  16:	4rem,	   // 64px
-  20:	5rem,	   // 80px
-  24:	6rem,	   // 96px
-  32:	8rem,	   // 128px
-  40:	10rem,	 // 160px
-  48:	12rem,	 // 192px
-  56:	14rem,	 // 224px
-  64:	16rem,	 // 256px
+  10: 2.5rem,  // 40px
+  12: 3rem,    // 48px
+  16: 4rem,    // 64px
+  20: 5rem,    // 80px
+  24: 6rem,    // 96px
+  32: 8rem,    // 128px
+  40: 10rem,   // 160px
+  48: 12rem,   // 192px
+  56: 14rem,   // 224px
+  64: 16rem,   // 256px
 
   // MISC
   'auto': auto,
@@ -357,8 +365,6 @@ $font-family: (
   ),
 
   'serif': (
-    'Georgia',
-    'Cambria',
     'Times New Roman',
     'Times',
     serif
@@ -462,7 +468,7 @@ $variants: (
   'flex': [responsive],
   'float': true,
   'font-family': true,
-  'font-size-em': false,
+  'font-size-em': true,
   'font-size': [responsive],
   'font-smoothing': true,
   'font-style': true,
@@ -486,6 +492,7 @@ $variants: (
   'order': false,
   'outline': [focus],
   'overflow': true,
+  'padding-ch': true,
   'padding-em': true,
   'padding': [responsive],
   'pointer-events': true,
@@ -495,10 +502,10 @@ $variants: (
   'stroke': [responsive],
   'table-layout': true,
   'text-align': true,
-  'transition': [hover focus],
   'text-color': [responsive hover focus],
   'text-decoration': true,
   'text-transform': true,
+  'transition': [hover focus],
   'user-select': false,
   'vertical-align': true,
   'visibility': true,

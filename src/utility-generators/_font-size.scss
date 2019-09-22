@@ -4,6 +4,6 @@
   }
   
   @include generate-variants-with-config($font-size-em, 'font-size-em', $screen) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}\*text#{$modifier}#{$state} { font-size: $value; }
+    .#{$prefix}text#{$modifier}\[em\]#{$state} { font-size: $value; }
   }
 }

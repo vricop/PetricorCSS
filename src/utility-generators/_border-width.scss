@@ -12,6 +12,6 @@
   };
   
   @include generate-variants-with-config($border-width-em, 'border-width-em', $screen) using ($prefix, $modifier, $state, $value) {
-    @include border-width-classes('#{$prefix}\\*', $modifier, $state, $value);
+    @include border-width-classes(#{$prefix}, '#{$modifier}\\[em\\]', $state, $value);
   };
 }

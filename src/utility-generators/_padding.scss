@@ -14,6 +14,10 @@
   };
   
   @include generate-variants-with-config($padding-em, 'padding-em', $screen) using ($prefix, $modifier, $state, $value) {
-    @include padding-classes('#{$prefix}\\*', $modifier, $state, $value * 1em);
+    @include padding-classes($prefix, '#{$modifier}\\[em\\]', $state, $value * 1em);
+  };
+  
+  @include generate-variants-with-config($padding-ch, 'padding-ch', $screen) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}px#{$modifier}\[ch\]#{$state} { padding: { left: $value; right: $value; } } 
   };
 }

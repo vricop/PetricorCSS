@@ -15,7 +15,8 @@
   @include generate-variants-with-config($border-radius, 'border-radius', $screen) using ($prefix, $modifier, $state, $value) {
     @include border-radius-classes($prefix, $modifier, $state, $value);
   }
+  
   @include generate-variants-with-config($border-radius-em, 'border-radius-em', $screen) using ($prefix, $modifier, $state, $value) {
-    @include border-radius-classes('#{$prefix}\\*', $modifier, $state, $value);
+    @include border-radius-classes($prefix, '#{$modifier}\\[em\\]', $state, $value);
   }
 }
