@@ -9,5 +9,16 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
+
+    [class*=truncate-multiline] {
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      overflow: hidden;
+    }
+
+    .#{$prefix}truncate-multiline-2#{$state} { -webkit-line-clamp: 2; }
+    .#{$prefix}truncate-multiline-3#{$state} { -webkit-line-clamp: 3; }
+    .#{$prefix}truncate-multiline-4#{$state} { -webkit-line-clamp: 4; }
   }
 }
