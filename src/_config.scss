@@ -249,17 +249,19 @@ $border-width-em: (
 );
 
 $border-radius: (
-  'none': 0,
-  'default': .25rem,
-  'lg': 0.5rem,
-  'sm': .125rem,
-  'full': 100vh,
+  'none':    0,
+  'sm':      0.125rem,
+  'default': 0.25rem,
+  'md':      0.375rem,
+  'lg':      0.5rem,
+  'full':    100vh,
 );
 
 $border-radius-em: (
-  'default': .25em,
-  'lg': 0.5em,
-  'sm': .125em,
+  'sm':      0.125em,
+  'default': 0.25em,
+  'md':      0.375em,
+  'lg':      0.5em,
 );
 
 $opacity: (
