@@ -222,6 +222,7 @@ $height: (
 );
 
 $max-height: (
+  'none': 0,
   'full': 100%,
   'screen': 100vh,
 );
@@ -279,6 +280,7 @@ $z-index: (
   0:  0,
   10: 10,
   20: 20,
+  30: 30,
 );
 
 $z-index-negative: (
@@ -365,6 +367,7 @@ $font-family: (
   ),
 
   'serif': (
+    'Bodoni 11*',
     'Times New Roman',
     'Times',
     serif
@@ -444,12 +447,12 @@ $variants: (
   'align-self': false,
   'appearance': false,
   'background-attachment': true,
-  'background-color': [responsive hover group-hover],
+  'background-color': [responsive hover hover-group],
   'background-position': true,
   'background-repeat': true,
   'background-size': true,
   'border-collapse': false,
-  'border-color': true,
+  'border-color': [hover],
   'border-radius-em': true,
   'border-radius': [responsive],
   'border-style': true,
@@ -459,7 +462,7 @@ $variants: (
   'colors': [hover],
   'container': true,
   'cursor': true,
-  'display': [responsive],
+  'display': [responsive hover-group],
   'fill': true,
   'flex-direction': [responsive],
   'flex-grow': true,
@@ -482,7 +485,7 @@ $variants: (
   'list-style-type': true,
   'margin-negative': [responsive],
   'margin': [responsive],
-  'max-height': false,
+  'max-height': true,
   'max-width': [responsive],
   'min-height': false,
   'min-width': [responsive],

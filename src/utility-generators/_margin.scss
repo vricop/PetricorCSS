@@ -2,6 +2,7 @@
   @include generate-variants-with-config($margin, 'margin', $screen) using ($prefix, $modifier, $state, $value) {
     $value: if($value == auto, $value, $value * 1rem);
 
+    .#{$prefix}m#{$modifier}\>\* > * { margin: $value; };
     // CHILD ITEMS: LOBOTOMIZED OWL
     .#{$prefix}mt#{$modifier}\>\*\+\*#{$state} > * + * { margin-top: $value; }
     .#{$prefix}ml#{$modifier}\>\*\+\*#{$state} > * + * { margin-left: $value; }

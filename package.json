@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "live-server",
-    "utilities": "sass --watch main.scss:main.css --style expanded",
-    "utilities-dist": "sass --watch main.scss:main.min.css --style compressed --no-source-map"
+    "start": "live-server & npm run build:css & npm run build:css-min",
+    "build:css": "sass --watch main.scss:main.css --style expanded",
+    "build:css-min": "sass --watch main.scss:main.min.css --style compressed --no-source-map",
+    "purge:css": "purgecss --config purgecss.config.js --out ./"
   },
   "author": "Víctor Rico",
   "license": "ISC"

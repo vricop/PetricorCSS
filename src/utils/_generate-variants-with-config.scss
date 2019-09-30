@@ -17,8 +17,9 @@
           @content('hover\\:', $modifier, ':hover', $value);
         }
 
-        @if index($utility-variants, 'group-hover') {
-          @content('group:hover .group-hover\\:', $modifier, null, $value);
+        @if index($utility-variants, 'hover-group') {
+          @content('hover-group:hover .hover-target\\:', $modifier, null, $value);
+          @content('hover-group:hover > .\\&hover-target\\:', $modifier, null, $value);
         }
 
         @if index($utility-variants, 'focus') {
@@ -50,8 +51,9 @@
           @content('#{$screen}\\:hover\\:', $modifier, ':hover', $value);
         }
 
-        @if index($utility-variants, 'group-hover') {
-          @content('#{$screen}\\:.group:hover .group-hover\\:', $modifier, null, $value);
+        @if index($utility-variants, 'hover-group') {
+          @content('#{$screen}\\:hover-group:hover .hover-target\\:', $modifier, null, $value);
+          @content('#{$screen}\\:hover-group:hover > .\\&hover-target\\:', $modifier, null, $value);
         }
 
         @if index($utility-variants, 'focus') {
