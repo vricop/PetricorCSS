@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin text-transform($screen: null) {
-  @include generate-variants('text-transform', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('text-transform', $screen) using ($prefix, $state) {
     @each $text-case in (uppercase, lowercase, capitalize, none) {
       $value: $text-case;
       $text-case: if($text-case == none, normal-case, $text-case);

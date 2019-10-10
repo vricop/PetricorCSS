@@ -1,19 +1,21 @@
+@use "../config";
+@use "../utils/generate-variants-with-config";
 @mixin transition($screen: null) {
   // Idea taken form this source: https://github.com/StackExchange/Stacks/pull/191
   
-  @include generate-variants-with-config($transition-duration, 'transition', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$transition-duration, 'transition', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}t#{$modifier}#{$state} { transition-duration: $value; }
   }
   
-  @include generate-variants-with-config($transition-property, 'transition', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$transition-property, 'transition', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}t#{$modifier}#{$state} { transition-property: $value; }
   }
   
-  @include generate-variants-with-config($transition-function, 'transition', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$transition-function, 'transition', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}t#{$modifier}#{$state} { transition-timing-function: $value; }
   }
   
-  @include generate-variants-with-config($transition-delay, 'transition', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$transition-delay, 'transition', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}t#{$modifier}#{$state} { transition-delay: $value; }
   }
 }

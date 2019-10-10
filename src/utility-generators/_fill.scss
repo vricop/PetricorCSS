@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin fill($screen: null) {
-  @include generate-variants('fill', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('fill', $screen) using ($prefix, $state) {
     .#{$prefix}fill-current#{$state} { fill: currentColor; }
   }
 }

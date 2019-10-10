@@ -1,5 +1,7 @@
+@use "../config";
+@use "../utils/generate-variants-with-config";
 @mixin max-height($screen: null) {
-  @include generate-variants-with-config($max-height, 'max-height', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$max-height, 'max-height', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}max-h#{$modifier}#{$state} {
       max-height: $value;
     }

@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin font-style($screen: null) {
-  @include generate-variants('font-style', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('font-style', $screen) using ($prefix, $state) {
     .#{$prefix}italic#{$state}{ font-style: italic; }
     .#{$prefix}non-italic#{$state} { font-style: normal; }
   }

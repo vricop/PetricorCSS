@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin vertical-align($screen: null) {
-  @include generate-variants('vertical-align', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('vertical-align', $screen) using ($prefix, $state) {
     @each $position in (baseline, top, middle, bottom, text-top, text-bottom) {
       .#{$prefix}align-#{$position}#{$state} { vertical-align: $position; }
     }

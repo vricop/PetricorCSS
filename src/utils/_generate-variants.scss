@@ -1,39 +1,43 @@
+@use "../config";
+@use "sass:map";
+@use "sass:meta";
+@use "sass:list";
 @mixin generate-variants($utility-variants, $screen) {
-  $utility-variants: map-get($variants, $utility-variants);
+  $utility-variants: map.get(config.$variants, $utility-variants);
 
-  @if $utility-variants == true or type-of($utility-variants) == list {
+  @if $utility-variants == true or meta.type-of($utility-variants) == list {
     // DEFAULT
     @if $screen == null {
       @content(null, null);
 
-      @if index($utility-variants, 'hover') {
+      @if list.index($utility-variants, 'hover') {
         @content('hover\\:', ':hover');
       }
 
-      @if index($utility-variants, 'hover-group') {
+      @if list.index($utility-variants, 'hover-group') {
         @content('hover-group:hover .hover-target\\:', null);
         @content('hover-group:hover > .\\&hover-target\\:', null);
       }
 
-      @if index($utility-variants, 'focus') {
+      @if list.index($utility-variants, 'focus') {
         @content('focus\\:', ':focus');
       }
     }
     
     // RESPONSIVE
-    @if index($utility-variants, 'responsive') and $screen != null {
+    @if list.index($utility-variants, 'responsive') and $screen != null {
       @content('#{$screen}\\:', null);
 
-      @if index($utility-variants, 'hover') {
+      @if list.index($utility-variants, 'hover') {
         @content('#{$screen}\\:hover\\:', ':hover');
       }
 
-      @if index($utility-variants, 'hover-group') {
+      @if list.index($utility-variants, 'hover-group') {
         @content('#{$screen}\\:hover-group:hover .hover-target\\:', null);
         @content('#{$screen}\\:hover-group:hover > .\\&hover-target\\:', null);
       }
 
-      @if index($utility-variants, 'focus') {
+      @if list.index($utility-variants, 'focus') {
         @content('#{$screen}\\:focus\\:', ':focus');
       }
     }

@@ -1,3 +1,4 @@
+@use "sass:map";
 $breakpoints: (
   sm: (min: 640px),
   md: (min: 768px),
@@ -94,16 +95,16 @@ $spacing: (
   'px': 0.0625 // 1px
 );
 
-$margin: map-merge(
+$margin: map.merge(
   ('auto': auto),
   $spacing
 );
 
 $padding: $spacing;
 
-$margin-negative: map-remove($spacing, 0);
+$margin-negative: map.remove($spacing, 0);
 
-$padding-em: map-remove($spacing, 0);
+$padding-em: map.remove($spacing, 0);
 
 $padding-ch: (
   1: 1ch,

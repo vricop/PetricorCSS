@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin justify-content($screen: null) {
-  @include generate-variants('justify-content', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('justify-content', $screen) using ($prefix, $state) {
     .#{$prefix}justify-start#{$state} { justify-content: flex-start; }
     .#{$prefix}justify-end#{$state} { justify-content: flex-end; }
     .#{$prefix}justify-center#{$state} { justify-content: center; }

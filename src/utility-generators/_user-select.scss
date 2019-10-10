@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin user-select($screen: null) {
-  @include generate-variants('user-select', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('user-select', $screen) using ($prefix, $state) {
     .#{$prefix}select-none#{$state} { user-select: none; }
     .#{$prefix}select-text#{$state} { user-select: text; }
     .#{$prefix}select-all#{$state} { user-select: all; }

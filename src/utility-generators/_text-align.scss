@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin text-align($screen: null) {
-  @include generate-variants('text-align', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('text-align', $screen) using ($prefix, $state) {
     @each $side in (left, center, right) {
       .#{$prefix}text-#{$side}#{$state} { text-align: $side; }
     }

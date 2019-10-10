@@ -1,5 +1,7 @@
+@use "../config";
+@use "sass:map";
 @mixin clearfix {
-  $utility-variants: map-get($variants, 'float');
+  $utility-variants: map.get(config.$variants, 'float');
   @if $utility-variants == true or typeof($utility-variants) == 'list' {
     .clearfix::after {
       content: "";

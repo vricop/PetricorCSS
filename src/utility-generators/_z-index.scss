@@ -1,8 +1,10 @@
+@use "../config";
+@use "../utils/generate-variants-with-config";
 @mixin z-index($screen: null) {
-  @include generate-variants-with-config($z-index, 'z-index', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$z-index, 'z-index', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}z#{$modifier}#{$state} { z-index: $value; }
   }
-  @include generate-variants-with-config($z-index-negative, 'z-index-negative', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$z-index-negative, 'z-index-negative', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}-z#{$modifier}#{$state} { z-index: $value; }
   }
 }

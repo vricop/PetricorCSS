@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin appearance($screen: null) {
-  @include generate-variants('appearance', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('appearance', $screen) using ($prefix, $state) {
     .#{$prefix}appearance-none#{$state} { appearance: none; }
   }
 }

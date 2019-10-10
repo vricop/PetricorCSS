@@ -1,3 +1,5 @@
+@use "../config";
+@use "../utils/generate-variants-with-config";
 @mixin padding-classes($prefix, $modifier, $state, $value) {
   .#{$prefix}p#{$modifier}#{$state}  { padding: $value; }
   .#{$prefix}px#{$modifier}#{$state} { padding: { left: $value; right: $value; } } 
@@ -9,15 +11,15 @@
 }
 
 @mixin padding($screen: null) {
-  @include generate-variants-with-config($padding, 'padding', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$padding, 'padding', $screen) using ($prefix, $modifier, $state, $value) {
     @include padding-classes($prefix, $modifier, $state, $value * 1rem);
   };
   
-  @include generate-variants-with-config($padding-em, 'padding-em', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$padding-em, 'padding-em', $screen) using ($prefix, $modifier, $state, $value) {
     @include padding-classes($prefix, '#{$modifier}\\[em\\]', $state, $value * 1em);
   };
   
-  @include generate-variants-with-config($padding-ch, 'padding-ch', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$padding-ch, 'padding-ch', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}px#{$modifier}\[ch\]#{$state} { padding: { left: $value; right: $value; } } 
   };
 }

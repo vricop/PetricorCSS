@@ -1,3 +1,5 @@
+@use "../config";
+@use "../utils/generate-variants-with-config";
 @mixin border-width-classes($prefix, $modifier, $state, $value) {
   .#{$prefix}border#{$modifier}#{$state} { border-width: $value; }
   .#{$prefix}border-t#{$modifier}#{$state} { border-top-width: $value;}
@@ -7,11 +9,11 @@
 }
 
 @mixin border-width($screen: null) {
-  @include generate-variants-with-config($border-width, 'border-width', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$border-width, 'border-width', $screen) using ($prefix, $modifier, $state, $value) {
     @include border-width-classes($prefix, $modifier, $state, $value);
   };
   
-  @include generate-variants-with-config($border-width-em, 'border-width-em', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$border-width-em, 'border-width-em', $screen) using ($prefix, $modifier, $state, $value) {
     @include border-width-classes(#{$prefix}, '#{$modifier}\\[em\\]', $state, $value);
   };
 }

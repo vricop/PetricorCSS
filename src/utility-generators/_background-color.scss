@@ -1,5 +1,7 @@
+@use "../config";
+@use "../utils/generate-variants-with-config";
 @mixin background-color($screen: null) {
-  @include generate-variants-with-config($colors, 'background-color', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$colors, 'background-color', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}bg#{$modifier}#{$state} { background-color: $value; }
   }
 }

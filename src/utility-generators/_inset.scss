@@ -1,3 +1,5 @@
+@use "../config";
+@use "../utils/generate-variants-with-config";
 @mixin inset-classes($prefix, $modifier, $state, $value) { 
   // Insets
   .#{$prefix}inset#{$modifier}#{$state} { 
@@ -24,7 +26,7 @@
 }
 
 @mixin inset($screen: null) {
-  @include generate-variants-with-config($inset, 'inset', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$inset, 'inset', $screen) using ($prefix, $modifier, $state, $value) {
     @include inset-classes($prefix, $modifier, $state, $value);
   }
 }

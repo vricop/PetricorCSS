@@ -1,5 +1,7 @@
+@use "../config";
+@use "../utils/generate-variants-with-config";
 @mixin flex($screen: null) {
-  @include generate-variants-with-config($flex, 'flex', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$flex, 'flex', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}flex#{$modifier}#{$state} { flex: $value; }
   }
 }

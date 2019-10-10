@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin word-break($screen: null) {
-  @include generate-variants('word-break', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('word-break', $screen) using ($prefix, $state) {
     .#{$prefix}break-normal#{$state} { word-break: normal; overflow-wrap: normal }
     .#{$prefix}break-words#{$state} { overflow-wrap: break-word; }
     .#{$prefix}break-all#{$state} { word-break: break-all; }

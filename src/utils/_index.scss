@@ -1,5 +1,5 @@
-@import 'bundle-responsive-utilities';
-@import 'generate-variants';
-@import 'generate-variants-with-config';
-@import 'mediaquery';
-@import 'function-helpers';
+@use 'bundle-responsive-utilities';
+@use 'generate-variants';
+@use 'generate-variants-with-config';
+@use 'mediaquery';
+@use 'function-helpers';

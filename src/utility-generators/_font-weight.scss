@@ -1,5 +1,7 @@
+@use "../config";
+@use "../utils/generate-variants-with-config";
 @mixin font-weight($screen: null) {
-  @include generate-variants-with-config($font-weight, 'font-weight', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$font-weight, 'font-weight', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}font#{$modifier}#{$state} { font-weight: $value; }
   }
 }

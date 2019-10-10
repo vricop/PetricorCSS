@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin align-items($screen: null) {
-  @include generate-variants('align-items', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('align-items', $screen) using ($prefix, $state) {
     .#{$prefix}items-stretch#{$state} { align-items: stretch; }
     .#{$prefix}items-start#{$state} { align-items: flex-start; }
     .#{$prefix}items-center#{$state} { align-items: center; }

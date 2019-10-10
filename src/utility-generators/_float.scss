@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin float($screen: null) {
-  @include generate-variants('float', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('float', $screen) using ($prefix, $state) {
     @each $side in (left, right, none) {
       .#{$prefix}float-#{$side}#{$state} { float: $side; }
     }

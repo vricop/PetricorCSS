@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin font-smoothing($screen: null) {
-  @include generate-variants('font-smoothing', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('font-smoothing', $screen) using ($prefix, $state) {
     .#{$prefix}antialiased#{$state} {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;

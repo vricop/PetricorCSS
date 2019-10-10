@@ -1,5 +1,7 @@
+@use "../config";
+@use "../utils/generate-variants-with-config";
 @mixin list-style-type($screen: null) {
-  @include generate-variants-with-config($list-style-type, 'list-style-type', $screen) using ($prefix, $modifier, $state, $value) {
+  @include generate-variants-with-config.generate-variants-with-config(config.$list-style-type, 'list-style-type', $screen) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}list#{$modifier}#{$state} { list-style-type: $value; }
   }
 }

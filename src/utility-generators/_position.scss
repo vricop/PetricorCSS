@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin position($screen: null) {
-  @include generate-variants('position', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('position', $screen) using ($prefix, $state) {
     @each $position in (relative, absolute, static, fixed, sticky) {
     .#{$prefix}#{$position}#{$state} { position: $position; }
     }

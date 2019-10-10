@@ -1,5 +1,8 @@
+@use "../config";
+@use "sass:string";
+@use "../utils/generate-variants-with-config";
 @mixin box-shadow($screen: null) {
-	@include generate-variants-with-config($box-shadow, 'box-shadow', $screen) using ($prefix, $modifier, $state, $value) {
-		.#{$prefix}shadow#{$modifier}#{$state} { box-shadow: unquote($value); }
+	@include generate-variants-with-config.generate-variants-with-config(config.$box-shadow, 'box-shadow', $screen) using ($prefix, $modifier, $state, $value) {
+		.#{$prefix}shadow#{$modifier}#{$state} { box-shadow: string.unquote($value); }
 	} 
 }

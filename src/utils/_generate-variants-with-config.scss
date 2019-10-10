@@ -1,7 +1,11 @@
+@use "../config";
+@use "sass:map";
+@use "sass:meta";
+@use "sass:list";
 @mixin generate-variants-with-config($utility-config, $utility-variants, $screen) {
-  $utility-variants: map-get($variants, $utility-variants);
+  $utility-variants: map.get(config.$variants, $utility-variants);
 
-  @if $utility-variants == true or type-of($utility-variants) == list {
+  @if $utility-variants == true or meta.type-of($utility-variants) == list {
     @each $modifier, $value in $utility-config {
       @if $modifier == 'default' and $utility-variants != 'cursor' {
         $modifier: null;
@@ -13,66 +17,66 @@
       @if $screen == null {
         @content(null, $modifier, null, $value);
 
-        @if index($utility-variants, 'hover') {
+        @if list.index($utility-variants, 'hover') {
           @content('hover\\:', $modifier, ':hover', $value);
         }
 
-        @if index($utility-variants, 'hover-group') {
+        @if list.index($utility-variants, 'hover-group') {
           @content('hover-group:hover .hover-target\\:', $modifier, null, $value);
           @content('hover-group:hover > .\\&hover-target\\:', $modifier, null, $value);
         }
 
-        @if index($utility-variants, 'focus') {
+        @if list.index($utility-variants, 'focus') {
           @content('focus\\:', $modifier, ':focus', $value);
         }
 
-        @if index($utility-variants, 'first') {
+        @if list.index($utility-variants, 'first') {
           @content('first\\:', '#{$modifier}\\>\\* > *', ':first-child', $value);
         }
         
-        @if index($utility-variants, 'last') {
+        @if list.index($utility-variants, 'last') {
           @content('last\\:', '#{$modifier}\\>\\* > *', ':last-child', $value);
         }
         
-        @if index($utility-variants, 'even') {
+        @if list.index($utility-variants, 'even') {
           @content('even\\:', '#{$modifier}\\>\\* > *', ':nth-child(even)', $value);
         }
         
-        @if index($utility-variants, 'odd') {
+        @if list.index($utility-variants, 'odd') {
           @content('odd\\:', '#{$modifier}\\>\\* > *', ':nth-child(odd)', $value);
         }
       }
       
       // RESPONSIVE
-      @if index($utility-variants, 'responsive') and $screen != null {
+      @if list.index($utility-variants, 'responsive') and $screen != null {
         @content('#{$screen}\\:', $modifier, null, $value);
 
-        @if index($utility-variants, 'hover') {
+        @if list.index($utility-variants, 'hover') {
           @content('#{$screen}\\:hover\\:', $modifier, ':hover', $value);
         }
 
-        @if index($utility-variants, 'hover-group') {
+        @if list.index($utility-variants, 'hover-group') {
           @content('#{$screen}\\:hover-group:hover .hover-target\\:', $modifier, null, $value);
           @content('#{$screen}\\:hover-group:hover > .\\&hover-target\\:', $modifier, null, $value);
         }
 
-        @if index($utility-variants, 'focus') {
+        @if list.index($utility-variants, 'focus') {
           @content('#{$screen}\\:focus\\:', $modifier, ':focus', $value);
         }
         
-        @if index($utility-variants, 'first') {
+        @if list.index($utility-variants, 'first') {
           @content('#{$screen}\\:first\\:', '#{$modifier}\\>\\* > *', ':first-child', $value);
         }
         
-        @if index($utility-variants, 'last') {
+        @if list.index($utility-variants, 'last') {
           @content('#{$screen}\\:last\\:', '#{$modifier}\\>\\* > *', ':last-child', $value);
         }
         
-        @if index($utility-variants, 'even') {
+        @if list.index($utility-variants, 'even') {
           @content('#{$screen}\\:even\\:', '#{$modifier}\\>\\* > *', ':nth-child(even)', $value);
         }
         
-        @if index($utility-variants, 'odd') {
+        @if list.index($utility-variants, 'odd') {
           @content('#{$screen}\\:odd\\:', '#{$modifier}\\>\\* > *', ':nth-child(odd)', $value);
         }
       }

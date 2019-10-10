@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin display($screen: null) {
-  @include generate-variants('display', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('display', $screen) using ($prefix, $state) {
     $formats: (
       block,
       flex,

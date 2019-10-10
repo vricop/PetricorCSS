@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin overflow($screen: null) {
-  @include generate-variants('overflow', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('overflow', $screen) using ($prefix, $state) {
     @each $value in (auto, hidden, visible, scroll) {
       @each $prop in (overflow, overflow-x, overflow-y) {
         .#{$prefix}#{$prop}-#{$value}#{$state} { #{$prop}: $value; }

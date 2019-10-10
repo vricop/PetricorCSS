@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin flex-wrap($screen: null) {
-  @include generate-variants('flex-wrap', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('flex-wrap', $screen) using ($prefix, $state) {
     .#{$prefix}flex-wrap#{$state} { flex-wrap: wrap; }
     .#{$prefix}flex-no-wrap#{$state} { flex-wrap: nowrap; }
     .#{$prefix}flex-wrap-reverse#{$state} { flex-wrap: wrap-reverse; }

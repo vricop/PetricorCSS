@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin background-position($screen: null) {
-  @include generate-variants('background-position', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('background-position', $screen) using ($prefix, $state) {
     .#{$prefix}bg-bottom#{$state} { background-position: bottom; }
     .#{$prefix}bg-center#{$state} { background-position: center; }
     .#{$prefix}bg-left#{$state} { background-position: left; }

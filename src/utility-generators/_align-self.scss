@@ -1,5 +1,6 @@
+@use "../utils/generate-variants";
 @mixin align-self($screen: null) {
-  @include generate-variants('align-self', $screen) using ($prefix, $state) {
+  @include generate-variants.generate-variants('align-self', $screen) using ($prefix, $state) {
     .#{$prefix}self-auto#{$state} { align-self: auto; }
     .#{$prefix}self-start#{$state} { align-self: flex-start; }
     .#{$prefix}self-center#{$state} { align-self: center; }
