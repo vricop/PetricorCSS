@@ -1,7 +1,11 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin list-style-type($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$list-style-type, 'list-style-type', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$list-style-type, map.get(config.$variants, 'list-style-type'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}list#{$modifier}#{$state} { list-style-type: $value; }
   }
 }

@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin pointer-events($screen: null) {
-  @include generate-variants.generate-variants('pointer-events', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'pointer-events'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     .#{$prefix}pointer-events-none#{$state} { pointer-events: none; }
     .#{$prefix}pointer-events-auto#{$state} { pointer-events: auto; }
   }

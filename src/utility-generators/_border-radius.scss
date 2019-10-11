@@ -1,5 +1,7 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin border-radius-classes($prefix, $modifier, $state, $value) {
   .#{$prefix}rounded#{$modifier}#{$state} { border-radius: $value; }
   .#{$prefix}rounded-t#{$modifier}#{$state} { border-top-left-radius: $value; border-top-right-radius: $value; }
@@ -14,11 +16,15 @@
 }
 
 @mixin border-radius($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$border-radius, 'border-radius', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$border-radius, map.get(config.$variants, 'border-radius'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     @include border-radius-classes($prefix, $modifier, $state, $value);
   }
   
-  @include generate-variants-with-config.generate-variants-with-config(config.$border-radius-em, 'border-radius-em', $screen) using ($prefix, $modifier, $state, $value) {
+  $args-em: config.$border-radius-em, map.get(config.$variants, 'border-radius-em'), $screen;
+
+  @include generate-variants.configurable($args-em...) using ($prefix, $modifier, $state, $value) {
     @include border-radius-classes($prefix, '#{$modifier}\\[em\\]', $state, $value);
   }
 }

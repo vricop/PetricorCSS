@@ -1,10 +1,17 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin z-index($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$z-index, 'z-index', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$z-index, map.get(config.$variants, 'z-index'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}z#{$modifier}#{$state} { z-index: $value; }
   }
-  @include generate-variants-with-config.generate-variants-with-config(config.$z-index-negative, 'z-index-negative', $screen) using ($prefix, $modifier, $state, $value) {
+  
+  $args_negative: config.$z-index-negative, map.get(config.$variants, 'z-index-negative'), $screen;
+
+  @include generate-variants.configurable($args_negative...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}-z#{$modifier}#{$state} { z-index: $value; }
   }
 }

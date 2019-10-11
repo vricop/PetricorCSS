@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin stroke($screen: null) {
-  @include generate-variants.generate-variants('stroke', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'stroke'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     .#{$prefix}stroke-current#{$state} { stroke: currentColor; }
   }
 }

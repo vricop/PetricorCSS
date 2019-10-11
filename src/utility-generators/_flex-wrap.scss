@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin flex-wrap($screen: null) {
-  @include generate-variants.generate-variants('flex-wrap', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'flex-wrap'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     .#{$prefix}flex-wrap#{$state} { flex-wrap: wrap; }
     .#{$prefix}flex-no-wrap#{$state} { flex-wrap: nowrap; }
     .#{$prefix}flex-wrap-reverse#{$state} { flex-wrap: wrap-reverse; }

@@ -1,23 +1,18 @@
-@use "../utils/generate-variants";
-@mixin display($screen: null) {
-  @include generate-variants.generate-variants('display', $screen) using ($prefix, $state) {
-    $formats: (
-      block,
-      flex,
-      grid,
-      inline-block,
-      inline-flex,
-      inline-grid,
-      inline,
-      none,
-      table-cell
-      table,
-    );
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+@use 'sass:string' as str;
 
-    @each $type in $formats {
-      $class: if($type == 'none', 'hidden', $type);
-      
-      .#{$prefix}#{$class}#{$state} { display: $type; }
-    }
+@mixin display($screen: null) {
+  $args: config.$display, map.get(config.$variants, 'display'), $screen;
+  
+  @include generate-variants.configurable($args...) using ($prefix, $class, $state, $value) {
+    // `generate-variants.configurable` mixin adds a '-' at the beginning of
+    // each `modifier`. As the display utility clases don't have any modifiers,
+    // meaning they don't share a base class, the '-' needs to be removed before
+    // generating each utility class.
+    $class: str.slice($class, 2);
+
+    .#{$prefix}#{$class}#{$state} { display: $value; }
   }
 }

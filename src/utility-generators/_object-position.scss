@@ -1,7 +1,11 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin object-position($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$object-position, 'object-position', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$object-position, map.get(config.$variants, 'object-position'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}object#{$modifier}#{$state} { object-position: $value; }
   }
 }

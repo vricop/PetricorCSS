@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin fill($screen: null) {
-  @include generate-variants.generate-variants('fill', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'fill'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     .#{$prefix}fill-current#{$state} { fill: currentColor; }
   }
 }

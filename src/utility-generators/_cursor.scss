@@ -1,7 +1,11 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin cursor($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$cursor, 'cursor', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$cursor, map.get(config.$variants, 'cursor'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}cursor#{$modifier}#{$state} { cursor: $value; }
   }
 }

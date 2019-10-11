@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin border-collapse($screen: null) {
-  @include generate-variants.generate-variants('border-collapse', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'border-collapse'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     .#{$prefix}border-collapse#{$state} { border-collapse: collapse; }
     .#{$prefix}border-separate#{$state} { border-collapse: separate; }
   }  

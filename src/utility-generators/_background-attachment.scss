@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin background-attachment($screen: null) {
-  @include generate-variants.generate-variants('background-attachment', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'background-attachment'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     .#{$prefix}bg-fixed#{$state} { background-attachment: fixed; }
     .#{$prefix}bg-local#{$state} { background-attachment: local; }
     .#{$prefix}bg-scroll#{$state} { background-attachment: scroll; }

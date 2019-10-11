@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin background-position($screen: null) {
-  @include generate-variants.generate-variants('background-position', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'background-position'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     .#{$prefix}bg-bottom#{$state} { background-position: bottom; }
     .#{$prefix}bg-center#{$state} { background-position: center; }
     .#{$prefix}bg-left#{$state} { background-position: left; }

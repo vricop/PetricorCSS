@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin justify-content($screen: null) {
-  @include generate-variants.generate-variants('justify-content', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'justify-content'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     .#{$prefix}justify-start#{$state} { justify-content: flex-start; }
     .#{$prefix}justify-end#{$state} { justify-content: flex-end; }
     .#{$prefix}justify-center#{$state} { justify-content: center; }

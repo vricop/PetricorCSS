@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin overflow($screen: null) {
-  @include generate-variants.generate-variants('overflow', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'overflow'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     @each $value in (auto, hidden, visible, scroll) {
       @each $prop in (overflow, overflow-x, overflow-y) {
         .#{$prefix}#{$prop}-#{$value}#{$state} { #{$prop}: $value; }

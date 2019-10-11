@@ -1,7 +1,11 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin flex($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$flex, 'flex', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$flex, map.get(config.$variants, 'flex'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}flex#{$modifier}#{$state} { flex: $value; }
   }
 }

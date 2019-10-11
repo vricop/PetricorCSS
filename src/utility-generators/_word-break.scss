@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin word-break($screen: null) {
-  @include generate-variants.generate-variants('word-break', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'word-break'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     .#{$prefix}break-normal#{$state} { word-break: normal; overflow-wrap: normal }
     .#{$prefix}break-words#{$state} { overflow-wrap: break-word; }
     .#{$prefix}break-all#{$state} { word-break: break-all; }
@@ -9,13 +14,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-
-
-    [class*=truncate-multiline] {
-      -webkit-box-orient: vertical;
-      display: -webkit-box;
-      overflow: hidden;
     }
 
     .#{$prefix}truncate-multiline-2#{$state} { -webkit-line-clamp: 2; }

@@ -1,7 +1,11 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin border-color($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$colors, 'border-color', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$colors, map.get(config.$variants, 'colors'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}border#{$modifier}#{$state} { border-color: $value; }
   };
 }

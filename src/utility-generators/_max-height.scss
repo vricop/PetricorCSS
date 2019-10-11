@@ -1,7 +1,11 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin max-height($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$max-height, 'max-height', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$max-height, map.get(config.$variants, 'max-height'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}max-h#{$modifier}#{$state} {
       max-height: $value;
     }

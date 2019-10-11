@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin background-repeat($screen: null) {
-  @include generate-variants.generate-variants('background-repeat', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'background-repeat'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     .#{$prefix}bg-repeat#{$state} { background-repeat: repeat; }
     .#{$prefix}bg-no-repeat#{$state} { background-repeat: no-repeat; }
     .#{$prefix}bg-repeat-x#{$state} { background-repeat: repeat-x; }

@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin object-fit($screen: null) {
-  @include generate-variants.generate-variants('object-fit', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'object-fit'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     @each $fit-type in (contain, cover, fill, none, scale-down) {
       .#{$prefix}object-#{$fit-type}#{$state} { object-fit: $fit-type; }
     }

@@ -1,7 +1,11 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin flex-shrink($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$flex-shrink, 'flex-shrink', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$flex-shrink, map.get(config.$variants, 'flex-shrink'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}flex-shrink#{$modifier}#{$state} {
       flex-shrink: $value;
     }

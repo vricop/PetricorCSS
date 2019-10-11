@@ -1,13 +1,20 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
-@mixin margin($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$margin, 'margin', $screen) using ($prefix, $modifier, $state, $value) {
-    $value: if($value == auto, $value, $value * 1rem);
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
 
+@mixin margin($screen: null) {
+  $args: config.$margin, map.get(config.$variants, 'margin'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+    $value: if($value == auto, $value, $value * 1rem);
+    
+    // CHILDREN
     .#{$prefix}m#{$modifier}\>\* > * { margin: $value; };
-    // CHILD ITEMS: LOBOTOMIZED OWL
+
+    // LOBOTOMIZED OWL
     .#{$prefix}mt#{$modifier}\>\*\+\*#{$state} > * + * { margin-top: $value; }
     .#{$prefix}ml#{$modifier}\>\*\+\*#{$state} > * + * { margin-left: $value; }
+
     // DEFAULT
     .#{$prefix}m#{$modifier}#{$state} { margin: $value; };
     .#{$prefix}mx#{$modifier}#{$state} { margin: { left: $value; right: $value; } };
@@ -18,9 +25,11 @@
     .#{$prefix}ml#{$modifier}#{$state} { margin-left: $value };
   }
   
-  @include generate-variants-with-config.generate-variants-with-config(config.$margin-negative, 'margin-negative', $screen) using ($prefix, $modifier, $state, $value) {
-    // DEFAULT
+  $args-negative: config.$margin-negative, map.get(config.$variants, 'margin-negative'), $screen;
+
+  @include generate-variants.configurable($args-negative...) using ($prefix, $modifier, $state, $value) {
     $value: $value * -1rem;
+    
     .#{$prefix}-m#{$modifier}#{$state} { margin: $value; };
     .#{$prefix}-mx#{$modifier}#{$state} { margin: { left: $value; right: $value; } };
     .#{$prefix}-my#{$modifier}#{$state} { margin: { top: $value; bottom: $value; } };

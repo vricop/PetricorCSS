@@ -1,6 +1,8 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
-@mixin padding-classes($prefix, $modifier, $state, $value) {
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
+@mixin _padding-classes($prefix, $modifier, $state, $value) {
   .#{$prefix}p#{$modifier}#{$state}  { padding: $value; }
   .#{$prefix}px#{$modifier}#{$state} { padding: { left: $value; right: $value; } } 
   .#{$prefix}py#{$modifier}#{$state} { padding: { top: $value; bottom: $value; } }
@@ -11,15 +13,21 @@
 }
 
 @mixin padding($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$padding, 'padding', $screen) using ($prefix, $modifier, $state, $value) {
-    @include padding-classes($prefix, $modifier, $state, $value * 1rem);
+  $args: config.$padding, map.get(config.$variants, 'padding'), $screen;
+  
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+    @include _padding-classes($prefix, $modifier, $state, $value * 1rem);
   };
   
-  @include generate-variants-with-config.generate-variants-with-config(config.$padding-em, 'padding-em', $screen) using ($prefix, $modifier, $state, $value) {
-    @include padding-classes($prefix, '#{$modifier}\\[em\\]', $state, $value * 1em);
+  $args_em: config.$padding-em, map.get(config.$variants, 'padding-em'), $screen;
+  
+  @include generate-variants.configurable($args_em...) using ($prefix, $modifier, $state, $value) {
+    @include _padding-classes($prefix, '#{$modifier}\\[em\\]', $state, $value * 1em);
   };
   
-  @include generate-variants-with-config.generate-variants-with-config(config.$padding-ch, 'padding-ch', $screen) using ($prefix, $modifier, $state, $value) {
+  $args_ch: config.$padding-ch, map.get(config.$variants, 'padding-ch'), $screen;
+  
+  @include generate-variants.configurable($args_ch...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}px#{$modifier}\[ch\]#{$state} { padding: { left: $value; right: $value; } } 
   };
 }

@@ -1,5 +1,7 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin border-width-classes($prefix, $modifier, $state, $value) {
   .#{$prefix}border#{$modifier}#{$state} { border-width: $value; }
   .#{$prefix}border-t#{$modifier}#{$state} { border-top-width: $value;}
@@ -9,11 +11,15 @@
 }
 
 @mixin border-width($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$border-width, 'border-width', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$border-width, map.get(config.$variants, 'border-width'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     @include border-width-classes($prefix, $modifier, $state, $value);
   };
   
-  @include generate-variants-with-config.generate-variants-with-config(config.$border-width-em, 'border-width-em', $screen) using ($prefix, $modifier, $state, $value) {
+  $args-em: config.$border-width-em, map.get(config.$variants, 'border-width-em'), $screen;
+
+  @include generate-variants.configurable($args-em...) using ($prefix, $modifier, $state, $value) {
     @include border-width-classes(#{$prefix}, '#{$modifier}\\[em\\]', $state, $value);
   };
 }

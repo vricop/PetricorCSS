@@ -1,22 +1,23 @@
-@use "../config";
-@use "sass:map";
-@use "sass:meta";
-@mixin container($breakpoint: null) {
-  $utility-variants: map.get(config.$variants, 'container');
+@use '../config';
+@use 'sass:map';
+@use 'sass:meta';
+
+@mixin container($screen: null) {
+  $variants: map.get(config.$variants, 'container');
   
-  @if $utility-variants == true {
+  @if $variants == true {
     // DEFAULT
-    @if $breakpoint == null {
+    @if $screen == null {
       .container { width: 100%; }
     }
     
-    @if meta.type-of($breakpoint) == map {
-      // RESPONSIVE
-      $min: map.has-key($breakpoint, 'min');
-      $max: map.has-key($breakpoint, 'max');
+    // RESPONSIVE
+    @if meta.type-of($screen) == map {
+      $min: map.has-key($screen, 'min');
+      $max: map.has-key($screen, 'max');
   
       @if $min and not $max {
-        .container { max-width: map.get($breakpoint, 'min'); }
+        .container { max-width: map.get($screen, 'min'); }
       }
     }
   }

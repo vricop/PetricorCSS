@@ -1,7 +1,11 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin order($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$order, 'order', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$order, map.get(config.$variants, 'order'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}order#{$modifier}#{$state} { order: $value; }
   }
 }

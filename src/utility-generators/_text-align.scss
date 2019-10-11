@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin text-align($screen: null) {
-  @include generate-variants.generate-variants('text-align', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'text-align'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     @each $side in (left, center, right) {
       .#{$prefix}text-#{$side}#{$state} { text-align: $side; }
     }

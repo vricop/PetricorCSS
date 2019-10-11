@@ -1,2 +1,5 @@
-@use 'core';
-@use 'utilities';
+@use 'config';
+@use 'utils';
+@use 'utility-generators';
+@use 'utilities-default';
+@use 'utilities-responsive';

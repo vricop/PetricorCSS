@@ -1,10 +1,13 @@
-@use "../config";
-@use "sass:map";
+@use '../config';
+@use 'sass:map';
+@use 'sass:meta';
+
 @mixin clearfix {
-  $utility-variants: map.get(config.$variants, 'float');
-  @if $utility-variants == true or typeof($utility-variants) == 'list' {
+  $variants: map.get(config.$variants, 'float');
+
+  @if $variants == true or meta.typeof($variants) == 'list' {
     .clearfix::after {
-      content: "";
+      content: '';
       display: table;
       clear: both;
     }

@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin font-style($screen: null) {
-  @include generate-variants.generate-variants('font-style', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'font-style'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     .#{$prefix}italic#{$state}{ font-style: italic; }
     .#{$prefix}non-italic#{$state} { font-style: normal; }
   }

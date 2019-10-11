@@ -1,7 +1,11 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin width($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$width, 'width', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$width, map.get(config.$variants, 'width'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}w#{$modifier}#{$state} { width: $value; }
   }
 }

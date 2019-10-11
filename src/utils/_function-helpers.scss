@@ -1,6 +1,7 @@
 @use "../config";
 @use "sass:map";
 @use "sass:string";
+
 // SPACING
 // Get margin value
 @function m($value) {

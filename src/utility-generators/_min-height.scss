@@ -1,7 +1,11 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin min-height($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$min-height, 'min-height', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$min-height, map.get(config.$variants, 'min-height'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}min-h#{$modifier}#{$state} {
       min-height: $value;
     }

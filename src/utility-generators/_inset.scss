@@ -1,5 +1,7 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin inset-classes($prefix, $modifier, $state, $value) { 
   // Insets
   .#{$prefix}inset#{$modifier}#{$state} { 
@@ -26,7 +28,9 @@
 }
 
 @mixin inset($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$inset, 'inset', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$inset, map.get(config.$variants, 'inset'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     @include inset-classes($prefix, $modifier, $state, $value);
   }
 }

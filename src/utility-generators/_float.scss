@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin float($screen: null) {
-  @include generate-variants.generate-variants('float', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'float'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     @each $side in (left, right, none) {
       .#{$prefix}float-#{$side}#{$state} { float: $side; }
     }

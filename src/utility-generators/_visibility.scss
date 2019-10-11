@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin visibility($screen: null) {
-  @include generate-variants.generate-variants('vertical-align', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'vertical-align'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     .#{$prefix}visible#{$state} { visibility: visible; }
     .#{$prefix}invisible#{$state} { visibility: hidden; }
   }

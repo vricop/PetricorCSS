@@ -1,6 +1,11 @@
-@use "../utils/generate-variants";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin font-smoothing($screen: null) {
-  @include generate-variants.generate-variants('font-smoothing', $screen) using ($prefix, $state) {
+  $args: map.get(config.$variants, 'font-smoothing'), $screen;
+
+  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
     .#{$prefix}antialiased#{$state} {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;

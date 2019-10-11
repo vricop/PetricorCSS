@@ -1,7 +1,11 @@
-@use "../config";
-@use "../utils/generate-variants-with-config";
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
 @mixin line-height($screen: null) {
-  @include generate-variants-with-config.generate-variants-with-config(config.$leading, 'line-height', $screen) using ($prefix, $modifier, $state, $value) {
+  $args: config.$leading, map.get(config.$variants, 'line-height'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}leading#{$modifier}#{$state} { line-height: $value; }
   }
 }
