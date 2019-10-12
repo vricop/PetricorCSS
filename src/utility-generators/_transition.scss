@@ -16,7 +16,7 @@
 
   @each $prop, $config in $config-args {
     @include generate-variants.configurable($config, $variants, $screen) using ($prefix, $modifier, $state, $value) {
-      .#{$prefix}t#{$modifier}#{$state} { #{$prop}: $value; }
+      .#{$prefix}transition#{$modifier}#{$state} { #{$prop}: $value; }
     }
   }
 }

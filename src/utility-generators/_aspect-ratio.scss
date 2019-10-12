@@ -1,0 +1,11 @@
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
+@mixin aspect-ratio($screen: null) {
+  $args: config.$aspect-ratio, map.get(config.$variants, 'aspect-ratio'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}aspect-ratio#{$modifier}#{$state} { padding-top: $value; }
+  };
+}

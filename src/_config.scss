@@ -51,10 +51,11 @@ $box-shadow: (
 );
 
 $transition-duration: (
- 'slower': 0.75s,
- 'slow': 0.5s,
- 'fast': 0.15s,
- 'faster': 0.075s,
+ 'slower': 900s,
+ 'slow': 720ms,
+ 'default': 540ms,
+ 'fast': 360ms,
+ 'faster': 180ms,
 );
 
 $transition-property: (
@@ -126,6 +127,17 @@ $padding-ch: (
   3: 2ch,
   4: 2.5ch,
   5: 3ch
+);
+
+$aspect-ratio: (
+  '1\\:1':  100%,
+  '1\\:2':  calc(1/2  * 100%),
+  '2\\:3':  calc(3/2  * 100%),
+  '3\\:2':  calc(2/3  * 100%),
+  '3\\:4':  calc(4/3  * 100%),
+  '4\\:3':  calc(3/4  * 100%),
+  '9\\:16': calc(16/9 * 100%),
+  '16\\:9': calc(9/16 * 100%),
 );
 
 $width: (
@@ -463,6 +475,7 @@ $variants: (
   'align-items': [responsive],
   'align-self': false,
   'appearance': false,
+  'aspect-ratio': true,
   'background-attachment': true,
   'background-color': [responsive hover hover-group],
   'background-position': true,
@@ -524,8 +537,8 @@ $variants: (
   'text-align': true,
   'text-color': [responsive hover focus],
   'text-decoration': true,
-  'text-transform': true,
   'text-delay': true,
+  'text-transform': true,
   'transition': [hover focus],
   'user-select': false,
   'vertical-align': true,
