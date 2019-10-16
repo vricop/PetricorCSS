@@ -1,5 +1,8 @@
 @use 'sass:map';
 
+// SCREEN BREAKPOINTS
+//
+// Set min, max or both
 $breakpoints: (
   sm: (min: 640px),
   md: (min: 768px),
@@ -28,86 +31,118 @@ $colors: (
   'gray-900': #212121,
 
   // STATE
-  'success': #28A745,
-  'info': #17A2B8,
-  'warning': #FFC107,
-  'danger': #DC3545,
+  'success' : #28A745,
+  'info'    : #17A2B8,
+  'warning' : #FFC107,
+  'danger'  : #DC3545,
 
   // CURRENT
   'current-color': currentColor,
 );
 
 $box-shadow: (
-  'default': '0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06)',
-  'md': '0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06)',
-  'lg': '0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05)',
-  'xl': '0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, .04)',
-  '2xl': '0 25px 50px -12px rgba(0, 0, 0, .25)',
-  '3xl': '0 35px 60px -15px rgba(0, 0, 0, .3)',
-  'inner': 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',
-  'outline': '0 0 0 3px rgba(66,153,225,0.5)',
-  'focus': '0 0 0 3px rgba(66,153,225,0.5)',
-  'none': none,
+  'default' : ( 0 1px 3px 0 rgba(0, 0, 0, .1),       0 1px 2px 0 rgba(0, 0, 0, .06)      ),
+  'md'      : ( 0 4px 6px -1px rgba(0, 0, 0, .1),    0 2px 4px -1px rgba(0, 0, 0, .06)   ),
+  'lg'      : ( 0 10px 15px -3px rgba(0, 0, 0, .1),  0 4px 6px -2px rgba(0, 0, 0, .05)   ),
+  'xl'      : ( 0 20px 25px -5px rgba(0, 0, 0, .1),  0 10px 10px -5px rgba(0, 0, 0, .04) ),
+  '2xl'     : ( 0 25px 50px -12px rgba(0, 0, 0, .25)                                       ),
+  '3xl'     : ( 0 35px 60px -15px rgba(0, 0, 0, .3)                                        ),
+  'inner'   : ( inset 0 2px 4px 0 rgba(0,0,0,0.06)                                         ),
+  'outline' : ( 0 0 0 3px rgba(66,153,225,0.5)                                             ),
+  'focus'   : ( 0 0 0 3px rgba(66,153,225,0.5)                                             ),
+  'none'    : none,
 );
 
 $transition-duration: (
- 'slower': 900s,
- 'slow': 720ms,
- 'default': 540ms,
- 'fast': 360ms,
- 'faster': 180ms,
+  'slower'  : 400ms,
+  'slow'    : 312ms,
+  'default' : 200ms,
+  'fast'    : 160ms,
+  'faster'  : 128ms,
 );
+
+$transition-delay: $transition-duration;
 
 $transition-property: (
-  'all': all,
-  'none': none,
-  'bg': background-color,
-  'text': color,
-  'opacity': opacity,
-  'shadow': box-shadow,
+  'all'     : all,
+  'none'    : none,
+  'bg'      : background-color,
+  'text'    : color,
+  'opacity' : opacity,
+  'shadow'  : box-shadow,
 );
 
+// CSS EASING SOURCES:
+// 1. https://easings.net/#
+// 2. Mozilla dev tools (transitions tool)
 $transition-function: (
-  'linear': linear,
-  'ease': ease,
-  'ease-in': ease-in,
-  'ease-out': ease-out,
-  'ease-in-out': ease-in-out,
-);
+  // CSS PREDEFINED
+  'ease-in-out' : ease-in-out,
+  'ease-in'     : ease-in,
+  'ease-out'    : ease-out,
+  'ease'        : ease,
+  'linear'      : linear,
 
-$transition-delay: (
-  'delay-long': 0.2s,
-  'delay-longer': 0.3s,
-  'delay-longest': 0.4s,
-  'delay-none': 0s,
+  // ADVANCED EASINGS
+  'back-in'            : cubic-bezier(0.6,  -0.28,  0.735, 0.045),
+  'back-out'           : cubic-bezier(0.175, 0.885, 0.32,  1.275),
+  'circ-in-out'        : cubic-bezier(0.785, 0.135, 0.15,  0.86 ),
+  'circ-in'            : cubic-bezier(0.6,   0.04,  0.98,  0.335),
+  'circ-out'           : cubic-bezier(0.075, 0.82,  0.165, 1    ),
+  'cubic-in-out'       : cubic-bezier(0.645, 0.045, 0.355, 1    ),
+  'cubic-in'           : cubic-bezier(0.55,  0.055, 0.675, 0.19 ),
+  'cubic-out'          : cubic-bezier(0.215, 0.61,  0.355, 1    ),
+  'expo-in-out'        : cubic-bezier(1,     0,     0,     1    ),
+  'expo-in'            : cubic-bezier(0.95,  0.05,  0.795, 0.035),
+  'expo-out'           : cubic-bezier(0.19,  1,     0.22,  1    ),
+  'exponential-in-out' : cubic-bezier(1,     0,     0,     1    ),
+  'exponential-in'     : cubic-bezier(0.95,  0.05,  0.8,   0.04 ),
+  'exponential-out'    : cubic-bezier(0.19,  1,     0.22,  1    ),
+  'out-back-in'        : cubic-bezier(0.68, -0.55,  0.265, 1.55 ),
+  'quad-in-out'        : cubic-bezier(0.455, 0.03,  0.515, 0.955),
+  'quad-in'            : cubic-bezier(0.55,  0.085, 0.68,  0.53 ),
+  'quad-out'           : cubic-bezier(0.55,  0.085, 0.68,  0.53 ),
+  'quart-in-out'       : cubic-bezier(0.77,  0,     0.175, 1    ),
+  'quart-in'           : cubic-bezier(0.895, 0.03,  0.685, 0.22 ),
+  'quart-out'          : cubic-bezier(0.165, 0.84,  0.44,  1    ),
+  'quint-in-out'       : cubic-bezier(0.86,  0,     0.07,  1    ),
+  'quint-in'           : cubic-bezier(0.755, 0.05,  0.855, 0.06 ),
+  'quint-out'          : cubic-bezier(0.23,  1,     0.32,  1    ),
+  'sine-in-out'        : cubic-bezier(0.445, 0.05,  0.55,  0.95 ),
+  'sine-in'            : cubic-bezier(0.47,  0,     0.745, 0.715),
+  'sine-out'           : cubic-bezier(0.39,  0.575, 0.565, 1    ),
 );
 
 $display: (
-  'hidden': none,
-  'block': block,
-  'flex': flex,
-  'grid': grid,
-  'inline-block': inline-block,
-  'inline-flex': inline-flex,
-  'inline-grid': inline-grid,
-  'inline': inline,
-  'table-cell': table-cell,
-  'table': table,
+  'hidden'       : none,
+  'block'        : block,
+  'flex'         : flex,
+  'grid'         : grid,
+  'inline-block' : inline-block,
+  'inline-flex'  : inline-flex,
+  'inline-grid'  : inline-grid,
+  'inline'       : inline,
+  'table-cell'   : table-cell,
+  'table'        : table,
 );
 
+// SPACINGS
+// 
+// This values are unitless so they can be set to ems, rems and negative sets.
+// They're used by margin, negative margin, padding and em-padding utilites.
 $spacing: (
-  0: 0,        // 0px
-  1: 0.25,     // 4px
-  2: 0.5,      // 8px
-  3: 1,        // 16px
-  4: 1.5,      // 24px
-  5: 2,        // 32px
-  6: 2.5,      // 40px
-  7: 3,        // 48px
-  8: 3.5,      // 56px
-  9: 4,        // 64px
-  10: 4.5,     // 72px
-  'px': 0.0625 // 1px
+  0    : 0,     // 0px
+  1    : 0.25,  // 4px
+  2    : 0.5,   // 8px
+  3    : 1,     // 16px
+  4    : 1.5,   // 24px
+  5    : 2,     // 32px
+  6    : 2.5,   // 40px
+  7    : 3,     // 48px
+  8    : 3.5,   // 56px
+  9    : 4,     // 64px
+  10   : 4.5,   // 72px
+  'px' : 0.0625 // 1px
 );
 
 $margin: map.merge(
@@ -115,12 +150,25 @@ $margin: map.merge(
   $spacing
 );
 
+// NEGATIVE MARGINS
+//
+// They're usually used for offsetting elements or some layout hacks.
 $margin-negative: map.remove($spacing, 0);
 
 $padding: $spacing;
 
+// EM PADDINGS
+//
+// Using ems is a nice way to create scalable UI elements like buttons, badges,
+// etc. By increasing the font-size in the parent element, paddings will change
+// size proportionally —as opposed to rems.
 $padding-em: map.remove($spacing, 0);
 
+// CH PADDINGS (ONLY FOR X AXIS)
+// 
+// Ch units are based on the with of '0' character and relative to the font size.
+// They're really usefull when creating buttons or badges that need a bit more
+// of granular control.
 $padding-ch: (
   1: 1ch,
   2: 1.5ch,
@@ -129,187 +177,194 @@ $padding-ch: (
   5: 3ch
 );
 
+// ASPECT RATIOS
+// 
+// In order to use these utilities you need to set additional utilites to the
+// parent container and the img/video elements.
+// 
+// 1. Parent container: overflow-hidden, relative
+// 2. img/video: absolute, inset-0, w-full, h-full, object-cover
 $aspect-ratio: (
-  '1\\:1':  100%,
-  '1\\:2':  calc(1/2  * 100%),
-  '2\\:3':  calc(3/2  * 100%),
-  '3\\:2':  calc(2/3  * 100%),
-  '3\\:4':  calc(4/3  * 100%),
-  '4\\:3':  calc(3/4  * 100%),
-  '9\\:16': calc(16/9 * 100%),
-  '16\\:9': calc(9/16 * 100%),
+  '1\\:1'  : 100%,
+  '1\\:2'  : calc(1/2  * 100%),
+  '2\\:3'  : calc(3/2  * 100%),
+  '3\\:2'  : calc(2/3  * 100%),
+  '3\\:4'  : calc(4/3  * 100%),
+  '4\\:3'  : calc(3/4  * 100%),
+  '9\\:16' : calc(16/9 * 100%),
+  '16\\:9' : calc(9/16 * 100%),
 );
 
 $width: (
   // REMS
-  0:  0,       // 0
-  1:  0.25rem, // 4px
-  2:  0.5rem,  // 8px
-  3:  0.75rem, // 12px
-  4:  1rem,    // 16px
-  5:  1.25rem, // 20px
-  6:  1.5rem,  // 24px
-  7:  1.75rem, // 28px
-  8:  2rem,    // 32px
-  9:  2.25rem, // 36px
-  10: 2.5rem,  // 40px
-  12: 3rem,    // 48px
-  16: 4rem,    // 64px
-  20: 5rem,    // 80px
-  24: 6rem,    // 96px
-  32: 8rem,    // 128px
-  40: 10rem,   // 160px
-  48: 12rem,   // 192px
-  56: 14rem,   // 224px
-  64: 16rem,   // 256px
+  0  : 0,       // 0
+  1  : 0.25rem, // 4px
+  2  : 0.5rem,  // 8px
+  3  : 0.75rem, // 12px
+  4  : 1rem,    // 16px
+  5  : 1.25rem, // 20px
+  6  : 1.5rem,  // 24px
+  7  : 1.75rem, // 28px
+  8  : 2rem,    // 32px
+  9  : 2.25rem, // 36px
+  10 : 2.5rem,  // 40px
+  12 : 3rem,    // 48px
+  16 : 4rem,    // 64px
+  20 : 5rem,    // 80px
+  24 : 6rem,    // 96px
+  32 : 8rem,    // 128px
+  40 : 10rem,   // 160px
+  48 : 12rem,   // 192px
+  56 : 14rem,   // 224px
+  64 : 16rem,   // 256px
 
   // MISC
-  'auto': auto,
-  'px': 1px,
+  'auto' : auto,
+  'px'   : 1px,
 
   // FRACTIONS
-  '1\\/2': 50%,
-  '1\\/3': 33.33333%,
-  '2\\/3': 66.66667%,
-  '1\\/4': 25%,
-  '2\\/4': 50%,
-  '3\\/4': 75%,
-  '1\\/5': 20%,
-  '2\\/5': 40%,
-  '3\\/5': 60%,
-  '4\\/5': 80%,
-  '1\\/6': 16.66667%,
-  '2\\/6': 33.33333%,
-  '3\\/6': 50%,
-  '4\\/6': 66.66667%,
-  '5\\/6': 83.33333%,
-  '1\\/12': 8.33333%,
-  '2\\/12': 16.66667%,
-  '3\\/12': 25%,
-  '4\\/12': 33.33333%,
-  '5\\/12': 41.66667%,
-  '6\\/12': 50%,
-  '7\\/12': 58.33333%,
-  '8\\/12': 66.66667%,
-  '9\\/12': 75%,
+  '1\\/2'  : 50%,
+  '1\\/3'  : 33.33333%,
+  '2\\/3'  : 66.66667%,
+  '1\\/4'  : 25%,
+  '2\\/4'  : 50%,
+  '3\\/4'  : 75%,
+  '1\\/5'  : 20%,
+  '2\\/5'  : 40%,
+  '3\\/5'  : 60%,
+  '4\\/5'  : 80%,
+  '1\\/6'  : 16.66667%,
+  '2\\/6'  : 33.33333%,
+  '3\\/6'  : 50%,
+  '4\\/6'  : 66.66667%,
+  '5\\/6'  : 83.33333%,
+  '1\\/12' : 8.33333%,
+  '2\\/12' : 16.66667%,
+  '3\\/12' : 25%,
+  '4\\/12' : 33.33333%,
+  '5\\/12' : 41.66667%,
+  '6\\/12' : 50%,
+  '7\\/12' : 58.33333%,
+  '8\\/12' : 66.66667%,
+  '9\\/12' : 75%,
   '10\\/12': 83.33333%,
   '11\\/12': 91.66667%,
 
   // SPECIAL
-  'full': 100%,
-  'screen': 100vw
+  'full'   : 100%,
+  'screen' : 100vw
 );
 
 $max-width: (
-  'xs': 20rem,  // 320px
-  'sm': 24rem,  // 384px
-  'md': 28rem,  // 448px
-  'lg': 32rem,  // 512px
-  'xl': 36rem,  // 576px
-  '2xl': 42rem, // 672px
-  '3xl': 48rem, // 768px
-  '4xl': 56rem, // 896px
-  '5xl': 64rem, // 1024px
-  '6xl': 72rem, // 1152px
-  'full': 100%
+  'xs'   : 20rem, // 320px
+  'sm'   : 24rem, // 384px
+  'md'   : 28rem, // 448px
+  'lg'   : 32rem, // 512px
+  'xl'   : 36rem, // 576px
+  '2xl'  : 42rem, // 672px
+  '3xl'  : 48rem, // 768px
+  '4xl'  : 56rem, // 896px
+  '5xl'  : 64rem, // 1024px
+  '6xl'  : 72rem, // 1152px
+  'full' : 100%
 );
 
 $min-width: (
-  '0': 0,
-  'full': 100%
+  '0'    : 0,
+  'full' : 100%
 );
 
 $height: (
-  0:  0,       // 0
-  1:  0.25rem, // 4px
-  2:  0.5rem,  // 8px
-  3:  0.75rem, // 12px
-  4:  1rem,    // 16px
-  5:  1.25rem, // 20px
-  6:  1.5rem,  // 24px
-  7:  1.75rem, // 28p
-  8:  2rem,    // 32px
-  9:  2.25rem, // 36p
-  10: 2.5rem,  // 40px
-  12: 3rem,    // 48px
-  16: 4rem,    // 64px
-  20: 5rem,    // 80px
-  24: 6rem,    // 96px
-  32: 8rem,    // 128px
-  40: 10rem,   // 160px
-  48: 12rem,   // 192px
-  56: 14rem,   // 224px
-  64: 16rem,   // 256px
+  0  : 0,       // 0
+  1  : 0.25rem, // 4px
+  2  : 0.5rem,  // 8px
+  3  : 0.75rem, // 12px
+  4  : 1rem,    // 16px
+  5  : 1.25rem, // 20px
+  6  : 1.5rem,  // 24px
+  7  : 1.75rem, // 28p
+  8  : 2rem,    // 32px
+  9  : 2.25rem, // 36p
+  10 : 2.5rem,  // 40px
+  12 : 3rem,    // 48px
+  16 : 4rem,    // 64px
+  20 : 5rem,    // 80px
+  24 : 6rem,    // 96px
+  32 : 8rem,    // 128px
+  40 : 10rem,   // 160px
+  48 : 12rem,   // 192px
+  56 : 14rem,   // 224px
+  64 : 16rem,   // 256px
 
-  'auto': auto,
-  'px': 1px,
-  'full': 100%,
-  'half': 50%,
-  'screen': 100vh,
+  'auto'   : auto,
+  'px'     : 1px,
+  'full'   : 100%,
+  'half'   : 50%,
+  'screen' : 100vh,
 );
 
 $max-height: (
-  'none': 0,
-  'full': 100%,
-  'screen': 100vh,
+  'none'   : 0,
+  'full'   : 100%,
+  'screen' : 100vh,
 );
 
 $min-height: (
-  0: 0, 
-  'full': 100%,
-  'screen': 100vh,
+  0        : 0, 
+  'full'   : 100%,
+  'screen' : 100vh,
 );
 
 $border-width: (
-  '0': 0,
-  'default': 0.0625rem,
-  2: 0.125rem,
-  4: 0.25rem,
-  8: 0.5rem,
+  '0'       : 0,
+  'default' : 0.0625rem,
+  2         : 0.125rem,
+  4         : 0.25rem,
+  8         : 0.5rem,
 );
 
 $border-width-em: (
   'default': 0.0625em,
-  2: 0.125em,
-  4: 0.25em,
-  8: 0.5em,
+  2        : 0.125em,
+  4        : 0.25em,
+  8        : 0.5em,
 );
 
 $border-radius: (
-  'none':    0,
-  'sm':      0.125rem,
-  'default': 0.25rem,
-  'md':      0.375rem,
-  'lg':      0.5rem,
-  'full':    100vh,
+  'none'    : 0,
+  'sm'      : 0.125rem,
+  'default' : 0.25rem,
+  'md'      : 0.375rem,
+  'lg'      : 0.5rem,
+  'full'    : 100vh,
 );
 
 $border-radius-em: (
-  'sm':      0.125em,
-  'default': 0.25em,
-  'md':      0.375em,
-  'lg':      0.5em,
+  'sm'      : 0.125em,
+  'default' : 0.25em,
+  'md'      : 0.375em,
+  'lg'      : 0.5em,
 );
 
 $opacity: (
-  0:   0,
-  25:  0.25,
-  50:  0.5,
-  75:  0.75,
-  100: 1,
+  0   : 0,
+  25  : 0.25,
+  50  : 0.5,
+  75  : 0.75,
+  100 : 1,
 );
 
 $inset: (
-  '0': 0,
-  'auto': auto,
+  '0'    : 0,
+  'auto' : auto,
  );
 
 $z-index: (
   'auto': auto,
-  0:  0,
-  10: 10,
-  20: 20,
-  30: 30,
+  0     : 0,
+  10    : 10,
+  20    : 20,
+  30    : 30,
 );
 
 $z-index-negative: (
@@ -318,64 +373,65 @@ $z-index-negative: (
 );
 
 $order: (
-  'first': -1,
-  'last': 999,
-  'none': 0,
-  1:  1,
-  2:  2,
-  3:  3,
-  4:  4,
-  5:  5,
-  6:  6,
-  7:  7,
-  8:  8,
-  9:  9,
+  'first' : -1,
+  'last'  : 999,
+  'none'  : 0,
+
+  1 :  1,
+  2 :  2,
+  3 :  3,
+  4 :  4,
+  5 :  5,
+  6 :  6,
+  7 :  7,
+  8 :  8,
+  9 :  9,
   10: 10,
   11: 11,
   12: 12,
 );
 
 $flex: (
-  'initial': 0 1 auto,
-  '1': 1 1 0%,
-  'auto': 1 1 auto,
-  'none': none,
+  'initial' : 0 1 auto,
+  '1'       : 1 1 0%,
+  'auto'    : 1 1 auto,
+  'none'    : none,
 );
 
 $flex-grow: (
-  '0': 0,
-  'default': 1,
+  '0'       : 0,
+  'default' : 1,
 );
 
 $flex-shrink: (
-  '0': 0,
-  'default': 1,
+  '0'       : 0,
+  'default' : 1,
 );
 
 $font-size: (
-  'xs': 0.740rem,  // 12px <== extrasmall
-  'sm': 0.833rem,  // 13px <== small
-  'base': 1rem,    // 16px <== base
-  'lg': 1.2rem,    // 19px <== h6
-  'xl': 1.44rem,   // 20px <== h5
-  '2xl': 1.728rem, // 23px <== h4
-  '3xl': 2.074rem, // 27px <== h3
-  '4xl': 2.488rem, // 33px <== h2
-  '5xl': 2.985rem, // 47px <== h1
-  '6xl': 3.582rem, // 57px
+  'xs'   : 0.740rem, // 12px — extrasmall
+  'sm'   : 0.833rem, // 13px — small
+  'base' : 1rem,     // 16px — base
+  'lg'   : 1.2rem,   // 19px — h6
+  'xl'   : 1.44rem,  // 20px — h5
+  '2xl'  : 1.728rem, // 23px — h4
+  '3xl'  : 2.074rem, // 27px — h3
+  '4xl'  : 2.488rem, // 33px — h2
+  '5xl'  : 2.985rem, // 47px — h1
+  '6xl'  : 3.582rem, // 57px — Hero
 );
 
 $font-size-em: (
-  'xs': 0.740em,  // 12px <== extrasmall
-  'sm': 0.833em,  // 13px <== small
-  'base': 1em,    // 16px <== base
-  'lg': 1.2em,    // 19px <== h6
-  'xl': 1.44em,   // 20px <== h5
-  '2xl': 1.728em, // 23px <== h4
-  '3xl': 2.074em, // 27px <== h3
-  '4xl': 2.488em, // 33px <== h2
-  '5xl': 2.985em, // 47px <== h1
-  '6xl': 3.582em, // 57px
+  'xs'   : 0.740em, // 12px — extrasmall
+  'sm'   : 0.833em, // 13px — small
+  'base' : 1em,     // 16px — base
+  'lg'   : 1.2em,   // 19px — h6
+  'xl'   : 1.44em,  // 20px — h5
+  '2xl'  : 1.728em, // 23px — h4
+  '3xl'  : 2.074em, // 27px — h3
+  '4xl'  : 2.488em, // 33px — h2
+  '5xl'  : 2.985em, // 47px — h1
+  '6xl'  : 3.582em, // 57px
 );
 
 $font-family: (
@@ -395,6 +451,14 @@ $font-family: (
     sans-serif
   ),
 
+  // 'serif:' (
+  //   Georgia,
+  //   Cambria,
+  //   'Times New Roman',
+  //   Times,
+  //   serif
+  // ),
+  
   'serif': (
     'Bodoni 11*',
     'Times New Roman',
@@ -403,9 +467,9 @@ $font-family: (
   ),
 
   'monospace': (
-    'Menlo',
-    'Monaco',
-    'Consolas',
+    Menlo,
+    Monaco,
+    Consolas,
     'Liberation Mono',
     'Courier New',
     monospace
@@ -413,139 +477,139 @@ $font-family: (
 );
 
 $leading: (
-  'none': 1,
-  'tight': 1.25,
-  'snug': 1.375,
-  'normal': 1.5,
-  'relaxed': 1.625,
-  'loose': 2,
+  'none'    : 1,
+  'tight'   : 1.25,
+  'snug'    : 1.375,
+  'normal'  : 1.5,
+  'relaxed' : 1.625,
+  'loose'   : 2,
 );
 
 $tracking: (
-  'tighter': -0.05em,
-  'tight': -0.025em,
-  'normal': 0,
-  'wide': 0.025em,
-  'wider': 0.05em,
-  'widest': 0.1em,
+  'tighter' : -0.05em,
+  'tight'   : -0.025em,
+  'normal'  : 0,
+  'wide'    : 0.025em,
+  'wider'   : 0.05em,
+  'widest'  : 0.1em,
 );
 
 $font-weight: (
-  'thin': 100,
+  'thin'       : 100,
   'extra-light': 200,
-  'light': 300,
-  'normal': 400,
-  'medium': 500,
-  'semi-bold': 600,
-  'bold': 700,
-  'extra-bold': 800,
-  'black': 900,
+  'light'      : 300,
+  'normal'     : 400,
+  'medium'     : 500,
+  'semi-bold'  : 600,
+  'bold'       : 700,
+  'extra-bold' : 800,
+  'black'      : 900,
 );
 
 $list-style-type: (
-  'none': none,
-  'disc': disc,
-  'decimal': decimal,
+  'none'    : none,
+  'disc'    : disc,
+  'decimal' : decimal,
 );
 
 $object-position: (
-  'top': top,
-  'right': right,
-  'bottom': bottom,
-  'left': left,
-  'top-right': top right,
-  'top-left': top left,
-  'bottom-right': bottom right,
-  'bottom-left' : bottom left
+  'top'          : top,
+  'right'        : right,
+  'bottom'       : bottom,
+  'left'         : left,
+  'top-right'    : top right,
+  'top-left'     : top left,
+  'bottom-right' : bottom right,
+  'bottom-left'  : bottom left
 );
 
 $cursor: (
-  'auto': auto,
-  'default': default,
-  'pointer': pointer,
-  'wait': wait,
-  'text': text,
-  'move': move,
-  'not-allowed': not-allowed,
+  'auto'        : auto,
+  'default'     : default,
+  'pointer'     : pointer,
+  'wait'        : wait,
+  'text'        : text,
+  'move'        : move,
+  'not-allowed' : not-allowed,
 );
 
 // ENABLE/DISABLE VARIANTS
 $variants: (
-  'align-content': true,
-  'align-items': [responsive],
-  'align-self': false,
-  'appearance': false,
-  'aspect-ratio': true,
-  'background-attachment': true,
-  'background-color': [responsive hover hover-group],
-  'background-position': true,
-  'background-repeat': true,
-  'background-size': true,
-  'border-collapse': false,
-  'border-color': [hover],
-  'border-radius-em': true,
-  'border-radius': [responsive],
-  'border-style': true,
-  'border-width-em': true,
-  'border-width': [responsive],
-  'box-shadow': true,
-  'colors': [hover],
-  'container': true,
-  'cursor': true,
-  'display': [responsive hover-group],
-  'fill': true,
-  'flex-direction': [responsive],
-  'flex-grow': true,
-  'flex-shrink': true,
-  'flex-wrap': [responsive],
-  'flex': [responsive],
-  'float': true,
-  'font-family': true,
-  'font-size-em': true,
-  'font-size': [responsive],
-  'font-smoothing': true,
-  'font-style': true,
-  'font-weight': true,
-  'height': [responsive],
-  'inset': true,
-  'justify-content': [responsive],
-  'letter-spacing': [responsive],
-  'line-height': [responsive],
-  'list-style-position': true,
-  'list-style-type': true,
-  'margin-negative': [responsive],
-  'margin': [responsive],
-  'max-height': true,
-  'max-width': [responsive],
-  'min-height': false,
-  'min-width': [responsive],
-  'object-fit': true,
-  'object-position': true,
-  'opacity': true,
-  'order': false,
-  'outline': [focus],
-  'overflow': true,
-  'padding-ch': true,
-  'padding-em': true,
-  'padding': [responsive],
-  'pointer-events': true,
-  'position': true,
-  'resize': false,
-  'spacing': [responsive],
-  'stroke': [responsive],
-  'table-layout': true,
-  'text-align': true,
-  'text-color': [responsive hover focus],
-  'text-decoration': true,
-  'text-delay': true,
-  'text-transform': true,
-  'transition': [hover focus],
-  'user-select': false,
-  'vertical-align': true,
-  'visibility': true,
-  'white-space': true,
-  'width': [responsive],
-  'word-break': true,
-  'z-index-negative': [responsive],
-  'z-index': [responsive],
+  'align-content'         : true,
+  'align-items'           : [responsive],
+  'align-self'            : false,
+  'appearance'            : false,
+  'aspect-ratio'          : true,
+  'background-attachment' : true,
+  'background-color'      : [responsive hover hover-group],
+  'background-position'   : true,
+  'background-repeat'     : true,
+  'background-size'       : true,
+  'border-collapse'       : false,
+  'border-color'          : [hover],
+  'border-radius-em'      : true,
+  'border-radius'         : [responsive],
+  'border-style'          : true,
+  'border-width-em'       : true,
+  'border-width'          : [responsive],
+  'box-shadow'            : true,
+  'colors'                : [hover],
+  'container'             : true,
+  'cursor'                : true,
+  'display'               : [responsive hover-group],
+  'fill'                  : true,
+  'flex-direction'        : [responsive],
+  'flex-grow'             : true,
+  'flex-shrink'           : true,
+  'flex-wrap'             : [responsive],
+  'flex'                  : [responsive],
+  'float'                 : true,
+  'font-family'           : true,
+  'font-size-em'          : true,
+  'font-size'             : [responsive],
+  'font-smoothing'        : true,
+  'font-style'            : true,
+  'font-weight'           : true,
+  'height'                : [responsive],
+  'inset'                 : true,
+  'justify-content'       : [responsive],
+  'letter-spacing'        : [responsive],
+  'line-height'           : [responsive],
+  'list-style-position'   : true,
+  'list-style-type'       : true,
+  'margin-negative'       : [responsive],
+  'margin'                : [responsive],
+  'max-height'            : true,
+  'max-width'             : [responsive],
+  'min-height'            : false,
+  'min-width'             : [responsive],
+  'object-fit'            : true,
+  'object-position'       : true,
+  'opacity'               : true,
+  'order'                 : false,
+  'outline'               : [focus],
+  'overflow'              : true,
+  'padding-ch'            : true,
+  'padding-em'            : true,
+  'padding'               : [responsive],
+  'pointer-events'        : true,
+  'position'              : true,
+  'resize'                : false,
+  'spacing'               : [responsive],
+  'stroke'                : [responsive],
+  'table-layout'          : true,
+  'text-align'            : true,
+  'text-color'            : [responsive hover focus],
+  'text-decoration'       : true,
+  'text-delay'            : true,
+  'text-transform'        : true,
+  'transition'            : [hover focus],
+  'user-select'           : false,
+  'vertical-align'        : true,
+  'visibility'            : true,
+  'white-space'           : true,
+  'width'                 : [responsive],
+  'word-break'            : true,
+  'z-index-negative'      : [responsive],
+  'z-index'               : [responsive],
 );

@@ -7,16 +7,24 @@
 
   $variants: map.get(config.$variants, 'transition');
 
-  $config-args: (
-    'transition-duration': config.$transition-duration,
-    'transition-property': config.$transition-property,
-    'transition-timing-function': config.$transition-function,
-    'transition-delay': config.$transition-delay,
-  );
+  $args-duration: config.$transition-duration, $variants, $screen;
+  $args-property: config.$transition-property, $variants, $screen;
+  $args-function: config.$transition-function, $variants, $screen;
+  $args-delay   : config.$transition-delay,    $variants, $screen;
+  
+  @include generate-variants.configurable($args-duration...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}transition#{$modifier}#{$state} { transition-duration: $value; }
+  }
+  
+  @include generate-variants.configurable($args-property...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}transition#{$modifier}#{$state} { transition-property: $value; }
+  }
+  
+  @include generate-variants.configurable($args-function...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}transition#{$modifier}#{$state} { transition-timing-function: $value; }
+  }
 
-  @each $prop, $config in $config-args {
-    @include generate-variants.configurable($config, $variants, $screen) using ($prefix, $modifier, $state, $value) {
-      .#{$prefix}transition#{$modifier}#{$state} { #{$prop}: $value; }
-    }
+  @include generate-variants.configurable($args-delay...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}transition-delay#{$modifier}#{$state} { transition-delay: $value; }
   }
 }

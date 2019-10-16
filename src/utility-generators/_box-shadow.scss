@@ -7,6 +7,6 @@
   $args: config.$box-shadow, map.get(config.$variants, 'box-shadow'), $screen;
   
   @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}shadow#{$modifier}#{$state} { box-shadow: str.unquote($value); }
+    .#{$prefix}shadow#{$modifier}#{$state} { box-shadow: $value; }
   } 
 }
