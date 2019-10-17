@@ -1,20 +1,23 @@
-@use "sass:map";
-@use "mediaquery";
+@use 'sass:map';
+@use 'mediaquery' as *;
+
 @mixin bundle-responsive-utilities($breakpoint) {
   @if map.has-key($breakpoint, 'min') and map.has-key($breakpoint, 'max') {
-    @include mediaquery.mediaquery($min: map.get($breakpoint, 'min'), $max: map.get($breakpoint, 'max')) {
+    $args: (min: map.get($breakpoint, 'min'), max: map.get($breakpoint, 'max'));
+
+    @include mediaquery($args...) {
       @content;
     }
   }
 
   @else if map.has-key($breakpoint, 'min') {
-    @include mediaquery.mediaquery($min: map.get($breakpoint, 'min')) {
+    @include mediaquery($min: map.get($breakpoint, 'min')) {
       @content;
     }
   }
 
   @else if map.has-key($breakpoint, 'max') {
-    @include mediaquery.mediaquery($max: map.get($breakpoint, 'max')) {
+    @include mediaquery($max: map.get($breakpoint, 'max')) {
       @content;
     }
   }

@@ -31,10 +31,10 @@ $colors: (
   'gray-900': #212121,
 
   // STATE
-  'success' : #28A745,
-  'info'    : #17A2B8,
-  'warning' : #FFC107,
-  'danger'  : #DC3545,
+  'success' : #3FE1B0,
+  'info'    : #0060DF,
+  'warning' : #FFEA80,
+  'danger'  : #FF6A75,
 
   // CURRENT
   'current-color': currentColor,
@@ -183,7 +183,7 @@ $padding-ch: (
 // parent container and the img/video elements.
 // 
 // 1. Parent container: overflow-hidden, relative
-// 2. img/video: absolute, inset-0, w-full, h-full, object-cover
+// 2. img/video: block, absolute, inset-0, w-full, h-full, object-cover
 $aspect-ratio: (
   '1\\:1'  : 100%,
   '1\\:2'  : calc(1/2  * 100%),
