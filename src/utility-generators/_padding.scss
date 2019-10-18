@@ -16,13 +16,13 @@
   $args: config.$padding, map.get(config.$variants, 'padding'), $screen;
   
   @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
-    @include _padding-classes($prefix, $modifier, $state, $value * 1rem);
+    @include _padding-classes($prefix, $modifier, $state, $value);
   };
   
   $args_em: config.$padding-em, map.get(config.$variants, 'padding-em'), $screen;
   
   @include generate-variants.configurable($args_em...) using ($prefix, $modifier, $state, $value) {
-    @include _padding-classes($prefix, '#{$modifier}\\[em\\]', $state, $value * 1em);
+    @include _padding-classes($prefix, '#{$modifier}\\[em\\]', $state, $value);
   };
   
   $args_ch: config.$padding-ch, map.get(config.$variants, 'padding-ch'), $screen;

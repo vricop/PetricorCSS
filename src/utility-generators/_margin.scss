@@ -6,8 +6,6 @@
   $args: config.$margin, map.get(config.$variants, 'margin'), $screen;
 
   @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
-    $value: if($value == auto, $value, $value * 1rem);
-    
     // CHILDREN
     .#{$prefix}m#{$modifier}\>\* > * { margin: $value; };
 
@@ -28,8 +26,6 @@
   $args-negative: config.$margin-negative, map.get(config.$variants, 'margin-negative'), $screen;
 
   @include generate-variants.configurable($args-negative...) using ($prefix, $modifier, $state, $value) {
-    $value: $value * -1rem;
-    
     .#{$prefix}-m#{$modifier}#{$state} { margin: $value; };
     .#{$prefix}-mx#{$modifier}#{$state} { margin: { left: $value; right: $value; } };
     .#{$prefix}-my#{$modifier}#{$state} { margin: { top: $value; bottom: $value; } };
