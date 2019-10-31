@@ -13,9 +13,9 @@
         @content('hover\\:', ':hover');
       }
 
-      @if list.index($utility-variants, 'hover-group') {
-        @content('hover-group:hover .hover-target\\:', null);
-        @content('hover-group:hover > .\\&hover-target\\:', null);
+      @if list.index($utility-variants, 'group-hover') {
+        @content('group-hover:hover .target-hover\\:', null);
+        @content('group-hover:hover > .\\&target-hover\\:', null);
       }
 
       @if list.index($utility-variants, 'focus') {
@@ -31,9 +31,9 @@
         @content('#{$screen}\\:hover\\:', ':hover');
       }
 
-      @if list.index($utility-variants, 'hover-group') {
-        @content('#{$screen}\\:hover-group:hover .hover-target\\:', null);
-        @content('#{$screen}\\:hover-group:hover > .\\&hover-target\\:', null);
+      @if list.index($utility-variants, 'group-hover') {
+        @content('#{$screen}\\:group-hover:hover .target-hover\\:', null);
+        @content('#{$screen}\\:group-hover:hover > .\\&target-hover\\:', null);
       }
 
       @if list.index($utility-variants, 'focus') {
@@ -60,9 +60,9 @@
           @content('hover\\:', $modifier, ':hover', $value);
         }
 
-        @if list.index($utility-variants, 'hover-group') {
-          @content('hover-group:hover .hover-target\\:', $modifier, null, $value);
-          @content('hover-group:hover > .\\&hover-target\\:', $modifier, null, $value);
+        @if list.index($utility-variants, 'group-hover') {
+          @content('group-hover:hover .target-hover\\:', $modifier, null, $value);
+          @content('group-hover:hover > .\\&target-hover\\:', $modifier, null, $value);
         }
 
         @if list.index($utility-variants, 'focus') {
@@ -94,9 +94,9 @@
           @content('#{$screen}\\:hover\\:', $modifier, ':hover', $value);
         }
 
-        @if list.index($utility-variants, 'hover-group') {
-          @content('#{$screen}\\:hover-group:hover .hover-target\\:', $modifier, null, $value);
-          @content('#{$screen}\\:hover-group:hover > .\\&hover-target\\:', $modifier, null, $value);
+        @if list.index($utility-variants, 'group-hover') {
+          @content('#{$screen}\\:group-hover:hover .target-hover\\:', $modifier, null, $value);
+          @content('#{$screen}\\:group-hover:hover > .\\&target-hover\\:', $modifier, null, $value);
         }
 
         @if list.index($utility-variants, 'focus') {
