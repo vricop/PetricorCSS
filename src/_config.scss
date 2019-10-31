@@ -54,11 +54,25 @@ $box-shadow: (
 );
 
 $transition-duration: (
-  'slower'  : 400ms,
-  'slow'    : 312ms,
-  'default' : 200ms,
-  'fast'    : 160ms,
-  'faster'  : 128ms,
+  '500ms' : 500ms,
+  '475ms' : 475ms,
+  '450ms' : 450ms,
+  '425ms' : 425ms,
+  '400ms' : 400ms,
+  '350ms' : 350ms,
+  '320ms' : 320ms,
+  '300ms' : 300ms,
+  '275ms' : 275ms,
+  '250ms' : 250ms,
+  '225ms' : 225ms,
+  'std'   : 200ms,
+  '175ms' : 175ms,
+  '150ms' : 150ms,
+  '125ms' : 125ms,
+  '100ms' : 100ms,
+  '75ms'  : 75ms,
+  '50ms'  : 50ms,
+  '25ms'  : 25ms,
 );
 
 $transition-delay: $transition-duration;

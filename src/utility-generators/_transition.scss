@@ -13,7 +13,7 @@
   $args-delay   : config.$transition-delay,    $variants, $screen;
   
   @include generate-variants.configurable($args-duration...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}transition#{$modifier}#{$state} { transition-duration: $value; }
+    .#{$prefix}duration#{$modifier}#{$state} { transition-duration: $value; }
   }
   
   @include generate-variants.configurable($args-property...) using ($prefix, $modifier, $state, $value) {
@@ -21,10 +21,10 @@
   }
   
   @include generate-variants.configurable($args-function...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}transition#{$modifier}#{$state} { transition-timing-function: $value; }
+    .#{$prefix}fn#{$modifier}#{$state} { transition-timing-function: $value; }
   }
 
   @include generate-variants.configurable($args-delay...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}transition-delay#{$modifier}#{$state} { transition-delay: $value; }
+    .#{$prefix}delay#{$modifier}#{$state} { transition-delay: $value; }
   }
 }
