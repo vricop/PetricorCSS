@@ -140,17 +140,17 @@ $display: (
 // SPACINGS
 
 $margin: (
-  0     : 0,
-  1     : 0.25rem,   // 4px
-  2     : 0.5rem,    // 8px
-  3     : 1rem,      // 16px
-  4     : 1.5rem,    // 24px
-  5     : 2rem,      // 32px
-  6     : 2.5rem,    // 40px
-  7     : 3rem,      // 48px
-  8     : 3.5rem,    // 56px
-  9     : 4rem,      // 64px
-  10    : 4.5rem,    // 72px
+  '0'   : 0,
+  '1'   : 0.25rem,   // 4px
+  '2'   : 0.5rem,    // 8px
+  '3'   : 1rem,      // 16px
+  '4'   : 1.5rem,    // 24px
+  '5'   : 2rem,      // 32px
+  '6'   : 2.5rem,    // 40px
+  '7'   : 3rem,      // 48px
+  '8'   : 3.5rem,    // 56px
+  '9'   : 4rem,      // 64px
+  '10'  : 4.5rem,    // 72px
   'px'  : 0.0625rem, // 1px
   'auto': auto,
 );
@@ -159,31 +159,31 @@ $margin: (
 //
 // Used for offsetting elements or some layout hacks.
 $margin-negative: (
-  1    : -0.25rem,   // 4px
-  2    : -0.5rem,    // 8px
-  3    : -1rem,      // 16px
-  4    : -1.5rem,    // 24px
-  5    : -2rem,      // 32px
-  6    : -2.5rem,    // 40px
-  7    : -3rem,      // 48px
-  8    : -3.5rem,    // 56px
-  9    : -4rem,      // 64px
-  10   : -4.5rem,    // 72px
+  '1'  : -0.25rem,   // 4px
+  '2'  : -0.5rem,    // 8px
+  '3'  : -1rem,      // 16px
+  '4'  : -1.5rem,    // 24px
+  '5'  : -2rem,      // 32px
+  '6'  : -2.5rem,    // 40px
+  '7'  : -3rem,      // 48px
+  '8'  : -3.5rem,    // 56px
+  '9'  : -4rem,      // 64px
+  '10' : -4.5rem,    // 72px
   'px' : -0.0625rem, // 1px
 );
 
 $padding: (
-  0    : 0,
-  1    : 0.25rem,   // 4px
-  2    : 0.5rem,    // 8px
-  3    : 1rem,      // 16px
-  4    : 1.5rem,    // 24px
-  5    : 2rem,      // 32px
-  6    : 2.5rem,    // 40px
-  7    : 3rem,      // 48px
-  8    : 3.5rem,    // 56px
-  9    : 4rem,      // 64px
-  10   : 4.5rem,    // 72px
+  '0'  : 0,
+  '1'  : 0.25rem,   // 4px
+  '2'  : 0.5rem,    // 8px
+  '3'  : 1rem,      // 16px
+  '4'  : 1.5rem,    // 24px
+  '5'  : 2rem,      // 32px
+  '6'  : 2.5rem,    // 40px
+  '7'  : 3rem,      // 48px
+  '8'  : 3.5rem,    // 56px
+  '9'  : 4rem,      // 64px
+  '10' : 4.5rem,    // 72px
   'px' : 0.0625rem, // 1px
 );
 
@@ -193,16 +193,16 @@ $padding: (
 // etc. By increasing the font-size in the parent element, paddings will change
 // size proportionally —as opposed to rems.
 $padding-em: (
-  1    : 0.25em,   // 4px
-  2    : 0.5em,    // 8px
-  3    : 1em,      // 16px
-  4    : 1.5em,    // 24px
-  5    : 2em,      // 32px
-  6    : 2.5em,    // 40px
-  7    : 3em,      // 48px
-  8    : 3.5em,    // 56px
-  9    : 4em,      // 64px
-  10   : 4.5em,    // 72px
+  '1'  : 0.25em,   // 4px
+  '2'  : 0.5em,    // 8px
+  '3'  : 1em,      // 16px
+  '4'  : 1.5em,    // 24px
+  '5'  : 2em,      // 32px
+  '6'  : 2.5em,    // 40px
+  '7'  : 3em,      // 48px
+  '8'  : 3.5em,    // 56px
+  '9'  : 4em,      // 64px
+  '10' : 4.5em,    // 72px
   'px' : 0.0625em, // 1px
 );
 
@@ -212,11 +212,11 @@ $padding-em: (
 // They're really usefull when creating buttons or badges that need a bit more
 // of granular control.
 $padding-ch: (
-  1: 1ch,
-  2: 1.5ch,
-  3: 2ch,
-  4: 2.5ch,
-  5: 3ch,
+  '1': 1ch,
+  '2': 1.5ch,
+  '3': 2ch,
+  '4': 2.5ch,
+  '5': 3ch,
 );
 
 $column-count: (
@@ -243,11 +243,11 @@ $column-gap-em: (
 );
 
 $column-gap-ch: (
-  1: 1ch,
-  2: 1.5ch,
-  3: 2ch,
-  4: 2.5ch,
-  5: 3ch,
+  '1': 1ch,
+  '2': 1.5ch,
+  '3': 2ch,
+  '4': 2.5ch,
+  '5': 3ch,
 );
 
 // ASPECT RATIOS
@@ -270,26 +270,26 @@ $aspect-ratio: (
 
 $width: (
   // REMS
-  0  : 0,       // 0
-  1  : 0.25rem, // 4px
-  2  : 0.5rem,  // 8px
-  3  : 0.75rem, // 12px
-  4  : 1rem,    // 16px
-  5  : 1.25rem, // 20px
-  6  : 1.5rem,  // 24px
-  7  : 1.75rem, // 28px
-  8  : 2rem,    // 32px
-  9  : 2.25rem, // 36px
-  10 : 2.5rem,  // 40px
-  12 : 3rem,    // 48px
-  16 : 4rem,    // 64px
-  20 : 5rem,    // 80px
-  24 : 6rem,    // 96px
-  32 : 8rem,    // 128px
-  40 : 10rem,   // 160px
-  48 : 12rem,   // 192px
-  56 : 14rem,   // 224px
-  64 : 16rem,   // 256px
+  '0'  : 0,       // 0
+  '1'  : 0.25rem, // 4px
+  '2'  : 0.5rem,  // 8px
+  '3'  : 0.75rem, // 12px
+  '4'  : 1rem,    // 16px
+  '5'  : 1.25rem, // 20px
+  '6'  : 1.5rem,  // 24px
+  '7'  : 1.75rem, // 28px
+  '8'  : 2rem,    // 32px
+  '9'  : 2.25rem, // 36px
+  '10' : 2.5rem,  // 40px
+  '12' : 3rem,    // 48px
+  '16' : 4rem,    // 64px
+  '20' : 5rem,    // 80px
+  '24' : 6rem,    // 96px
+  '32' : 8rem,    // 128px
+  '40' : 10rem,   // 160px
+  '48' : 12rem,   // 192px
+  '56' : 14rem,   // 224px
+  '64' : 16rem,   // 256px
 
   // MISC
   'auto' : auto,
@@ -348,26 +348,26 @@ $min-width: (
 );
 
 $height: (
-  0  : 0,       // 0
-  1  : 0.25rem, // 4px
-  2  : 0.5rem,  // 8px
-  3  : 0.75rem, // 12px
-  4  : 1rem,    // 16px
-  5  : 1.25rem, // 20px
-  6  : 1.5rem,  // 24px
-  7  : 1.75rem, // 28p
-  8  : 2rem,    // 32px
-  9  : 2.25rem, // 36p
-  10 : 2.5rem,  // 40px
-  12 : 3rem,    // 48px
-  16 : 4rem,    // 64px
-  20 : 5rem,    // 80px
-  24 : 6rem,    // 96px
-  32 : 8rem,    // 128px
-  40 : 10rem,   // 160px
-  48 : 12rem,   // 192px
-  56 : 14rem,   // 224px
-  64 : 16rem,   // 256px
+  '0'  : 0,       // 0
+  '1'  : 0.25rem, // 4px
+  '2'  : 0.5rem,  // 8px
+  '3'  : 0.75rem, // 12px
+  '4'  : 1rem,    // 16px
+  '5'  : 1.25rem, // 20px
+  '6'  : 1.5rem,  // 24px
+  '7'  : 1.75rem, // 28p
+  '8'  : 2rem,    // 32px
+  '9'  : 2.25rem, // 36p
+  '10' : 2.5rem,  // 40px
+  '12' : 3rem,    // 48px
+  '16' : 4rem,    // 64px
+  '20' : 5rem,    // 80px
+  '24' : 6rem,    // 96px
+  '32' : 8rem,    // 128px
+  '40' : 10rem,   // 160px
+  '48' : 12rem,   // 192px
+  '56' : 14rem,   // 224px
+  '64' : 16rem,   // 256px
 
   'auto'   : auto,
   'px'     : 1px,
@@ -383,7 +383,7 @@ $max-height: (
 );
 
 $min-height: (
-  0        : 0, 
+  '0'      : 0, 
   'full'   : 100%,
   'screen' : 100vh,
 );
@@ -391,16 +391,16 @@ $min-height: (
 $border-width: (
   '0'       : 0,
   'default' : 0.0625rem,
-  2         : 0.125rem,
-  4         : 0.25rem,
-  8         : 0.5rem,
+  '2'       : 0.125rem,
+  '4'       : 0.25rem,
+  '8'       : 0.5rem,
 );
 
 $border-width-em: (
   'default' : 0.0625em,
-  2         : 0.125em,
-  4         : 0.25em,
-  8         : 0.5em,
+  '2'       : 0.125em,
+  '4'       : 0.25em,
+  '8'       : 0.5em,
 );
 
 $border-radius: (
@@ -420,11 +420,11 @@ $border-radius-em: (
 );
 
 $opacity: (
-  0   : 0,
-  25  : 0.25,
-  50  : 0.5,
-  75  : 0.75,
-  100 : 1,
+  '0'   : 0,
+  '25'  : 0.25,
+  '50'  : 0.5,
+  '75'  : 0.75,
+  '100' : 1,
 );
 
 $inset: (
@@ -441,8 +441,8 @@ $z-index: (
 );
 
 $z-index-negative: (
-  10: -10,
-  20: -20,
+  '1': -10,
+  '2': -20,
 );
 
 $order: (
@@ -450,18 +450,11 @@ $order: (
   'last'  : 999,
   'none'  : 0,
 
-  1 :  1,
-  2 :  2,
-  3 :  3,
-  4 :  4,
-  5 :  5,
-  6 :  6,
-  7 :  7,
-  8 :  8,
-  9 :  9,
-  10: 10,
-  11: 11,
-  12: 12,
+  '1' :  1,
+  '2' :  2,
+  '3' :  3,
+  '4' :  4,
+  '5' :  5,
 );
 
 $flex: (
@@ -523,14 +516,6 @@ $font-family: (
     'Noto Color Emoji',
     sans-serif
   ),
-
-  // 'serif:' (
-  //   Georgia,
-  //   Cambria,
-  //   'Times New Roman',
-  //   Times,
-  //   serif
-  // ),
   
   'serif': (
     'Bodoni 11*',
