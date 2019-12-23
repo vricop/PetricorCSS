@@ -19,6 +19,8 @@
     @include generators.border-style($screen);
     @include generators.border-width($screen);
     @include generators.box-shadow($screen);
+    @include generators.column-count($screen);
+    @include generators.column-gap($screen);
     @include generators.container($breakpoint);
     @include generators.cursor($screen);
     @include generators.display($screen);

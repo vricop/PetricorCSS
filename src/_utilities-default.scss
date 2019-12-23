@@ -17,6 +17,8 @@
 @include generators.border-width;
 @include generators.box-shadow;
 @include generators.clearfix;
+@include generators.column-count;
+@include generators.column-gap;
 @include generators.container;
 @include generators.cursor;
 @include generators.display;

@@ -222,6 +222,37 @@ $padding-ch: (
   5: 3ch,
 );
 
+$column-count: (
+  '2': 2,
+  '3': 3,
+);
+
+$column-gap: (
+  '0' : 0,
+  '1' : 0.25rem,  // 4px
+  '2' : 0.5rem,   // 8px
+  '3' : 1rem,     // 16px
+  '4' : 1.5rem,   // 24px
+  '5' : 2rem,     // 32px
+);
+
+$column-gap-em: (
+  '0' : 0,
+  '1' : 0.25em,  // 4px
+  '2' : 0.5em,   // 8px
+  '3' : 1em,     // 16px
+  '4' : 1.5em,   // 24px
+  '5' : 2em,     // 32px
+);
+
+$column-gap-ch: (
+  1: 1ch,
+  2: 1.5ch,
+  3: 2ch,
+  4: 2.5ch,
+  5: 3ch,
+);
+
 // ASPECT RATIOS
 // 
 // In order to use these utilities you need to set additional utilites to the
@@ -599,6 +630,8 @@ $variants: (
   'border-width'          : [responsive],
   'box-shadow'            : true,
   'colors'                : [hover],
+  'column-count'          : [responsive],
+  'column-gap'            : [responsive],
   'container'             : true,
   'cursor'                : true,
   'display'               : [responsive group-hover],
