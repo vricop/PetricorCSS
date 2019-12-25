@@ -5,15 +5,29 @@
 @mixin margin($screen: null) {
   $args: config.$margin, map.get(config.$variants, 'margin'), $screen;
 
+  // CONTEXT MARGINS (FROM PARENT TO DIRECT CHILDREN)
+  // Components should have margins controlled from its parent. This way
+  // components can be shared in other context without margins getting in the way
   @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
-    // CHILDREN
     .#{$prefix}m#{$modifier}\>\* > * { margin: $value; };
+    .#{$prefix}mx#{$modifier}#{$state}\>\* > * { margin: { left: $value; right: $value; } };
+    .#{$prefix}my#{$modifier}#{$state}\>\* > * { margin: { top: $value; bottom: $value; } };
+    .#{$prefix}mt#{$modifier}#{$state}\>\* > * { margin-top: $value };
+    .#{$prefix}mr#{$modifier}#{$state}\>\* > * { margin-right: $value };
+    .#{$prefix}mb#{$modifier}#{$state}\>\* > * { margin-bottom: $value };
+    .#{$prefix}ml#{$modifier}#{$state}\>\* > * { margin-left: $value };
+  }
 
-    // LOBOTOMIZED OWL
+  // LOBOTOMIZED OWL (FROM PARENT TO DIRECT CHILDREN)
+  // Perfect for horizontal & vertical component stacks. First child it's not
+  // included.
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}mt#{$modifier}\>\*\+\*#{$state} > * + * { margin-top: $value; }
     .#{$prefix}ml#{$modifier}\>\*\+\*#{$state} > * + * { margin-left: $value; }
+  }
 
-    // DEFAULT
+  // DEFAULT
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}m#{$modifier}#{$state} { margin: $value; };
     .#{$prefix}mx#{$modifier}#{$state} { margin: { left: $value; right: $value; } };
     .#{$prefix}my#{$modifier}#{$state} { margin: { top: $value; bottom: $value; } };
@@ -23,6 +37,7 @@
     .#{$prefix}ml#{$modifier}#{$state} { margin-left: $value };
   }
   
+  // NEGATIVE MARGIN VARIANTS
   $args-negative: config.$margin-negative, map.get(config.$variants, 'margin-negative'), $screen;
 
   @include generate-variants.configurable($args-negative...) using ($prefix, $modifier, $state, $value) {
