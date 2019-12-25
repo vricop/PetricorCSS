@@ -1,0 +1,26 @@
+@use 'sass:map';
+
+// Better box model
+*, ::before, ::after { 
+  border: 0 solid currentColor;
+  box-sizing: border-box;
+}
+
+// Default focus styles
+*:focus { 
+  outline: 3px solid currentColor;
+  outline-offset: 3px !important;
+}
+
+// Better typography and padding default for form controls.
+input, textarea, button {
+  font: inherit;
+  padding: 0.5em 2ch;
+}
+
+button { cursor: pointer; }
+a { color: inherit; }
+
+// Hidden attribute can be overwritten by utility classes which have an
+// sepcificity of 0,0,1,0. `!important` makes sure this won't happen.
+[hidden] { display: none !important; }

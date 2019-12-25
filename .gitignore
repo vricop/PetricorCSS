@@ -8,7 +8,6 @@
 *.html
 
 # Don't track sass file for testing
-_base.scss
 node_modules
 
 
