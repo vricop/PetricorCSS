@@ -12,7 +12,7 @@ $breakpoints: (
 
 $colors: (
   // BRANDING
-  'gold'        : #fff301,
+  'gold' : #fff301,
   
   // BLACK & WHITE
   'black': #000,
@@ -88,7 +88,7 @@ $transition-function: (
   'in-back'            : cubic-bezier(0.6,  -0.28,  0.735, 0.045),
   'out-back'           : cubic-bezier(0.175, 0.885, 0.32,  1.275),
   'in-out-back'        : cubic-bezier(0.68, -0.55,  0.265, 1.55 ),
-  // CIRC
+  // CIRCULAR
   'in-circ'            : cubic-bezier(0.6,   0.04,  0.98,  0.335),
   'out-circ'           : cubic-bezier(0.075, 0.82,  0.165, 1    ),
   'in-out-circ'        : cubic-bezier(0.785, 0.135, 0.15,  0.86 ),
