@@ -1,0 +1,15 @@
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
+@mixin scale($screen: null) {
+  $args: config.$scale, map.get(config.$variants, 'scale'), $screen;
+  
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}scale#{$modifier}#{$state} {
+      --transform-scale-x: #{$value};
+      --transform-scale-y: #{$value};
+    }
+  }
+}
+

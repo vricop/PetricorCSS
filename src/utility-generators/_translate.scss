@@ -1,0 +1,21 @@
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+@use 'sass:string';
+@use 'sass:meta';
+
+@mixin translate($screen: null) {
+  $args: config.$translate, map.get(config.$variants, 'translate'), $screen;
+  
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+    // The base class will contain a dash for negative sets only.
+    $base-class: if($value < 0, '-translate', 'translate');
+
+    .#{$prefix}#{$base-class}-y#{$modifier}#{$state} {
+      --transform-translate-y: #{$value};
+    }
+    .#{$prefix}#{$base-class}-x#{$modifier}#{$state} {
+      --transform-translate-x: #{$value};
+    }
+  }
+}

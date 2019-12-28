@@ -70,3 +70,11 @@
 @include generators.width;
 @include generators.word-break;
 @include generators.z-index;
+
+// Keep this order (transform on top) so the others can
+// overwrite custom properties defined in `transform` utility
+@include generators.transform;
+@include generators.rotate;
+@include generators.scale;
+@include generators.skew;
+@include generators.translate;

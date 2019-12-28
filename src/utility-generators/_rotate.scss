@@ -1,0 +1,15 @@
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+@use 'sass:string';
+
+@mixin rotate($screen: null) {
+  $args: config.$rotate, map.get(config.$variants, 'rotate'), $screen;
+  
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+    // The base class will contain a dash for negative sets only.
+    $base-class: if($value < 0, '-rotate', 'rotate');
+
+    .#{$prefix}#{$base-class}#{$modifier}#{$state} { --transform-rotate: #{$value} !important; }
+  }
+}
