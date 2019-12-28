@@ -2,6 +2,7 @@
 @use "sass:map";
 @use "sass:meta";
 @use "sass:list";
+@use "sass:string";
 
 @mixin non-configurable($utility-variants, $screen) {
   @if $utility-variants == true or meta.type-of($utility-variants) == list {
@@ -46,10 +47,16 @@
 @mixin configurable($utility-config, $utility-variants, $screen) {
   @if $utility-variants == true or meta.type-of($utility-variants) == list {
     @each $modifier, $value in $utility-config {
+      // There are some utilities that have a default value and have
+      // no modifier (they only use the base-class, e.g. `border`, 
+      // `border-radius`).
+      // 1. If there's a modifier named `default` and it's not `cursor`
+      //    utility, then set modifier to null (no modifier).
+      // 2. For the rest of modifiers add a dash as a prefix.
       @if $modifier == 'default' and $utility-variants != 'cursor' {
-        $modifier: null;
-      } @else {
-        $modifier: '-#{$modifier}'
+        $modifier: null; // 1.
+      } @else if string.index($modifier, '-') != 1 {
+        $modifier: '-#{$modifier}' // 2.
       }
 
       // DEFAULT
