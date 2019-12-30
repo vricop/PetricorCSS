@@ -641,6 +641,12 @@ $cursor: (
   'not-allowed' : not-allowed,
 );
 
+$stroke-width: (
+  '0': 0,
+  '1': 1,
+  '2': 2,
+);
+
 // ENABLE/DISABLE VARIANTS
 $variants: (
   'align-content'         : true,
@@ -709,6 +715,7 @@ $variants: (
   'scale'                 : true,
   'skew'                  : true,
   'spacing'               : [responsive],
+  'stroke-width'          : [responsive],
   'stroke'                : [responsive],
   'table-layout'          : true,
   'text-align'            : true,
