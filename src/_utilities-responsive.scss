@@ -57,18 +57,12 @@
     @include generators.pointer-events($screen);
     @include generators.position($screen);
     @include generators.resize($screen);
-    @include generators.rotate($screen);
-    @include generators.scale($screen);
-    @include generators.skew($screen);
     @include generators.stroke($screen);
     @include generators.table-layout($screen);
     @include generators.text-align($screen);
     @include generators.text-color($screen);
     @include generators.text-decoration($screen);
     @include generators.text-transform($screen);
-    @include generators.transform($screen);
-    @include generators.transition($screen);
-    @include generators.translate($screen);
     @include generators.user-select($screen);
     @include generators.vertical-align($screen);
     @include generators.visibility($screen);
@@ -76,5 +70,13 @@
     @include generators.width($screen);
     @include generators.word-break($screen);
     @include generators.z-index($screen);
+    @include generators.transition($screen);
+    
+    // Don't touch the order of these utilities
+    @include generators.transform($screen);
+    @include generators.rotate($screen);
+    @include generators.scale($screen);
+    @include generators.skew($screen);
+    @include generators.translate($screen);
   }
 }

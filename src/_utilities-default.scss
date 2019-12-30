@@ -73,6 +73,7 @@
 
 // Keep this order (transform on top) so the others can
 // overwrite custom properties defined in `transform` utility
+@include generators.transform-origin;
 @include generators.transform;
 @include generators.rotate;
 @include generators.scale;

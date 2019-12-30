@@ -230,6 +230,20 @@ $translate: map.merge(
   )
 );
 
+$transform-origin: (
+  'bottom-left' : bottom left,
+  'bottom-right': bottom right,
+  'bottom'      : bottom,
+  'center-left' : center left,
+  'center-right': center right,
+  'center'      : center,
+  'left'        : left,
+  'right'       : right,
+  'top-left'    : top left,
+  'top-right'   : top right,
+  'top'         : top,
+);
+
 $scale: (
   '0'  : 0,
   '50' : .5,
@@ -702,6 +716,7 @@ $variants: (
   'text-decoration'       : true,
   'text-delay'            : true,
   'text-transform'        : true,
+  'transform-origin'      : [responsive],
   'transform'             : [responsive],
   'transition'            : [hover focus],
   'translate'             : true,
