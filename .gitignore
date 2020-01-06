@@ -1,13 +1,8 @@
-# Packages #
-*.gz
-
 # Css files and maps
-*.css
 *.css.map
 *.scssc
-*.html
 
-# Don't track sass file for testing
+# Don't track node_modules
 node_modules
 
 # Tools

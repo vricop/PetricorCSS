@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build:css & npm run build:css-min",
-    "build:css": "sass --watch __tests__/main.scss:__tests__/output/main.css --style expanded",
-    "build:css-min": "sass --watch __tests__/main.scss:__tests__/output/main.min.css --style compressed --no-source-map",
+    "build:css": "sass --watch __tests__/main.scss:__tests__/output/main.css --style expanded --no-source-map",
     "purge:css": "purgecss --config purgecss.config.js --out ./__tests__/output"
   },
   "author": "Víctor Rico",
