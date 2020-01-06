@@ -1,12 +1,11 @@
 {
   "name": "petricorcss",
   "version": "0.7.0",
-  "description": "",
-  "main": "index.js",
+  "description": "CSS/SCSS utility framework",
   "scripts": {
     "start": "npm run build:css & npm run build:css-min",
     "build:css": "sass --watch __tests__/main.scss:__tests__/output/main.css --style expanded --no-source-map",
-    "purge:css": "purgecss --config purgecss.config.js --out ./__tests__/output"
+    "build:css-min": "sass --watch __tests__/main.scss:__tests__/output/main.min.css --style compressed --no-source-map"
   },
   "author": "Víctor Rico",
   "license": "ISC"
