@@ -10,9 +10,11 @@
 # Don't track sass file for testing
 node_modules
 
-
 # Tools
 purgecss.config.js
 
 #VSCode workspace config
 .vscode
+
+#Igone __tests__ folder
+__tests__

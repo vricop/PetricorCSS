@@ -1,13 +1,13 @@
 {
-  "name": "functional-no-name",
-  "version": "1.0.0",
+  "name": "petricorcss",
+  "version": "0.7.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "live-server & npm run build:css & npm run build:css-min",
-    "build:css": "sass --watch main.scss:main.css --style expanded",
-    "build:css-min": "sass --watch main.scss:main.min.css --style compressed --no-source-map",
-    "purge:css": "purgecss --config purgecss.config.js --out ./"
+    "start": "npm run build:css & npm run build:css-min",
+    "build:css": "sass --watch __tests__/main.scss:__tests__/output/main.css --style expanded",
+    "build:css-min": "sass --watch __tests__/main.scss:__tests__/output/main.min.css --style compressed --no-source-map",
+    "purge:css": "purgecss --config purgecss.config.js --out ./__tests__/output"
   },
   "author": "Víctor Rico",
   "license": "ISC"

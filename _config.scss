@@ -11,9 +11,6 @@ $breakpoints: (
 );
 
 $colors: (
-  // BRANDING
-  'gold' : #fff301,
-  
   // BLACK & WHITE
   'black': #000,
   'white': #fff,
@@ -602,9 +599,11 @@ $font-family: (
   ),
   
   'serif': (
-    'Bodoni 11*',
+    'Bodoni 72',
+    'Bodoni MT',
     'Times New Roman',
     'Times',
+    'Georgia',
     serif
   ),
 
