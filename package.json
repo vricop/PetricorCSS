@@ -8,5 +8,5 @@
     "build:css-min": "sass --watch __tests__/main.scss:__tests__/output/main.min.css --style compressed --no-source-map"
   },
   "author": "Víctor Rico",
-  "license": "ISC"
+  "license": "GPL-3.0-or-later"
 }
