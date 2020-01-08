@@ -1,28 +1,35 @@
-@use 'sass:map';
-
-// Better box model
+/*
+  1. Better box model
+  2. Set all elements to have sensible default for border. 
+*/
 *, ::before, ::after { 
-  border: 0 solid currentColor;
-  box-sizing: border-box;
+  border: 0 solid currentColor; /* 1 */
+  box-sizing: border-box; /* 2 */
 }
 
+/* Override 0 from above with 1px as default */
 hr { border-bottom-width: 1px; }
 
-// Default focus styles
+/* Default focus styles */
 *:focus { 
-  outline: 3px solid currentColor;
-  outline-offset: 3px !important;
+  outline: 2px solid currentColor;
+  outline-offset: 0.125em;
 }
 
-// Better typography and padding default for form controls.
+/*
+  1. Inherit typography for form controls.
+  2. Default padding —inline paddings are based on ch units.
+*/
 input, textarea, button {
-  font: inherit;
-  padding: 0.5em 2ch;
+  font: inherit; /* 1 */
+  padding: 0.5em 2ch; /* 2 */
 }
 
 button { cursor: pointer; }
 a { color: inherit; }
 
-// Hidden attribute can be overwritten by utility classes which have an
-// sepcificity of 0,0,1,0. `!important` makes sure this won't happen.
+/*
+  The hidden attribute can be easely overwritten by any utility class, which has
+  a higher sepcificity (0,0,1,0). `!important` avoids it.
+*/
 [hidden] { display: none !important; }
