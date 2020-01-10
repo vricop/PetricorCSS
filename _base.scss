@@ -1,26 +1,117 @@
+@use 'config';
 @use 'sass:map';
+@use 'utils/get_config' as *;
 
-// Better box model
-*, ::before, ::after { 
-  border: 0 solid currentColor;
-  box-sizing: border-box;
+/**
+ * 1. Use the default sans font from `config` or the fallback if it's not set.
+ * 2. Use PetricorCSS's default "normal" line-height or the fallback.
+ */
+html {
+  font-family: get-config(config.$font-family, 'sans', ('Inter var', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif)); /* 1 */
+  line-height: get-config(config.$leading, 'normal', 1.5); /* 2 */
 }
 
-// Default focus styles
-*:focus { 
-  outline: 3px solid currentColor;
-  outline-offset: 3px !important;
+/* Make styling group of links easier */
+a {
+  color: inherit;
+  text-decoration: inherit;
 }
 
-// Better typography and padding default for form controls.
-input, textarea, button {
+table { border-collapse: collapse; }
+
+textarea { resize: vertical; }
+
+/**
+ *  1. Better box model.
+ *  2. Maker border utilities much more straightforward to use (based on
+ *     Tailwindcss)[^1]:
+ *     
+ *     Set default values for `border-{width|style|color} properties`. Now by
+ *     only using `border-{t|r|b|l}-{size} & `border-{color}` utilities we can
+ *     set borders with ease.
+ *
+ *     [^1]: https://github.com/tailwindcss/tailwindcss/pull/116
+ */
+*, ::before, ::after {
+  box-sizing: content-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: currentcolor; /* 2 */
+}
+
+/** 
+ * Apply a thin border at the bottom. The rest of the properties are already set
+ * in the reset above.
+ */
+hr { border-bottom-width: 1px; }
+
+/* Default focus styles for */
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+/* Use the default monospace stack from config or the fallback */
+pre,
+code,
+kbd,
+samp {
+  font-family: get-config(config.$font-family, 'monospace', ('Victor Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace));
+}
+
+blockquote,
+body,
+fieldset,
+figure,
+pre {
+  margin: 0;
+}
+
+/**
+ * Inspired by CSS Remedy, with `picture` added as well.
+ *
+ * https://github.com/mozdevs/cssremedy/issues/14
+ */
+audio,
+canvas,
+embed,
+iframe,
+img,
+object,
+picture,
+video {
+  display: block;
+}
+
+/* Inherit typography styles for better consistency. */
+button,
+input,
+optgroup,
+select,
+textarea {
   font: inherit;
-  padding: 0.5em 2ch;
 }
 
-button { cursor: pointer; }
-a { color: inherit; }
+button,
+[role="button"] {
+  cursor: pointer;
+}
 
-// Hidden attribute can be overwritten by utility classes which have an
-// sepcificity of 0,0,1,0. `!important` makes sure this won't happen.
+/**
+ * Constrain images and videos to the parent width and preserve their instrinsic
+ * aspect ratio.
+ *
+ * https://github.com/mozdevs/cssremedy/issues/14
+ */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+ * The `hidden` Attribute is weak and can be easily overwritten by css.
+ *
+ * https://css-tricks.com/the-hidden-attribute-is-visibly-weak/
+ */
 [hidden] { display: none !important; }

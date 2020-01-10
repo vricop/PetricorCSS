@@ -1,0 +1,11 @@
+@use 'sass:map';
+
+@function get-config($config, $key, $fallback) { 
+  $result: map.get($config, $key);
+
+  @if $result != null {
+    @return $result;
+  } @else {
+    @return $fallback;
+  }
+}

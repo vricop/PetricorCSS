@@ -1,11 +1,9 @@
 {
   "name": "petricorcss",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "CSS/SCSS utility framework",
   "scripts": {
-    "start": "npm run build:css & npm run build:css-min",
-    "build:css": "sass --watch __tests__/main.scss:__tests__/output/main.css --style expanded --no-source-map",
-    "build:css-min": "sass --watch __tests__/main.scss:__tests__/output/main.min.css --style compressed --no-source-map"
+    "build:css": "sass --watch __tests__/main.scss:__tests__/output/main.css --style expanded --no-source-map"
   },
   "author": "Víctor Rico",
   "license": "GPL-3.0-or-later"
