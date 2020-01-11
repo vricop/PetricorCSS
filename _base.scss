@@ -90,31 +90,6 @@ optgroup,
 select,
 textarea {
   font: inherit;
-/*
-  1. Better box model
-  2. Set all elements to have sensible default for border. 
-*/
-*, ::before, ::after { 
-  border: 0 solid currentColor; /* 1 */
-  box-sizing: border-box; /* 2 */
-}
-
-/* Override 0 from above with 1px as default */
-hr { border-bottom-width: 1px; }
-
-/* Default focus styles */
-*:focus { 
-  outline: 2px solid currentColor;
-  outline-offset: 0.125em;
-}
-
-/*
-  1. Inherit typography for form controls.
-  2. Default padding —inline paddings are based on ch units.
-*/
-input, textarea, button {
-  font: inherit; /* 1 */
-  padding: 0.5em 2ch; /* 2 */
 }
 
 button,
@@ -134,16 +109,9 @@ video {
   height: auto;
 }
 
-<<<<<<< HEAD
 /**
  * The `hidden` Attribute is weak and can be easily overwritten by css.
  *
  * https://css-tricks.com/the-hidden-attribute-is-visibly-weak/
  */
-=======
-/*
-  The hidden attribute can be easely overwritten by any utility class, which has
-  a higher sepcificity (0,0,1,0). `!important` avoids it.
-*/
->>>>>>> c5a0f838e532dc38da26c3639a697fc5dcf6f90d
 [hidden] { display: none !important; }
