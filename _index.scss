@@ -1,6 +1,5 @@
-@use 'config';
-@use 'utils';
-@use 'utility-generators';
-@use 'base';
-@use 'utilities-default';
-@use 'utilities-responsive';
+@forward 'utils';
+@forward 'utility-generators';
+@forward 'base';
+@forward 'utilities-default';
+@forward 'utilities-responsive';

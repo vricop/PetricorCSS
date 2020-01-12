@@ -5,7 +5,7 @@
 @mixin clearfix {
   $variants: map.get(config.$variants, 'float');
 
-  @if $variants == true or meta.typeof($variants) == 'list' {
+  @if $variants == true or meta.type-of($variants) == 'list' {
     .clearfix::after {
       content: '';
       display: table;

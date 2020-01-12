@@ -1,1 +1,8 @@
+@use '../config' with (
+  $variants: (
+    'padding': false,
+    'margin':  false
+  )
+);
+
 @use '../index';
