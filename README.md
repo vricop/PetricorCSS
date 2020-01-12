@@ -1,3 +1,5 @@
 # PetricorCSS
 
-CSS/SCSS utility framework
+<span style="font-size:3rem;">💦</span>
+
+SCSS utility library
