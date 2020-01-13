@@ -5,6 +5,14 @@
   "scripts": {
     "build:css": "sass --watch __tests__/main.scss:__tests__/output/main.css --style expanded --no-source-map"
   },
-  "author": "Víctor Rico",
-  "license": "GPL-3.0-or-later"
+  "author": "Víctor Rico Penalba",
+  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "css",
+    "utility-classes",
+    "functional-css",
+    "responsive",
+    "petricorcss",
+    "sass-library"
+  ]
 }
