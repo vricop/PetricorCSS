@@ -23,7 +23,7 @@ textarea { resize: vertical; }
 
 /**
  *  1. Better box model.
- *  2. Maker border utilities much more straightforward to use (based on
+ *  2. Make border utilities much more straightforward to use (based on
  *     Tailwindcss)[^1]:
  *     
  *     Set default values for `border-{width|style|color} properties`. Now by
@@ -41,7 +41,7 @@ textarea { resize: vertical; }
 
 /** 
  * Apply a thin border at the bottom. The rest of the properties are already set
- * in the reset above.
+ * by the reset above.
  */
 hr { border-bottom-width: 1px; }
 
@@ -98,7 +98,7 @@ button,
 }
 
 /**
- * Constrain images and videos to the parent width and preserve their instrinsic
+ * Constrain images and videos to the parent width and preserve their intrinsic
  * aspect ratio.
  *
  * https://github.com/mozdevs/cssremedy/issues/14
@@ -110,7 +110,7 @@ video {
 }
 
 /**
- * The `hidden` Attribute is weak and can be easily overwritten by css.
+ * Fix `hidden` attribute weakness, as it can be easily overwritten by css.
  *
  * https://css-tricks.com/the-hidden-attribute-is-visibly-weak/
  */
