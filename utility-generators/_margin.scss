@@ -19,8 +19,8 @@
   }
 
   // LOBOTOMIZED OWL (FROM PARENT TO DIRECT CHILDREN)
-  // Perfect for horizontal & vertical component stacks. First child it's not
-  // included.
+  // Perfect for horizontal & vertical component stacks. Adds margins only for
+  // adjacent siblings
   @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}mt#{$modifier}\>\*\+\*#{$state} > * + * { margin-top: $value; }
     .#{$prefix}ml#{$modifier}\>\*\+\*#{$state} > * + * { margin-left: $value; }

@@ -6,10 +6,8 @@
   $args: map.get(config.$variants, 'text-decoration'), $screen;
 
   @include generate-variants.non-configurable($args...) using ($prefix, $state) {
-    $decorations: ('underline': underline, 'line-through': line-through, 'no-underline': none);
-
-    @each $decoration, $value in $decorations {
-      .#{$prefix}#{$decoration}#{$state} { text-decoration: $value; }
-    }
+    .#{$prefix}underline#{$state} { text-decoration: underline; }
+    .#{$prefix}line-through#{$state} { text-decoration: line-through; }
+    .#{$prefix}no-underline#{$state} { text-decoration: none; }
   }
 }

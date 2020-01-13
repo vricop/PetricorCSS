@@ -6,11 +6,9 @@
   $args: map.get(config.$variants, 'text-transform'), $screen;
 
   @include generate-variants.non-configurable($args...) using ($prefix, $state) {
-    @each $text-case in (uppercase, lowercase, capitalize, none) {
-      $value: $text-case;
-      $text-case: if($text-case == none, normal-case, $text-case);
-
-      .#{$prefix}#{$text-case}#{$state} { text-transform: $value; }
-    }
+    .#{$prefix}uppercase#{$state} { text-transform: uppercase; }
+    .#{$prefix}normal-case#{$state} { text-transform: lowercase; }
+    .#{$prefix}capitalize#{$state} { text-transform: capitalize; }
+    .#{$prefix}none#{$state} { text-transform: none; }
   }
 }

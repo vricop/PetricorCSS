@@ -6,9 +6,10 @@
   $args: map.get(config.$variants, 'overflow'), $screen;
 
   @include generate-variants.non-configurable($args...) using ($prefix, $state) {
+    // Generate all `overflow-*` utilities with nested loops
     @each $value in (auto, hidden, visible, scroll) {
-      @each $prop in (overflow, overflow-x, overflow-y) {
-        .#{$prefix}#{$prop}-#{$value}#{$state} { #{$prop}: $value; }
+      @each $property in (overflow, overflow-x, overflow-y) {
+        .#{$prefix}#{$property}-#{$value}#{$state} { #{$property}: $value; }
       }
     }
   }
