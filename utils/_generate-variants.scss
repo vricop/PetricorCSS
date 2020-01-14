@@ -89,6 +89,10 @@
         @if list.index($utility-variants, 'odd') {
           @content('odd\\:', '#{$modifier} > *', ':nth-child(odd)', $value);
         }
+
+        @if list.index($utility-variants, 'disabled') {
+          @content('disabled\\:', $modifier, ':disabled', $value);
+        }
       }
       
       // RESPONSIVE
@@ -121,6 +125,10 @@
         
         @if list.index($utility-variants, 'odd') {
           @content('#{$screen}\\:odd\\:', '#{$modifier} > *', ':nth-child(odd)', $value);
+        }
+
+        @if list.index($utility-variants, 'odd') {
+          @content('#{$screen}\\:disabled\\:', $modifier, ':disabled', $value);
         }
       }
     }

@@ -1,7 +1,6 @@
 @use '../config' with (
   $variants: (
-    // 'padding': false,
-    // 'margin':  false
+    'display': [responsive group-hover disabled]
   )
 );
 
