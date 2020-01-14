@@ -1,5 +1,3 @@
-# PetricorCSS
+# PetricorCSS 💦
 
-<span style="font-size:3rem;">💦</span>
-
-SCSS utility library
+ A SCSS utility library for building web interfaces.
