@@ -75,19 +75,19 @@
         }
 
         @if list.index($utility-variants, 'first') {
-          @content('first\\:', '#{$modifier}\\>\\* > *', ':first-child', $value);
+          @content('first\\:', '#{$modifier} > *', ':first-child', $value);
         }
         
         @if list.index($utility-variants, 'last') {
-          @content('last\\:', '#{$modifier}\\>\\* > *', ':last-child', $value);
+          @content('last\\:', '#{$modifier} > *', ':last-child', $value);
         }
         
         @if list.index($utility-variants, 'even') {
-          @content('even\\:', '#{$modifier}\\>\\* > *', ':nth-child(even)', $value);
+          @content('even\\:', '#{$modifier} > *', ':nth-child(even)', $value);
         }
         
         @if list.index($utility-variants, 'odd') {
-          @content('odd\\:', '#{$modifier}\\>\\* > *', ':nth-child(odd)', $value);
+          @content('odd\\:', '#{$modifier} > *', ':nth-child(odd)', $value);
         }
       }
       
@@ -108,19 +108,19 @@
         }
         
         @if list.index($utility-variants, 'first') {
-          @content('#{$screen}\\:first\\:', '#{$modifier}\\>\\* > *', ':first-child', $value);
+          @content('#{$screen}\\:first\\:', '#{$modifier} > *', ':first-child', $value);
         }
         
         @if list.index($utility-variants, 'last') {
-          @content('#{$screen}\\:last\\:', '#{$modifier}\\>\\* > *', ':last-child', $value);
+          @content('#{$screen}\\:last\\:', '#{$modifier} > *', ':last-child', $value);
         }
         
         @if list.index($utility-variants, 'even') {
-          @content('#{$screen}\\:even\\:', '#{$modifier}\\>\\* > *', ':nth-child(even)', $value);
+          @content('#{$screen}\\:even\\:', '#{$modifier} > *', ':nth-child(even)', $value);
         }
         
         @if list.index($utility-variants, 'odd') {
-          @content('#{$screen}\\:odd\\:', '#{$modifier}\\>\\* > *', ':nth-child(odd)', $value);
+          @content('#{$screen}\\:odd\\:', '#{$modifier} > *', ':nth-child(odd)', $value);
         }
       }
     }
