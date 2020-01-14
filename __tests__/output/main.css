@@ -5446,88 +5446,88 @@ video {
   text-transform: none;
 }
 
-.duration-fastest {
-  transition-duration: 75ms;
-}
-
-.hover\:duration-fastest:hover {
-  transition-duration: 75ms;
-}
-
-.focus\:duration-fastest:focus {
-  transition-duration: 75ms;
-}
-
-.duration-faster {
+.duration-100ms {
   transition-duration: 100ms;
 }
 
-.hover\:duration-faster:hover {
+.hover\:duration-100ms:hover {
   transition-duration: 100ms;
 }
 
-.focus\:duration-faster:focus {
+.focus\:duration-100ms:focus {
   transition-duration: 100ms;
 }
 
-.duration-fast {
-  transition-duration: 150ms;
+.duration-175ms {
+  transition-duration: 175ms;
 }
 
-.hover\:duration-fast:hover {
-  transition-duration: 150ms;
+.hover\:duration-175ms:hover {
+  transition-duration: 175ms;
 }
 
-.focus\:duration-fast:focus {
-  transition-duration: 150ms;
+.focus\:duration-175ms:focus {
+  transition-duration: 175ms;
 }
 
-.duration-medium {
-  transition-duration: 200ms;
+.duration-250ms {
+  transition-duration: 250ms;
 }
 
-.hover\:duration-medium:hover {
-  transition-duration: 200ms;
+.hover\:duration-250ms:hover {
+  transition-duration: 250ms;
 }
 
-.focus\:duration-medium:focus {
-  transition-duration: 200ms;
+.focus\:duration-250ms:focus {
+  transition-duration: 250ms;
 }
 
-.duration-slowest {
-  transition-duration: 300ms;
-}
-
-.hover\:duration-slowest:hover {
-  transition-duration: 300ms;
-}
-
-.focus\:duration-slowest:focus {
-  transition-duration: 300ms;
-}
-
-.duration-slower {
+.duration-500ms {
   transition-duration: 500ms;
 }
 
-.hover\:duration-slower:hover {
+.hover\:duration-500ms:hover {
   transition-duration: 500ms;
 }
 
-.focus\:duration-slower:focus {
+.focus\:duration-500ms:focus {
   transition-duration: 500ms;
 }
 
-.duration-slow {
-  transition-duration: 700ms;
+.duration-750ms {
+  transition-duration: 750ms;
 }
 
-.hover\:duration-slow:hover {
-  transition-duration: 700ms;
+.hover\:duration-750ms:hover {
+  transition-duration: 750ms;
 }
 
-.focus\:duration-slow:focus {
-  transition-duration: 700ms;
+.focus\:duration-750ms:focus {
+  transition-duration: 750ms;
+}
+
+.duration-875ms {
+  transition-duration: 875ms;
+}
+
+.hover\:duration-875ms:hover {
+  transition-duration: 875ms;
+}
+
+.focus\:duration-875ms:focus {
+  transition-duration: 875ms;
+}
+
+.duration-1s {
+  transition-duration: 1s;
+}
+
+.hover\:duration-1s:hover {
+  transition-duration: 1s;
+}
+
+.focus\:duration-1s:focus {
+  transition-duration: 1s;
 }
 
 .transition-all {
@@ -5938,88 +5938,88 @@ video {
   transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-.delay-fastest {
-  transition-delay: 75ms;
-}
-
-.hover\:delay-fastest:hover {
-  transition-delay: 75ms;
-}
-
-.focus\:delay-fastest:focus {
-  transition-delay: 75ms;
-}
-
-.delay-faster {
+.delay-100ms {
   transition-delay: 100ms;
 }
 
-.hover\:delay-faster:hover {
+.hover\:delay-100ms:hover {
   transition-delay: 100ms;
 }
 
-.focus\:delay-faster:focus {
+.focus\:delay-100ms:focus {
   transition-delay: 100ms;
 }
 
-.delay-fast {
-  transition-delay: 150ms;
+.delay-175ms {
+  transition-delay: 175ms;
 }
 
-.hover\:delay-fast:hover {
-  transition-delay: 150ms;
+.hover\:delay-175ms:hover {
+  transition-delay: 175ms;
 }
 
-.focus\:delay-fast:focus {
-  transition-delay: 150ms;
+.focus\:delay-175ms:focus {
+  transition-delay: 175ms;
 }
 
-.delay-medium {
-  transition-delay: 200ms;
+.delay-250ms {
+  transition-delay: 250ms;
 }
 
-.hover\:delay-medium:hover {
-  transition-delay: 200ms;
+.hover\:delay-250ms:hover {
+  transition-delay: 250ms;
 }
 
-.focus\:delay-medium:focus {
-  transition-delay: 200ms;
+.focus\:delay-250ms:focus {
+  transition-delay: 250ms;
 }
 
-.delay-slowest {
-  transition-delay: 300ms;
-}
-
-.hover\:delay-slowest:hover {
-  transition-delay: 300ms;
-}
-
-.focus\:delay-slowest:focus {
-  transition-delay: 300ms;
-}
-
-.delay-slower {
+.delay-500ms {
   transition-delay: 500ms;
 }
 
-.hover\:delay-slower:hover {
+.hover\:delay-500ms:hover {
   transition-delay: 500ms;
 }
 
-.focus\:delay-slower:focus {
+.focus\:delay-500ms:focus {
   transition-delay: 500ms;
 }
 
-.delay-slow {
-  transition-delay: 700ms;
+.delay-750ms {
+  transition-delay: 750ms;
 }
 
-.hover\:delay-slow:hover {
-  transition-delay: 700ms;
+.hover\:delay-750ms:hover {
+  transition-delay: 750ms;
 }
 
-.focus\:delay-slow:focus {
-  transition-delay: 700ms;
+.focus\:delay-750ms:focus {
+  transition-delay: 750ms;
+}
+
+.delay-875ms {
+  transition-delay: 875ms;
+}
+
+.hover\:delay-875ms:hover {
+  transition-delay: 875ms;
+}
+
+.focus\:delay-875ms:focus {
+  transition-delay: 875ms;
+}
+
+.delay-1s {
+  transition-delay: 1s;
+}
+
+.hover\:delay-1s:hover {
+  transition-delay: 1s;
+}
+
+.focus\:delay-1s:focus {
+  transition-delay: 1s;
 }
 
 .align-baseline {

@@ -100,13 +100,13 @@ $box-shadow: map.merge(
 $transition-duration: () !default;
 $transition-duration: map.merge(
   (
-    'fastest': 75ms,
-    'faster' : 100ms,
-    'fast'   : 150ms,
-    'medium' : 200ms,
-    'slowest': 300ms,
-    'slower' : 500ms,
-    'slow'   : 700ms,
+    '100ms' : 100ms,
+    '175ms' : 175ms,
+    '250ms' : 250ms,
+    '500ms' : 500ms,
+    '750ms' : 750ms,
+    '875ms' : 875ms,
+    '1s'    : 1s,
   ),
   $transition-duration
 );
