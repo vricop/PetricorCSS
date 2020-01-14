@@ -15,8 +15,7 @@
       }
 
       @if list.index($utility-variants, 'group-hover') {
-        @content('group-hover:hover .target-hover\\:', null);
-        @content('group-hover:hover > .\\&target-hover\\:', null);
+        @content('group:hover .group-hover\\:', null);
       }
 
       @if list.index($utility-variants, 'focus') {
@@ -33,8 +32,7 @@
       }
 
       @if list.index($utility-variants, 'group-hover') {
-        @content('#{$screen}\\:group-hover:hover .target-hover\\:', null);
-        @content('#{$screen}\\:group-hover:hover > .\\&target-hover\\:', null);
+        @content('#{$screen}\\:group:hover .group-hover\\:', null);
       }
 
       @if list.index($utility-variants, 'focus') {
@@ -50,6 +48,7 @@
       // There are some utilities that have a default value and have
       // no modifier (they only use the base-class, e.g. `border`, 
       // `border-radius`).
+      // 
       // 1. If there's a modifier named `default` and it's not `cursor`
       //    utility, then set modifier to null (no modifier).
       // 2. For the rest of modifiers add a dash as a prefix.
@@ -68,8 +67,7 @@
         }
 
         @if list.index($utility-variants, 'group-hover') {
-          @content('group-hover:hover .target-hover\\:', $modifier, null, $value);
-          @content('group-hover:hover > .\\&target-hover\\:', $modifier, null, $value);
+          @content('group:hover .group-hover\\:', $modifier, null, $value);
         }
 
         @if list.index($utility-variants, 'focus') {
@@ -102,8 +100,7 @@
         }
 
         @if list.index($utility-variants, 'group-hover') {
-          @content('#{$screen}\\:group-hover:hover .target-hover\\:', $modifier, null, $value);
-          @content('#{$screen}\\:group-hover:hover > .\\&target-hover\\:', $modifier, null, $value);
+          @content('#{$screen}\\:group:hover .group-hover\\:', $modifier, null, $value);
         }
 
         @if list.index($utility-variants, 'focus') {
