@@ -117,3 +117,10 @@ video {
  * https://css-tricks.com/the-hidden-attribute-is-visibly-weak/
  */
 [hidden] { display: none !important; }
+
+/* Required pre-setup declarations for `line-clamp-{size} */
+[class*=line-clamp-] {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}

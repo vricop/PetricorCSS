@@ -39,6 +39,7 @@
     @include generators.inset($screen);
     @include generators.justify-content($screen);
     @include generators.letter-spacing($screen);
+    @include generators.line-clamp($screen);
     @include generators.line-height($screen);
     @include generators.list-style-position($screen);
     @include generators.list-style-type($screen);

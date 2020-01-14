@@ -860,6 +860,17 @@ $cursor: map.merge(
   $cursor
 );
 
+$line-clamp: () !default;
+$line-clamp: map.merge(
+  (
+    '1' : 1,
+    '2' : 2,
+    '3' : 3,
+    '4' : 4,
+  ),
+  $line-clamp
+);
+
 $stroke-width: () !default;
 $stroke-width: map.merge(
   (
@@ -915,6 +926,7 @@ $variants: map.merge(
     'inset'                 : true,
     'justify-content'       : [responsive],
     'letter-spacing'        : [responsive],
+    'line-clamp'            : true,
     'line-height'           : [responsive],
     'list-style-position'   : true,
     'list-style-type'       : true,

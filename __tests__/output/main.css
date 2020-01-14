@@ -128,6 +128,13 @@ video {
   display: none !important;
 }
 
+/* Required declarations for `line-cmap-{size} utility to work: */
+[class*=line-clamp-] {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
 .content-start {
   align-content: flex-start;
 }
@@ -2595,6 +2602,26 @@ video {
 
 .tracking-widest {
   letter-spacing: 0.1em;
+}
+
+.line-clamp-1 {
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  -webkit-line-clamp: 3;
+}
+
+.line-clamp-4 {
+  -webkit-line-clamp: 4;
+}
+
+.line-clamp-5 {
+  -webkit-line-clamp: 5;
 }
 
 .leading-none {
