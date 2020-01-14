@@ -63,7 +63,10 @@
 @include generators.text-color;
 @include generators.text-decoration;
 @include generators.text-transform;
-@include generators.transition;
+@include generators.transition-delay;
+@include generators.transition-duration;
+@include generators.transition-property;
+@include generators.transition-timing-function;
 @include generators.user-select;
 @include generators.vertical-align;
 @include generators.visibility;

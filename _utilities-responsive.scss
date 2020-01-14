@@ -64,7 +64,10 @@
     @include generators.text-color($screen);
     @include generators.text-decoration($screen);
     @include generators.text-transform($screen);
-    @include generators.transition($screen);
+    @include generators.transition-delay($screen);
+    @include generators.transition-duration($screen);
+    @include generators.transition-property($screen);
+    @include generators.transition-timing-function($screen);
     @include generators.user-select($screen);
     @include generators.vertical-align($screen);
     @include generators.visibility($screen);

@@ -66,7 +66,10 @@
 @forward 'text-transform';
 @forward 'transform-origin';
 @forward 'transform';
-@forward 'transition';
+@forward 'transition-delay';
+@forward 'transition-duration';
+@forward 'transition-property';
+@forward 'transition-timing-function';
 @forward 'translate';
 @forward 'user-select';
 @forward 'vertical-align';
