@@ -127,7 +127,7 @@
           @content('#{$screen}\\:odd\\:', '#{$modifier} > *', ':nth-child(odd)', $value);
         }
 
-        @if list.index($utility-variants, 'odd') {
+        @if list.index($utility-variants, 'disabled') {
           @content('#{$screen}\\:disabled\\:', $modifier, ':disabled', $value);
         }
       }
