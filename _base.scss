@@ -118,9 +118,24 @@ video {
  */
 [hidden] { display: none !important; }
 
-/* Required pre-setup declarations for `line-clamp-{size} */
+/* Required pre-set declarations for `line-clamp-{size} */
 [class*=line-clamp-] {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+}
+
+/**
+ * Pseudo-class presets for `before` and `after` variant utilites 
+ *
+ * To be able to "insert" content when using `before` `after` these variants, we
+ * define `data-*-content` attributes so we can insert their value into `content`
+ * property with `attr() function`. ✨ Magic ✨! 
+ */
+[data-before-content]::before {
+  content: attr(data-before-content); /* 1 */
+}
+
+[data-after-content]::after {
+  content: attr(data-after-content); /* 1 */
 }

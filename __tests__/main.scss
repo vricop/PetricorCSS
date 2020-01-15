@@ -1,11 +1,10 @@
-// @use '../config' with (
-//   $line-clamp: (
-//       '5': 5
-//   ),
-
-//   $variants: (
-//     'display': [responsive group-hover disabled]
-//   ),
-// );
+@use '../config' with (
+  // Test `before` & `after` variants in the `display` utility
+  $variants: (
+    'display'      : [responsive before after],
+    'text-color'   : [responsive hover focus before after],
+    'border-color' : [responsive before after],
+  )
+);
 
 @use '../index';
