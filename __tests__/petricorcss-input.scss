@@ -1,5 +1,4 @@
 @use '../config' with (
-  // Test `before` & `after` variants in the `display` utility
   $variants: (
     'display'      : [responsive before after],
     'text-color'   : [responsive hover focus before after],

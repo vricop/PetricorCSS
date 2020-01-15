@@ -3,9 +3,9 @@
   "version": "0.7.1",
   "description": "CSS/SCSS utility framework",
   "scripts": {
-    "build:css-ouput-test": "npm run build:css & npm run build:min.css",
-    "build:css": "sass --watch __tests__/main.scss:__tests__/output/main.css --style expanded --no-source-map",
-    "build:min.css": "sass --watch  __tests__/main.scss:__tests__/output/main.min.css --style compressed --no-source-map"
+    "build:petricorcss-tests": "npm run build:css & npm run build:css-min",
+    "build:css": "sass --watch __tests__/petricorcss-input.scss:__tests__/petricorcss-output.css --style expanded --no-source-map",
+    "build:css-min": "sass --watch  __tests__/petricorcss-input.scss:__tests__/petricorcss-output.min.css --style compressed --no-source-map"
   },
   "author": "Víctor Rico Penalba",
   "license": "GPL-3.0-or-later",
