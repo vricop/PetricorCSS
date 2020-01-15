@@ -128,11 +128,34 @@ video {
   display: none !important;
 }
 
-/* Required declarations for `line-cmap-{size} utility to work: */
+/* Required pre-setup declarations for `line-clamp-{size} */
 [class*=line-clamp-] {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.not-sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }
 
 .content-start {
@@ -2065,19 +2088,11 @@ video {
   display: none;
 }
 
-.disabled\:hidden:disabled {
-  display: none;
-}
-
 .block {
   display: block;
 }
 
 .group:hover .group-hover\:block {
-  display: block;
-}
-
-.disabled\:block:disabled {
   display: block;
 }
 
@@ -2089,19 +2104,11 @@ video {
   display: flex;
 }
 
-.disabled\:flex:disabled {
-  display: flex;
-}
-
 .grid {
   display: grid;
 }
 
 .group:hover .group-hover\:grid {
-  display: grid;
-}
-
-.disabled\:grid:disabled {
   display: grid;
 }
 
@@ -2113,19 +2120,11 @@ video {
   display: inline-block;
 }
 
-.disabled\:inline-block:disabled {
-  display: inline-block;
-}
-
 .inline-flex {
   display: inline-flex;
 }
 
 .group:hover .group-hover\:inline-flex {
-  display: inline-flex;
-}
-
-.disabled\:inline-flex:disabled {
   display: inline-flex;
 }
 
@@ -2137,19 +2136,11 @@ video {
   display: inline-grid;
 }
 
-.disabled\:inline-grid:disabled {
-  display: inline-grid;
-}
-
 .inline {
   display: inline;
 }
 
 .group:hover .group-hover\:inline {
-  display: inline;
-}
-
-.disabled\:inline:disabled {
   display: inline;
 }
 
@@ -2161,19 +2152,11 @@ video {
   display: table-cell;
 }
 
-.disabled\:table-cell:disabled {
-  display: table-cell;
-}
-
 .table {
   display: table;
 }
 
 .group:hover .group-hover\:table {
-  display: table;
-}
-
-.disabled\:table:disabled {
   display: table;
 }
 
@@ -2618,10 +2601,6 @@ video {
 
 .line-clamp-4 {
   -webkit-line-clamp: 4;
-}
-
-.line-clamp-5 {
-  -webkit-line-clamp: 5;
 }
 
 .leading-none {
@@ -7533,19 +7512,11 @@ video {
     display: none;
   }
 
-  .sm\:disabled\:hidden:disabled {
-    display: none;
-  }
-
   .sm\:block {
     display: block;
   }
 
   .sm\:group:hover .group-hover\:block {
-    display: block;
-  }
-
-  .sm\:disabled\:block:disabled {
     display: block;
   }
 
@@ -7557,19 +7528,11 @@ video {
     display: flex;
   }
 
-  .sm\:disabled\:flex:disabled {
-    display: flex;
-  }
-
   .sm\:grid {
     display: grid;
   }
 
   .sm\:group:hover .group-hover\:grid {
-    display: grid;
-  }
-
-  .sm\:disabled\:grid:disabled {
     display: grid;
   }
 
@@ -7581,19 +7544,11 @@ video {
     display: inline-block;
   }
 
-  .sm\:disabled\:inline-block:disabled {
-    display: inline-block;
-  }
-
   .sm\:inline-flex {
     display: inline-flex;
   }
 
   .sm\:group:hover .group-hover\:inline-flex {
-    display: inline-flex;
-  }
-
-  .sm\:disabled\:inline-flex:disabled {
     display: inline-flex;
   }
 
@@ -7605,19 +7560,11 @@ video {
     display: inline-grid;
   }
 
-  .sm\:disabled\:inline-grid:disabled {
-    display: inline-grid;
-  }
-
   .sm\:inline {
     display: inline;
   }
 
   .sm\:group:hover .group-hover\:inline {
-    display: inline;
-  }
-
-  .sm\:disabled\:inline:disabled {
     display: inline;
   }
 
@@ -7629,19 +7576,11 @@ video {
     display: table-cell;
   }
 
-  .sm\:disabled\:table-cell:disabled {
-    display: table-cell;
-  }
-
   .sm\:table {
     display: table;
   }
 
   .sm\:group:hover .group-hover\:table {
-    display: table;
-  }
-
-  .sm\:disabled\:table:disabled {
     display: table;
   }
 
@@ -10767,19 +10706,11 @@ video {
     display: none;
   }
 
-  .md\:disabled\:hidden:disabled {
-    display: none;
-  }
-
   .md\:block {
     display: block;
   }
 
   .md\:group:hover .group-hover\:block {
-    display: block;
-  }
-
-  .md\:disabled\:block:disabled {
     display: block;
   }
 
@@ -10791,19 +10722,11 @@ video {
     display: flex;
   }
 
-  .md\:disabled\:flex:disabled {
-    display: flex;
-  }
-
   .md\:grid {
     display: grid;
   }
 
   .md\:group:hover .group-hover\:grid {
-    display: grid;
-  }
-
-  .md\:disabled\:grid:disabled {
     display: grid;
   }
 
@@ -10815,19 +10738,11 @@ video {
     display: inline-block;
   }
 
-  .md\:disabled\:inline-block:disabled {
-    display: inline-block;
-  }
-
   .md\:inline-flex {
     display: inline-flex;
   }
 
   .md\:group:hover .group-hover\:inline-flex {
-    display: inline-flex;
-  }
-
-  .md\:disabled\:inline-flex:disabled {
     display: inline-flex;
   }
 
@@ -10839,19 +10754,11 @@ video {
     display: inline-grid;
   }
 
-  .md\:disabled\:inline-grid:disabled {
-    display: inline-grid;
-  }
-
   .md\:inline {
     display: inline;
   }
 
   .md\:group:hover .group-hover\:inline {
-    display: inline;
-  }
-
-  .md\:disabled\:inline:disabled {
     display: inline;
   }
 
@@ -10863,19 +10770,11 @@ video {
     display: table-cell;
   }
 
-  .md\:disabled\:table-cell:disabled {
-    display: table-cell;
-  }
-
   .md\:table {
     display: table;
   }
 
   .md\:group:hover .group-hover\:table {
-    display: table;
-  }
-
-  .md\:disabled\:table:disabled {
     display: table;
   }
 
@@ -14001,19 +13900,11 @@ video {
     display: none;
   }
 
-  .lg\:disabled\:hidden:disabled {
-    display: none;
-  }
-
   .lg\:block {
     display: block;
   }
 
   .lg\:group:hover .group-hover\:block {
-    display: block;
-  }
-
-  .lg\:disabled\:block:disabled {
     display: block;
   }
 
@@ -14025,19 +13916,11 @@ video {
     display: flex;
   }
 
-  .lg\:disabled\:flex:disabled {
-    display: flex;
-  }
-
   .lg\:grid {
     display: grid;
   }
 
   .lg\:group:hover .group-hover\:grid {
-    display: grid;
-  }
-
-  .lg\:disabled\:grid:disabled {
     display: grid;
   }
 
@@ -14049,19 +13932,11 @@ video {
     display: inline-block;
   }
 
-  .lg\:disabled\:inline-block:disabled {
-    display: inline-block;
-  }
-
   .lg\:inline-flex {
     display: inline-flex;
   }
 
   .lg\:group:hover .group-hover\:inline-flex {
-    display: inline-flex;
-  }
-
-  .lg\:disabled\:inline-flex:disabled {
     display: inline-flex;
   }
 
@@ -14073,19 +13948,11 @@ video {
     display: inline-grid;
   }
 
-  .lg\:disabled\:inline-grid:disabled {
-    display: inline-grid;
-  }
-
   .lg\:inline {
     display: inline;
   }
 
   .lg\:group:hover .group-hover\:inline {
-    display: inline;
-  }
-
-  .lg\:disabled\:inline:disabled {
     display: inline;
   }
 
@@ -14097,19 +13964,11 @@ video {
     display: table-cell;
   }
 
-  .lg\:disabled\:table-cell:disabled {
-    display: table-cell;
-  }
-
   .lg\:table {
     display: table;
   }
 
   .lg\:group:hover .group-hover\:table {
-    display: table;
-  }
-
-  .lg\:disabled\:table:disabled {
     display: table;
   }
 
@@ -17235,19 +17094,11 @@ video {
     display: none;
   }
 
-  .xl\:disabled\:hidden:disabled {
-    display: none;
-  }
-
   .xl\:block {
     display: block;
   }
 
   .xl\:group:hover .group-hover\:block {
-    display: block;
-  }
-
-  .xl\:disabled\:block:disabled {
     display: block;
   }
 
@@ -17259,19 +17110,11 @@ video {
     display: flex;
   }
 
-  .xl\:disabled\:flex:disabled {
-    display: flex;
-  }
-
   .xl\:grid {
     display: grid;
   }
 
   .xl\:group:hover .group-hover\:grid {
-    display: grid;
-  }
-
-  .xl\:disabled\:grid:disabled {
     display: grid;
   }
 
@@ -17283,19 +17126,11 @@ video {
     display: inline-block;
   }
 
-  .xl\:disabled\:inline-block:disabled {
-    display: inline-block;
-  }
-
   .xl\:inline-flex {
     display: inline-flex;
   }
 
   .xl\:group:hover .group-hover\:inline-flex {
-    display: inline-flex;
-  }
-
-  .xl\:disabled\:inline-flex:disabled {
     display: inline-flex;
   }
 
@@ -17307,19 +17142,11 @@ video {
     display: inline-grid;
   }
 
-  .xl\:disabled\:inline-grid:disabled {
-    display: inline-grid;
-  }
-
   .xl\:inline {
     display: inline;
   }
 
   .xl\:group:hover .group-hover\:inline {
-    display: inline;
-  }
-
-  .xl\:disabled\:inline:disabled {
     display: inline;
   }
 
@@ -17331,19 +17158,11 @@ video {
     display: table-cell;
   }
 
-  .xl\:disabled\:table-cell:disabled {
-    display: table-cell;
-  }
-
   .xl\:table {
     display: table;
   }
 
   .xl\:group:hover .group-hover\:table {
-    display: table;
-  }
-
-  .xl\:disabled\:table:disabled {
     display: table;
   }
 

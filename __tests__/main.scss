@@ -1,11 +1,11 @@
-@use '../config' with (
-  $line-clamp: (
-      '5': 5
-  ),
+// @use '../config' with (
+//   $line-clamp: (
+//       '5': 5
+//   ),
 
-  $variants: (
-    'display': [responsive group-hover disabled]
-  ),
-);
+//   $variants: (
+//     'display': [responsive group-hover disabled]
+//   ),
+// );
 
 @use '../index';

@@ -4,6 +4,7 @@
 
 @each $screen, $breakpoint in config.$breakpoints {
   @include bundle-responsive-utilities($breakpoint) {
+    @include generators.accessibility($screen);
     @include generators.align-content($screen);
     @include generators.align-items($screen);
     @include generators.align-self($screen);

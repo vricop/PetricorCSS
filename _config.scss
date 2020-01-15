@@ -885,6 +885,7 @@ $stroke-width: map.merge(
 $variants: () !default;
 $variants: map.merge(
   (
+    'accessibility'         : true,
     'align-content'         : true,
     'align-items'           : [responsive],
     'align-self'            : false,

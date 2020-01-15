@@ -1,5 +1,6 @@
 @use 'utility-generators' as generators;
 
+@include generators.accessibility;
 @include generators.align-content;
 @include generators.align-items;
 @include generators.align-self;
