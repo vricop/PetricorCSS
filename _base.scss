@@ -99,6 +99,17 @@ button,
   cursor: pointer;
 }
 
+/*
+ * Apply `gray-500` color from PetricorCSS' `config` color map or apply `#767676`
+ * if it's not set.
+ * 
+ * Note: #7676767 is a gray that's A11Y-friendly, with contrast ratio 4.54 (AA)
+ */
+input::placeholder,
+textarea::placeholder {
+  color: get-config(config.$colors, 'gray-500', #767676);
+}
+
 /**
  * Constrain images and videos to the parent width and preserve their intrinsic
  * aspect ratio.
