@@ -1,9 +1,0 @@
-@use '../config' with (
-  $variants: (
-    'display'      : [responsive before after],
-    'text-color'   : [responsive hover focus before after],
-    'border-color' : [responsive before after],
-  )
-);
-
-@use '../index';
