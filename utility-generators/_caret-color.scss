@@ -1,0 +1,11 @@
+@use '../config';
+@use '../utils/generate-variants';
+@use 'sass:map';
+
+@mixin caret-color($screen: null) {
+  $args: config.$colors, map.get(config.$variants, 'caret-color'), $screen;
+
+  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}caret-color#{$modifier}#{$state} { caret-color: $value; }
+  }
+}
