@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin text-color($screen: null) {
-  $args: config.$colors, map.get(config.$variants, 'text-colors'), $screen;
+  $args: config.$colors, map.get(config.$variants, 'text-color'), $screen;
 
   @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}text#{$modifier}#{$state} { color: $value; }
