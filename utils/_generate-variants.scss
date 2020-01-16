@@ -73,6 +73,10 @@
         @if list.index($utility-variants, 'focus') {
           @content('focus\\:', $modifier, ':focus', $value);
         }
+        
+        @if list.index($utility-variants, 'visited') {
+          @content('visited\\:', $modifier, ':visited', $value);
+        }
 
         @if list.index($utility-variants, 'first') {
           @content('first\\:', '#{$modifier} > *', ':first-child', $value);
@@ -117,6 +121,10 @@
 
         @if list.index($utility-variants, 'focus') {
           @content('#{$screen}\\:focus\\:', $modifier, ':focus', $value);
+        }
+        
+        @if list.index($utility-variants, 'visited') {
+          @content('#{$screen}\\:visited\\:', $modifier, ':visited', $value);
         }
         
         @if list.index($utility-variants, 'first') {
