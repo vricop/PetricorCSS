@@ -3,10 +3,10 @@
 @use 'sass:map';
 
 @mixin list-style-position($screen: null) {
-  $args: map.get($variants, 'list-style-position'), $screen;
+  $args: (map.get($variants, 'list-style-position'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
-    .#{$prefix}list-inside#{$state} { list-style-position: inside; }
+    .#{$prefix}list-inside#{$state}  { list-style-position: inside; }
     .#{$prefix}list-outside#{$state} { list-style-position: inside; }
   }
 }

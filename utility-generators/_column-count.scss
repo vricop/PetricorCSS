@@ -3,9 +3,11 @@
 @use 'sass:map';
 
 @mixin column-count($screen: null) {
-  $args: $column-count, map.get($variants, 'column-count'), $screen;
+  $args: ($column-count, map.get($variants, 'column-count'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}column-count#{$modifier}#{$state} { column-count: $value; }
+    .#{$prefix}column-count#{$modifier}#{$state} {
+      column-count: $value;
+    }
   }
 }

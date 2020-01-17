@@ -3,10 +3,10 @@
 @use 'sass:map';
 
 @mixin visibility($screen: null) {
-  $args: map.get($variants, 'vertical-align'), $screen;
+  $args: (map.get($variants, 'vertical-align'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
-    .#{$prefix}visible#{$state} { visibility: visible; }
-    .#{$prefix}invisible#{$state} { visibility: hidden; }
+    .#{$prefix}visible#{$state}   { visibility: visible; }
+    .#{$prefix}invisible#{$state} { visibility: hidden;  }
   }
 }

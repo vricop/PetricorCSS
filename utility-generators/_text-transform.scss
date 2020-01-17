@@ -3,12 +3,12 @@
 @use 'sass:map';
 
 @mixin text-transform($screen: null) {
-  $args: map.get($variants, 'text-transform'), $screen;
+  $args: (map.get($variants, 'text-transform'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
-    .#{$prefix}uppercase#{$state} { text-transform: uppercase; }
-    .#{$prefix}normal-case#{$state} { text-transform: lowercase; }
-    .#{$prefix}capitalize#{$state} { text-transform: capitalize; }
-    .#{$prefix}none#{$state} { text-transform: none; }
+    .#{$prefix}uppercase#{$state}   { text-transform: uppercase;  }
+    .#{$prefix}normal-case#{$state} { text-transform: lowercase;  }
+    .#{$prefix}capitalize#{$state}  { text-transform: capitalize; }
+    .#{$prefix}none#{$state}        { text-transform: none;       }
   }
 }

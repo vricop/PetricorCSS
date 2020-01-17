@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin accessibility($screen: null) {
-  $args: map.get($variants, 'accessibility'), $screen;
+  $args: (map.get($variants, 'accessibility'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .sr-only {

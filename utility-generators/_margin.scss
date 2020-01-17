@@ -3,50 +3,78 @@
 @use 'sass:map';
 
 @mixin margin($screen: null) {
-  $args: $margin, map.get($variants, 'margin'), $screen;
+  $args: ($margin, map.get($variants, 'margin'), $screen);
 
-  // CONTEXT MARGINS (FROM PARENT TO DIRECT CHILDREN)
-  // Components should have margins controlled from its parent. This way
-  // components can be shared in other context without margins getting in the way
+  // Child combinator variants
+  // 
+  // Apply margins to direct children
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}m#{$modifier}\>\* > * { margin: $value; };
-    .#{$prefix}mx#{$modifier}#{$state}\>\* > * { margin: { left: $value; right: $value; } };
-    .#{$prefix}my#{$modifier}#{$state}\>\* > * { margin: { top: $value; bottom: $value; } };
-    .#{$prefix}mt#{$modifier}#{$state}\>\* > * { margin-top: $value };
-    .#{$prefix}mr#{$modifier}#{$state}\>\* > * { margin-right: $value };
+
+    .#{$prefix}mr#{$modifier}#{$state}\>\* > * { margin-right: $value  };
+    .#{$prefix}mt#{$modifier}#{$state}\>\* > * { margin-top: $value    };
+    .#{$prefix}ml#{$modifier}#{$state}\>\* > * { margin-left: $value   };
     .#{$prefix}mb#{$modifier}#{$state}\>\* > * { margin-bottom: $value };
-    .#{$prefix}ml#{$modifier}#{$state}\>\* > * { margin-left: $value };
+
+    .#{$prefix}mx#{$modifier}#{$state}\>\* > * {
+      margin-left:  $value;
+      margin-right: $value;
+    };
+
+    .#{$prefix}my#{$modifier}#{$state}\>\* > * {
+      margin-top:    $value;
+      margin-bottom: $value;
+    };
   }
 
-  // LOBOTOMIZED OWL (FROM PARENT TO DIRECT CHILDREN)
-  // Perfect for horizontal & vertical component stacks. Adds margins only for
-  // adjacent siblings
+  // The lobotomized owl variants
+  //
+  // Apply margin to adjacent siblings. The first is one isn't set. It's only
+  // used for `top` and `left` margins.
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}mt#{$modifier}\>\*\+\*#{$state} > * + * { margin-top: $value; }
     .#{$prefix}ml#{$modifier}\>\*\+\*#{$state} > * + * { margin-left: $value; }
   }
 
-  // DEFAULT
+  // Default margins variants
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}m#{$modifier}#{$state} { margin: $value; };
-    .#{$prefix}mx#{$modifier}#{$state} { margin: { left: $value; right: $value; } };
-    .#{$prefix}my#{$modifier}#{$state} { margin: { top: $value; bottom: $value; } };
-    .#{$prefix}mt#{$modifier}#{$state} { margin-top: $value };
-    .#{$prefix}mr#{$modifier}#{$state} { margin-right: $value };
+    .#{$prefix}m#{$modifier}#{$state}  { margin: $value;                          };
+    
+    .#{$prefix}mx#{$modifier}#{$state} { 
+      margin-left:  $value;
+      margin-right: $value;
+    };
+
+    .#{$prefix}my#{$modifier}#{$state} { 
+      margin-top:    $value;
+      margin-bottom: $value;
+    };
+
+    .#{$prefix}mt#{$modifier}#{$state} { margin-top:    $value };
+    .#{$prefix}mr#{$modifier}#{$state} { margin-right:  $value };
     .#{$prefix}mb#{$modifier}#{$state} { margin-bottom: $value };
-    .#{$prefix}ml#{$modifier}#{$state} { margin-left: $value };
+    .#{$prefix}ml#{$modifier}#{$state} { margin-left:   $value };
   }
   
-  // NEGATIVE MARGIN VARIANTS
-  $args-negative: $margin-negative, map.get($variants, 'margin-negative'), $screen;
-
+  $args-negative: ($margin-negative, map.get($variants, 'margin-negative'), $screen);
+  
+  // Negative margin variants
   @include build-configurable-variants($args-negative...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}-m#{$modifier}#{$state} { margin: $value; };
-    .#{$prefix}-mx#{$modifier}#{$state} { margin: { left: $value; right: $value; } };
-    .#{$prefix}-my#{$modifier}#{$state} { margin: { top: $value; bottom: $value; } };
-    .#{$prefix}-mt#{$modifier}#{$state} { margin-top: $value };
-    .#{$prefix}-mr#{$modifier}#{$state} { margin-right: $value };
+
+    .#{$prefix}-mx#{$modifier}#{$state} { 
+      margin-left:  $value;
+      margin-right: $value;
+    }
+
+    .#{$prefix}-my#{$modifier}#{$state} { 
+      margin-top:    $value;
+      margin-bottom: $value;
+    }
+
+    .#{$prefix}-mt#{$modifier}#{$state} { margin-top:    $value };
+    .#{$prefix}-mr#{$modifier}#{$state} { margin-right:  $value };
     .#{$prefix}-mb#{$modifier}#{$state} { margin-bottom: $value };
-    .#{$prefix}-ml#{$modifier}#{$state} { margin-left: $value };
+    .#{$prefix}-ml#{$modifier}#{$state} { margin-left:   $value };
   }
 }

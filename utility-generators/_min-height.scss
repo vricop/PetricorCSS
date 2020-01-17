@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin min-height($screen: null) {
-  $args: $min-height, map.get($variants, 'min-height'), $screen;
+  $args: ($min-height, map.get($variants, 'min-height'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}min-h#{$modifier}#{$state} {

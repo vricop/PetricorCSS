@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin pointer-events($screen: null) {
-  $args: map.get($variants, 'pointer-events'), $screen;
+  $args: (map.get($variants, 'pointer-events'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}pointer-events-none#{$state} { pointer-events: none; }

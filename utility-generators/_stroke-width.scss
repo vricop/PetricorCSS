@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin stroke-width($screen: null) {
-  $args: $stroke-width, map.get($variants, 'stroke-width'), $screen;
+  $args: ($stroke-width, map.get($variants, 'stroke-width'), $screen);
   
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}stroke#{$modifier}#{$state} { stroke-width: $value; }

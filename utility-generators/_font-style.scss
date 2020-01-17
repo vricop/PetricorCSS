@@ -3,10 +3,11 @@
 @use 'sass:map';
 
 @mixin font-style($screen: null) {
-  $args: map.get($variants, 'font-style'), $screen;
+  $args: (map.get($variants, 'font-style'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
-    .#{$prefix}italic#{$state}{ font-style: italic; }
-    .#{$prefix}non-italic#{$state} { font-style: normal; }
+    .#{$prefix}italic#{$state}     { font-style: italic;  }
+    .#{$prefix}oblique#{$state}    { font-style: oblique; }
+    .#{$prefix}non-italic#{$state} { font-style: normal;  }
   }
 }

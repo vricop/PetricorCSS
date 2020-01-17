@@ -4,7 +4,7 @@
 @use 'sass:string';
 
 @mixin display($screen: null) {
-  $args: $display, map.get($variants, 'display'), $screen;
+  $args: ($display, map.get($variants, 'display'), $screen);
   
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     // Class names for the display utilities use a different naming convention

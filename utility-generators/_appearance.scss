@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin appearance($screen: null) {
-  $args: map.get($variants, 'appearance'), $screen;
+  $args: (map.get($variants, 'appearance'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}appearance-none#{$state} { appearance: none; }

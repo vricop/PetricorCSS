@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin stroke($screen: null) {
-  $args: map.get($variants, 'stroke'), $screen;
+  $args: (map.get($variants, 'stroke'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}stroke-current#{$state} { stroke: currentColor; }

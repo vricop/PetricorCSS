@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin border-collapse($screen: null) {
-  $args: map.get($variants, 'border-collapse'), $screen;
+  $args: ( map.get($variants, 'border-collapse'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}border-collapse#{$state} { border-collapse: collapse; }

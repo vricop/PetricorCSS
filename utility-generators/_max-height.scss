@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin max-height($screen: null) {
-  $args: $max-height, map.get($variants, 'max-height'), $screen;
+  $args: ($max-height, map.get($variants, 'max-height'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}max-h#{$modifier}#{$state} {

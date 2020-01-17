@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin min-width($screen: null) {
-  $args: $min-width, map.get($variants, 'min-width'), $screen;
+  $args: ($min-width, map.get($variants, 'min-width'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}min-w#{$modifier}#{$state} { min-width: $value; }

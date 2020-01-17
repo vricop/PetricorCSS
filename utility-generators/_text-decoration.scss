@@ -3,11 +3,11 @@
 @use 'sass:map';
 
 @mixin text-decoration($screen: null) {
-  $args: map.get($variants, 'text-decoration'), $screen;
+  $args: (map.get($variants, 'text-decoration'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
-    .#{$prefix}underline#{$state} { text-decoration: underline; }
+    .#{$prefix}underline#{$state}    { text-decoration: underline;    }
     .#{$prefix}line-through#{$state} { text-decoration: line-through; }
-    .#{$prefix}no-underline#{$state} { text-decoration: none; }
+    .#{$prefix}no-underline#{$state} { text-decoration: none;         }
   }
 }

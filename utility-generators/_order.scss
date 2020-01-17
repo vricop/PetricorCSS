@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin order($screen: null) {
-  $args: $order, map.get($variants, 'order'), $screen;
+  $args: ($order, map.get($variants, 'order'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}order#{$modifier}#{$state} { order: $value; }

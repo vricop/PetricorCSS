@@ -3,12 +3,12 @@
 @use 'sass:map';
 
 @mixin user-select($screen: null) {
-  $args: map.get($variants, 'user-select'), $screen;
+  $args: (map.get($variants, 'user-select'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}select-none#{$state} { user-select: none; }
     .#{$prefix}select-text#{$state} { user-select: text; }
-    .#{$prefix}select-all#{$state} { user-select: all; }
+    .#{$prefix}select-all#{$state}  { user-select: all;  }
     .#{$prefix}select-auto#{$state} { user-select: auto; }
   }
 }

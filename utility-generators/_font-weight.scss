@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin font-weight($screen: null) {
-  $args: $font-weight, map.get($variants, 'font-weight'), $screen;
+  $args: ($font-weight, map.get($variants, 'font-weight'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}font#{$modifier}#{$state} { font-weight: $value; }

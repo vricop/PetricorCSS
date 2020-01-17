@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin flex-grow($screen: null) {
-  $args: $flex-grow, map.get($variants, 'flex-grow'), $screen;
+  $args: ($flex-grow, map.get($variants, 'flex-grow'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}flex-grow#{$modifier}#{$state} { flex-grow: $value; }

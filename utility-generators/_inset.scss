@@ -3,31 +3,38 @@
 @use 'sass:map';
 
 @mixin inset($screen: null) {
-  $args: $inset, map.get($variants, 'inset'), $screen;
+  $args: ($inset, map.get($variants, 'inset'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    // Insets
+    // Mimicking the `inset` property
+    //
+    // `inset` is a shorthand property for `top`, `right`, `bottom` and `left`
+    // properties all together. `inset` works the same way margins does. The W3C
+    // team is working on this new feature.
+    //
+    // https://drafts.csswg.org/css-logical/#propdef-inset
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/Inset
     .#{$prefix}inset#{$modifier}#{$state} { 
-      top: $value; 
-      right: $value; 
+      top:    $value; 
+      right:  $value; 
       bottom: $value; 
-      left: $value;
+      left:   $value;
     }
 
     .#{$prefix}inset-x#{$modifier}#{$state} { 
-      left: $value; 
+      left:  $value; 
       right: $value;
     }
 
     .#{$prefix}inset-y#{$modifier}#{$state} { 
-      top: $value; 
+      top:    $value; 
       bottom: $value;
     }
     
-    // Sides
-    .#{$prefix}top#{$modifier}#{$state} { top: $value; }
-    .#{$prefix}right#{$modifier}#{$state} { right: $value; }
+    // Position sides
+    .#{$prefix}top#{$modifier}#{$state}    { top: $value;    }
+    .#{$prefix}right#{$modifier}#{$state}  { right: $value;  }
     .#{$prefix}bottom#{$modifier}#{$state} { bottom: $value; }
-    .#{$prefix}left#{$modifier}#{$state} { left: $value; }
+    .#{$prefix}left#{$modifier}#{$state}   { left: $value;   }
   }
 }

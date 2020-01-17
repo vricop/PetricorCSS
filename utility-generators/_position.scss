@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin position($screen: null) {
-  $args: map.get($variants, 'position'), $screen;
+  $args: (map.get($variants, 'position'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
     @each $position in (relative, absolute, static, fixed, sticky) {

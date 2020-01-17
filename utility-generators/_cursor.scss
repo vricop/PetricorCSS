@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin cursor($screen: null) {
-  $args: $cursor, map.get($variants, 'cursor'), $screen;
+  $args: ($cursor, map.get($variants, 'cursor'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}cursor#{$modifier}#{$state} { cursor: $value; }

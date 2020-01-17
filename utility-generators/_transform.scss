@@ -3,8 +3,13 @@
 @use 'sass:map';
 
 @mixin transform($screen: null) {
-  $args: map.get($variants, 'transform'), $screen;
+  $args: (map.get($variants, 'transform'), $screen);
 
+  // Composable transform utility variant
+  // This technique uses custom properties with default values that work in
+  // addition to the other `transition-*` utilities.
+  // 
+  // https://github.com/tailwindcss/tailwindcss/pull/1272
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}transform#{$state} {
       --transform-translate-x: 0;

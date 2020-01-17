@@ -3,21 +3,21 @@
 @use 'sass:map';
 
 @mixin word-break($screen: null) {
-  $args: map.get($variants, 'word-break'), $screen;
+  $args: (map.get($variants, 'word-break'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
-    .#{$prefix}break-normal#{$state} { word-break: normal; overflow-wrap: normal }
-    .#{$prefix}break-words#{$state} { overflow-wrap: break-word; }
-    .#{$prefix}break-all#{$state} { word-break: break-all; }
-    
-    .#{$prefix}truncate#{$state} {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    .#{$prefix}break-normal#{$state} {
+      word-break:    normal;
+      overflow-wrap: normal;
     }
 
-    .#{$prefix}truncate-multiline-2#{$state} { -webkit-line-clamp: 2; }
-    .#{$prefix}truncate-multiline-3#{$state} { -webkit-line-clamp: 3; }
-    .#{$prefix}truncate-multiline-4#{$state} { -webkit-line-clamp: 4; }
+    .#{$prefix}break-words#{$state}  { overflow-wrap: break-word; }
+    .#{$prefix}break-all#{$state}    { word-break:    break-all;  }
+    
+    .#{$prefix}truncate#{$state} {
+      overflow:      hidden;
+      text-overflow: ellipsis;
+      white-space:   nowrap;
+    }
   }
 }

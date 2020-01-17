@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin flex-shrink($screen: null) {
-  $args: $flex-shrink, map.get($variants, 'flex-shrink'), $screen;
+  $args: ($flex-shrink, map.get($variants, 'flex-shrink'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}flex-shrink#{$modifier}#{$state} {

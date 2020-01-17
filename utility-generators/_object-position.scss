@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin object-position($screen: null) {
-  $args: $object-position, map.get($variants, 'object-position'), $screen;
+  $args: ($object-position, map.get($variants, 'object-position'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}object#{$modifier}#{$state} { object-position: $value; }

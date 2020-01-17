@@ -3,11 +3,11 @@
 @use 'sass:map';
 
 @mixin background-attachment($screen: null) {
-  $args: map.get($variants, 'background-attachment'), $screen;
+  $args: (map.get($variants, 'background-attachment'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
-    .#{$prefix}bg-fixed#{$state} { background-attachment: fixed; }
-    .#{$prefix}bg-local#{$state} { background-attachment: local; }
+    .#{$prefix}bg-fixed#{$state}  { background-attachment: fixed;  }
+    .#{$prefix}bg-local#{$state}  { background-attachment: local;  }
     .#{$prefix}bg-scroll#{$state} { background-attachment: scroll; }
   }
 }

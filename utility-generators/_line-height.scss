@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin line-height($screen: null) {
-  $args: $leading, map.get($variants, 'leading'), $screen;
+  $args: ($leading, map.get($variants, 'leading'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}leading#{$modifier}#{$state} { line-height: $value; }

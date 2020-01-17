@@ -3,30 +3,42 @@
 @use 'sass:map';
 
 @mixin _padding-classes($prefix, $modifier, $state, $value) {
-  .#{$prefix}p#{$modifier}#{$state}  { padding: $value; }
-  .#{$prefix}px#{$modifier}#{$state} { padding: { left: $value; right: $value; } } 
-  .#{$prefix}py#{$modifier}#{$state} { padding: { top: $value; bottom: $value; } }
-  .#{$prefix}pt#{$modifier}#{$state} { padding-top: $value; };
-  .#{$prefix}pr#{$modifier}#{$state} { padding-right: $value; };
+  .#{$prefix}p#{$modifier}#{$state} { padding: $value; }
+
+  .#{$prefix}px#{$modifier}#{$state} { 
+    padding-left: $value;
+    margin-right: $value;
+  }
+
+  .#{$prefix}py#{$modifier}#{$state} { 
+    padding-top:   $value;
+    margin-bottom: $value;
+  }
+
+  .#{$prefix}pt#{$modifier}#{$state} { padding-top:    $value; };
+  .#{$prefix}pr#{$modifier}#{$state} { padding-right:  $value; };
   .#{$prefix}pb#{$modifier}#{$state} { padding-bottom: $value; };
-  .#{$prefix}pl#{$modifier}#{$state} { padding-left: $value; };
+  .#{$prefix}pl#{$modifier}#{$state} { padding-left:   $value; };
 }
 
 @mixin padding($screen: null) {
-  $args: $padding, map.get($variants, 'padding'), $screen;
+  $args: ($padding, map.get($variants, 'padding'), $screen);
   
+  // Generate default (`rem`) utility variants
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     @include _padding-classes($prefix, $modifier, $state, $value);
   };
   
-  $args_em: $padding-em, map.get($variants, 'padding-em'), $screen;
+  $args_em: ($padding-em, map.get($variants, 'padding-em'), $screen);
   
+  // Generate `em` utility variants
   @include build-configurable-variants($args_em...) using ($prefix, $modifier, $state, $value) {
     @include _padding-classes($prefix, '#{$modifier}\\[em\\]', $state, $value);
   };
   
-  $args_ch: $padding-ch, map.get($variants, 'padding-ch'), $screen;
+  $args_ch: ($padding-ch, map.get($variants, 'padding-ch'), $screen);
   
+  // Generate `ch` utility variants
   @include build-configurable-variants($args_ch...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}px#{$modifier}\[ch\]#{$state} { padding: { left: $value; right: $value; } } 
   };

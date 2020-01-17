@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin box-shadow($screen: null) {
-  $args: $box-shadow, map.get($variants, 'box-shadow'), $screen;
+  $args: ($box-shadow, map.get($variants, 'box-shadow'), $screen);
   
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}shadow#{$modifier}#{$state} { box-shadow: $value; }

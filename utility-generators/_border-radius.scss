@@ -5,25 +5,42 @@
 // Mixin for building all `border-radius` utility variants
 @mixin _border-radius-classes($prefix, $modifier, $state, $value) {
   .#{$prefix}rounded#{$modifier}#{$state} { border-radius: $value; }
-  .#{$prefix}rounded-t#{$modifier}#{$state} { border-top-left-radius: $value; border-top-right-radius: $value; }
-  .#{$prefix}rounded-r#{$modifier}#{$state} { border-top-right-radius: $value; border-bottom-right-radius: $value; }
-  .#{$prefix}rounded-b#{$modifier}#{$state} { border-bottom-right-radius: $value; border-bottom-left-radius: $value; }
-  .#{$prefix}rounded-l#{$modifier}#{$state} { border-bottom-left-radius: $value; border-top-left-radius: $value; }
-  .#{$prefix}rounded-tl#{$modifier}#{$state} { border-top-left-radius: $value; }
-  .#{$prefix}rounded-tr#{$modifier}#{$state} { border-top-right-radius: $value; }
-  .#{$prefix}rounded-tl#{$modifier}#{$state} { border-top-left-radius: $value; }
+
+  .#{$prefix}rounded-t#{$modifier}#{$state} {
+    border-top-left-radius:  $value;
+    border-top-right-radius: $value;
+  }
+
+  .#{$prefix}rounded-r#{$modifier}#{$state} {
+    border-top-right-radius:    $value;
+    border-bottom-right-radius: $value;
+  }
+
+  .#{$prefix}rounded-b#{$modifier}#{$state} {
+    border-bottom-right-radius: $value;
+    border-bottom-left-radius:  $value;
+  }
+
+  .#{$prefix}rounded-l#{$modifier}#{$state} {
+    border-bottom-left-radius: $value;
+    border-top-left-radius:    $value;
+  }
+
+  .#{$prefix}rounded-tl#{$modifier}#{$state} { border-top-left-radius:     $value; }
+  .#{$prefix}rounded-tr#{$modifier}#{$state} { border-top-right-radius:    $value; }
+  .#{$prefix}rounded-tl#{$modifier}#{$state} { border-top-left-radius:     $value; }
   .#{$prefix}rounded-br#{$modifier}#{$state} { border-bottom-right-radius: $value; }
-  .#{$prefix}rounded-bl#{$modifier}#{$state} { border-bottom-left-radius: $value; }
+  .#{$prefix}rounded-bl#{$modifier}#{$state} { border-bottom-left-radius:  $value; }
 }
 
 @mixin border-radius($screen: null) {
-  $args: $border-radius, map.get($variants, 'border-radius'), $screen;
+  $args: ($border-radius, map.get($variants, 'border-radius'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     @include _border-radius-classes($prefix, $modifier, $state, $value);
   }
   
-  $args-em: $border-radius-em, map.get($variants, 'border-radius-em'), $screen;
+  $args-em: ($border-radius-em, map.get($variants, 'border-radius-em'), $screen);
 
   @include build-configurable-variants($args-em...) using ($prefix, $modifier, $state, $value) {
     @include _border-radius-classes($prefix, '#{$modifier}\\[em\\]', $state, $value);

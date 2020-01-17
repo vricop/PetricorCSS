@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin opacity($screen: null) {
-  $args: $opacity, map.get($variants, 'opacity'), $screen;
+  $args: ($opacity, map.get($variants, 'opacity'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}opacity#{$modifier}#{$state} { opacity: $value; }

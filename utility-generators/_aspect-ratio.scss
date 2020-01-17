@@ -3,9 +3,11 @@
 @use 'sass:map';
 
 @mixin aspect-ratio($screen: null) {
-  $args: $aspect-ratio, map.get($variants, 'aspect-ratio'), $screen;
+  $args: ($aspect-ratio, map.get($variants, 'aspect-ratio'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}aspect-ratio#{$modifier}#{$state} { padding-top: $value; }
+    .#{$prefix}aspect-ratio#{$modifier}#{$state} {
+      padding-top: $value;
+    }
   };
 }

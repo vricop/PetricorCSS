@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin outline($screen: null) {
-  $args: map.get($variants, 'outline'), $screen;
+  $args: (map.get($variants, 'outline'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}outline-none#{$state} { outline: 0; }

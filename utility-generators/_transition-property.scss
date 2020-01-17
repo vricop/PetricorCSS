@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin transition-property($screen: null) {  
-  $args: $transition-property, map.get($variants, 'transition'), $screen;
+  $args: ($transition-property, map.get($variants, 'transition'), $screen);
   
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}transition#{$modifier}#{$state} { transition-property: $value; }

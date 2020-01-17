@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin flex($screen: null) {
-  $args: $flex, map.get($variants, 'flex'), $screen;
+  $args: ($flex, map.get($variants, 'flex'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}flex#{$modifier}#{$state} { flex: $value; }

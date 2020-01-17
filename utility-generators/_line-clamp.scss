@@ -6,10 +6,10 @@
 // This is a legacy propietary feature that's been adopted by the W3C group.
 // https://drafts.csswg.org/css-overflow-3/#webkit-line-clamp
 @mixin line-clamp($screen: null) {
-  // This utility contains some pre-setup declarations in `_base.scss` in order
+  // This utility contains some preset declarations in `_base.scss` in order
   // to work
   
-  $args: $line-clamp, map.get($variants, 'line-clamp'), $screen;
+  $args: ($line-clamp, map.get($variants, 'line-clamp'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}line-clamp#{$modifier}#{$state} {

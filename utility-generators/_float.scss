@@ -3,11 +3,11 @@
 @use 'sass:map';
 
 @mixin float($screen: null) {
-  $args: map.get($variants, 'float'), $screen;
+  $args: (map.get($variants, 'float'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
-    @each $side in (left, right, none) {
-      .#{$prefix}float-#{$side}#{$state} { float: $side; }
-    }
+    .#{$prefix}float-left#{$state}  { float: left;  }
+    .#{$prefix}float-right#{$state} { float: right; }
+    .#{$prefix}float-none#{$state}  { float: none;  }
   }
 }

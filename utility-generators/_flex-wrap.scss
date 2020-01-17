@@ -3,11 +3,11 @@
 @use 'sass:map';
 
 @mixin flex-wrap($screen: null) {
-  $args: map.get($variants, 'flex-wrap'), $screen;
+  $args: (map.get($variants, 'flex-wrap'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
-    .#{$prefix}flex-wrap#{$state} { flex-wrap: wrap; }
-    .#{$prefix}flex-no-wrap#{$state} { flex-wrap: nowrap; }
+    .#{$prefix}flex-wrap#{$state}         { flex-wrap: wrap;         }
+    .#{$prefix}flex-no-wrap#{$state}      { flex-wrap: nowrap;       }
     .#{$prefix}flex-wrap-reverse#{$state} { flex-wrap: wrap-reverse; }
   }
 }

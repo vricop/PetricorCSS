@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin transform-origin($screen: null) {
-  $args: $transform-origin, map.get($variants, 'transform-origin'), $screen;
+  $args: ($transform-origin, map.get($variants, 'transform-origin'), $screen);
   
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}origin#{$modifier}#{$state} {

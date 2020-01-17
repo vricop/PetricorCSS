@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin overflow($screen: null) {
-  $args: map.get($variants, 'overflow'), $screen;
+  $args: (map.get($variants, 'overflow'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
     // Generate all `overflow-*` utilities with nested loops

@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin font-smoothing($screen: null) {
-  $args: map.get($variants, 'font-smoothing'), $screen;
+  $args: (map.get($variants, 'font-smoothing'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}antialiased#{$state} {

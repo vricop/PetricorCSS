@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin object-fit($screen: null) {
-  $args: map.get($variants, 'object-fit'), $screen;
+  $args: (map.get($variants, 'object-fit'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
     @each $fit-type in (contain, cover, fill, none, scale-down) {

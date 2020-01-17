@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin list-style-type($screen: null) {
-  $args: $list-style-type, map.get($variants, 'list-style-type'), $screen;
+  $args: ($list-style-type, map.get($variants, 'list-style-type'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}list#{$modifier}#{$state} { list-style-type: $value; }

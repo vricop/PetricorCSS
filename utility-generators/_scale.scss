@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin scale($screen: null) {
-  $args: $scale, map.get($variants, 'scale'), $screen;
+  $args: ($scale, map.get($variants, 'scale'), $screen);
   
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}scale#{$modifier}#{$state} {

@@ -2,23 +2,23 @@
 @use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
-// Mixin for building all `border-width` utility classes
+// Mixin for building all `border-width` utility variant classes
 @mixin _border-width-classes($prefix, $modifier, $state, $value) {
-  .#{$prefix}border#{$modifier}#{$state} { border-width: $value; }
-  .#{$prefix}border-t#{$modifier}#{$state} { border-top-width: $value;}
-  .#{$prefix}border-r#{$modifier}#{$state} { border-right-width: $value;}
-  .#{$prefix}border-b#{$modifier}#{$state} { border-bottom-width: $value;}
-  .#{$prefix}border-l#{$modifier}#{$state} { border-left-width: $value;}
+  .#{$prefix}border#{$modifier}#{$state}   { border-width:        $value; }
+  .#{$prefix}border-t#{$modifier}#{$state} { border-top-width:    $value; }
+  .#{$prefix}border-r#{$modifier}#{$state} { border-right-width:  $value; }
+  .#{$prefix}border-b#{$modifier}#{$state} { border-bottom-width: $value; }
+  .#{$prefix}border-l#{$modifier}#{$state} { border-left-width:   $value; }
 }
 
 @mixin border-width($screen: null) {
-  $args: $border-width, map.get($variants, 'border-width'), $screen;
+  $args: ($border-width, map.get($variants, 'border-width'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     @include _border-width-classes($prefix, $modifier, $state, $value);
   };
   
-  $args-em: $border-width-em, map.get($variants, 'border-width-em'), $screen;
+  $args-em: ($border-width-em, map.get($variants, 'border-width-em'), $screen);
 
   @include build-configurable-variants($args-em...) using ($prefix, $modifier, $state, $value) {
     @include _border-width-classes(#{$prefix}, '#{$modifier}\\[em\\]', $state, $value);

@@ -3,13 +3,13 @@
 @use 'sass:map';
 
 @mixin align-self($screen: null) {
-  $args: map.get($variants, 'align-self'), $screen;
+  $args: (map.get($variants, 'align-self'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
-    .#{$prefix}self-auto#{$state} { align-self: auto; }
-    .#{$prefix}self-start#{$state} { align-self: flex-start; }
-    .#{$prefix}self-center#{$state} { align-self: center; }
-    .#{$prefix}self-end#{$state} { align-self: flex-end; }
-    .#{$prefix}self-stretch#{$state} { align-self: stretch; }
+    .#{$prefix}self-auto#{$state}    { align-self: auto;       }
+    .#{$prefix}self-start#{$state}   { align-self: flex-start; }
+    .#{$prefix}self-center#{$state}  { align-self: center;     }
+    .#{$prefix}self-end#{$state}     { align-self: flex-end;   }
+    .#{$prefix}self-stretch#{$state} { align-self: stretch;    }
   };
 }

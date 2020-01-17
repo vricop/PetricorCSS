@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin white-space($screen: null) {
-  $args: map.get($variants, 'white-space'), $screen;
+  $args: (map.get($variants, 'white-space'), $screen);
 
   @include build-non-configurable-variants($args...) using ($prefix, $state) {
     @each $whitespace in (normal, nowrap, pre, pre-line, pre-wrap) {

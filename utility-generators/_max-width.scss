@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin max-width($screen: null) {
-  $args: $max-width, map.get($variants, 'max-width'), $screen;
+  $args: ($max-width, map.get($variants, 'max-width'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}max-w#{$modifier}#{$state} { max-width: $value; }

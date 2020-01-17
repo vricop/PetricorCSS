@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin width($screen: null) {
-  $args: $width, map.get($variants, 'width'), $screen;
+  $args: ($width, map.get($variants, 'width'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}w#{$modifier}#{$state} { width: $value; }

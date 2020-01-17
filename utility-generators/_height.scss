@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin height($screen: null) {
-  $args: $height, map.get($variants, 'height'), $screen;
+  $args: ($height, map.get($variants, 'height'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}h#{$modifier}#{$state} { height: $value; }

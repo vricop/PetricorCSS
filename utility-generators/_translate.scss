@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin translate($screen: null) {
-  $args: $translate, map.get($variants, 'translate'), $screen;
+  $args: ($translate, map.get($variants, 'translate'), $screen);
   
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     // The base class will contain a dash for negative sets only.
@@ -12,6 +12,7 @@
     .#{$prefix}#{$base-class}-y#{$modifier}#{$state} {
       --transform-translate-y: #{$value};
     }
+    
     .#{$prefix}#{$base-class}-x#{$modifier}#{$state} {
       --transform-translate-x: #{$value};
     }

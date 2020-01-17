@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin z-index($screen: null) {
-  $args: $z-index, map.get($variants, 'z-index'), $screen;
+  $args: ($z-index, map.get($variants, 'z-index'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}z#{$modifier}#{$state} { z-index: $value; }
