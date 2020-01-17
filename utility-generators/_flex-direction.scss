@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin flex-direction($screen: null) {
-  $args: map.get(config.$variants, 'flex-direction'), $screen;
+  $args: map.get($variants, 'flex-direction'), $screen;
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}flex-row#{$state} { flex-direction: row; }
     .#{$prefix}flex-row-reverse#{$state} { flex-direction: row-reverse; }
     .#{$prefix}flex-col#{$state} { flex-direction: column; }

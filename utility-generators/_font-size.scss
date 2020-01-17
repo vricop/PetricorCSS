@@ -1,17 +1,17 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin font-size($screen: null) {
-  $args: config.$font-size, map.get(config.$variants, 'font-size'), $screen;
+  $args: $font-size, map.get($variants, 'font-size'), $screen;
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}text#{$modifier}#{$state} { font-size: $value; }
   }
   
-  $args-em: config.$font-size-em, map.get(config.$variants, 'font-size-em'), $screen;
+  $args-em: $font-size-em, map.get($variants, 'font-size-em'), $screen;
 
-  @include generate-variants.configurable($args-em...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args-em...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}text#{$modifier}\[em\]#{$state} { font-size: $value; }
   }
 }

@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin position($screen: null) {
-  $args: map.get(config.$variants, 'position'), $screen;
+  $args: map.get($variants, 'position'), $screen;
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
     @each $position in (relative, absolute, static, fixed, sticky) {
       .#{$prefix}#{$position}#{$state} { position: $position; }
     }

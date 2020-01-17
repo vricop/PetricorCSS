@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin outline($screen: null) {
-  $args: map.get(config.$variants, 'outline'), $screen;
+  $args: map.get($variants, 'outline'), $screen;
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}outline-none#{$state} { outline: 0; }
   }
 }

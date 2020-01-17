@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin text-decoration($screen: null) {
-  $args: map.get(config.$variants, 'text-decoration'), $screen;
+  $args: map.get($variants, 'text-decoration'), $screen;
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}underline#{$state} { text-decoration: underline; }
     .#{$prefix}line-through#{$state} { text-decoration: line-through; }
     .#{$prefix}no-underline#{$state} { text-decoration: none; }

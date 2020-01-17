@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin min-width($screen: null) {
-  $args: config.$min-width, map.get(config.$variants, 'min-width'), $screen;
+  $args: $min-width, map.get($variants, 'min-width'), $screen;
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}min-w#{$modifier}#{$state} { min-width: $value; }
   }
 }

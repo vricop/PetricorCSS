@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin stroke-width($screen: null) {
-  $args: config.$stroke-width, map.get(config.$variants, 'stroke-width'), $screen;
+  $args: $stroke-width, map.get($variants, 'stroke-width'), $screen;
   
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}stroke#{$modifier}#{$state} { stroke-width: $value; }
   }
 }

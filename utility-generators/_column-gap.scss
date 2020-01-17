@@ -1,23 +1,23 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin column-gap($screen: null) {
-  $args: config.$column-gap, map.get(config.$variants, 'column-gap'), $screen;
+  $args: $column-gap, map.get($variants, 'column-gap'), $screen;
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}column-gap#{$modifier}#{$state} { column-gap: $value; }
   }
 
-  $args_em: config.$column-gap-em, map.get(config.$variants, 'column-gap'), $screen;
+  $args_em: $column-gap-em, map.get($variants, 'column-gap'), $screen;
 
-  @include generate-variants.configurable($args_em...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args_em...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}column-gap#{$modifier}\[em\]#{$state} { column-gap: $value; }
   }
 
-  $args_ch: config.$column-gap-ch, map.get(config.$variants, 'column-gap'), $screen;
+  $args_ch: $column-gap-ch, map.get($variants, 'column-gap'), $screen;
 
-  @include generate-variants.configurable($args_ch...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args_ch...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}column-gap#{$modifier}\[ch\]#{$state} { column-gap: $value; }
   }
 }

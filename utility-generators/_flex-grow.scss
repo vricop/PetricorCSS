@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin flex-grow($screen: null) {
-  $args: config.$flex-grow, map.get(config.$variants, 'flex-grow'), $screen;
+  $args: $flex-grow, map.get($variants, 'flex-grow'), $screen;
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}flex-grow#{$modifier}#{$state} { flex-grow: $value; }
   }
 }

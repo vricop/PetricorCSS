@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin resize($screen: null) {
-  $args: map.get(config.$variants, 'resize'), $screen;
+  $args: map.get($variants, 'resize'), $screen;
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}resize-none#{$state} { resize: none; }
     .#{$prefix}resize#{$state} { resize: both; }
     .#{$prefix}resize-y#{$state} { resize: vertical; }

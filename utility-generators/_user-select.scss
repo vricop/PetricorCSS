@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin user-select($screen: null) {
-  $args: map.get(config.$variants, 'user-select'), $screen;
+  $args: map.get($variants, 'user-select'), $screen;
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}select-none#{$state} { user-select: none; }
     .#{$prefix}select-text#{$state} { user-select: text; }
     .#{$prefix}select-all#{$state} { user-select: all; }

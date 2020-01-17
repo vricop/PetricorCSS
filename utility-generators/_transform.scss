@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin transform($screen: null) {
-  $args: map.get(config.$variants, 'transform'), $screen;
+  $args: map.get($variants, 'transform'), $screen;
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}transform#{$state} {
       --transform-translate-x: 0;
       --transform-translate-y: 0;

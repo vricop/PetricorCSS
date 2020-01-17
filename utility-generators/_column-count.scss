@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin column-count($screen: null) {
-  $args: config.$column-count, map.get(config.$variants, 'column-count'), $screen;
+  $args: $column-count, map.get($variants, 'column-count'), $screen;
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}column-count#{$modifier}#{$state} { column-count: $value; }
   }
 }

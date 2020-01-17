@@ -1,9 +1,9 @@
-@use '../config';
+@use '../config' as *;
 @use 'sass:map';
 @use 'sass:meta';
 
 @mixin container($screen: null) {
-  $variants: map.get(config.$variants, 'container');
+  $variants: map.get($variants, 'container');
   
   @if $variants == true {
     // DEFAULT

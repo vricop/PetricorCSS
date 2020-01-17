@@ -4,45 +4,7 @@
 @use "sass:list";
 @use "sass:string";
 
-@mixin non-configurable($utility-variants, $screen) {
-  @if $utility-variants == true or meta.type-of($utility-variants) == list {
-    // DEFAULT
-    @if $screen == null {
-      @content(null, null);
-
-      @if list.index($utility-variants, 'hover') {
-        @content('hover\\:', ':hover');
-      }
-
-      @if list.index($utility-variants, 'group-hover') {
-        @content('group:hover .group-hover\\:', null);
-      }
-
-      @if list.index($utility-variants, 'focus') {
-        @content('focus\\:', ':focus');
-      }
-    }
-    
-    // RESPONSIVE
-    @if list.index($utility-variants, 'responsive') and $screen != null {
-      @content('#{$screen}\\:', null);
-
-      @if list.index($utility-variants, 'hover') {
-        @content('#{$screen}\\:hover\\:', ':hover');
-      }
-
-      @if list.index($utility-variants, 'group-hover') {
-        @content('#{$screen}\\:group:hover .group-hover\\:', null);
-      }
-
-      @if list.index($utility-variants, 'focus') {
-        @content('#{$screen}\\:focus\\:', ':focus');
-      }
-    }
-  }
-}
-
-@mixin configurable($utility-config, $utility-variants, $screen) {
+@mixin build-configurable-variants($utility-config, $utility-variants, $screen) {
   @if $utility-variants == true or meta.type-of($utility-variants) == list {
     @each $modifier, $value in $utility-config {
       // There are some utilities that have a default value and have

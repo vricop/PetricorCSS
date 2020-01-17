@@ -1,5 +1,5 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 // Mixin for building all `border-width` utility classes
@@ -12,15 +12,15 @@
 }
 
 @mixin border-width($screen: null) {
-  $args: config.$border-width, map.get(config.$variants, 'border-width'), $screen;
+  $args: $border-width, map.get($variants, 'border-width'), $screen;
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     @include _border-width-classes($prefix, $modifier, $state, $value);
   };
   
-  $args-em: config.$border-width-em, map.get(config.$variants, 'border-width-em'), $screen;
+  $args-em: $border-width-em, map.get($variants, 'border-width-em'), $screen;
 
-  @include generate-variants.configurable($args-em...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args-em...) using ($prefix, $modifier, $state, $value) {
     @include _border-width-classes(#{$prefix}, '#{$modifier}\\[em\\]', $state, $value);
   };
 }

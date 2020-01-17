@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin transform-origin($screen: null) {
-  $args: config.$transform-origin, map.get(config.$variants, 'transform-origin'), $screen;
+  $args: $transform-origin, map.get($variants, 'transform-origin'), $screen;
   
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}origin#{$modifier}#{$state} {
       transform-origin: #{$value};
     }

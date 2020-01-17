@@ -1,5 +1,5 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 // Clamp lines with a given number of lines
@@ -9,9 +9,9 @@
   // This utility contains some pre-setup declarations in `_base.scss` in order
   // to work
   
-  $args: config.$line-clamp, map.get(config.$variants, 'line-clamp'), $screen;
+  $args: $line-clamp, map.get($variants, 'line-clamp'), $screen;
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}line-clamp#{$modifier}#{$state} {
       -webkit-line-clamp: $value;
     }

@@ -1,5 +1,5 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 // Mixin for building all `border-radius` utility variants
@@ -17,15 +17,15 @@
 }
 
 @mixin border-radius($screen: null) {
-  $args: config.$border-radius, map.get(config.$variants, 'border-radius'), $screen;
+  $args: $border-radius, map.get($variants, 'border-radius'), $screen;
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     @include _border-radius-classes($prefix, $modifier, $state, $value);
   }
   
-  $args-em: config.$border-radius-em, map.get(config.$variants, 'border-radius-em'), $screen;
+  $args-em: $border-radius-em, map.get($variants, 'border-radius-em'), $screen;
 
-  @include generate-variants.configurable($args-em...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args-em...) using ($prefix, $modifier, $state, $value) {
     @include _border-radius-classes($prefix, '#{$modifier}\\[em\\]', $state, $value);
   }
 }

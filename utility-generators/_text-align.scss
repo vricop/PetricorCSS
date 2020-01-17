@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin text-align($screen: null) {
-  $args: map.get(config.$variants, 'text-align'), $screen;
+  $args: map.get($variants, 'text-align'), $screen;
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
     @each $side in (left, center, right) {
       .#{$prefix}text-#{$side}#{$state} { text-align: $side; }
     }

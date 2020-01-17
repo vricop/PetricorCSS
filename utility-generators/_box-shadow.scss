@@ -1,12 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
-@use 'sass:string' as str;
 
 @mixin box-shadow($screen: null) {
-  $args: config.$box-shadow, map.get(config.$variants, 'box-shadow'), $screen;
+  $args: $box-shadow, map.get($variants, 'box-shadow'), $screen;
   
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}shadow#{$modifier}#{$state} { box-shadow: $value; }
   } 
 }
