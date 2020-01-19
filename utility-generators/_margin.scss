@@ -5,7 +5,7 @@
 @mixin margin($screen: null) {
   $args: ($margin, map.get($variants, 'margin'), $screen);
 
-  // Default margins variants
+  // Default margin variants
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}m#{$modifier}#{$state}  { margin: $value;                          };
     
