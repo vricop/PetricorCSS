@@ -2,21 +2,24 @@
 @use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
-@mixin padding($screen: null) {
-  $args: ($padding, map.get($variants, 'padding'), $screen);
+// Generate `em` utility variants
+// 
+// `em` utility variants have the same modular scale than the default padding
+// utilities.
+@mixin padding-em($screen: null) {
+  $args_ch: ($padding-em, map.get($variants, 'padding-em'), $screen);
   
-  // Generate default (`rem`) utility variants
-  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args_ch...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}p#{$modifier}#{$state} { padding: $value; }
 
     .#{$prefix}px#{$modifier}#{$state} { 
-      padding-left: $value;
-      margin-right: $value;
+      padding-left:  $value;
+      padding-right: $value;
     }
 
     .#{$prefix}py#{$modifier}#{$state} { 
-      padding-top:   $value;
-      margin-bottom: $value;
+      padding-top:    $value;
+      padding-bottom: $value;
     }
 
     .#{$prefix}pt#{$modifier}#{$state} { padding-top:    $value; }

@@ -1,0 +1,20 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+// Generate `ch` utility variants
+// 
+// `ch` utility variants are only applied for `padding-inline`: `p{r|l|x}-{size}`
+@mixin padding-ch($screen: null) {
+  $args_ch: ($padding-ch, map.get($variants, 'padding-ch'), $screen);
+  
+  @include build-configurable-variants($args_ch...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}px#{$modifier}#{$state} { 
+      padding-top:    $value;
+      padding-bottom: $value;
+    }
+
+    .#{$prefix}pr#{$modifier}#{$state} { padding-right:  $value; }
+    .#{$prefix}pl#{$modifier}#{$state} { padding-left:   $value; }
+  };
+}

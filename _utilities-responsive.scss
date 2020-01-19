@@ -45,6 +45,7 @@
     @include utility.line-height($screen);
     @include utility.list-style-position($screen);
     @include utility.list-style-type($screen);
+    @include utility.margin-negative($screen);
     @include utility.margin($screen);
     @include utility.max-height($screen);
     @include utility.max-width($screen);
@@ -56,6 +57,8 @@
     @include utility.order($screen);
     @include utility.outline($screen);
     @include utility.overflow($screen);
+    @include utility.padding-ch($screen);
+    @include utility.padding-em($screen);
     @include utility.padding($screen);
     @include utility.pointer-events($screen);
     @include utility.position($screen);

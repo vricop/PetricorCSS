@@ -42,6 +42,7 @@
 @forward 'line-height';
 @forward 'list-style-position';
 @forward 'list-style-type';
+@forward 'margin-negative';
 @forward 'margin';
 @forward 'max-height';
 @forward 'max-width';
@@ -53,6 +54,8 @@
 @forward 'order';
 @forward 'outline';
 @forward 'overflow';
+@forward 'padding-ch';
+@forward 'padding-em';
 @forward 'padding';
 @forward 'pointer-events';
 @forward 'position';

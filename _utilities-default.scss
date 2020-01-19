@@ -44,6 +44,7 @@
 @include utility.line-height;
 @include utility.list-style-position;
 @include utility.list-style-type;
+@include utility.margin-negative;
 @include utility.margin;
 @include utility.max-height;
 @include utility.max-width;
@@ -55,6 +56,8 @@
 @include utility.order;
 @include utility.outline;
 @include utility.overflow;
+@include utility.padding-ch;
+@include utility.padding-em;
 @include utility.padding;
 @include utility.pointer-events;
 @include utility.position;
