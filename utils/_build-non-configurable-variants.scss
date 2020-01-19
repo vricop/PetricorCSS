@@ -53,6 +53,10 @@
       @if list.index($utility-variants, 'after') {
         @content('after\\:\\:', '::after');
       }
+      
+      @if list.index($utility-variants, 'children') {
+        @content('children\\:', ' > *');
+      }
     }
     
     // RESPONSIVE
@@ -101,6 +105,10 @@
       
       @if list.index($utility-variants, 'after') {
         @content('#{$screen}\\:after\\:\\:', '::after');
+      }
+
+      @if list.index($utility-variants, 'children') {
+        @content('#{$screen}\\:children\\:', ' > *');
       }
     }
   }
