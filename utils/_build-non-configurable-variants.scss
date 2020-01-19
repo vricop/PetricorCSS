@@ -21,6 +21,38 @@
       @if list.index($utility-variants, 'focus') {
         @content('focus\\:', ':focus');
       }
+
+      @if list.index($utility-variants, 'visited') {
+        @content('visited\\:', ':visited');
+      }
+
+      @if list.index($utility-variants, 'first') {
+        @content('first\\:', ':first-child');
+      }
+      
+      @if list.index($utility-variants, 'last') {
+        @content('last\\:', ':last-child');
+      }
+      
+      @if list.index($utility-variants, 'even') {
+        @content('even\\:', ':nth-child(even)');
+      }
+      
+      @if list.index($utility-variants, 'odd') {
+        @content('odd\\:', ':nth-child(odd)');
+      }
+
+      @if list.index($utility-variants, 'disabled') {
+        @content('disabled\\:', ':disabled');
+      }
+
+      @if list.index($utility-variants, 'before') {
+        @content('before\\:\\:', '::before');
+      }
+
+      @if list.index($utility-variants, 'after') {
+        @content('after\\:\\:', '::after');
+      }
     }
     
     // RESPONSIVE
@@ -37,6 +69,38 @@
 
       @if list.index($utility-variants, 'focus') {
         @content('#{$screen}\\:focus\\:', ':focus');
+      }
+
+      @if list.index($utility-variants, 'visited') {
+        @content('#{$screen}\\:visited\\:', ':visited');
+      }
+      
+      @if list.index($utility-variants, 'first') {
+        @content('#{$screen}\\:first\\:', ':first-child');
+      }
+      
+      @if list.index($utility-variants, 'last') {
+        @content('#{$screen}\\:last\\:', ':last-child');
+      }
+      
+      @if list.index($utility-variants, 'even') {
+        @content('#{$screen}\\:even\\:', ':nth-child(even)');
+      }
+      
+      @if list.index($utility-variants, 'odd') {
+        @content('#{$screen}\\:odd\\:', ':nth-child(odd)');
+      }
+
+      @if list.index($utility-variants, 'disabled') {
+        @content('#{$screen}\\:disabled\\:', ':disabled');
+      }
+      
+      @if list.index($utility-variants, 'before') {
+        @content('#{$screen}\\:before\\:\\:', '::before');
+      }
+      
+      @if list.index($utility-variants, 'after') {
+        @content('#{$screen}\\:after\\:\\:', '::after');
       }
     }
   }
