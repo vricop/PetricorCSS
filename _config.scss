@@ -640,21 +640,14 @@ $z-index: () !default;
 $z-index: map.merge(
   (
     'auto': auto,
-    '0'   : 0,
-    '1'   : 1,
-    '2'   : 2,
-    '3'   : 3,
+    '-2'  : -2,
+    '-1'  : -1,
+     '0'  :  0,
+     '1'  :  1,
+     '2'  :  2,
+     '3'  :  3,
   ),
   $z-index
-);
-
-$z-index-negative: () !default;
-$z-index-negative: map.merge(
-  (
-    '1': -10,
-    '2': -20,
-  ),
-  $z-index-negative
 );
 
 $order: () !default;
@@ -972,7 +965,6 @@ $variants: map.merge(
     'white-space'           : true,
     'width'                 : [responsive],
     'word-break'            : true,
-    'z-index-negative'      : [responsive],
     'z-index'               : [responsive],
   ),
   $variants

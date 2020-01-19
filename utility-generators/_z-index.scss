@@ -5,13 +5,14 @@
 @mixin z-index($screen: null) {
   $args: ($z-index, map.get($variants, 'z-index'), $screen);
 
-  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}z#{$modifier}#{$state} { z-index: $value; }
-  }
   
-  $args_negative: $z-index-negative, map.get($variants, 'z-index-negative'), $screen;
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    // If value is not `auto` and is a negative number, then add a dash
+    // character in front of the base class —which is "z".
+    @if $value != auto and $value < 0 {
+      $prefix: '#{$prefix}-';
+    }
 
-  @include build-configurable-variants($args_negative...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}-z#{$modifier}#{$state} { z-index: $value; }
+    .#{$prefix}z#{$modifier}#{$state} { z-index: $value; }
   }
 }
