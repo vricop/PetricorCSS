@@ -101,11 +101,12 @@ $transition-duration: () !default;
 $transition-duration: map.merge(
   (
     '100ms' : 100ms,
-    '175ms' : 175ms,
-    '250ms' : 250ms,
+    '200ms' : 200ms,
+    '300ms' : 300ms,
     '500ms' : 500ms,
-    '750ms' : 750ms,
-    '875ms' : 875ms,
+    '600ms' : 600ms,
+    '700ms' : 700ms,
+    '800ms' : 800ms,
     '1s'    : 1s,
   ),
   $transition-duration
