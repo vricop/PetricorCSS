@@ -39,6 +39,10 @@
         @if list.index($utility-variants, 'visited') {
           @content('visited\\:', $modifier, ':visited', $value);
         }
+        
+        @if list.index($utility-variants, 'placehodler') {
+          @content('placehodler\\:', $modifier, '::placehodler', $value);
+        }
 
         @if list.index($utility-variants, 'first') {
           @content('first\\:', '#{$modifier} > *', ':first-child', $value);
@@ -91,6 +95,10 @@
         
         @if list.index($utility-variants, 'visited') {
           @content('#{$screen}\\:visited\\:', $modifier, ':visited', $value);
+        }
+        
+        @if list.index($utility-variants, 'placeholder') {
+          @content('#{$screen}\\:placeholder\\:', $modifier, '::placeholder', $value);
         }
         
         @if list.index($utility-variants, 'first') {

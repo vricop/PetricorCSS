@@ -25,6 +25,10 @@
       @if list.index($utility-variants, 'visited') {
         @content('visited\\:', ':visited');
       }
+      
+      @if list.index($utility-variants, 'placeholder') {
+        @content('placeholder\\:', '::placeholder');
+      }
 
       @if list.index($utility-variants, 'first') {
         @content('first\\:', ':first-child');
@@ -77,6 +81,10 @@
 
       @if list.index($utility-variants, 'visited') {
         @content('#{$screen}\\:visited\\:', ':visited');
+      }
+
+      @if list.index($utility-variants, 'placeholder') {
+        @content('#{$screen}\\:placeholder\\:', '::placeholder');
       }
       
       @if list.index($utility-variants, 'first') {
