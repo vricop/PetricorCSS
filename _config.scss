@@ -220,6 +220,13 @@ $margin: map.merge(
   $margin
 );
 
+// Stack margins (lobotomized owl)
+$margin-stack: () !default;
+$margin-stack: map.merge(
+  map.remove($margin, 'auto'),
+  $margin-stack
+);
+
 // NEGATIVE MARGINS
 $margin-negative: () !default;
 $margin-negative: map.merge(
@@ -927,6 +934,7 @@ $variants: map.merge(
     'list-style-position'   : true,
     'list-style-type'       : true,
     'margin-negative'       : [responsive],
+    'margin-stack'          : 'responsive',
     'margin'                : [responsive],
     'max-height'            : true,
     'max-width'             : [responsive],

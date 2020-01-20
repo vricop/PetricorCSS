@@ -1,0 +1,35 @@
+@use '../config' as *;
+@use 'sass:map';
+
+@mixin margin-stack($screen: null) {
+  $utility-variants: map.get($variants, 'margin-stack');
+  // Stack margin variants
+  // 
+  // Context-aware margins with the "lobotomized owl".
+  // 
+  // https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/
+  // https://every-layout.dev/layouts/stack/#the-problem
+  @if $utility-variants == true or $utility-variants == 'responsive' {
+    @each $modifier, $value in $margin-stack {
+      @if $screen == null {
+        .m-stack-x-#{$modifier} > * + * {
+          margin-left: $value;
+        }
+        
+        .m-stack-y-#{$modifier} > * + * {
+          margin-top: $value;
+        }
+      }
+
+      @if $utility-variants != true and $screen != null {
+        .#{$screen}\:m-stack-x-#{$modifier} > * + * {
+          margin-left: $value;
+        }
+        
+        .#{$screen}\:m-stack-y-#{$modifier} > * + * {
+          margin-top: $value;
+        }
+      }
+    }
+  }
+}
