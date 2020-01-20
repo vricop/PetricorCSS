@@ -1,0 +1,14 @@
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin link-stretch {
+  .link-stretch::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
