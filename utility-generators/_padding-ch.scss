@@ -10,8 +10,8 @@
   
   @include build-configurable-variants($args_ch...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}px#{$modifier}#{$state} { 
-      padding-top:    $value;
-      padding-bottom: $value;
+      padding-left:  $value;
+      padding-right: $value;
     }
 
     .#{$prefix}pr#{$modifier}#{$state} { padding-right:  $value; }

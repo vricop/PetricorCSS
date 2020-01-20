@@ -11,12 +11,12 @@
 
     .#{$prefix}px#{$modifier}#{$state} { 
       padding-left: $value;
-      margin-right: $value;
+      padding-right: $value;
     }
 
     .#{$prefix}py#{$modifier}#{$state} { 
       padding-top:   $value;
-      margin-bottom: $value;
+      padding-bottom: $value;
     }
 
     .#{$prefix}pt#{$modifier}#{$state} { padding-top:    $value; }
