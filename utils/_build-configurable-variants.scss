@@ -61,11 +61,11 @@
         }
 
         @if list.index($utility-variants, 'before') {
-          @content('before\\:\\:', $modifier, '::before', $value);
+          @content('before\\:', $modifier, '::before', $value);
         }
 
         @if list.index($utility-variants, 'after') {
-          @content('after\\:\\:', $modifier, '::after', $value);
+          @content('after\\:', $modifier, '::after', $value);
         }
  
         @if list.index($utility-variants, 'children') {
@@ -114,11 +114,11 @@
         }
         
         @if list.index($utility-variants, 'before') {
-          @content('#{$screen}\\:before\\:\\:', $modifier, '::before', $value);
+          @content('#{$screen}\\:before\\:', $modifier, '::before', $value);
         }
         
         @if list.index($utility-variants, 'after') {
-          @content('#{$screen}\\:after\\:\\:', $modifier, '::after', $value);
+          @content('#{$screen}\\:after\\:', $modifier, '::after', $value);
         }
 
         @if list.index($utility-variants, 'children') {
