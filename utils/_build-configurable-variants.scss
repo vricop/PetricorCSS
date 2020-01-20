@@ -40,8 +40,8 @@
           @content('visited\\:', $modifier, ':visited', $value);
         }
         
-        @if list.index($utility-variants, 'placehodler') {
-          @content('placehodler\\:', $modifier, '::placehodler', $value);
+        @if list.index($utility-variants, 'placeholder') {
+          @content('placeholder\\:', $modifier, '::placeholder', $value);
         }
 
         @if list.index($utility-variants, 'first') {
