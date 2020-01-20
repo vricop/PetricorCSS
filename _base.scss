@@ -5,8 +5,8 @@
 /*! PetricorCSS v0.8.0 | GPL3 License | https://github.com/vricop/PetricorCSS */
 
 /**
- * 1. Use the default sans font from `config` or the fallback if it's not set.
- * 2. Use PetricorCSS's default "normal" line-height or the fallback.
+ * 1. Use the default sans font from `config` or the fallback if not set.
+ * 2. Use PetricorCSS's default "normal" line-height or the fallback if not set.
  */
 html {
   font-family: get-config($font-family, 'sans', ('Inter var', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif)); /* 1 */
@@ -26,13 +26,13 @@ textarea { resize: vertical; }
 /**
  *  1. Better box model.
  *  2. Make border utilities much more straightforward to use (based on
- *     Tailwindcss)[^1]:
+ *     Tailwindcss)
  *     
  *     Set default values for `border-{width|style|color} properties`. Now by
  *     only using `border-{t|r|b|l}-{size} & `border-{color}` utilities we can
  *     set borders with ease.
  *
- *     [^1]: https://github.com/tailwindcss/tailwindcss/pull/116
+ *     https://github.com/tailwindcss/tailwindcss/pull/116
  */
 *, ::before, ::after {
   box-sizing: content-box; /* 1 */
@@ -47,13 +47,13 @@ textarea { resize: vertical; }
  */
 hr { border-bottom-width: 1px; }
 
-/* Default focus styles for */
+/* Default focus styles */
 button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-/* Use the default monospace stack from config or the fallback */
+/* Use the default monospace stack from config or the fallback if not set */
 pre,
 code,
 kbd,
@@ -101,7 +101,7 @@ button,
 
 /*
  * Apply `gray-500` color from PetricorCSS' `config` color map or apply `#767676`
- * if it's not set.
+ * if not set.
  * 
  * Note: #7676767 is a gray that's A11Y-friendly, with contrast ratio 4.54 (AA)
  */
@@ -123,13 +123,14 @@ video {
 }
 
 /**
- * Fix `hidden` attribute weakness, as it can be easily overwritten by css.
+ * Strengthen `hidden` attribute weakness, as it can be easily overwritten by
+ * css.
  *
  * https://css-tricks.com/the-hidden-attribute-is-visibly-weak/
  */
 [hidden] { display: none !important; }
 
-/* Required pre-set declarations for `line-clamp-{size} */
+/* Required preset for `line-clamp-{size} utility */
 [class*=line-clamp-] {
   overflow: hidden;
   display: -webkit-box;
@@ -139,9 +140,9 @@ video {
 /**
  * Pseudo-class presets for `before` and `after` variant utilites 
  *
- * To be able to "insert" content when using `before` `after` these variants, we
- * define `data-*-content` attributes so we can insert their value into `content`
- * property with `attr() function`. ✨ Magic ✨! 
+ * `data-*-content` attribute selectors let us "insert" strings in `content`
+ * —if defined in the html— property when using `before` and `after` variants.
+ * This is achivied thanks to the `attr() function`. ✨ Magic ✨! 
  */
 [data-before-content]::before {
   content: attr(data-before-content); /* 1 */
