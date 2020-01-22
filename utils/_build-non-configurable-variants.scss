@@ -15,7 +15,7 @@
       }
 
       @if list.index($utility-variants, 'group-hover') {
-        @content('group:hover .target-hover\\:', null);
+        @content('group:hover .group-hover\\:', null);
       }
  
       @if list.index($utility-variants, '&group-hover') {
@@ -76,7 +76,7 @@
       }
 
       @if list.index($utility-variants, 'group-hover') {
-        @content('#{$screen}\\:group:hover .target-hover\\:', null);
+        @content('#{$screen}\\:group:hover .group-hover\\:', null);
       }
 
       @if list.index($utility-variants, '&group-hover') {

@@ -29,7 +29,7 @@
         }
 
         @if list.index($utility-variants, 'group-hover') {
-          @content('group:hover .target-hover\\:', $modifier, null, $value);
+          @content('group:hover .group-hover\\:', $modifier, null, $value);
         }
         
         @if list.index($utility-variants, '&group-hover') {
@@ -90,7 +90,7 @@
         }
 
         @if list.index($utility-variants, 'group-hover') {
-          @content('#{$screen}\\:group:hover .target-hover\\:', $modifier, null, $value);
+          @content('#{$screen}\\:group:hover .group-hover\\:', $modifier, null, $value);
         }
 
         @if list.index($utility-variants, '&group-hover') {
