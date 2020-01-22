@@ -15,7 +15,11 @@
       }
 
       @if list.index($utility-variants, 'group-hover') {
-        @content('group:hover .group-hover\\:', null);
+        @content('group:hover .target-hover\\:', null);
+      }
+ 
+      @if list.index($utility-variants, '&group-hover') {
+        @content('group:hover > .\\&group-hover\\:', null);
       }
 
       @if list.index($utility-variants, 'focus') {
@@ -72,7 +76,11 @@
       }
 
       @if list.index($utility-variants, 'group-hover') {
-        @content('#{$screen}\\:group:hover .group-hover\\:', null);
+        @content('#{$screen}\\:group:hover .target-hover\\:', null);
+      }
+
+      @if list.index($utility-variants, '&group-hover') {
+        @content('#{$screen}\\:group:hover > .\\&group-hover\\:', null);
       }
 
       @if list.index($utility-variants, 'focus') {
