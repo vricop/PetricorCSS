@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin letter-spacing($screen: null) {
-  $args: ($tracking, map.get($variants, 'tracking'), $screen);
+  $args: ($tracking, map.get($variants, 'letter-spacing'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}tracking#{$modifier}#{$state} { letter-spacing: $value; }
