@@ -32,12 +32,10 @@
 @include utility.flex;
 @include utility.float;
 @include utility.font-family;
+@include utility.font-feature-settings;
 @include utility.font-size;
 @include utility.font-smoothing;
 @include utility.font-style;
-@include utility.font-variant-caps;
-@include utility.font-variant-ligatures;
-@include utility.font-variant-numeric;
 @include utility.font-weight;
 @include utility.height;
 @include utility.inset;

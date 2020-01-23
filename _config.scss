@@ -823,62 +823,18 @@ $font-weight: map.merge(
 );
 
 
-$font-variant-caps: () !default;
-$font-variant-caps: map.merge(
+$font-feature-settings: () !default;
+$font-feature-settings: map.merge(
   (
-    'small-caps'     : small-caps,
-    'all-small-caps' : all-small-caps,
-    'petite-caps'    : petite-caps,
-    'all-petite-caps': all-petite-caps,
-    'unicase'        : unicase,
-    'titling-caps'   : titling-caps
+    'tnum' : 'tnum', // Tabular numbers
+    'zero' : 'zero', // Slashed zero
+    'lnum' : 'lnum', // Lining numbers
+    'frac' : 'frac', // Fractions
+    
+    // Combined
+    'tnum\\+zero' : ('tnum', 'zero'),
   ),
-  $font-variant-caps
-);
-
-$font-variant-ligatures: () !default;
-$font-variant-ligatures: map.merge(
-  (
-    'common-ligatures'          :  common-ligatures,
-    'no-common-ligatures'       :  no-common-ligatures,
-    'discretionary-ligatures'   :  discretionary-ligatures,
-    'no-discretionary-ligatures':  no-discretionary-ligatures,
-    'historical-ligatures'      :  historical-ligatures,
-    'no-historical-ligatures'   :  no-historical-ligatures,
-    'contextual-ligatures'      :  contextual,
-    'no-contextual-ligatures'   :  no-contextual
-  ),
-  $font-variant-ligatures
-);
-
-$font-variant-numeric: () !default;
-$font-variant-numeric: map.merge(
-  (
-    'lining-nums'       : lining-nums,
-    'oldstyle-nums'     : oldstyle-nums,
-    'proportional-nums' : proportional-nums,
-    'tabular-nums'      : tabular-nums,
-    'diagonal-fractions': diagonal-fractions,
-    'stacked-fractions' : stacked-fractions,
-    'ordinal'           : ordinal,
-    'slashed-zero'      : slashed-zero
-  ),
-  $font-variant-numeric
-);
-
-$font-variant-numeric: () !default;
-$font-variant-numeric: map.merge(
-  (
-    'lining-nums'       : lining-nums,
-    'oldstyle-nums'     : oldstyle-nums,
-    'proportional-nums' : proportional-nums,
-    'tabular-nums'      : tabular-nums,
-    'diagonal-fractions': diagonal-fractions,
-    'stacked-fractions' : stacked-fractions,
-    'ordinal'           : ordinal,
-    'slashed-zero'      : slashed-zero
-  ),
-  $font-variant-numeric
+  $font-feature-settings
 );
 
 $list-style-type: () !default;
@@ -979,13 +935,11 @@ $variants: map.merge(
     'flex'                  : [responsive],
     'float'                 : true,
     'font-family'           : true,
+    'font-feature-settings' : false,
     'font-size-em'          : true,
     'font-size'             : [responsive],
     'font-smoothing'        : true,
     'font-style'            : true,
-    'font-variant-caps'     : true,
-    'font-variant-ligatures': true,
-    'font-variant-numeric'  : true,
     'font-weight'           : true,
     'height'                : [responsive],
     'inset'                 : true,
