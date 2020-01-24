@@ -826,13 +826,21 @@ $font-weight: map.merge(
 $font-feature-settings: () !default;
 $font-feature-settings: map.merge(
   (
+    // Numeric
     'tnum' : 'tnum', // Tabular numbers
     'zero' : 'zero', // Slashed zero
     'lnum' : 'lnum', // Lining numbers
     'frac' : 'frac', // Fractions
-    
-    // Combined
-    'tnum\\+zero' : ('tnum', 'zero'),
+    // Case
+    'smcp' : 'smcp', // Small Caps
+    'c2sc' : 'c2sc', // Capitals to Small Caps
+    'pcap' : 'pcap', // Petit Caps
+    'unic' : 'unic', // Unicase
+    'ordn' : 'ordn', // Ordinals
+    // Ligatures
+    'clig' : 'clig', // Contextual ligatures
+    'hlig' : 'hlig', // Historical ligatures
+    'liga' : 'liga', // Standard ligatures
   ),
   $font-feature-settings
 );
