@@ -65,6 +65,10 @@
       @if list.index($utility-variants, 'children') {
         @content('children\\:', ' > *');
       }
+      
+      @if list.index($utility-variants, 'empty') {
+        @content('empty\\:', ':empty');
+      }
     }
     
     // RESPONSIVE
@@ -125,6 +129,10 @@
 
       @if list.index($utility-variants, 'children') {
         @content('#{$screen}\\:children\\:', ' > *');
+      }
+
+      @if list.index($utility-variants, 'empty') {
+        @content('#{$screen}\\:empty\\:', ':empty');
       }
     }
   }
