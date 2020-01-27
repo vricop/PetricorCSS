@@ -33,6 +33,7 @@
     @include utility.flex-wrap($screen);
     @include utility.flex($screen);
     @include utility.float($screen);
+    @include utility.font-family($screen);
     @include utility.font-feature-settings($screen);
     @include utility.font-size($screen);
     @include utility.font-smoothing($screen);
