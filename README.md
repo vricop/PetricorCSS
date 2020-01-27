@@ -1,4 +1,4 @@
-<h1 style="text-align:center;"> Petricor CSS 💦</h1>
+Petricor CSS 💦
 
 Petricor CSS is an utility library for building web interfaces. It’s build
 in sass and provides a full collection of utility classes that helps you work
