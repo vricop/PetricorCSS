@@ -2,8 +2,8 @@
 @use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
-@mixin column-gap($screen: null) {
-  $args: ($column-gap, map.get($variants, 'column-gap'), $screen);
+@mixin column-gap-ch($screen: null) {
+  $args: ($column-gap-ch, map.get($variants, 'column-gap-ch'), $screen);
 
   // Generate default (rem) variants for `column-gap` utility
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {

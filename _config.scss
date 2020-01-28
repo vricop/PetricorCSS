@@ -930,6 +930,8 @@ $variants: map.merge(
     'caret-color'           : false,
     'colors'                : [hover],
     'column-count'          : true,
+    'column-gap-ch'         : true,
+    'column-gap-em'         : true,
     'column-gap'            : true,
     'container'             : true,
     'cursor'                : true,

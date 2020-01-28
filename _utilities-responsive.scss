@@ -23,6 +23,8 @@
     @include utility.box-shadow($screen);
     @include utility.caret-color($screen);
     @include utility.column-count($screen);
+    @include utility.column-gap-ch($screen);
+    @include utility.column-gap-em($screen);
     @include utility.column-gap($screen);
     @include utility.container($breakpoint);
     @include utility.cursor($screen);
