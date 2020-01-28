@@ -2,8 +2,8 @@
 @use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
-@mixin border-width($screen: null) {
-  $args: ($border-width, map.get($variants, 'border-width'), $screen);
+@mixin border-width-em($screen: null) {
+  $args: ($border-width-em, map.get($variants, 'border-width-em'), $screen);
   
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}border#{$modifier}#{$state}   { border-width:        $value; }

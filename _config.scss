@@ -591,10 +591,10 @@ $border-width: map.merge(
 $border-width-em: () !default;
 $border-width-em: map.merge(
   (
-    'default' : 0.0625em,
-    '2'       : 0.125em,
-    '4'       : 0.25em,
-    '8'       : 0.5em,
+    'default'   : 0.0625em,
+    '2\\(em\\)' : 0.125em,
+    '4\\(em\\)' : 0.25em,
+    '8\\(em\\)' : 0.5em,
   ),
   $border-width-em
 );

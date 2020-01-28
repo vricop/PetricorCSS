@@ -18,6 +18,7 @@
     @include utility.border-color($screen);
     @include utility.border-radius($screen);
     @include utility.border-style($screen);
+    @include utility.border-width-em($screen);
     @include utility.border-width($screen);
     @include utility.box-shadow($screen);
     @include utility.caret-color($screen);
