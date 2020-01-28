@@ -12,20 +12,20 @@
     }
   }
 
-  $args_em: ($column-gap-em, map.get($variants, 'column-gap'), $screen);
+  $args_em: ($column-gap-em, map.get($variants, 'column-gap-em'), $screen);
 
   // Generate `em` variants for `column-gap` utility
   @include build-configurable-variants($args_em...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}column-gap#{$modifier}\[em\]#{$state} {
+    .#{$prefix}column-gap#{$modifier}#{$state} {
       column-gap: $value;
     }
   }
 
-  $args_ch: ($column-gap-ch, map.get($variants, 'column-gap'), $screen);
+  $args_ch: ($column-gap-ch, map.get($variants, 'column-gap-ch'), $screen);
 
   // Generate `ch` variants for `column-gap` utility
   @include build-configurable-variants($args_ch...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}column-gap#{$modifier}\[ch\]#{$state} {
+    .#{$prefix}column-gap#{$modifier}#{$state} {
       column-gap: $value;
     }
   }

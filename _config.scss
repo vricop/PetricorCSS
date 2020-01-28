@@ -395,12 +395,12 @@ $column-gap: map.merge(
 $column-gap-em: () !default;
 $column-gap-em: map.merge(
   (
-    '0' : 0,
-    '1' : 0.25em,  // 4px
-    '2' : 0.5em,   // 8px
-    '3' : 1em,     // 16px
-    '4' : 1.5em,   // 24px
-    '5' : 2em,     // 32px
+    '0\\(em\\)' : 0,
+    '1\\(em\\)' : 0.25em,  // 4px
+    '2\\(em\\)' : 0.5em,   // 8px
+    '3\\(em\\)' : 1em,     // 16px
+    '4\\(em\\)' : 1.5em,   // 24px
+    '5\\(em\\)' : 2em,     // 32px
   ),
   $column-gap-em
 );
@@ -408,11 +408,11 @@ $column-gap-em: map.merge(
 $column-gap-ch: () !default;
 $column-gap-ch: map.merge(
   (
-    '1': 1ch,
-    '2': 1.5ch,
-    '3': 2ch,
-    '4': 2.5ch,
-    '5': 3ch,
+    '1\\(ch\\)': 1ch,
+    '2\\(ch\\)': 1.5ch,
+    '3\\(ch\\)': 2ch,
+    '4\\(ch\\)': 2.5ch,
+    '5\\(ch\\)': 3ch,
   ),
   $column-gap-ch
 );
