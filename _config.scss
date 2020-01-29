@@ -1,8 +1,5 @@
 @use 'sass:map';
 
-// SCREEN BREAKPOINTS
-//
-// Set min, max or both
 $breakpoints: () !default;
 $breakpoints: map.merge(
   (
@@ -17,11 +14,10 @@ $breakpoints: map.merge(
 $colors: () !default;
 $colors: map.merge(
   (
-    // BLACK & WHITE
+    // Black & white
     'black': #000,
     'white': #fff,
-    
-    // GRAYSCALE
+    // Grayscale
     'gray-100': #F7F7F7,
     'gray-200': #F2F2F2,
     'gray-300': #D9D9D9,
@@ -31,8 +27,7 @@ $colors: map.merge(
     'gray-700': #525252,
     'gray-800': #3D3D3D,
     'gray-900': #212121,
-    
-    // STATE
+    // State: success
     'success-900' : hsl(162, 97%, 15%),
     'success-800' : hsl(162, 98%, 21%),
     'success-700' : hsl(162, 100%, 30%),
@@ -42,7 +37,7 @@ $colors: map.merge(
     'success-300' : hsl(162, 92%, 85%),
     'success-200' : hsl(162, 76%, 92%),
     'success-100' : hsl(162, 74%, 95%),
-
+    // State: info
     'info-900'    : hsl(214, 58%, 18%),
     'info-800'    : hsl(214, 70%, 21%),
     'info-700'    : hsl(214, 72%, 28%),
@@ -52,7 +47,7 @@ $colors: map.merge(
     'info-300'    : hsl(214, 100%, 83%),
     'info-200'    : hsl(214, 92%, 90%),
     'info-100'    : hsl(214, 80%, 96%),
-
+    // State: warning
     'warning-900' : hsl(50, 95%, 17%),
     'warning-800' : hsl(50, 97%, 25%),
     'warning-700' : hsl(50, 100%, 34%),
@@ -61,19 +56,18 @@ $colors: map.merge(
     'warning-400' : hsl(50, 100%, 78%),
     'warning-300' : hsl(50, 100%, 86%),
     'warning-200' : hsl(50, 100%, 92%),
+    // State: danger
     'warning-100' : hsl(50, 100%, 97%),
-
-    'danger-900' : hsl(355, 92%, 15%),
-    'danger-800' : hsl(355, 67%, 28%),
-    'danger-700' : hsl(355, 50%, 43%),
-    'danger-600' : hsl(355, 56%, 55%),
-    'danger-500' : hsl(355, 100%, 65%),
-    'danger-400' : hsl(355, 100%, 71%),
-    'danger-300' : hsl(355, 100%, 85%),
-    'danger-200' : hsl(355, 86%, 92%),
-    'danger-100' : hsl(355, 89%, 96%),
-    
-    // MISC
+    'danger-900'  : hsl(355, 92%, 15%),
+    'danger-800'  : hsl(355, 67%, 28%),
+    'danger-700'  : hsl(355, 50%, 43%),
+    'danger-600'  : hsl(355, 56%, 55%),
+    'danger-500'  : hsl(355, 100%, 65%),
+    'danger-400'  : hsl(355, 100%, 71%),
+    'danger-300'  : hsl(355, 100%, 85%),
+    'danger-200'  : hsl(355, 86%, 92%),
+    'danger-100'  : hsl(355, 89%, 96%),
+    // Misc
     'transparent'  : transparent,
     'current-color': currentColor,
   ),
@@ -133,48 +127,40 @@ $transition-property: map.merge(
 $transition-function: () !default;
 $transition-function: map.merge(
   (
-    // CSS PREDEFINED
-    'in'     : ease-in,     // ease-in
-    'in-out' : ease-in-out, // ease-out
-    'out'    : ease-out,    // ease-in-out
+    // Default
+    'in'     : ease-in,
+    'in-out' : ease-in-out,
+    'out'    : ease-out,
     'linear' : linear,
-  
-    // BACK
+    // Back
     'in-back'      : cubic-bezier(0.6,  -0.28,  0.735, 0.045),
     'out-back'     : cubic-bezier(0.175, 0.885, 0.32,  1.275),
     'in-out-back'  : cubic-bezier(0.68, -0.55,  0.265, 1.55 ),
-  
-    // CIRCULAR
+    // Circular
     'in-circ'      : cubic-bezier(0.6,   0.04,  0.98,  0.335),
     'out-circ'     : cubic-bezier(0.075, 0.82,  0.165, 1    ),
     'in-out-circ'  : cubic-bezier(0.785, 0.135, 0.15,  0.86 ),
-  
-    // CUBIC
+    // Cubic
     'in-cubic'     : cubic-bezier(0.55,  0.055, 0.675, 0.19 ),
     'out-cubic'    : cubic-bezier(0.215, 0.61,  0.355, 1    ),
     'in-out-cubic' : cubic-bezier(0.645, 0.045, 0.355, 1    ),
-  
-    // EXPONENTIAL
+    // Exponential
     'in-expo'      : cubic-bezier(0.95,  0.05,  0.795, 0.035),
     'out-expo'     : cubic-bezier(0.19,  1,     0.22,  1    ),
     'in-out-expo'  : cubic-bezier(1,     0,     0,     1    ),
-  
-    // QUADRATIC
+    // Quadratic
     'in-quad'      : cubic-bezier(0.55,  0.085, 0.68,  0.53 ),
     'out-quad'     : cubic-bezier(0.55,  0.085, 0.68,  0.53 ),
     'in-out-quad'  : cubic-bezier(0.455, 0.03,  0.515, 0.955),
-  
-    // QUARTIC
+    // Quartic
     'in-quart'     : cubic-bezier(0.895, 0.03,  0.685, 0.22 ),
     'out-quart'    : cubic-bezier(0.165, 0.84,  0.44,  1    ),
     'in-out-quart' : cubic-bezier(0.77,  0,     0.175, 1    ),
-  
-    // QUINTIC
+    // Quintic
     'in-quint'     : cubic-bezier(0.755, 0.05,  0.855, 0.06 ),
     'out-quint'    : cubic-bezier(0.23,  1,     0.32,  1    ),
     'in-out-quint' : cubic-bezier(0.86,  0,     0.07,  1    ),
-    
-    // SINE
+    // Sine
     'in-sine'      : cubic-bezier(0.47,  0,     0.745, 0.715),
     'out-sine'     : cubic-bezier(0.39,  0.575, 0.565, 1    ),
     'in-out-sine'  : cubic-bezier(0.445, 0.05,  0.55,  0.95 ),
@@ -199,7 +185,6 @@ $display: map.merge(
   $display
 );
 
-// SPACINGS
 $margin: () !default;
 $margin: map.merge(
   (
@@ -227,7 +212,6 @@ $margin-stack: map.merge(
   $margin-stack
 );
 
-// NEGATIVE MARGINS
 $margin-negative: () !default;
 $margin-negative: map.merge(
   (
@@ -459,12 +443,10 @@ $width: map.merge(
     '48' : 12rem,   // 192px
     '56' : 14rem,   // 224px
     '64' : 16rem,   // 256px
-  
-    // MISC
+    // Misc
     'auto' : auto,
     'px'   : 1px,
-  
-    // FRACTIONS
+    // Fractions
     '1\\/2'   : 50%,
     '1\\/3'   : 33.33333%,
     '2\\/3'   : 66.66667%,
@@ -490,9 +472,8 @@ $width: map.merge(
     '8\\/12'  : 66.66667%,
     '9\\/12'  : 75%,
     '10\\/12' : 83.33333%,
-    '11\\/12' : 91.66667%,
-  
-    // SPECIAL
+    '11\\/12' : 91.66667%,  
+    // Special
     'full'   : 100%,
     'screen' : 100vw
   ),
@@ -824,7 +805,6 @@ $font-weight: map.merge(
   $font-weight
 );
 
-
 $font-feature-settings: () !default;
 $font-feature-settings: map.merge(
   (
@@ -907,7 +887,7 @@ $stroke-width: map.merge(
   $stroke-width
 );
 
-// ENABLE/DISABLE VARIANTS
+// Enable/Disable Variants
 $variants: () !default;
 $variants: map.merge(
   (
