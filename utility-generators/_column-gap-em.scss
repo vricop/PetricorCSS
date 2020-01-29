@@ -7,7 +7,7 @@
 
   // Generate `em` variants for `column-gap` utility
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}column-gap#{$modifier}#{$state} {
+    .#{$prefix}column-gap#{$modifier}\(em\)#{$state} {
       column-gap: $value;
     }
   }

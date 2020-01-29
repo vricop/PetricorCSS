@@ -13,6 +13,7 @@
 @include utility.background-size;
 @include utility.border-collapse;
 @include utility.border-color;
+@include utility.border-radius-em;
 @include utility.border-radius;
 @include utility.border-style;
 @include utility.border-width-em;
@@ -36,6 +37,7 @@
 @include utility.float;
 @include utility.font-family;
 @include utility.font-feature-settings;
+@include utility.font-size-em;
 @include utility.font-size;
 @include utility.font-smoothing;
 @include utility.font-style;

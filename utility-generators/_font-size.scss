@@ -9,11 +9,4 @@
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}text#{$modifier}#{$state} { font-size: $value; }
   }
-  
-  $args-em: ($font-size-em, map.get($variants, 'font-size-em'), $screen);
-
-  // Generate `rem` variants for `font-size` utility
-  @include build-configurable-variants($args-em...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}text#{$modifier}\[em\]#{$state} { font-size: $value; }
-  }
 }

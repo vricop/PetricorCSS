@@ -10,21 +10,21 @@
   $args_ch: ($padding-em, map.get($variants, 'padding-em'), $screen);
   
   @include build-configurable-variants($args_ch...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}p#{$modifier}#{$state} { padding: $value; }
+    .#{$prefix}p#{$modifier}\(em\)#{$state} { padding: $value; }
 
-    .#{$prefix}px#{$modifier}#{$state} { 
+    .#{$prefix}px#{$modifier}\(em\)#{$state} { 
       padding-left:  $value;
       padding-right: $value;
     }
 
-    .#{$prefix}py#{$modifier}#{$state} { 
+    .#{$prefix}py#{$modifier}\(em\)#{$state} { 
       padding-top:    $value;
       padding-bottom: $value;
     }
 
-    .#{$prefix}pt#{$modifier}#{$state} { padding-top:    $value; }
-    .#{$prefix}pr#{$modifier}#{$state} { padding-right:  $value; }
-    .#{$prefix}pb#{$modifier}#{$state} { padding-bottom: $value; }
-    .#{$prefix}pl#{$modifier}#{$state} { padding-left:   $value; }
+    .#{$prefix}pt#{$modifier}\(em\)#{$state} { padding-top:    $value; }
+    .#{$prefix}pr#{$modifier}\(em\)#{$state} { padding-right:  $value; }
+    .#{$prefix}pb#{$modifier}\(em\)#{$state} { padding-bottom: $value; }
+    .#{$prefix}pl#{$modifier}\(em\)#{$state} { padding-left:   $value; }
   };
 }

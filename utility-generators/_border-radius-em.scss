@@ -1,0 +1,37 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin border-radius-em($screen: null) {
+  $args: ($border-radius-em, map.get($variants, 'border-radius-em'), $screen);
+
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}rounded#{$modifier}\(em\)#{$state} { border-radius: $value; }
+
+    .#{$prefix}rounded-t#{$modifier}\(em\)#{$state} {
+      border-top-left-radius:  $value;
+      border-top-right-radius: $value;
+    }
+
+    .#{$prefix}rounded-r#{$modifier}\(em\)#{$state} {
+      border-top-right-radius:    $value;
+      border-bottom-right-radius: $value;
+    }
+
+    .#{$prefix}rounded-b#{$modifier}\(em\)#{$state} {
+      border-bottom-right-radius: $value;
+      border-bottom-left-radius:  $value;
+    }
+
+    .#{$prefix}rounded-l#{$modifier}\(em\)#{$state} {
+      border-bottom-left-radius: $value;
+      border-top-left-radius:    $value;
+    }
+
+    .#{$prefix}rounded-tl#{$modifier}\(em\)#{$state} { border-top-left-radius:     $value; }
+    .#{$prefix}rounded-tr#{$modifier}\(em\)#{$state} { border-top-right-radius:    $value; }
+    .#{$prefix}rounded-tl#{$modifier}\(em\)#{$state} { border-top-left-radius:     $value; }
+    .#{$prefix}rounded-br#{$modifier}\(em\)#{$state} { border-bottom-right-radius: $value; }
+    .#{$prefix}rounded-bl#{$modifier}\(em\)#{$state} { border-bottom-left-radius:  $value; }
+  }
+}

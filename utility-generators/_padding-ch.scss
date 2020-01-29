@@ -9,12 +9,12 @@
   $args_ch: ($padding-ch, map.get($variants, 'padding-ch'), $screen);
   
   @include build-configurable-variants($args_ch...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}px#{$modifier}#{$state} { 
+    .#{$prefix}px#{$modifier}\(ch\)#{$state} { 
       padding-left:  $value;
       padding-right: $value;
     }
 
-    .#{$prefix}pr#{$modifier}#{$state} { padding-right:  $value; }
-    .#{$prefix}pl#{$modifier}#{$state} { padding-left:   $value; }
+    .#{$prefix}pr#{$modifier}\(ch\)#{$state} { padding-right:  $value; }
+    .#{$prefix}pl#{$modifier}\(ch\)#{$state} { padding-left:   $value; }
   };
 }

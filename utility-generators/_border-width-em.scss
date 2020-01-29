@@ -6,10 +6,10 @@
   $args: ($border-width-em, map.get($variants, 'border-width-em'), $screen);
   
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}border#{$modifier}#{$state}   { border-width:        $value; }
-    .#{$prefix}border-t#{$modifier}#{$state} { border-top-width:    $value; }
-    .#{$prefix}border-r#{$modifier}#{$state} { border-right-width:  $value; }
-    .#{$prefix}border-b#{$modifier}#{$state} { border-bottom-width: $value; }
-    .#{$prefix}border-l#{$modifier}#{$state} { border-left-width:   $value; }
+    .#{$prefix}border#{$modifier}\(em\)#{$state}   { border-width:        $value; }
+    .#{$prefix}border-t#{$modifier}\(em\)#{$state} { border-top-width:    $value; }
+    .#{$prefix}border-r#{$modifier}\(em\)#{$state} { border-right-width:  $value; }
+    .#{$prefix}border-b#{$modifier}\(em\)#{$state} { border-bottom-width: $value; }
+    .#{$prefix}border-l#{$modifier}\(em\)#{$state} { border-left-width:   $value; }
   };
 }

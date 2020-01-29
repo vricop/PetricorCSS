@@ -1,0 +1,12 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin font-size-em($screen: null) {
+  $args: ($font-size-em, map.get($variants, 'font-size-em'), $screen);
+
+  // Generate `em` variants for `font-size` utility
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}text#{$modifier}\(em\)#{$state} { font-size: $value; }
+  }
+}
