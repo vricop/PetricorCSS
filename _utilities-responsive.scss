@@ -67,6 +67,7 @@
     @include utility.overflow($screen);
     @include utility.padding-ch($screen);
     @include utility.padding-em($screen);
+    @include utility.padding-ex($screen);
     @include utility.padding($screen);
     @include utility.pointer-events($screen);
     @include utility.position($screen);

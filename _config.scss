@@ -246,7 +246,6 @@ $margin-negative: map.merge(
   $margin-negative
 );
 
-// PADDINGS
 $padding: () !default;
 $padding: map.merge(
   (
@@ -266,10 +265,6 @@ $padding: map.merge(
   $padding
 );
 
-// EM PADDINGS
-//
-// Ems are great for creating scalable UI elements. By increasing the font-size
-// in the parent element, children elements using ems will resize automatically.
 $padding-em: () !default;
 $padding-em: map.merge(
   (
@@ -288,10 +283,6 @@ $padding-em: map.merge(
   $padding-em
 );
 
-// CH PADDINGS (ONLY FOR X AXIS)
-// 
-// Ch units are based on the the advance measure (width), of the glyph "0".
-// They give you more granular control for small ui components.
 $padding-ch: () !default;
 $padding-ch: map.merge(
   (
@@ -302,6 +293,18 @@ $padding-ch: map.merge(
     '5': 3ch,
   ),
   $padding-ch
+);
+
+$padding-ex: () !default;
+$padding-ex: map.merge(
+  (
+    '1': 1ex,
+    '2': 1.5ex,
+    '3': 2ex,
+    '4': 2.5ex,
+    '5': 3ex,
+  ),
+  $padding-ex
 );
 
 $translate: map.merge(map.remove($margin, 'auto'), $margin-negative) !default;
@@ -974,6 +977,7 @@ $variants: map.merge(
     'overflow'              : true,
     'padding-ch'            : true,
     'padding-em'            : true,
+    'padding-ex'            : true,
     'padding'               : [responsive],
     'pointer-events'        : true,
     'position'              : true,
