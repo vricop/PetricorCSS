@@ -2,22 +2,22 @@
 @use 'sass:map';
 @use 'sass:meta';
 
-@mixin container($screen: null) {
+@mixin container($breakpoint: null) {
   $variants: map.get($variants, 'container');
   
   @if $variants == true {
     // DEFAULT
-    @if $screen == null {
+    @if $breakpoint == null {
       .container { width: 100%; }
     }
     
     // RESPONSIVE
-    @if meta.type-of($screen) == map {
-      $min: map.has-key($screen, 'min');
-      $max: map.has-key($screen, 'max');
+    @if meta.type-of($breakpoint) == map {
+      $min: map.has-key($breakpoint, 'min');
+      $max: map.has-key($breakpoint, 'max');
   
       @if $min and not $max {
-        .container { max-width: map.get($screen, 'min'); }
+        .container { max-width: map.get($breakpoint, 'min'); }
       }
     }
   }
