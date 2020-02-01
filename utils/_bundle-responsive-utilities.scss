@@ -1,7 +1,6 @@
 @use 'sass:map';
 @use 'sass:list';
 @use 'sass:meta';
-@use 'mediaquery' as *;
 
 @mixin bundle-responsive-utilities($breakpoints) {
   @each $screen, $map in $breakpoints {
