@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'utils/get-min-width-screens' as *;
 
 $breakpoints: () !default;
 $breakpoints: map.merge(
@@ -496,6 +497,12 @@ $max-width: map.merge(
     'full' : 100%
   ),
   $max-width
+);
+
+// Add `min-width` screens from `$breakpoints`
+$max-width: map.merge(
+  $max-width,
+  get-min-width-screens($breakpoints)
 );
 
 $min-width: () !default;
