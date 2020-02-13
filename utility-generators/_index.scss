@@ -11,17 +11,13 @@
 @forward 'background-size';
 @forward 'border-collapse';
 @forward 'border-color';
-@forward 'border-radius-em';
 @forward 'border-radius';
 @forward 'border-style';
-@forward 'border-width-em';
 @forward 'border-width';
 @forward 'box-shadow';
 @forward 'caret-color';
 @forward 'clearfix';
 @forward 'column-count';
-@forward 'column-gap-ch';
-@forward 'column-gap-em';
 @forward 'column-gap';
 @forward 'container';
 @forward 'cursor';
@@ -35,7 +31,6 @@
 @forward 'float';
 @forward 'font-family';
 @forward 'font-feature-settings';
-@forward 'font-size-em';
 @forward 'font-size';
 @forward 'font-smoothing';
 @forward 'font-style';
@@ -49,7 +44,6 @@
 @forward 'link-stretch';
 @forward 'list-style-position';
 @forward 'list-style-type';
-@forward 'margin-negative';
 @forward 'margin-stack';
 @forward 'margin';
 @forward 'max-height';
@@ -62,9 +56,6 @@
 @forward 'order';
 @forward 'outline';
 @forward 'overflow';
-@forward 'padding-ch';
-@forward 'padding-em';
-@forward 'padding-ex';
 @forward 'padding';
 @forward 'pointer-events';
 @forward 'position';

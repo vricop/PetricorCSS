@@ -13,17 +13,13 @@
 @include utility.background-size;
 @include utility.border-collapse;
 @include utility.border-color;
-@include utility.border-radius-em;
 @include utility.border-radius;
 @include utility.border-style;
-@include utility.border-width-em;
 @include utility.border-width;
 @include utility.box-shadow;
 @include utility.caret-color;
 @include utility.clearfix;
 @include utility.column-count;
-@include utility.column-gap-ch;
-@include utility.column-gap-em;
 @include utility.column-gap;
 @include utility.container;
 @include utility.cursor;
@@ -37,7 +33,6 @@
 @include utility.float;
 @include utility.font-family;
 @include utility.font-feature-settings;
-@include utility.font-size-em;
 @include utility.font-size;
 @include utility.font-smoothing;
 @include utility.font-style;
@@ -51,7 +46,6 @@
 @include utility.link-stretch;
 @include utility.list-style-position;
 @include utility.list-style-type;
-@include utility.margin-negative;
 @include utility.margin-stack;
 @include utility.margin;
 @include utility.max-height;
@@ -64,9 +58,6 @@
 @include utility.order;
 @include utility.outline;
 @include utility.overflow;
-@include utility.padding-ch;
-@include utility.padding-em;
-@include utility.padding-ex;
 @include utility.padding;
 @include utility.pointer-events;
 @include utility.position;

@@ -15,16 +15,12 @@
   @include utility.background-size($screen);
   @include utility.border-collapse($screen);
   @include utility.border-color($screen);
-  @include utility.border-radius-em($screen);
   @include utility.border-radius($screen);
   @include utility.border-style($screen);
-  @include utility.border-width-em($screen);
   @include utility.border-width($screen);
   @include utility.box-shadow($screen);
   @include utility.caret-color($screen);
   @include utility.column-count($screen);
-  @include utility.column-gap-ch($screen);
-  @include utility.column-gap-em($screen);
   @include utility.column-gap($screen);
   @include utility.container($breakpoint);
   @include utility.cursor($screen);
@@ -38,7 +34,6 @@
   @include utility.float($screen);
   @include utility.font-family($screen);
   @include utility.font-feature-settings($screen);
-  @include utility.font-size-em($screen);
   @include utility.font-size($screen);
   @include utility.font-smoothing($screen);
   @include utility.font-style($screen);
@@ -51,7 +46,6 @@
   @include utility.line-height($screen);
   @include utility.list-style-position($screen);
   @include utility.list-style-type($screen);
-  @include utility.margin-negative($screen);
   @include utility.margin-stack($screen);
   @include utility.margin($screen);
   @include utility.max-height($screen);
@@ -64,9 +58,6 @@
   @include utility.order($screen);
   @include utility.outline($screen);
   @include utility.overflow($screen);
-  @include utility.padding-ch($screen);
-  @include utility.padding-em($screen);
-  @include utility.padding-ex($screen);
   @include utility.padding($screen);
   @include utility.pointer-events($screen);
   @include utility.position($screen);
