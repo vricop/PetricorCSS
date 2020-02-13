@@ -23,7 +23,7 @@
           @content($screen, $map);
         }
       } @else if $raw != null {
-        @media #{$raw} {
+        @#{$raw} {
           @content($screen, $map);
         }
       }
