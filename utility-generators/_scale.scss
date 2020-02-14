@@ -10,6 +10,14 @@
       --transform-scale-x: #{$value};
       --transform-scale-y: #{$value};
     }
+    
+    .#{$prefix}scale-x#{$modifier}#{$state} {
+      --transform-scale-x: #{$value};
+    }
+    
+    .#{$prefix}scale-y#{$modifier}#{$state} {
+      --transform-scale-y: #{$value};
+    }
   }
 }
 
