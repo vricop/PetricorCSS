@@ -172,16 +172,21 @@ $transition-function: map.merge(
 $display: () !default;
 $display: map.merge(
   (
-    'hidden'       : none,
     'block'        : block,
+    'caption'      : table-caption,
     'flex'         : flex,
     'grid'         : grid,
+    'hidden'       : none,
     'inline-block' : inline-block,
     'inline-flex'  : inline-flex,
     'inline-grid'  : inline-grid,
     'inline'       : inline,
-    'table-cell'   : table-cell,
     'table'        : table,
+    'tbody'        : table-row-group,
+    'td'           : table-cell,
+    'tfoot'        : table-footer-group,
+    'thead'        : table-header-group,
+    'tr'           : table-row,
   ),
   $display
 );
