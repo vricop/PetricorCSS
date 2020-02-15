@@ -188,7 +188,6 @@ $display: map.merge(
 
 $spacing: () !default;
 $spacing: map.merge(
-  $spacing,
   (
     'px': 1px,
     '0' : 0,
@@ -209,7 +208,8 @@ $spacing: map.merge(
     '48': 12rem,
     '56': 14rem,
     '64': 16rem,
-  )
+  ),
+  $spacing
 );
 
 $margin: () !default;
@@ -341,7 +341,9 @@ $aspect-ratio: map.merge(
 );
 
 $width: () !default;
+$width: map.merge($width, $spacing);
 $width: map.merge(
+  $width,
   (
     // Misc
     'auto' : auto,
@@ -375,8 +377,13 @@ $width: map.merge(
     // Special
     'full'   : 100%,
     'screen' : 100vw
-  ),
-  $width
+  )
+);
+
+$flex-basis: () !default;
+$flex-basis: map.merge(
+  $width,
+  $spacing
 );
 
 $width: map.merge($width, $spacing);
@@ -415,17 +422,16 @@ $min-width: map.merge(
 );
 
 $height: () !default;
+$height: map.merge($height, $spacing);
 $height: map.merge(
+  $height,
   (
     'auto'   : auto,
     'full'   : 100%,
     'half'   : 50%,
     'screen' : 100vh,
-  ),
-  $height
+  )
 );
-
-$height: map.merge($height, $spacing);
 
 $max-height: () !default;
 $max-height: map.merge(
@@ -764,6 +770,7 @@ $variants: map.merge(
     'cursor'                : true,
     'display'               : [responsive],
     'fill'                  : true,
+    'flex-basis'            : true,
     'flex-direction'        : [responsive],
     'flex-grow'             : true,
     'flex-shrink'           : true,

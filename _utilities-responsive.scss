@@ -26,6 +26,7 @@
   @include utility.cursor($screen);
   @include utility.display($screen);
   @include utility.fill($screen);
+  @include utility.flex-basis($breakpoint);
   @include utility.flex-direction($screen);
   @include utility.flex-grow($screen);
   @include utility.flex-shrink($screen);
