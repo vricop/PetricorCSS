@@ -6,6 +6,11 @@
   $args: ($inset, map.get($variants, 'inset'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    // The base class will contain a dash for negative sets only.
+    @if ($value != 'auto' and $value < 0) {
+      $prefix: '#{$prefix}-';
+    }
+
     // Mimicking the `inset` property
     //
     // `inset` is a shorthand property for `top`, `right`, `bottom` and `left`
