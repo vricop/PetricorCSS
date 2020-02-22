@@ -7,6 +7,11 @@
 
   // Default margin variants
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    // If value is negative add `-` before margin utility base class.
+    @if $value != 'auto' and $value < 0 {
+      $prefix: '#{$prefix}-';
+    }
+
     .#{$prefix}m#{$modifier}#{$state}  { margin: $value; }
     
     .#{$prefix}mx#{$modifier}#{$state} { 
@@ -23,27 +28,5 @@
     .#{$prefix}mr#{$modifier}#{$state} { margin-right:  $value };
     .#{$prefix}mb#{$modifier}#{$state} { margin-bottom: $value };
     .#{$prefix}ml#{$modifier}#{$state} { margin-left:   $value };
-  }
-
-  $args-negative: ($margin-negative, map.get($variants, 'margin-negative'), $screen);
-
-  // Negative margin variants
-  @include build-configurable-variants($args-negative...) using ($prefix, $modifier, $state, $value) {
-    .-#{$prefix}m#{$modifier}#{$state}  { margin: -$value; }
-    
-    .-#{$prefix}mx#{$modifier}#{$state} { 
-      margin-left:  -$value;
-      margin-right: -$value;
-    };
-
-    .-#{$prefix}my#{$modifier}#{$state} { 
-      margin-top:    -$value;
-      margin-bottom: -$value;
-    };
-
-    .-#{$prefix}mt#{$modifier}#{$state} { margin-top:    -$value };
-    .-#{$prefix}mr#{$modifier}#{$state} { margin-right:  -$value };
-    .-#{$prefix}mb#{$modifier}#{$state} { margin-bottom: -$value };
-    .-#{$prefix}ml#{$modifier}#{$state} { margin-left:   -$value };
   }
 }

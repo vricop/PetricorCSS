@@ -6,14 +6,16 @@
   $args: ($translate, map.get($variants, 'translate'), $screen);
   
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    // The base class will contain a dash for negative sets only.
-    $base-class: if($value < 0, '-translate', 'translate');
+    // If value is negative add `-` before `translate` utility base class.
+    @if $value < 0 {
+      $prefix: '#{$prefix}-';
+    }
 
-    .#{$prefix}#{$base-class}-y#{$modifier}#{$state} {
+    .#{$prefix}translate-y#{$modifier}#{$state} {
       --transform-translate-y: #{$value};
     }
     
-    .#{$prefix}#{$base-class}-x#{$modifier}#{$state} {
+    .#{$prefix}translate-x#{$modifier}#{$state} {
       --transform-translate-x: #{$value};
     }
   }

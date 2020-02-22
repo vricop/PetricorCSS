@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use 'sass:meta';
+
+@function negative($collection) {
+  $result: ();
+  
+  @if type-of($collection) == map {
+    @each $modifier, $value in $collection {
+      @if type-of($value) == number {
+        $result: map-merge(
+          $result,
+          ('-#{$modifier}': $value * -1)
+        );
+      }
+    }
+  }
+  
+  @return $result;
+}

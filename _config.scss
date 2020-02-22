@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use 'utils/get-min-width-screens' as *;
+@use 'utils/negative' as *; 
 
 $breakpoints: () !default;
 $breakpoints: map.merge(
@@ -220,18 +221,18 @@ $spacing: map.merge(
 
 $margin: () !default;
 $margin: map.merge(
-  map.merge(
-    ('auto': auto),
-    $margin
-  ),
-
-  $spacing
+  ('auto': auto),
+  $margin
 );
 
-$margin-negative: () !default;
-$margin-negative: map.merge(
-  $margin-negative,
-  $spacing
+$margin: map.merge(
+  $spacing,
+  $margin
+);
+
+$margin: map.merge(
+  negative($spacing),
+  $margin
 );
 
 // Stack margins (lobotomized owl)
@@ -248,17 +249,25 @@ $padding: map.merge(
 );
 
 $translate: () !default;
+
 $translate: map.merge(
-  map.merge(
-    (
-      '-full'  : -100%,
-      '-1\\/2' : -50%,
-      '1\\/2'  : 50%,
-      'full'   : 100%,
-    ),
-    $translate
+  (
+    '-full'  : -100%,
+    '-1\\/2' : -50%,
+    '1\\/2'  : 50%,
+    'full'   : 100%,
   ),
-  $spacing
+  $translate
+);
+
+$translate: map.merge(
+  $spacing,
+  $translate
+);
+
+$translate: map.merge(
+  negative($spacing),
+  $translate
 );
 
 $transform-origin: () !default;
@@ -807,7 +816,6 @@ $variants: map.merge(
     'link-stretch'          : true,
     'list-style-position'   : true,
     'list-style-type'       : true,
-    'margin-negative'       : [responsive],
     'margin-stack'          : 'responsive',
     'margin'                : [responsive],
     'max-height'            : true,
