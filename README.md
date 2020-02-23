@@ -22,7 +22,7 @@ doing by just looking at them. Your components will be _self-descriptive_.
 
 As a general rule the majority of classes have a specificity as low as `0,0,1,0`.
 Specificity wars with `!important` won’t bother you anymore. There are
-some fewer exceptions where it does makes sense to take advantage of the cascade.
+some fewer exceptions where it does make sense to take advantage of the cascade.
 For those specific cases the specificity will increase up to `0,0,2,0`.
 
 ### Made to be customized
