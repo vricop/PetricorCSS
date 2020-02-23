@@ -34,7 +34,7 @@
 
   // Default margin variants
   @include build-configurable-variants($args-stack...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}stack\:mt#{$modifier} > * + *  { margin-top:  $value; }
-    .#{$prefix}stack\:ml#{$modifier} > * + *  { margin-left: $value; }
+    .#{$prefix}stack\:mt#{$modifier} > * + * { margin-top:  $value; }
+    .#{$prefix}stack\:ml#{$modifier} > * + * { margin-left: $value; }
   }
 }
