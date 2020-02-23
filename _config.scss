@@ -816,7 +816,7 @@ $variants: map.merge(
     'link-stretch'          : true,
     'list-style-position'   : true,
     'list-style-type'       : true,
-    'margin-stack'          : 'responsive',
+    'margin-stack'          : [responsive],
     'margin'                : [responsive],
     'max-height'            : true,
     'max-width'             : [responsive],

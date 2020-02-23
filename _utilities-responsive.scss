@@ -47,7 +47,6 @@
   @include utility.line-height($screen);
   @include utility.list-style-position($screen);
   @include utility.list-style-type($screen);
-  @include utility.margin-stack($screen);
   @include utility.margin($screen);
   @include utility.max-height($screen);
   @include utility.max-width($screen);

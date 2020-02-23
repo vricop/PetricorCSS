@@ -29,4 +29,12 @@
     .#{$prefix}mb#{$modifier}#{$state} { margin-bottom: $value };
     .#{$prefix}ml#{$modifier}#{$state} { margin-left:   $value };
   }
+
+  $args-stack: ($margin-stack, map.get($variants, 'margin-stack'), $screen);
+
+  // Default margin variants
+  @include build-configurable-variants($args-stack...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}stack\:mt#{$modifier} > * + *  { margin-top:  $value; }
+    .#{$prefix}stack\:ml#{$modifier} > * + *  { margin-left: $value; }
+  }
 }
