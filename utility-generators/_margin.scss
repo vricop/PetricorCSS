@@ -5,7 +5,7 @@
 @mixin margin($screen: null) {
   $args: ($margin, map.get($variants, 'margin'), $screen);
 
-  // Default margin variants
+  // Default variants
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     // If value is negative add `-` before margin utility base class.
     @if $value != 'auto' and $value < 0 {
@@ -32,7 +32,7 @@
 
   $args-stack: ($margin-stack, map.get($variants, 'margin-stack'), $screen);
 
-  // Default margin variants
+  // Stack variants
   @include build-configurable-variants($args-stack...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}stack\:mt#{$modifier} > * + * { margin-top:  $value; }
     .#{$prefix}stack\:ml#{$modifier} > * + * { margin-left: $value; }
