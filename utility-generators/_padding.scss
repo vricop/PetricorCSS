@@ -5,7 +5,6 @@
 @mixin padding($screen: null) {
   $args: ($padding, map.get($variants, 'padding'), $screen);
   
-  // Generate default (`rem`) utility variants
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}p#{$modifier}#{$state} { padding: $value; }
 
