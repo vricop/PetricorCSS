@@ -137,6 +137,37 @@ video {
   -webkit-box-orient: vertical;
 }
 
+// Composable transform utility preset
+//
+// This technique uses custom properties with stateless default values. It makes
+// working with transform utilities more intuitive —no need for extra classes.
+// The attribute selectors set these stateless defaults that can be overwritten
+// by `scale-{size}`, `{-?}skew-{axis}-{deg}`, `{-?}translate-{axis}-{size}` and
+// `{-?}rotate-{deg}` utilities.
+// 
+// Inspired by Tailwind: https://github.com/tailwindcss/tailwindcss/pull/1272
+[class*=scale-],
+[class*=translate-x-],
+[class*=translate-y-],
+[class*=skew-x-],
+[class*=skew-y-],
+[class*=rotate-] {
+ --transform-translate-x: 0;
+ --transform-translate-y: 0;
+ --transform-rotate: 0;
+ --transform-skew-x: 0;
+ --transform-skew-y: 0;
+ --transform-scale-x: 1;
+ --transform-scale-y: 1;
+ transform: translateX(var(--transform-translate-x))
+            translateY(var(--transform-translate-y))
+            rotate(var(--transform-rotate))
+            skewX(var(--transform-skew-x))
+            skewY(var(--transform-skew-y))
+            scaleX(var(--transform-scale-x))
+            scaleY(var(--transform-scale-y))
+}
+
 /**
  * Pseudo-class presets for `before` and `after` variant utilites 
  *

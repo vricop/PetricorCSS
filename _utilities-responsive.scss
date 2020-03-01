@@ -62,6 +62,9 @@
   @include utility.pointer-events($screen);
   @include utility.position($screen);
   @include utility.resize($screen);
+  @include utility.rotate($screen);
+  @include utility.scale($screen);
+  @include utility.skew($screen);
   @include utility.stroke-width($screen);
   @include utility.stroke($screen);
   @include utility.table-layout($screen);
@@ -73,6 +76,7 @@
   @include utility.transition-duration($screen);
   @include utility.transition-property($screen);
   @include utility.transition-timing-function($screen);
+  @include utility.translate($screen);
   @include utility.user-select($screen);
   @include utility.vertical-align($screen);
   @include utility.visibility($screen);
@@ -80,11 +84,4 @@
   @include utility.width($screen);
   @include utility.word-break($screen);
   @include utility.z-index($screen);
-  
-  // Don't touch the order of these utilities
-  @include utility.transform($screen);
-  @include utility.rotate($screen);
-  @include utility.scale($screen);
-  @include utility.skew($screen);
-  @include utility.translate($screen);
 }

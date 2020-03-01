@@ -62,6 +62,9 @@
 @include utility.pointer-events;
 @include utility.position;
 @include utility.resize;
+@include utility.rotate;
+@include utility.scale;
+@include utility.skew;
 @include utility.stroke-width;
 @include utility.stroke;
 @include utility.table-layout;
@@ -69,10 +72,12 @@
 @include utility.text-color;
 @include utility.text-decoration;
 @include utility.text-transform;
+@include utility.transform-origin;
 @include utility.transition-delay;
 @include utility.transition-duration;
 @include utility.transition-property;
 @include utility.transition-timing-function;
+@include utility.translate;
 @include utility.user-select;
 @include utility.vertical-align;
 @include utility.visibility;
@@ -80,12 +85,3 @@
 @include utility.width;
 @include utility.word-break;
 @include utility.z-index;
-
-// Keep this order (transform on top) so the others can
-// overwrite custom properties defined in `transform` utility
-@include utility.transform-origin;
-@include utility.transform;
-@include utility.rotate;
-@include utility.scale;
-@include utility.skew;
-@include utility.translate;
