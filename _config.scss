@@ -113,12 +113,13 @@ $transition-delay: $transition-duration;
 $transition-property: () !default;
 $transition-property: map.merge(
   (
-    'all'     : all,
-    'none'    : none,
-    'bg'      : background-color,
-    'text'    : color,
-    'opacity' : opacity,
-    'shadow'  : box-shadow,
+    'all'      : all,
+    'colors'   : (background-color, border-color, color, fill, stroke),
+    'default'  : (background-color, border-color, color, fill, stroke, opacity, box-shadow, transform),
+    'none'     : none,
+    'opacity'  : opacity,
+    'shadow'   : box-shadow,
+    'transform': transform,
   ),
   $transition-property
 );
