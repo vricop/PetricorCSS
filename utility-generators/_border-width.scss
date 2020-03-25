@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin border-width($screen: null) {
-    // Stack variants
+  // Stack variants
   $args-stack: ($border-width-stack, map.get($variants, 'border-width-stack'), $screen);
   
   @include build-configurable-variants($args-stack...) using ($prefix, $modifier, $state, $value) {

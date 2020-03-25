@@ -3,16 +3,6 @@
 @use 'sass:map';
 
 @mixin border-style($screen: null) {
-  // Default variants
-  $args: (map.get($variants, 'border-style'), $screen);
-
-  @include build-non-configurable-variants($args...) using ($prefix, $state) {
-    .#{$prefix}border-solid#{$state}  { border-style: solid;  }
-    .#{$prefix}border-dashed#{$state} { border-style: dashed; }
-    .#{$prefix}border-dotted#{$state} { border-style: dotted; }
-    .#{$prefix}border-none#{$state}   { border-style: none;   }
-  }
-
   // Stack variants
   $args-stack: (map.get($variants, 'border-style'), $screen);
 
@@ -21,5 +11,15 @@
     .#{$prefix}stack\:border-dashed > * + * { border-style: dashed; }
     .#{$prefix}stack\:border-dotted > * + * { border-style: dotted; }
     .#{$prefix}stack\:border-none   > * + * { border-style: none;   }
+  }
+
+  // Default variants
+  $args: (map.get($variants, 'border-style'), $screen);
+
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
+    .#{$prefix}border-solid#{$state}  { border-style: solid;  }
+    .#{$prefix}border-dashed#{$state} { border-style: dashed; }
+    .#{$prefix}border-dotted#{$state} { border-style: dotted; }
+    .#{$prefix}border-none#{$state}   { border-style: none;   }
   }
 }
