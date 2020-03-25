@@ -146,12 +146,7 @@ video {
 // `{-?}rotate-{deg}` utilities.
 // 
 // Inspired by Tailwind: https://github.com/tailwindcss/tailwindcss/pull/1272
-[class*=scale-],
-[class*=translate-x-],
-[class*=translate-y-],
-[class*=skew-x-],
-[class*=skew-y-],
-[class*=rotate-] {
+.transform {
  --transform-translate-x: 0;
  --transform-translate-y: 0;
  --transform-rotate: 0;
