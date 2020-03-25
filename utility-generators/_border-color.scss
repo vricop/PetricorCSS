@@ -3,9 +3,17 @@
 @use 'sass:map';
 
 @mixin border-color($screen: null) {
+  // Default variants
   $args: ($colors, map.get($variants, 'border-color'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}border#{$modifier}#{$state} { border-color: $value; }
+  };
+
+  // Stack variants
+  $args-stack: ($colors, map.get($variants, 'border-color'), $screen);
+
+  @include build-configurable-variants($args-stack...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}stack\:border#{$modifier} > * + * { border-color: $value; }
   };
 }

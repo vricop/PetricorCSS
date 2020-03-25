@@ -482,6 +482,12 @@ $border-width: map.merge(
   $border-width
 );
 
+$border-width-stack: () !default;
+$border-width-stack: map.merge(
+  $border-width,
+  $border-width-stack
+);
+
 $border-radius: () !default;
 $border-radius: map.merge(
   (
@@ -785,6 +791,7 @@ $variants: map.merge(
     'border-color'          : [hover],
     'border-radius'         : [responsive],
     'border-style'          : true,
+    'border-width-stack'    : false,
     'border-width'          : [responsive],
     'box-shadow'            : true,
     'caret-color'           : false,
