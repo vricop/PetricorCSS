@@ -4,6 +4,7 @@
   "description": "CSS/SCSS utility framework",
   "author": "Víctor Rico Penalba",
   "license": "GPL-3.0-or-later",
+  "petricorcss": "node_modules/petricorcss",
   "keywords": [
     "css",
     "utility-classes",

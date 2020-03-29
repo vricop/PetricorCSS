@@ -1,15 +1,11 @@
 @use '../config' as *;
-@use '../utils/build-non-configurable-variants' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin align-items($screen: null) {
-  $args: (map.get($variants, 'align-items'), $screen);
+  $args: ($align-items, map.get($variants, 'align-items'), $screen);
 
-  @include build-non-configurable-variants($args...) using ($prefix, $state) {
-    .#{$prefix}items-stretch#{$state}  { align-items: stretch;    }
-    .#{$prefix}items-start#{$state}    { align-items: flex-start; }
-    .#{$prefix}items-center#{$state}   { align-items: center;     }
-    .#{$prefix}items-end#{$state}      { align-items: flex-end;   }
-    .#{$prefix}items-baseline#{$state} { align-items: baseline;   }
-  };
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}items#{$modifier}#{$state} { align-items: $value; }
+  }
 }

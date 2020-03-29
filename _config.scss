@@ -536,6 +536,30 @@ $z-index: map.merge(
   $z-index
 );
 
+$align-items: () !default;
+$align-items: map.merge(
+  (
+    'baseline' : baseline,
+    'center'   : center,
+    'end'      : flex-end,
+    'start'    : flex-star,
+    'stretch'  : stretch,
+  ),
+  $align-items
+);
+
+$align-content: () !default;
+$align-content: map.merge(
+  (
+    'around'  : space-around,
+    'between' : space-between,
+    'center'  : center,
+    'end'     : flex-end,
+    'start'   : flex-start,
+  ),
+  $align-content
+);
+
 $order: () !default;
 $order: map.merge(
   (
