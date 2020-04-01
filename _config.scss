@@ -570,6 +570,21 @@ $grid-template-rows: map.merge(
   $grid-template-rows
 );
 
+$grid-row-start: () !default;
+$grid-row-start: map.merge(
+  (
+    '1' 	 : 1,
+    '2' 	 : 2,
+    '3' 	 : 3,
+    '4' 	 : 4,
+    '5' 	 : 5,
+    '6' 	 : 6,
+    '7' 	 : 7,
+    'auto' : auto
+  ),
+  $grid-row-start
+);
+
 $grid-row-end: () !default;
 $grid-row-end: map.merge(
   (
@@ -890,6 +905,7 @@ $variants: map.merge(
     'font-weight'           : true,
     'grid-auto-flow'        : [responsive],
     'grid-row-end'          : [responsive],
+    'grid-row-start'          : [responsive],
     'grid-template-columns' : [responsive],
     'grid-template-rows'    : [responsive],
     'height'                : [responsive],
