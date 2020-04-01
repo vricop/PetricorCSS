@@ -1,0 +1,14 @@
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin grid-auto-flow($screen: null) {
+  $args: (map.get($variants, 'grid-auto-flow'), $screen);
+
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
+    .#{$prefix}grid-flow-row#{$state}       { grid-auto-flow: row;       }
+    .#{$prefix}grid-flow-column#{$state}    { grid-auto-flow: column;    }
+    .#{$prefix}grid-flow-row-dense#{$state} { grid-auto-flow: row dense; }
+    .#{$prefix}grid-flow-dense#{$state}     { grid-auto-flow: dense;     }
+  }
+}

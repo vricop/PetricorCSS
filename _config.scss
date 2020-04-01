@@ -873,6 +873,7 @@ $variants: map.merge(
     'font-smoothing'        : true,
     'font-style'            : true,
     'font-weight'           : true,
+    'grid-auto-flow'        : [responsive],
     'grid-template-columns' : [responsive],
     'grid-template-rows'    : [responsive],
     'height'                : [responsive],
