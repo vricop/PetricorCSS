@@ -40,6 +40,7 @@
   @include utility.font-style($screen);
   @include utility.font-weight($screen);
   @include utility.grid-template-columns($screen);
+  @include utility.grid-template-rows($screen);
   @include utility.height($screen);
   @include utility.inset($screen);
   @include utility.justify-content($screen);
