@@ -34,5 +34,3 @@ transforms, etc.
 CSS authors can extend, modify, enable or disable utilities and variants.
 Customizing Petricor CSS is really easy and you can do so without modifying the
 core library. This way you can update to new versions without loosing your setup.
-
-**Note**: Docs will be released in version v0.8.0
