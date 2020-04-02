@@ -39,6 +39,7 @@
   @include utility.font-smoothing($screen);
   @include utility.font-style($screen);
   @include utility.font-weight($screen);
+  @include utility.gap($screen);
   @include utility.grid-auto-flow($screen);
   @include utility.grid-column-end($screen);
   @include utility.grid-column-start($screen);

@@ -676,6 +676,12 @@ $grid-row-end: map.merge(
   $grid-row-end
 );
 
+$gap: () !default;
+$gap: map.merge(
+  $gap,
+  $spacing
+);
+
 $align-items: () !default;
 $align-items: map.merge(
   (
@@ -979,6 +985,7 @@ $variants: map.merge(
     'font-smoothing'        : true,
     'font-style'            : true,
     'font-weight'           : true,
+    'gap'                   : [responsive],
     'grid-auto-flow'        : [responsive],
     'grid-column-end'       : [responsive],
     'grid-column-start'     : [responsive],
