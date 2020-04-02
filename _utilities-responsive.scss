@@ -40,6 +40,7 @@
   @include utility.font-style($screen);
   @include utility.font-weight($screen);
   @include utility.grid-auto-flow($screen);
+  @include utility.grid-column-end($screen);
   @include utility.grid-column-start($screen);
   @include utility.grid-column($screen);
   @include utility.grid-row-end($screen);
