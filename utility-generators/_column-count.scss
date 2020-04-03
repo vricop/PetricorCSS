@@ -2,7 +2,7 @@
 @use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
-@mixin column-count($screen: null) {
+@mixin col-count($screen: null) {
   $args: ($column-count, map.get($variants, 'column-count'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
