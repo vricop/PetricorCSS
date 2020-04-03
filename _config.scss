@@ -337,9 +337,21 @@ $column-count: map.merge(
   $column-count
 );
 
+$gap: () !default;
+$gap: map.merge(
+  $gap,
+  $spacing
+);
+
 $column-gap: () !default;
 $column-gap: map.merge(
   $column-gap,
+  $spacing
+);
+
+$row-gap: () !default;
+$row-gap: map.merge(
+  $row-gap,
   $spacing
 );
 
@@ -690,12 +702,6 @@ $grid-row-end: map.merge(
   $grid-row-end
 );
 
-$gap: () !default;
-$gap: map.merge(
-  $gap,
-  $spacing
-);
-
 $align-items: () !default;
 $align-items: map.merge(
   (
@@ -981,7 +987,7 @@ $variants: map.merge(
     'caret-color'           : false,
     'colors'                : [hover],
     'column-count'          : false,
-    'column-gap'            : false,
+    'column-gap'            : [responsive],
     'column-rule-color'     : false,
     'column-rule-style'     : false,
     'column-rule-width'     : false,
@@ -1038,6 +1044,7 @@ $variants: map.merge(
     'position'              : true,
     'resize'                : false,
     'rotate'                : true,
+    'row-gap'               : [responsive],
     'scale'                 : true,
     'skew'                  : true,
     'stroke-width'          : [responsive],

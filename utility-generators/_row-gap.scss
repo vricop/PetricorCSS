@@ -2,12 +2,13 @@
 @use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
-@mixin column-count($screen: null) {
-  $args: ($column-count, map.get($variants, 'column-count'), $screen);
+@mixin row-gap($screen: null) {
+  $args: ($row-gap, map.get($variants, 'row-gap'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}col-count#{$modifier}#{$state} {
-      column-count: $value;
+    .#{$prefix}row-gap#{$modifier}#{$state} {
+      grid-row-gap: $value;
+      row-gap: $value;
     }
   }
 }

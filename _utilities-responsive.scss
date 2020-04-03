@@ -76,6 +76,7 @@
   @include utility.position($screen);
   @include utility.resize($screen);
   @include utility.rotate($screen);
+  @include utility.row-gap($screen);
   @include utility.scale($screen);
   @include utility.skew($screen);
   @include utility.stroke-width($screen);
