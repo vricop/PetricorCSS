@@ -1,0 +1,13 @@
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin column-rule-style($screen: null) {
+  $args: (map.get($variants, 'column-rule-style'), $screen);
+
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
+    @each $style in (solid, dashed, dotted, none) {
+      .#{$prefix}col-rule-#{$style}#{$state} { column-rule-style: $style; }
+    }
+  }
+}

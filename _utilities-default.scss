@@ -21,6 +21,9 @@
 @include utility.clearfix;
 @include utility.column-count;
 @include utility.column-gap;
+@include utility.column-rule-color;
+@include utility.column-rule-style;
+@include utility.column-rule-width;
 @include utility.container;
 @include utility.cursor;
 @include utility.display;

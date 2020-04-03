@@ -22,6 +22,9 @@
   @include utility.caret-color($screen);
   @include utility.column-count($screen);
   @include utility.column-gap($screen);
+  @include utility.column-rule-color($screen);
+  @include utility.column-rule-style($screen);
+  @include utility.column-rule-width($screen);
   @include utility.container($breakpoint);
   @include utility.cursor($screen);
   @include utility.display($screen);

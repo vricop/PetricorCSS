@@ -331,6 +331,8 @@ $column-count: map.merge(
   (
     '2': 2,
     '3': 3,
+    '4': 4,
+    '5': 5,
   ),
   $column-count
 );
@@ -339,6 +341,18 @@ $column-gap: () !default;
 $column-gap: map.merge(
   $column-gap,
   $spacing
+);
+
+$column-rule-width: () !default;
+$column-rule-width: map.merge(
+  (
+    '0'       : 0,
+    'default' : 0.0625rem,
+    '2'       : 0.125rem,
+    '4'       : 0.25rem,
+    '8'       : 0.5rem,
+  ),
+  $column-rule-width
 );
 
 $aspect-ratio: () !default;
@@ -966,8 +980,11 @@ $variants: map.merge(
     'box-shadow'            : true,
     'caret-color'           : false,
     'colors'                : [hover],
-    'column-count'          : true,
-    'column-gap'            : true,
+    'column-count'          : false,
+    'column-gap'            : false,
+    'column-rule-color'     : false,
+    'column-rule-style'     : false,
+    'column-rule-width'     : false,
     'container'             : true,
     'cursor'                : true,
     'display'               : [responsive],
