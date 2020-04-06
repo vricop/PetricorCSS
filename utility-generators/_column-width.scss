@@ -2,12 +2,12 @@
 @use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
-@mixin column-count($screen: null) {
-  $args: ($column-count, map.get($variants, 'column-count'), $screen);
+@mixin column-width($screen: null) {
+  $args: ($column-width, map.get($variants, 'column-width'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}col-count#{$modifier}#{$state} {
-      column-count: $value;
+    .#{$prefix}col-w#{$modifier}#{$state} {
+      column-width: $value;
     }
   }
 }

@@ -329,12 +329,19 @@ $skew: map.merge(
 $column-count: () !default;
 $column-count: map.merge(
   (
-    '2': 2,
-    '3': 3,
-    '4': 4,
-    '5': 5,
+    'auto': auto,
+    '2'   : 2,
+    '3'   : 3,
+    '4'   : 4,
+    '5'   : 5,
   ),
   $column-count
+);
+
+$column-width: () !default;
+$column-width: map.merge(
+  $column-width,
+  $spacing
 );
 
 $gap: () !default;
@@ -991,6 +998,8 @@ $variants: map.merge(
     'column-rule-color'     : false,
     'column-rule-style'     : false,
     'column-rule-width'     : false,
+    'column-span'           : false,
+    'column-width'          : false,
     'container'             : true,
     'cursor'                : true,
     'display'               : [responsive],

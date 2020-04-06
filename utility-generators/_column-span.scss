@@ -1,0 +1,12 @@
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin column-span($screen: null) {
+  $args: (map.get($variants, 'column-span'), $screen);
+
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
+    .#{$prefix}col-span-all#{$state} {column-span: all; }
+    .#{$prefix}col-span-none#{$state} {column-span: none; }
+  }
+}

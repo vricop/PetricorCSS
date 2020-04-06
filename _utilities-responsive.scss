@@ -25,6 +25,8 @@
   @include utility.column-rule-color($screen);
   @include utility.column-rule-style($screen);
   @include utility.column-rule-width($screen);
+  @include utility.column-span($screen);
+  @include utility.column-width($screen);
   @include utility.container($breakpoint);
   @include utility.cursor($screen);
   @include utility.display($screen);
