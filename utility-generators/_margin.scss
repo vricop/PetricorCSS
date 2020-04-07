@@ -3,6 +3,14 @@
 @use 'sass:map';
 
 @mixin margin($screen: null) {
+  $args-stack: ($margin-stack, map.get($variants, 'margin-stack'), $screen);
+
+  // Stack variants
+  @include build-configurable-variants($args-stack...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}stack\:mt#{$modifier} > * + * { margin-top:  $value; }
+    .#{$prefix}stack\:ml#{$modifier} > * + * { margin-left: $value; }
+  }
+
   $args: ($margin, map.get($variants, 'margin'), $screen);
 
   // Default variants
@@ -28,13 +36,5 @@
     .#{$prefix}mr#{$modifier}#{$state} { margin-right:  $value };
     .#{$prefix}mb#{$modifier}#{$state} { margin-bottom: $value };
     .#{$prefix}ml#{$modifier}#{$state} { margin-left:   $value };
-  }
-
-  $args-stack: ($margin-stack, map.get($variants, 'margin-stack'), $screen);
-
-  // Stack variants
-  @include build-configurable-variants($args-stack...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}stack\:mt#{$modifier} > * + * { margin-top:  $value; }
-    .#{$prefix}stack\:ml#{$modifier} > * + * { margin-left: $value; }
   }
 }
