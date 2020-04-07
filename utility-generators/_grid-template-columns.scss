@@ -4,15 +4,8 @@
 
 @mixin grid-template-columns($screen: null) {
   $args: ($grid-template-columns, map.get($variants, 'grid-template-columns'), $screen);
-  $cols: null;
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    @if $value != none {
-      $cols: repeat($value, minmax(0, 1fr));
-    } @else {
-      $cols: $value;
-    }
-
-    .#{$prefix}grid-cols#{$modifier}#{$state} { grid-template-columns: $cols; }
+    .#{$prefix}grid-cols#{$modifier}#{$state} { grid-template-columns: $value; }
   }
 }

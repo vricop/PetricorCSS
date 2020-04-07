@@ -4,15 +4,8 @@
 
 @mixin grid-template-rows($screen: null) {
   $args: ($grid-template-rows, map.get($variants, 'grid-template-rows'), $screen);
-  $rows: null;
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    @if $value != none {
-      $rows: repeat($value, minmax(0, 1fr));
-    } @else {
-      $rows: $value;
-    }
-
-    .#{$prefix}grid-rows#{$modifier}#{$state} { grid-template-rows: $rows; }
+    .#{$prefix}grid-rows#{$modifier}#{$state} { grid-template-rows: $value; }
   }
 }
