@@ -3,17 +3,8 @@
 @use 'sass:map';
 
 @mixin margin($screen: null) {
-  $args-stack: ($margin-stack, map.get($variants, 'margin-stack'), $screen);
-
-  // Stack variants
-  @include build-configurable-variants($args-stack...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}stack\:mt#{$modifier} > * + * { margin-top:  $value; }
-    .#{$prefix}stack\:ml#{$modifier} > * + * { margin-left: $value; }
-  }
-
   $args: ($margin, map.get($variants, 'margin'), $screen);
 
-  // Default variants
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     // If value is negative add `-` before margin utility base class.
     @if $value != 'auto' and $value < 0 {

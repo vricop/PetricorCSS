@@ -237,9 +237,9 @@ $margin: map.merge(
 );
 
 // Stack margins (lobotomized owl)
-$margin-stack: () !default;
-$margin-stack: map.merge(
-  $margin-stack,
+$space: () !default;
+$space: map.merge(
+  $space,
   $spacing
 );
 
@@ -1036,7 +1036,6 @@ $variants: map.merge(
     'link-stretch'          : true,
     'list-style-position'   : true,
     'list-style-type'       : true,
-    'margin-stack'          : [responsive],
     'margin'                : [responsive],
     'max-height'            : true,
     'max-width'             : [responsive],
@@ -1056,6 +1055,7 @@ $variants: map.merge(
     'row-gap'               : [responsive],
     'scale'                 : true,
     'skew'                  : true,
+    'space'                 : [responsive],
     'stroke-width'          : [responsive],
     'stroke'                : [responsive],
     'table-layout'          : true,
