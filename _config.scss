@@ -236,10 +236,10 @@ $margin: map.merge(
   $margin
 );
 
-// Stack margins (lobotomized owl)
-$margin-stack: () !default;
-$margin-stack: map.merge(
-  $margin-stack,
+// Stack gap margins (lobotomized owl)
+$stack-gap: () !default;
+$stack-gap: map.merge(
+  $stack-gap,
   $spacing
 );
 
@@ -515,10 +515,10 @@ $border-width: map.merge(
   $border-width
 );
 
-$border-width-stack: () !default;
-$border-width-stack: map.merge(
+$stack-rule-width: () !default;
+$stack-rule-width: map.merge(
   $border-width,
-  $border-width-stack
+  $stack-rule-width
 );
 
 $border-radius: () !default;
@@ -988,7 +988,6 @@ $variants: map.merge(
     'border-color'          : [hover],
     'border-radius'         : [responsive],
     'border-style'          : true,
-    'border-width-stack'    : false,
     'border-width'          : [responsive],
     'box-shadow'            : true,
     'caret-color'           : false,
@@ -1036,7 +1035,6 @@ $variants: map.merge(
     'link-stretch'          : true,
     'list-style-position'   : true,
     'list-style-type'       : true,
-    'margin-stack'          : [responsive],
     'margin'                : [responsive],
     'max-height'            : true,
     'max-width'             : [responsive],
@@ -1056,6 +1054,10 @@ $variants: map.merge(
     'row-gap'               : [responsive],
     'scale'                 : true,
     'skew'                  : true,
+    'stack-gap'             : [responsive],
+    'stack-rule-color'      : [responsive],
+    'stack-rule-style'      : [responsive],
+    'stack-rule-width'      : [responsive],
     'stroke-width'          : [responsive],
     'stroke'                : [responsive],
     'table-layout'          : true,

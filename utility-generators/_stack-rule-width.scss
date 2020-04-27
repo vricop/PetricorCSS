@@ -1,0 +1,12 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin stack-rule-width($screen: null) {
+  $args: ($stack-rule-width, map.get($variants, 'stack-rule-width'), $screen);
+  
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}stack-rule-y#{$modifier} > * + * { border-top-width:  $value; }
+    .#{$prefix}stack-rule-x#{$modifier} > * + * { border-left-width: $value; }
+  };
+}

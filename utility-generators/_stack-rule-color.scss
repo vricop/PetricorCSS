@@ -2,10 +2,10 @@
 @use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
-@mixin border-color($screen: null) {
-  $args: ($colors, map.get($variants, 'border-color'), $screen);
+@mixin stack-rule-color($screen: null) {
+  $args: ($colors, map.get($variants, 'stack-rule-color'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}border#{$modifier}#{$state} { border-color: $value; }
+    .#{$prefix}stack-rule#{$modifier}#{$state} { border-color: $value; }
   };
 }

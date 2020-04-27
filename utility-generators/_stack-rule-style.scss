@@ -1,0 +1,15 @@
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin stack-rule-style($screen: null) {
+  $args: (map.get($variants, 'stack-rule-style'), $screen);
+
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
+    .#{$prefix}stack-rule-dashed > * + * { border-style: dashed; }
+    .#{$prefix}stack-rule-dotted > * + * { border-style: dotted; }
+    .#{$prefix}stack-rule-double > * + * { border-style: double; }
+    .#{$prefix}stack-rule-none   > * + * { border-style: none;   }
+    .#{$prefix}stack-rule-solid  > * + * { border-style: solid;  }
+  }
+}
