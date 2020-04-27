@@ -6,6 +6,6 @@
   $args: ($colors, map.get($variants, 'stack-rule-color'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}stack-rule#{$modifier}#{$state} { border-color: $value; }
+    .#{$prefix}stack-rule#{$modifier} > * + * { border-color: $value; }
   };
 }
