@@ -515,10 +515,10 @@ $border-width: map.merge(
   $border-width
 );
 
-$border-width-stack: () !default;
-$border-width-stack: map.merge(
+$stack-rule-width: () !default;
+$stack-rule-width: map.merge(
   $border-width,
-  $border-width-stack
+  $stack-rule-width
 );
 
 $border-radius: () !default;
@@ -988,7 +988,6 @@ $variants: map.merge(
     'border-color'          : [hover],
     'border-radius'         : [responsive],
     'border-style'          : true,
-    'border-width-stack'    : false,
     'border-width'          : [responsive],
     'box-shadow'            : true,
     'caret-color'           : false,
@@ -1056,6 +1055,9 @@ $variants: map.merge(
     'scale'                 : true,
     'skew'                  : true,
     'stack-gap'             : [responsive],
+    'stack-rule-color'      : [responsive],
+    'stack-rule-style'      : [responsive],
+    'stack-rule-width'      : [responsive],
     'stroke-width'          : [responsive],
     'stroke'                : [responsive],
     'table-layout'          : true,

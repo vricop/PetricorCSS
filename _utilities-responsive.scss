@@ -82,6 +82,9 @@
   @include utility.scale($screen);
   @include utility.skew($screen);
   @include utility.stack-gap($screen);
+  @include utility.stack-rule-color($screen);
+  @include utility.stack-rule-style($screen);
+  @include utility.stack-rule-width($screen);
   @include utility.stroke-width($screen);
   @include utility.stroke($screen);
   @include utility.table-layout($screen);

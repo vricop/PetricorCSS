@@ -3,17 +3,6 @@
 @use 'sass:map';
 
 @mixin border-width($screen: null) {
-  // Stack variants
-  $args-stack: ($border-width-stack, map.get($variants, 'border-width-stack'), $screen);
-  
-  @include build-configurable-variants($args-stack...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}stack\:border-t#{$modifier} > * + * { border-top-width:    $value; }
-    .#{$prefix}stack\:border-r#{$modifier} > * + * { border-right-width:  $value; }
-    .#{$prefix}stack\:border-b#{$modifier} > * + * { border-bottom-width: $value; }
-    .#{$prefix}stack\:border-l#{$modifier} > * + * { border-left-width:   $value; }
-  };
-
-  // Deafult variants
   $args: ($border-width, map.get($variants, 'border-width'), $screen);
   
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
