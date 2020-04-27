@@ -236,10 +236,10 @@ $margin: map.merge(
   $margin
 );
 
-// Stack margins (lobotomized owl)
-$space: () !default;
-$space: map.merge(
-  $space,
+// Stack gap margins (lobotomized owl)
+$stack-gap: () !default;
+$stack-gap: map.merge(
+  $stack-gap,
   $spacing
 );
 
@@ -1055,7 +1055,7 @@ $variants: map.merge(
     'row-gap'               : [responsive],
     'scale'                 : true,
     'skew'                  : true,
-    'space'                 : [responsive],
+    'stack-gap'             : [responsive],
     'stroke-width'          : [responsive],
     'stroke'                : [responsive],
     'table-layout'          : true,
