@@ -76,6 +76,31 @@ $colors: map.merge(
   $colors
 );
 
+$background-size: () !default;
+$background-size: map.merge(
+  (
+    'auto'   : auto,
+    'cover'  : cover,
+    'contain': contain,
+  ),
+  $background-size
+);
+
+$background-position: () !default;
+$background-position: map.merge(
+  (
+    bottom:       bottom,
+    center:       center,
+    left-bottom:  left bottom,
+    left-top:     left top,
+    left:         left,
+    right-bottom: right bottom,
+    right-top:    right top,
+    right:        right,
+    top:          top,
+  ),
+  $background-position
+);
 
 $box-shadow: () !default;
 $box-shadow: map.merge(
