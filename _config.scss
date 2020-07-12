@@ -511,7 +511,7 @@ $height: map.merge(
 $max-height: () !default;
 $max-height: map.merge(
   (
-    'none'   : 0,
+    '0'      : 0,
     'full'   : 100%,
     'screen' : 100vh,
   ),
