@@ -162,18 +162,3 @@ video {
             scaleX(var(--transform-scale-x))
             scaleY(var(--transform-scale-y))
 }
-
-/**
- * Pseudo-class presets for `before` and `after` variant utilites 
- *
- * `data-*-content` attribute selectors let us "insert" strings in `content`
- * —if defined in the html— property when using `before` and `after` variants.
- * This is achivied thanks to the `attr() function`. ✨ Magic ✨! 
- */
-[data-before-content]::before {
-  content: attr(data-before-content); /* 1 */
-}
-
-[data-after-content]::after {
-  content: attr(data-after-content); /* 1 */
-}

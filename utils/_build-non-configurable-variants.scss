@@ -53,14 +53,6 @@
       @if list.index($utility-variants, 'disabled') {
         @content('disabled\\:', ':disabled');
       }
-
-      @if list.index($utility-variants, 'before') {
-        @content('before\\:', '::before');
-      }
-
-      @if list.index($utility-variants, 'after') {
-        @content('after\\:', '::after');
-      }
       
       @if list.index($utility-variants, 'children') {
         @content('children\\:', ' > *');
