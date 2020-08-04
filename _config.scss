@@ -746,6 +746,22 @@ $align-items: map.merge(
   $align-items
 );
 
+$place-items: () !default;
+$place-items: map.merge(
+  (
+    'center-end'   : center end,
+    'center-start' : center start,
+    'center'       : center,
+    'end-center'   : end center,
+    'end-start'    : end start,
+    'end'          : end,
+    'start-center' : start center,
+    'start-end'    : start end,
+    'start'        : start,
+  ),
+  $place-items
+);
+
 $align-content: () !default;
 $align-content: map.merge(
   (
@@ -1072,6 +1088,7 @@ $variants: map.merge(
     'outline'               : [focus],
     'overflow'              : true,
     'padding'               : [responsive],
+    'place-items'           : [responsive],
     'pointer-events'        : true,
     'position'              : true,
     'resize'                : false,

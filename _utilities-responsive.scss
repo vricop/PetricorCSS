@@ -74,6 +74,7 @@
   @include utility.outline($screen);
   @include utility.overflow($screen);
   @include utility.padding($screen);
+  @include utility.place-items($screen);
   @include utility.pointer-events($screen);
   @include utility.position($screen);
   @include utility.resize($screen);
