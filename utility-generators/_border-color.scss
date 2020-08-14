@@ -6,6 +6,10 @@
   $args: ($colors, map.get($variants, 'border-color'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}border#{$modifier}#{$state} { border-color: $value; }
+    @if $value != currentColor or $value != transparent {
+      .#{$prefix}border#{$modifier}#{$state} { border-color: var(--color#{$modifier}); }
+    } @else {
+      .#{$prefix}border#{$modifier}#{$state} { border-color: $value; }
+    }
   };
 }

@@ -6,8 +6,14 @@
   $args: ($colors, map.get($variants, 'column-rule-color'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}col-rule#{$modifier}#{$state} { 
-      column-rule-color: $value;
+    @if $value != currentColor or $value != transparent {
+      .#{$prefix}col-rule#{$modifier}#{$state} { 
+        column-rule-color: var(--color#{$modifier});
+      }
+    } @else {
+      .#{$prefix}col-rule#{$modifier}#{$state} { 
+        column-rule-color: $value;
+      }
     }
   }
 }

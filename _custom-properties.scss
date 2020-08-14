@@ -1,0 +1,18 @@
+@use 'config';
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:color';
+
+@if map.get(config.$settings, 'custom-properties') {
+  $blacklist: currentColor currentcolor transparent;
+
+  :root {
+    /* Color variables */
+    @each $name, $value in config.$colors {
+      /* #{$value} */
+      @if not list.index($blacklist, $value) {
+        --color-#{$name}: #{hsla( color.hue($value), color.saturation($value), color.lightness($value), var(--text-opacity, 1) )};
+      }
+    }
+  }
+}

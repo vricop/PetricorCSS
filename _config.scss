@@ -2,6 +2,16 @@
 @use 'utils/get-min-width-screens' as *;
 @use 'utils/negative' as *; 
 
+$settings: () !default;
+$settings: map.merge(
+  (
+    prefix: null,            // Add a prefix to all utility classes
+    important: false,        // Add `!important` to all utility classes
+    custom-properties: true, // Enable / Disable custom properties
+  ),
+  $settings
+);
+
 $breakpoints: () !default;
 $breakpoints: map.merge(
   (

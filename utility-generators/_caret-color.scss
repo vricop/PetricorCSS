@@ -6,6 +6,10 @@
   $args: ($colors, map.get($variants, 'colors'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}caret#{$modifier}#{$state} { caret-color: $value; }
+    @if $value != currenColor or $value != transparent {
+      .#{$prefix}caret#{$modifier}#{$state} { caret-color: var(--color#{$modifier}); }      
+    } @else {
+      .#{$prefix}caret#{$modifier}#{$state} { caret-color: $value; }
+    }
   }
 }
