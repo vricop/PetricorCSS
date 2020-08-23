@@ -1,15 +1,24 @@
 @use '../config' as *;
 @use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
+@use 'sass:list';
 
 @mixin stack-rule-color($screen: null) {
   $args: ($colors, map.get($variants, 'stack-rule-color'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    @if $value != currentColor or $value != transparent {
-      .#{$prefix}stack-rule#{$modifier} > * + * { border-color: var(--color#{$modifier}); }
+    $blacklist: currentColor currentcolor transparent;
+
+    // Build all utility colors but `currentColor` and `transparent`
+    @if not list.index($blacklist, $value) {
+      .#{$prefix}stack-rule#{$modifier} > * + * {
+        border-color: hsla(var(--color#{$modifier}), var(--stack-rule-opacity, 1));
+      }
+    // Build utility colors for `currentColor` & `transparent`
     } @else {
-      .#{$prefix}stack-rule#{$modifier} > * + * { border-color: $value; }
+      .#{$prefix}stack-rule#{$modifier} > * + * { 
+        border-color: $value;
+      }
     }
   };
 }

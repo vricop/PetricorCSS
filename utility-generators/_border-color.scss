@@ -1,15 +1,24 @@
 @use '../config' as *;
 @use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
+@use 'sass:list';
 
 @mixin border-color($screen: null) {
   $args: ($colors, map.get($variants, 'border-color'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    @if $value != currentColor or $value != transparent {
-      .#{$prefix}border#{$modifier}#{$state} { border-color: var(--color#{$modifier}); }
+    $blacklist: currentColor currentcolor transparent;
+
+    // Build all utility colors but `currentColor` and `transparent`
+    @if not list.index($blacklist, $value) {
+      .#{$prefix}border#{$modifier}#{$state} { 
+        border-color: hsla(var(--color#{$modifier}), var(--border-opacity, 1));
+      }
+    // Build utility colors for `currentColor` & `transparent`
     } @else {
-      .#{$prefix}border#{$modifier}#{$state} { border-color: $value; }
+      .#{$prefix}border#{$modifier}#{$state} {
+        border-color: $value;
+      }
     }
   };
 }

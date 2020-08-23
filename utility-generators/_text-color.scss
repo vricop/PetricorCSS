@@ -1,15 +1,24 @@
 @use '../config' as *;
 @use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
+@use 'sass:list';
 
 @mixin text-color($screen: null) {
   $args: ($colors, map.get($variants, 'text-color'), $screen);
-
+  
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    @if $value != currentColor or $value != transparent {
-      .#{$prefix}text#{$modifier}#{$state} { color: var(--color#{$modifier}); }
-    } @else {
-      .#{$prefix}text#{$modifier}#{$state} { color: $value; }
+    $blacklist: currentColor currentcolor transparent;
+
+    // Build all utility colors but `currentColor` and `transparent`
+    @if not list.index($blacklist, $value) {
+      .#{$prefix}text#{$modifier}#{$state} {
+        color: hsla(var(--color#{$modifier}), var(--text-opacity, 1));
+      }
+    // Build utility colors for `currentColor` & `transparent`
+    } @else{
+      .#{$prefix}text#{$modifier}#{$state} {
+        color: $value;
+      }
     }
   }
 }

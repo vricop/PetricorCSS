@@ -1,15 +1,20 @@
 @use '../config' as *;
 @use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
+@use 'sass:list';
 
 @mixin column-rule-color($screen: null) {
   $args: ($colors, map.get($variants, 'column-rule-color'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    @if $value != currentColor or $value != transparent {
+    $blacklist: currentColor currentcolor transparent;
+
+    // Build all utility colors but `currentColor` and `transparent`
+    @if not list.index($blacklist, $value) {
       .#{$prefix}col-rule#{$modifier}#{$state} { 
-        column-rule-color: var(--color#{$modifier});
+        column-rule-color: hsla(var(--color#{$modifier}), var(--column-rule-opacity));
       }
+    // Build utility colors for `currentColor` & `transparent`
     } @else {
       .#{$prefix}col-rule#{$modifier}#{$state} { 
         column-rule-color: $value;
