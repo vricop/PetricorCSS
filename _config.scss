@@ -765,6 +765,14 @@ $place-items: map.merge(
   $place-items
 );
 
+$place-content: () !default;
+$place-content: map.merge(
+  (
+    'center' : center,
+  ),
+  $place-content
+);
+
 $align-content: () !default;
 $align-content: map.merge(
   (
@@ -1090,6 +1098,7 @@ $variants: map.merge(
     'outline'               : [focus],
     'overflow'              : true,
     'padding'               : [responsive],
+    'place-content'         : [responsive],
     'place-items'           : [responsive],
     'pointer-events'        : true,
     'position'              : true,
