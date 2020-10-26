@@ -1,8 +1,7 @@
 @use 'config';
 @use 'sass:map';
 @use 'sass:list';
-
-
+@use 'utils/hsl-list' as *;
 
 :root {
   $blacklist: currentColor currentcolor transparent;
@@ -13,7 +12,7 @@
   */
   @each $name, $value in config.$colors {
     @if not list.index($blacklist, $value) {
-      --color-#{$name}: #{$value};
+      --color-#{$name}: #{hsl-list($value)};
     }
   }
 }
