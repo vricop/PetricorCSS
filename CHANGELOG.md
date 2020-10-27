@@ -18,7 +18,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Change spacing to logical properties
 
-## [v1.0.0] - 2020-XX-20
+## [1.0.1] - 2020-27-20
+
+- Fix typos in `CHANGELOG.md`
+
+## [1.0.0] - 2020-27-20
 
 ### Changed
 
@@ -69,13 +73,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `place-{items|content}-{position}` utilities
 - Added custom properties for colors
 
-## [v7.1.0 ]- 2020-01-11
+## [7.1.0]- 2020-01-11
 
 ### Changed
 
 - Base reset styles refactored.
 
-## [v7.0.0] - 2020-01-07
+## [7.0.0] - 2020-01-07
 
 I decided to tag this first release as v0.7.0 after publishing my personal
 project on Github. I worked on this project in a local repository for a year or
