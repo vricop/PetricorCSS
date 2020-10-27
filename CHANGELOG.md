@@ -9,16 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Change spacing to logical properties
+
+### Added
+
 - Add `snap` and `scroll` utilities
 - Add `animation` utilities
 - Add `nth-*` customizable utilities
 - Add `direction-{ltr|rtl}` utility
+- Add documentation
 
-### Added
-
-- Change spacing to logical properties
-
-## [v1.0.0] - 2020-XX-20
+## [1.0.0] - 2020-10-20
 
 ### Changed
 
@@ -69,13 +70,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `place-{items|content}-{position}` utilities
 - Added custom properties for colors
 
-## [v7.1.0 ]- 2020-01-11
+## [0.7.1] - 2020-01-11
 
 ### Changed
 
 - Base reset styles refactored.
 
-## [v7.0.0] - 2020-01-07
+## [0.7.0] - 2020-01-07
 
 I decided to tag this first release as v0.7.0 after publishing my personal
 project on Github. I worked on this project in a local repository for a year or
