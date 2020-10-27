@@ -1,10 +1,5 @@
 # Petricor CSS 💦
 
-<<<<<<< HEAD
-CSS/SCSS utility framework
-
-**Note**: Docs will be released in version [v0.8.0](https://github.com/vricop/PetricorCSS/tree/v0.8.0)
-=======
 Petricor CSS is an utility library for building web interfaces. It’s build
 in sass and provides a full collection of utility classes that helps you work
 faster and apply css without almost switching between css and html.
@@ -39,4 +34,3 @@ transforms, etc.
 CSS authors can extend, modify, enable or disable utilities and variants.
 Customizing Petricor CSS is really easy and you can do so without modifying the
 core library. This way you can update to new versions without loosing your setup.
->>>>>>> v1.0.0
