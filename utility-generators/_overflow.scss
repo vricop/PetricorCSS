@@ -1,14 +1,15 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin overflow($screen: null) {
-  $args: map.get(config.$variants, 'overflow'), $screen;
+  $args: (map.get($variants, 'overflow'), $screen);
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
+    // Generate all `overflow-*` utilities with nested loops
     @each $value in (auto, hidden, visible, scroll) {
-      @each $prop in (overflow, overflow-x, overflow-y) {
-        .#{$prefix}#{$prop}-#{$value}#{$state} { #{$prop}: $value; }
+      @each $property in (overflow, overflow-x, overflow-y) {
+        .#{$prefix}#{$property}-#{$value}#{$state} { #{$property}: $value; }
       }
     }
   }

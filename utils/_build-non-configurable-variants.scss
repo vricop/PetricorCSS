@@ -1,0 +1,123 @@
+// @use "../config";
+@use "sass:map";
+@use "sass:meta";
+@use "sass:list";
+@use "sass:string";
+
+@mixin build-non-configurable-variants($utility-variants, $screen) {
+  @if $utility-variants == true or meta.type-of($utility-variants) == list {
+    // DEFAULT
+    @if $screen == null {
+      @content(null, null);
+
+      @if list.index($utility-variants, 'hover') {
+        @content('hover\\:', ':hover');
+      }
+
+      @if list.index($utility-variants, 'group-hover') {
+        @content('group:hover .group-hover\\:', null);
+      }
+ 
+      @if list.index($utility-variants, '&group-hover') {
+        @content('group:hover > .\\&group-hover\\:', null);
+      }
+
+      @if list.index($utility-variants, 'focus') {
+        @content('focus\\:', ':focus');
+      }
+
+      @if list.index($utility-variants, 'visited') {
+        @content('visited\\:', ':visited');
+      }
+      
+      @if list.index($utility-variants, 'placeholder') {
+        @content('placeholder\\:', '::placeholder');
+      }
+
+      @if list.index($utility-variants, 'first') {
+        @content('first\\:', ':first-child');
+      }
+      
+      @if list.index($utility-variants, 'last') {
+        @content('last\\:', ':last-child');
+      }
+      
+      @if list.index($utility-variants, 'even') {
+        @content('even\\:', ':nth-child(even)');
+      }
+      
+      @if list.index($utility-variants, 'odd') {
+        @content('odd\\:', ':nth-child(odd)');
+      }
+
+      @if list.index($utility-variants, 'disabled') {
+        @content('disabled\\:', ':disabled');
+      }
+      
+      @if list.index($utility-variants, 'children') {
+        @content('children\\:', ' > *');
+      }
+      
+      @if list.index($utility-variants, 'empty') {
+        @content('empty\\:', ':empty');
+      }
+    }
+    
+    // RESPONSIVE
+    @if list.index($utility-variants, 'responsive') and $screen != null {
+      @content('#{$screen}\\:', null);
+
+      @if list.index($utility-variants, 'hover') {
+        @content('#{$screen}\\:hover\\:', ':hover');
+      }
+
+      @if list.index($utility-variants, 'group-hover') {
+        @content('#{$screen}\\:group:hover .group-hover\\:', null);
+      }
+
+      @if list.index($utility-variants, '&group-hover') {
+        @content('#{$screen}\\:group:hover > .\\&group-hover\\:', null);
+      }
+
+      @if list.index($utility-variants, 'focus') {
+        @content('#{$screen}\\:focus\\:', ':focus');
+      }
+
+      @if list.index($utility-variants, 'visited') {
+        @content('#{$screen}\\:visited\\:', ':visited');
+      }
+
+      @if list.index($utility-variants, 'placeholder') {
+        @content('#{$screen}\\:placeholder\\:', '::placeholder');
+      }
+      
+      @if list.index($utility-variants, 'first') {
+        @content('#{$screen}\\:first\\:', ':first-child');
+      }
+      
+      @if list.index($utility-variants, 'last') {
+        @content('#{$screen}\\:last\\:', ':last-child');
+      }
+      
+      @if list.index($utility-variants, 'even') {
+        @content('#{$screen}\\:even\\:', ':nth-child(even)');
+      }
+      
+      @if list.index($utility-variants, 'odd') {
+        @content('#{$screen}\\:odd\\:', ':nth-child(odd)');
+      }
+
+      @if list.index($utility-variants, 'disabled') {
+        @content('#{$screen}\\:disabled\\:', ':disabled');
+      }
+
+      @if list.index($utility-variants, 'children') {
+        @content('#{$screen}\\:children\\:', ' > *');
+      }
+
+      @if list.index($utility-variants, 'empty') {
+        @content('#{$screen}\\:empty\\:', ':empty');
+      }
+    }
+  }
+}

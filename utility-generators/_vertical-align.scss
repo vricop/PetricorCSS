@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin vertical-align($screen: null) {
-  $args: map.get(config.$variants, 'vertical-align'), $screen;
+  $args: (map.get($variants, 'vertical-align'), $screen);
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
     @each $position in (baseline, top, middle, bottom, text-top, text-bottom) {
       .#{$prefix}align-#{$position}#{$state} { vertical-align: $position; }
     }

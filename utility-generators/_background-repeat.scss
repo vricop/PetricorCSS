@@ -1,16 +1,16 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin background-repeat($screen: null) {
-  $args: map.get(config.$variants, 'background-repeat'), $screen;
+  $args: (map.get($variants, 'background-repeat'), $screen);
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
-    .#{$prefix}bg-repeat#{$state} { background-repeat: repeat; }
-    .#{$prefix}bg-no-repeat#{$state} { background-repeat: no-repeat; }
-    .#{$prefix}bg-repeat-x#{$state} { background-repeat: repeat-x; }
-    .#{$prefix}bg-repeat-y#{$state} { background-repeat: repeat-y; }
-    .#{$prefix}bg-repeat-round#{$state} { background-repeat: round; }
-    .#{$prefix}bg-repeat-space#{$state} { background-repeat: space; }
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
+    .#{$prefix}bg-repeat#{$state}       { background-repeat: repeat;    }
+    .#{$prefix}bg-no-repeat#{$state}    { background-repeat: no-repeat; }
+    .#{$prefix}bg-repeat-x#{$state}     { background-repeat: repeat-x;  }
+    .#{$prefix}bg-repeat-y#{$state}     { background-repeat: repeat-y;  }
+    .#{$prefix}bg-repeat-round#{$state} { background-repeat: round;     }
+    .#{$prefix}bg-repeat-space#{$state} { background-repeat: space;     }
   }
 }

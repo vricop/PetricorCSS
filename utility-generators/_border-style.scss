@@ -1,13 +1,14 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin border-style($screen: null) {
-  $args: map.get(config.$variants, 'border-style'), $screen;
+  $args: (map.get($variants, 'stack-rule-style'), $screen);
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
-    @each $style in (solid dashed dotted none) {
-      .#{$prefix}border-#{$style}#{$state} {  border-style: $style; }
-    }
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
+    .#{$prefix}border-solid#{$state}  { border-style: solid;  }
+    .#{$prefix}border-dashed#{$state} { border-style: dashed; }
+    .#{$prefix}border-dotted#{$state} { border-style: dotted; }
+    .#{$prefix}border-none#{$state}   { border-style: none;   }
   }
 }

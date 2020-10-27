@@ -1,0 +1,11 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin grid-column-end($screen: null) {
+  $args: ($grid-column-end, map.get($variants, 'grid-column-end'), $screen);
+
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}col-end#{$modifier}#{$state} { grid-column-end: $value; }
+  }
+}

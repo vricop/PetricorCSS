@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin white-space($screen: null) {
-  $args: map.get(config.$variants, 'white-space'), $screen;
+  $args: (map.get($variants, 'white-space'), $screen);
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
     @each $whitespace in (normal, nowrap, pre, pre-line, pre-wrap) {
       .#{$prefix}whitespace-#{$whitespace}#{$state} { white-space: $whitespace; }
     }

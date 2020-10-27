@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin opacity($screen: null) {
-  $args: config.$opacity, map.get(config.$variants, 'opacity'), $screen;
+  $args: ($opacity, map.get($variants, 'opacity'), $screen);
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}opacity#{$modifier}#{$state} { opacity: $value; }
   }
 }

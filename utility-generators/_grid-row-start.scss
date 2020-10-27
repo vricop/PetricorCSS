@@ -1,0 +1,11 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin grid-row-start($screen: null) {
+  $args: ($grid-row-start, map.get($variants, 'grid-row-start'), $screen);
+
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}row-start#{$modifier}#{$state} { grid-row-start: $value; }
+  }
+}

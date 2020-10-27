@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin letter-spacing($screen: null) {
-  $args: config.$tracking, map.get(config.$variants, 'letter-spacing'), $screen;
+  $args: ($tracking, map.get($variants, 'letter-spacing'), $screen);
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}tracking#{$modifier}#{$state} { letter-spacing: $value; }
   }
 }

@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin font-weight($screen: null) {
-  $args: config.$font-weight, map.get(config.$variants, 'font-weight'), $screen;
+  $args: ($font-weight, map.get($variants, 'font-weight'), $screen);
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}font#{$modifier}#{$state} { font-weight: $value; }
   }
 }

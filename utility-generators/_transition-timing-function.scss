@@ -1,0 +1,11 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin transition-timing-function($screen: null) {  
+  $args: ($transition-function, map.get($variants, 'transition'), $screen);
+  
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}ease#{$modifier}#{$state} { transition-timing-function: $value; }
+  }
+}

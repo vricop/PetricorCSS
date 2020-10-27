@@ -1,0 +1,11 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin grid-template-columns($screen: null) {
+  $args: ($grid-template-columns, map.get($variants, 'grid-template-columns'), $screen);
+
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}grid-cols#{$modifier}#{$state} { grid-template-columns: $value; }
+  }
+}

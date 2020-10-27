@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin font-family($screen: null) {
-  $args: config.$font-family, map.get(config.$variants, 'font-family'), $screen;
+  $args: ($font-family, map.get($variants, 'font-family'), $screen);
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}font#{$modifier}#{$state} { font-family: $value; }
   }
 }

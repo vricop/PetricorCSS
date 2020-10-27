@@ -1,16 +1,14 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin text-transform($screen: null) {
-  $args: map.get(config.$variants, 'text-transform'), $screen;
+  $args: (map.get($variants, 'text-transform'), $screen);
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
-    @each $text-case in (uppercase, lowercase, capitalize, none) {
-      $value: $text-case;
-      $text-case: if($text-case == none, normal-case, $text-case);
-
-      .#{$prefix}#{$text-case}#{$state} { text-transform: $value; }
-    }
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
+    .#{$prefix}uppercase#{$state}   { text-transform: uppercase;  }
+    .#{$prefix}lowercase#{$state}   { text-transform: lowercase;  }
+    .#{$prefix}capitalize#{$state}  { text-transform: capitalize; }
+    .#{$prefix}normal-case#{$state} { text-transform: none;       }
   }
 }

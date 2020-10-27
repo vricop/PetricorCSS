@@ -1,0 +1,11 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin transition-delay($screen: null) {  
+  $args : ($transition-delay, map.get($variants, 'transition'), $screen);
+  
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}delay#{$modifier}#{$state} { transition-delay: $value; }
+  }
+}

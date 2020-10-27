@@ -1,17 +1,20 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 @use 'sass:string';
 
 @mixin skew($screen: null) {
-  $args: config.$skew, map.get(config.$variants, 'skew'), $screen;
+  $args: ($skew, map.get($variants, 'skew'), $screen);
   
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     // The base class will contain a dash for negative sets only.
     $base-class: if($value < 0, '-skew', 'skew');
 
-    .#{$prefix}#{$base-class}#{$modifier}#{$state} {
+    .#{$prefix}#{$base-class}-x#{$modifier}#{$state} {
       --transform-skew-x: #{$value};
+    }
+    
+    .#{$prefix}#{$base-class}-y#{$modifier}#{$state} {
       --transform-skew-y: #{$value};
     }
   }

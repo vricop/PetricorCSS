@@ -1,13 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin background-size($screen: null) {
-  $args: map.get(config.$variants, 'background-size'), $screen;
+  $args: ($background-size, map.get($variants, 'background-size'), $screen);
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
-    .#{$prefix}bg-atuo#{$state} { background-size: auto; }
-    .#{$prefix}bg-cover#{$state} { background-size: cover; }
-    .#{$prefix}bg-contain#{$state} { background-size: contain; }
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}bg#{$modifier}#{$state} { background-size: $value; }
   }
 }

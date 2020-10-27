@@ -1,12 +1,5 @@
-# Css files and maps
-*.css.map
-*.scssc
-
 # Don't track node_modules
 node_modules
-
-# Tools
-purgecss.config.js
 
 #VSCode workspace config
 .vscode

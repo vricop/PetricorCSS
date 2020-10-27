@@ -1,17 +1,18 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin z-index($screen: null) {
-  $args: config.$z-index, map.get(config.$variants, 'z-index'), $screen;
+  $args: ($z-index, map.get($variants, 'z-index'), $screen);
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}z#{$modifier}#{$state} { z-index: $value; }
-  }
   
-  $args_negative: config.$z-index-negative, map.get(config.$variants, 'z-index-negative'), $screen;
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    // If value is not `auto` and is a negative number, then add a dash
+    // character in front of the base class —which is "z".
+    @if $value != auto and $value < 0 {
+      $prefix: '#{$prefix}-';
+    }
 
-  @include generate-variants.configurable($args_negative...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}-z#{$modifier}#{$state} { z-index: $value; }
+    .#{$prefix}z#{$modifier}#{$state} { z-index: $value; }
   }
 }

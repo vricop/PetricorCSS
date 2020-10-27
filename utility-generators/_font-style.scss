@@ -1,12 +1,13 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin font-style($screen: null) {
-  $args: map.get(config.$variants, 'font-style'), $screen;
+  $args: (map.get($variants, 'font-style'), $screen);
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
-    .#{$prefix}italic#{$state}{ font-style: italic; }
-    .#{$prefix}non-italic#{$state} { font-style: normal; }
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
+    .#{$prefix}italic#{$state}     { font-style: italic;  }
+    .#{$prefix}oblique#{$state}    { font-style: oblique; }
+    .#{$prefix}non-italic#{$state} { font-style: normal;  }
   }
 }

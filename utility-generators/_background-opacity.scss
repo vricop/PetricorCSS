@@ -1,0 +1,13 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin background-opacity($screen: null) {
+  $args: ($opacity, map.get($variants, 'opacity'), $screen);
+
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}bg-opacity#{$modifier}#{$state} {
+      --background-opacity: #{$value};
+    }
+  }
+}

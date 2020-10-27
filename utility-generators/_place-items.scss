@@ -1,0 +1,13 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin place-items($screen: null) {
+  $args: ($place-items, map.get($variants, 'place-items'), $screen);
+
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}place-items#{$modifier}#{$state} {
+      place-items: $value;
+    }
+  }
+}

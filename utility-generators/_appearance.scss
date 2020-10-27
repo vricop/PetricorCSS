@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin appearance($screen: null) {
-  $args: map.get(config.$variants, 'appearance'), $screen;
+  $args: (map.get($variants, 'appearance'), $screen);
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
     .#{$prefix}appearance-none#{$state} { appearance: none; }
   }
 }

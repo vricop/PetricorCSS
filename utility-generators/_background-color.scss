@@ -1,11 +1,24 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
+@use 'sass:list';
 
 @mixin background-color($screen: null) {
-  $args: config.$colors, map.get(config.$variants, 'background-color'), $screen;
+  $args: ($colors, map.get($variants, 'background-color'), $screen);
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}bg#{$modifier}#{$state} { background-color: $value; }
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    $blacklist: currentColor currentcolor transparent;
+
+    // Build all utility colors but `currentColor` and `transparent`
+    @if not list.index($blacklist, $value) {
+      .#{$prefix}bg#{$modifier}#{$state} {
+        background-color: hsla(var(--color#{$modifier}), var(--background-opacity, 1));
+      }
+    // Build utility colors for `currentColor` & `transparent`
+    } @else {
+      .#{$prefix}bg#{$modifier}#{$state} {
+        background-color: $value;
+      }
+    }
   }
 }

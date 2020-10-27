@@ -1,774 +1,1135 @@
 @use 'sass:map';
+@use 'utils/get-min-width-screens' as *;
+@use 'utils/negative' as *; 
 
-// SCREEN BREAKPOINTS
-//
-// Set min, max or both
-$breakpoints: (
-  sm: (min: 640px),
-  md: (min: 768px),
-  lg: (min: 1024px),
-  xl: (min: 1200px),
+$breakpoints: () !default;
+$breakpoints: map.merge(
+  (
+    sm: (min: 640px),
+    md: (min: 768px),
+    lg: (min: 1024px),
+    xl: (min: 1200px),
+  ),
+  $breakpoints
 );
 
-$colors: (
-  // BLACK & WHITE
-  'black': #000,
-  'white': #fff,
-  
-  // GRAYSCALE
-  'gray-100': #F7F7F7,
-  'gray-200': #F2F2F2,
-  'gray-300': #D9D9D9,
-  'gray-400': #ABABAB,
-  'gray-500': #767676,
-  'gray-600': #616161,
-  'gray-700': #525252,
-  'gray-800': #3D3D3D,
-  'gray-900': #212121,
-  
-  // STATE
-  'success-900' : hsl(162, 97%, 15%),
-  'success-800' : hsl(162, 98%, 21%),
-  'success-700' : hsl(162, 100%, 30%),
-  'success-600' : hsl(162, 97%, 38%),
-  'success-500' : hsl(162, 73%, 56%),
-  'success-400' : hsl(162, 94%, 74%),
-  'success-300' : hsl(162, 92%, 85%),
-  'success-200' : hsl(162, 76%, 92%),
-  'success-100' : hsl(162, 74%, 95%),
+$colors: () !default;
+$colors: map.merge(
+  ( // Color variables written in comma separated values for use
+    // with hsla() function with independent opacity variables.
 
-  'info-900'    : hsl(214, 58%, 18%),
-  'info-800'    : hsl(214, 70%, 21%),
-  'info-700'    : hsl(214, 72%, 28%),
-  'info-600'    : hsl(214, 88%, 35%),
-  'info-500'    : hsl(214, 100%, 44%),
-  'info-400'    : hsl(214, 93%, 59%),
-  'info-300'    : hsl(214, 100%, 83%),
-  'info-200'    : hsl(214, 92%, 90%),
-  'info-100'    : hsl(214, 80%, 96%),
-
-  'warning-900' : hsl(50, 95%, 17%),
-  'warning-800' : hsl(50, 97%, 25%),
-  'warning-700' : hsl(50, 100%, 34%),
-  'warning-600' : hsl(50, 76%, 50%),
-  'warning-500' : hsl(50, 98%, 66%),
-  'warning-400' : hsl(50, 100%, 78%),
-  'warning-300' : hsl(50, 100%, 86%),
-  'warning-200' : hsl(50, 100%, 92%),
-  'warning-100' : hsl(50, 100%, 97%),
-
-  'danger-900' : hsl(355, 92%, 15%),
-  'danger-800' : hsl(355, 67%, 28%),
-  'danger-700' : hsl(355, 50%, 43%),
-  'danger-600' : hsl(355, 56%, 55%),
-  'danger-500' : hsl(355, 100%, 65%),
-  'danger-400' : hsl(355, 100%, 71%),
-  'danger-300' : hsl(355, 100%, 85%),
-  'danger-200' : hsl(355, 86%, 92%),
-  'danger-100' : hsl(355, 89%, 96%),
-  
-  // MISC
-  'transparent'  : transparent,
-  'current-color': currentColor,
+    // Black & white
+    'black'        : hsl(  0,   0%,   0%),
+    'white'        : hsl(  0,   0%, 100%),
+    // Grayscale
+    'gray-100'     : hsl(  0,   0%,  97%),
+    'gray-200'     : hsl(  0,   0%,  95%),
+    'gray-300'     : hsl(  0,   0%,  85%),
+    'gray-400'     : hsl(  0,   0%,  67%),
+    'gray-500'     : hsl(  0,   0%,  46%),
+    'gray-600'     : hsl(  0,   0%,  38%),
+    'gray-700'     : hsl(  0,   0%,  32%),
+    'gray-800'     : hsl(  0,   0%,  24%),
+    'gray-900'     : hsl(  0,   0%,  13%),
+    // State: success
+    'success-100'  : hsl(162,  74%,  95%),
+    'success-200'  : hsl(162,  76%,  92%),
+    'success-300'  : hsl(162,  92%,  85%),
+    'success-400'  : hsl(162,  94%,  74%),
+    'success-500'  : hsl(162,  73%,  56%),
+    'success-600'  : hsl(162,  97%,  38%),
+    'success-700'  : hsl(162, 100%,  30%),
+    'success-800'  : hsl(162,  98%,  21%),
+    'success-900'  : hsl(162,  97%,  15%),
+    // State: info
+    'info-100'     : hsl(214,  80%,  96%),
+    'info-200'     : hsl(214,  92%,  90%),
+    'info-300'     : hsl(214, 100%,  83%),
+    'info-400'     : hsl(214,  93%,  59%),
+    'info-500'     : hsl(214, 100%,  44%),
+    'info-600'     : hsl(214,  88%,  35%),
+    'info-700'     : hsl(214,  72%,  28%),
+    'info-800'     : hsl(214,  70%,  21%),
+    'info-900'     : hsl(214,  58%,  18%),
+    // State: warning
+    'warning-100'  : hsl( 50, 100%,  97%),
+    'warning-200'  : hsl( 50, 100%,  92%),
+    'warning-300'  : hsl( 50, 100%,  86%),
+    'warning-400'  : hsl( 50, 100%,  78%),
+    'warning-500'  : hsl( 50,  98%,  66%),
+    'warning-600'  : hsl( 50,  76%,  50%),
+    'warning-700'  : hsl( 50, 100%,  34%),
+    'warning-800'  : hsl( 50,  97%,  25%),
+    'warning-900'  : hsl( 50,  95%,  17%),
+    // State: danger
+    'danger-100'   : hsl(355,  89%,  96%),
+    'danger-200'   : hsl(355,  86%,  92%),
+    'danger-300'   : hsl(355, 100%,  85%),
+    'danger-400'   : hsl(355, 100%,  71%),
+    'danger-500'   : hsl(355, 100%,  65%),
+    'danger-600'   : hsl(355,  56%,  55%),
+    'danger-700'   : hsl(355,  50%,  43%),
+    'danger-800'   : hsl(355,  67%,  28%),
+    'danger-900'   : hsl(355,  92%,  15%),
+    // Misc
+    'transparent'  : transparent,
+    'current-color': currentColor,
+  ),
+  $colors
 );
 
-$box-shadow: (
-  'default' : (0 1px  3px  0    rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06)      ),
-  'md'      : (0 4px  6px  -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06)   ),
-  'lg'      : (0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05)   ),
-  'xl'      : (0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, .04) ),
-  '2xl'     : (0 25px 50px -12px rgba(0, 0, 0, .25)                                      ),
-  'inner'   : (inset 0 2px 4px 0 rgba(0,0,0,0.06)                                        ),
-  'outline' : (0 0 0 3px rgba(66,153,225,0.5)                                            ),
-  'focus'   : (0 0 0 3px rgba(66,153,225,0.5)                                            ),
-  'none'    : none,
+$background-size: () !default;
+$background-size: map.merge(
+  (
+    'auto'   : auto,
+    'cover'  : cover,
+    'contain': contain,
+  ),
+  $background-size
 );
 
-$transition-duration: (
-  'fastest': 75ms,
-  'faster' : 100ms,
-  'fast'   : 150ms,
-  'medium' : 200ms,
-  'slowest': 300ms,
-  'slower' : 500ms,
-  'slow'   : 700ms,
+$background-position: () !default;
+$background-position: map.merge(
+  (
+    bottom      : bottom,
+    center      : center,
+    left-bottom : left bottom,
+    left-top    : left top,
+    left        : left,
+    right-bottom: right bottom,
+    right-top   : right top,
+    right       : right,
+    top         : top,
+  ),
+  $background-position
+);
+
+$box-shadow: () !default;
+$box-shadow: map.merge(
+  (
+    'default' : (0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06)),
+    'xs'      : (0 0 0 1px rgba(0, 0, 0, 0.05)),
+    'md'      : (0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06)),
+    'lg'      : (0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05)),
+    'xl'      : (0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, .04)),
+    '2xl'     : (0 25px 50px -12px rgba(0, 0, 0, .25)),
+    'outline' : (0 0 0 3px rgba(66,153,225,0.5)),
+    'focus'   : (0 0 0 3px rgba(66,153,225,0.5)),
+    'inner'   : (inset 0 2px   4px 0 rgba(0,0,0,0.06)),
+    'none'    : none,
+  ),
+  $box-shadow
+);
+
+$transition-duration: () !default;
+$transition-duration: map.merge(
+  (
+    '100ms' : 100ms,
+    '200ms' : 200ms,
+    '300ms' : 300ms,
+    '500ms' : 500ms,
+    '600ms' : 600ms,
+    '700ms' : 700ms,
+    '800ms' : 800ms,
+    '1s'    : 1s,
+  ),
+  $transition-duration
 );
 
 $transition-delay: $transition-duration;
 
-$transition-property: (
-  'all'     : all,
-  'none'    : none,
-  'bg'      : background-color,
-  'text'    : color,
-  'opacity' : opacity,
-  'shadow'  : box-shadow,
+$transition-property: () !default;
+$transition-property: map.merge(
+  (
+    'all'      : all,
+    'colors'   : (background-color, border-color, color, fill, stroke),
+    'default'  : (background-color, border-color, color, fill, stroke, opacity, box-shadow, transform),
+    'none'     : none,
+    'opacity'  : opacity,
+    'shadow'   : box-shadow,
+    'transform': transform,
+  ),
+  $transition-property
 );
 
 // CSS EASING SOURCES:
 // 1. https://easings.net/#
 // 2. Mozilla dev tools (transitions tool)
-$transition-function: (
-  // CSS PREDEFINED
-  'in'     : ease-in,     // ease-in
-  'in-out' : ease-in-out, // ease-out
-  'out'    : ease-out,    // ease-in-out
-  'linear' : linear,
-
-  // BACK
-  'in-back'      : cubic-bezier(0.6,  -0.28,  0.735, 0.045),
-  'out-back'     : cubic-bezier(0.175, 0.885, 0.32,  1.275),
-  'in-out-back'  : cubic-bezier(0.68, -0.55,  0.265, 1.55 ),
-
-  // CIRCULAR
-  'in-circ'      : cubic-bezier(0.6,   0.04,  0.98,  0.335),
-  'out-circ'     : cubic-bezier(0.075, 0.82,  0.165, 1    ),
-  'in-out-circ'  : cubic-bezier(0.785, 0.135, 0.15,  0.86 ),
-
-  // CUBIC
-  'in-cubic'     : cubic-bezier(0.55,  0.055, 0.675, 0.19 ),
-  'out-cubic'    : cubic-bezier(0.215, 0.61,  0.355, 1    ),
-  'in-out-cubic' : cubic-bezier(0.645, 0.045, 0.355, 1    ),
-
-  // EXPONENTIAL
-  'in-expo'      : cubic-bezier(0.95,  0.05,  0.795, 0.035),
-  'out-expo'     : cubic-bezier(0.19,  1,     0.22,  1    ),
-  'in-out-expo'  : cubic-bezier(1,     0,     0,     1    ),
-
-  // QUADRATIC
-  'in-quad'      : cubic-bezier(0.55,  0.085, 0.68,  0.53 ),
-  'out-quad'     : cubic-bezier(0.55,  0.085, 0.68,  0.53 ),
-  'in-out-quad'  : cubic-bezier(0.455, 0.03,  0.515, 0.955),
-
-  // QUARTIC
-  'in-quart'     : cubic-bezier(0.895, 0.03,  0.685, 0.22 ),
-  'out-quart'    : cubic-bezier(0.165, 0.84,  0.44,  1    ),
-  'in-out-quart' : cubic-bezier(0.77,  0,     0.175, 1    ),
-
-  // QUINTIC
-  'in-quint'     : cubic-bezier(0.755, 0.05,  0.855, 0.06 ),
-  'out-quint'    : cubic-bezier(0.23,  1,     0.32,  1    ),
-  'in-out-quint' : cubic-bezier(0.86,  0,     0.07,  1    ),
-  
-  // SINE
-  'in-sine'      : cubic-bezier(0.47,  0,     0.745, 0.715),
-  'out-sine'     : cubic-bezier(0.39,  0.575, 0.565, 1    ),
-  'in-out-sine'  : cubic-bezier(0.445, 0.05,  0.55,  0.95 ),
+$transition-function: () !default;
+$transition-function: map.merge(
+  (
+    // Default
+    'in'           : ease-in,
+    'in-out'       : ease-in-out,
+    'out'          : ease-out,
+    'linear'       : linear,
+    // Back
+    'in-back'      : cubic-bezier(0.6,  -0.28,  0.735, 0.045),
+    'out-back'     : cubic-bezier(0.175, 0.885, 0.32,  1.275),
+    'in-out-back'  : cubic-bezier(0.68, -0.55,  0.265, 1.55 ),
+    // Circular
+    'in-circ'      : cubic-bezier(0.6,   0.04,  0.98,  0.335),
+    'out-circ'     : cubic-bezier(0.075, 0.82,  0.165, 1    ),
+    'in-out-circ'  : cubic-bezier(0.785, 0.135, 0.15,  0.86 ),
+    // Cubic
+    'in-cubic'     : cubic-bezier(0.55,  0.055, 0.675, 0.19 ),
+    'out-cubic'    : cubic-bezier(0.215, 0.61,  0.355, 1    ),
+    'in-out-cubic' : cubic-bezier(0.645, 0.045, 0.355, 1    ),
+    // Exponential
+    'in-expo'      : cubic-bezier(0.95,  0.05,  0.795, 0.035),
+    'out-expo'     : cubic-bezier(0.19,  1,     0.22,  1    ),
+    'in-out-expo'  : cubic-bezier(1,     0,     0,     1    ),
+    // Quadratic
+    'in-quad'      : cubic-bezier(0.55,  0.085, 0.68,  0.53 ),
+    'out-quad'     : cubic-bezier(0.55,  0.085, 0.68,  0.53 ),
+    'in-out-quad'  : cubic-bezier(0.455, 0.03,  0.515, 0.955),
+    // Quartic
+    'in-quart'     : cubic-bezier(0.895, 0.03,  0.685, 0.22 ),
+    'out-quart'    : cubic-bezier(0.165, 0.84,  0.44,  1    ),
+    'in-out-quart' : cubic-bezier(0.77,  0,     0.175, 1    ),
+    // Quintic
+    'in-quint'     : cubic-bezier(0.755, 0.05,  0.855, 0.06 ),
+    'out-quint'    : cubic-bezier(0.23,  1,     0.32,  1    ),
+    'in-out-quint' : cubic-bezier(0.86,  0,     0.07,  1    ),
+    // Sine
+    'in-sine'      : cubic-bezier(0.47,  0,     0.745, 0.715),
+    'out-sine'     : cubic-bezier(0.39,  0.575, 0.565, 1    ),
+    'in-out-sine'  : cubic-bezier(0.445, 0.05,  0.55,  0.95 ),
+  ),
+  $transition-function
 );
 
-$display: (
-  'hidden'       : none,
-  'block'        : block,
-  'flex'         : flex,
-  'grid'         : grid,
-  'inline-block' : inline-block,
-  'inline-flex'  : inline-flex,
-  'inline-grid'  : inline-grid,
-  'inline'       : inline,
-  'table-cell'   : table-cell,
-  'table'        : table,
+$display: () !default;
+$display: map.merge(
+  (
+    'block'        : block,
+    'caption'      : table-caption,
+    'flex'         : flex,
+    'grid'         : grid,
+    'hidden'       : none,
+    'inline-block' : inline-block,
+    'inline-flex'  : inline-flex,
+    'inline-grid'  : inline-grid,
+    'inline'       : inline,
+    'list-item'    : list-item,
+    'table'        : table,
+    'tbody'        : table-row-group,
+    'td'           : table-cell,
+    'tfoot'        : table-footer-group,
+    'thead'        : table-header-group,
+    'tr'           : table-row,
+  ),
+  $display
 );
 
-// SPACINGS
-
-$margin: (
-  '0'   : 0,
-  '1'   : 0.25rem,   // 4px
-  '2'   : 0.5rem,    // 8px
-  '3'   : 1rem,      // 16px
-  '4'   : 1.5rem,    // 24px
-  '5'   : 2rem,      // 32px
-  '6'   : 2.5rem,    // 40px
-  '7'   : 3rem,      // 48px
-  '8'   : 3.5rem,    // 56px
-  '9'   : 4rem,      // 64px
-  '10'  : 4.5rem,    // 72px
-  'px'  : 0.0625rem, // 1px
-  'auto': auto,
+$spacing: () !default;
+$spacing: map.merge(
+  (
+    'px': 1px,
+    '0' : 0,
+    '1' : 0.25rem,
+    '2' : 0.5rem,
+    '3' : 0.75rem,
+    '4' : 1rem,
+    '5' : 1.25rem,
+    '6' : 1.5rem,
+    '8' : 2rem,
+    '10': 2.5rem,
+    '12': 3rem,
+    '16': 4rem,
+    '20': 5rem,
+    '24': 6rem,
+    '32': 8rem,
+    '40': 10rem,
+    '48': 12rem,
+    '56': 14rem,
+    '64': 16rem,
+  ),
+  $spacing
 );
 
-// NEGATIVE MARGINS
-//
-// Used for offsetting elements or some layout hacks.
-$margin-negative: (
-  '-1'  : -0.25rem,   // 4px
-  '-2'  : -0.5rem,    // 8px
-  '-3'  : -1rem,      // 16px
-  '-4'  : -1.5rem,    // 24px
-  '-5'  : -2rem,      // 32px
-  '-6'  : -2.5rem,    // 40px
-  '-7'  : -3rem,      // 48px
-  '-8'  : -3.5rem,    // 56px
-  '-9'  : -4rem,      // 64px
-  '-10' : -4.5rem,    // 72px
-  '-px' : -0.0625rem, // 1px
+$margin: () !default;
+$margin: map.merge(
+  ('auto': auto),
+  $margin
 );
 
-$padding: (
-  '0'  : 0,
-  '1'  : 0.25rem,   // 4px
-  '2'  : 0.5rem,    // 8px
-  '3'  : 1rem,      // 16px
-  '4'  : 1.5rem,    // 24px
-  '5'  : 2rem,      // 32px
-  '6'  : 2.5rem,    // 40px
-  '7'  : 3rem,      // 48px
-  '8'  : 3.5rem,    // 56px
-  '9'  : 4rem,      // 64px
-  '10' : 4.5rem,    // 72px
-  'px' : 0.0625rem, // 1px
+$margin: map.merge(
+  $spacing,
+  $margin
 );
 
-// EM PADDINGS
-//
-// Using ems is a nice way to create scalable UI elements like buttons, badges,
-// etc. By increasing the font-size in the parent element, paddings will change
-// size proportionally —as opposed to rems.
-$padding-em: (
-  '1'  : 0.25em,   // 4px
-  '2'  : 0.5em,    // 8px
-  '3'  : 1em,      // 16px
-  '4'  : 1.5em,    // 24px
-  '5'  : 2em,      // 32px
-  '6'  : 2.5em,    // 40px
-  '7'  : 3em,      // 48px
-  '8'  : 3.5em,    // 56px
-  '9'  : 4em,      // 64px
-  '10' : 4.5em,    // 72px
-  'px' : 0.0625em, // 1px
+$margin: map.merge(
+  negative($spacing),
+  $margin
 );
 
-// CH PADDINGS (ONLY FOR X AXIS)
-// 
-// Ch units are based on the with of '0' character and relative to the font size.
-// They're really usefull when creating buttons or badges that need a bit more
-// of granular control.
-$padding-ch: (
-  '1': 1ch,
-  '2': 1.5ch,
-  '3': 2ch,
-  '4': 2.5ch,
-  '5': 3ch,
+// Stack gap margins (lobotomized owl)
+$stack-gap: () !default;
+$stack-gap: map.merge(
+  $stack-gap,
+  $spacing
 );
+
+$padding: () !default;
+$padding: map.merge(
+  $padding,
+  $spacing
+);
+
+$translate: () !default;
 
 $translate: map.merge(
-  map.merge(map.remove($margin, 'auto'), $margin-negative),
   (
     '-full'  : -100%,
     '-1\\/2' : -50%,
     '1\\/2'  : 50%,
     'full'   : 100%,
+  ),
+  $translate
+);
+
+$translate: map.merge(
+  $spacing,
+  $translate
+);
+
+$translate: map.merge(
+  negative($spacing),
+  $translate
+);
+
+$transform-origin: () !default;
+$transform-origin: map.merge(
+  (
+    'bottom-left' : bottom left,
+    'bottom-right': bottom right,
+    'bottom'      : bottom,
+    'center-left' : center left,
+    'center-right': center right,
+    'center'      : center,
+    'left'        : left,
+    'right'       : right,
+    'top-left'    : top left,
+    'top-right'   : top right,
+    'top'         : top,
+  ),
+  $transform-origin
+);
+
+$scale: () !default;
+$scale: map.merge(
+  (
+    '0'  : 0,
+    '50' : .5,
+    '75' : .75,
+    '90' : .9,
+    '95' : .95,
+    '100': 1,
+    '105': 1.05,
+    '110': 1.1,
+    '125': 1.25,
+    '150': 1.5,
+  ),
+  $scale
+);
+
+$rotate: () !default;
+$rotate: map.merge(
+  (
+    '-180': -180deg,
+    '-90' : -90deg,
+    '-45' : -45deg,
+    '0'   : 0,
+    '45'  : 45deg,
+    '90'  : 90deg,
+    '180' : 180deg,
+  ),
+  $rotate
+);
+
+$skew: () !default;
+$skew: map.merge(
+  $rotate,
+  $skew
+);
+
+$column-count: () !default;
+$column-count: map.merge(
+  (
+    'auto': auto,
+    '2'   : 2,
+    '3'   : 3,
+    '4'   : 4,
+    '5'   : 5,
+  ),
+  $column-count
+);
+
+$column-width: () !default;
+$column-width: map.merge(
+  $column-width,
+  $spacing
+);
+
+$gap: () !default;
+$gap: map.merge(
+  $gap,
+  $spacing
+);
+
+$column-gap: () !default;
+$column-gap: map.merge(
+  $column-gap,
+  $spacing
+);
+
+$row-gap: () !default;
+$row-gap: map.merge(
+  $row-gap,
+  $spacing
+);
+
+$column-rule-width: () !default;
+$column-rule-width: map.merge(
+  (
+    '0'       : 0,
+    'default' : 0.0625rem,
+    '2'       : 0.125rem,
+    '4'       : 0.25rem,
+    '8'       : 0.5rem,
+  ),
+  $column-rule-width
+);
+
+$aspect-ratio: () !default;
+$aspect-ratio: map.merge(
+  (
+    '1\\:1'  : 100%,
+    '1\\:2'  : calc(1/2  * 100%),
+    '2\\:3'  : calc(3/2  * 100%),
+    '3\\:2'  : calc(2/3  * 100%),
+    '3\\:4'  : calc(4/3  * 100%),
+    '4\\:3'  : calc(3/4  * 100%),
+    '9\\:16' : calc(16/9 * 100%),
+    '16\\:9' : calc(9/16 * 100%),
+  ),
+  $aspect-ratio
+);
+
+$width: () !default;
+$width: map.merge($width, $spacing);
+$width: map.merge(
+  $width,
+  (
+    // Misc
+    'auto'    : auto,
+    // Fractions
+    '1\\/2'   : 50%,
+    '1\\/3'   : 33.33333%,
+    '2\\/3'   : 66.66667%,
+    '1\\/4'   : 25%,
+    '2\\/4'   : 50%,
+    '3\\/4'   : 75%,
+    '1\\/5'   : 20%,
+    '2\\/5'   : 40%,
+    '3\\/5'   : 60%,
+    '4\\/5'   : 80%,
+    '1\\/6'   : 16.66667%,
+    '2\\/6'   : 33.33333%,
+    '3\\/6'   : 50%,
+    '4\\/6'   : 66.66667%,
+    '5\\/6'   : 83.33333%,
+    '1\\/12'  : 8.33333%,
+    '2\\/12'  : 16.66667%,
+    '3\\/12'  : 25%,
+    '4\\/12'  : 33.33333%,
+    '5\\/12'  : 41.66667%,
+    '6\\/12'  : 50%,
+    '7\\/12'  : 58.33333%,
+    '8\\/12'  : 66.66667%,
+    '9\\/12'  : 75%,
+    '10\\/12' : 83.33333%,
+    '11\\/12' : 91.66667%,  
+    // Special
+    'full'    : 100%,
+    'screen'  : 100vw
   )
 );
 
-$transform-origin: (
-  'bottom-left' : bottom left,
-  'bottom-right': bottom right,
-  'bottom'      : bottom,
-  'center-left' : center left,
-  'center-right': center right,
-  'center'      : center,
-  'left'        : left,
-  'right'       : right,
-  'top-left'    : top left,
-  'top-right'   : top right,
-  'top'         : top,
+$flex-basis: () !default;
+$flex-basis: map.merge(
+  $width,
+  $spacing
 );
 
-$scale: (
-  '0'  : 0,
-  '50' : .5,
-  '75' : .75,
-  '90' : .9,
-  '95' : .95,
-  '100': 1,
-  '105': 1.05,
-  '110': 1.1,
-  '125': 1.25,
-  '150': 1.5,
-);
+$width: map.merge($width, $spacing);
 
-$rotate: (
-  '-180': -180deg,
-  '-90' : -90deg,
-  '-45' : -45deg,
-  '0'   : 0,
-  '45'  : 45deg,
-  '90'  : 90deg,
-  '180' : 180deg,
-);
-
-$skew: $rotate;
-
-$column-count: (
-  '2': 2,
-  '3': 3,
-);
-
-$column-gap: (
-  '0' : 0,
-  '1' : 0.25rem,  // 4px
-  '2' : 0.5rem,   // 8px
-  '3' : 1rem,     // 16px
-  '4' : 1.5rem,   // 24px
-  '5' : 2rem,     // 32px
-);
-
-$column-gap-em: (
-  '0' : 0,
-  '1' : 0.25em,  // 4px
-  '2' : 0.5em,   // 8px
-  '3' : 1em,     // 16px
-  '4' : 1.5em,   // 24px
-  '5' : 2em,     // 32px
-);
-
-$column-gap-ch: (
-  '1': 1ch,
-  '2': 1.5ch,
-  '3': 2ch,
-  '4': 2.5ch,
-  '5': 3ch,
-);
-
-// ASPECT RATIOS
-// 
-// In order to use these utilities you need to set additional utilites to the
-// parent container and the img/video elements.
-// 
-// 1. Parent container: overflow-hidden, relative
-// 2. img/video: block, absolute, inset-0, w-full, h-full, object-cover
-$aspect-ratio: (
-  '1\\:1'  : 100%,
-  '1\\:2'  : calc(1/2  * 100%),
-  '2\\:3'  : calc(3/2  * 100%),
-  '3\\:2'  : calc(2/3  * 100%),
-  '3\\:4'  : calc(4/3  * 100%),
-  '4\\:3'  : calc(3/4  * 100%),
-  '9\\:16' : calc(16/9 * 100%),
-  '16\\:9' : calc(9/16 * 100%),
-);
-
-$width: (
-  // REMS
-  '0'  : 0,       // 0
-  '1'  : 0.25rem, // 4px
-  '2'  : 0.5rem,  // 8px
-  '3'  : 0.75rem, // 12px
-  '4'  : 1rem,    // 16px
-  '5'  : 1.25rem, // 20px
-  '6'  : 1.5rem,  // 24px
-  '7'  : 1.75rem, // 28px
-  '8'  : 2rem,    // 32px
-  '9'  : 2.25rem, // 36px
-  '10' : 2.5rem,  // 40px
-  '12' : 3rem,    // 48px
-  '16' : 4rem,    // 64px
-  '20' : 5rem,    // 80px
-  '24' : 6rem,    // 96px
-  '32' : 8rem,    // 128px
-  '40' : 10rem,   // 160px
-  '48' : 12rem,   // 192px
-  '56' : 14rem,   // 224px
-  '64' : 16rem,   // 256px
-
-  // MISC
-  'auto' : auto,
-  'px'   : 1px,
-
-  // FRACTIONS
-  '1\\/2'   : 50%,
-  '1\\/3'   : 33.33333%,
-  '2\\/3'   : 66.66667%,
-  '1\\/4'   : 25%,
-  '2\\/4'   : 50%,
-  '3\\/4'   : 75%,
-  '1\\/5'   : 20%,
-  '2\\/5'   : 40%,
-  '3\\/5'   : 60%,
-  '4\\/5'   : 80%,
-  '1\\/6'   : 16.66667%,
-  '2\\/6'   : 33.33333%,
-  '3\\/6'   : 50%,
-  '4\\/6'   : 66.66667%,
-  '5\\/6'   : 83.33333%,
-  '1\\/12'  : 8.33333%,
-  '2\\/12'  : 16.66667%,
-  '3\\/12'  : 25%,
-  '4\\/12'  : 33.33333%,
-  '5\\/12'  : 41.66667%,
-  '6\\/12'  : 50%,
-  '7\\/12'  : 58.33333%,
-  '8\\/12'  : 66.66667%,
-  '9\\/12'  : 75%,
-  '10\\/12' : 83.33333%,
-  '11\\/12' : 91.66667%,
-
-  // SPECIAL
-  'full'   : 100%,
-  'screen' : 100vw
-);
-
-$max-width: (
-  'xs'   : 20rem, // 320px
-  'sm'   : 24rem, // 384px
-  'md'   : 28rem, // 448px
-  'lg'   : 32rem, // 512px
-  'xl'   : 36rem, // 576px
-  '2xl'  : 42rem, // 672px
-  '3xl'  : 48rem, // 768px
-  '4xl'  : 56rem, // 896px
-  '5xl'  : 64rem, // 1024px
-  '6xl'  : 72rem, // 1152px
-  'full' : 100%
-);
-
-$min-width: (
-  '0'    : 0,
-  'full' : 100%
-);
-
-$height: (
-  '0'  : 0,       // 0
-  '1'  : 0.25rem, // 4px
-  '2'  : 0.5rem,  // 8px
-  '3'  : 0.75rem, // 12px
-  '4'  : 1rem,    // 16px
-  '5'  : 1.25rem, // 20px
-  '6'  : 1.5rem,  // 24px
-  '7'  : 1.75rem, // 28p
-  '8'  : 2rem,    // 32px
-  '9'  : 2.25rem, // 36p
-  '10' : 2.5rem,  // 40px
-  '12' : 3rem,    // 48px
-  '16' : 4rem,    // 64px
-  '20' : 5rem,    // 80px
-  '24' : 6rem,    // 96px
-  '32' : 8rem,    // 128px
-  '40' : 10rem,   // 160px
-  '48' : 12rem,   // 192px
-  '56' : 14rem,   // 224px
-  '64' : 16rem,   // 256px
-
-  'auto'   : auto,
-  'px'     : 1px,
-  'full'   : 100%,
-  'half'   : 50%,
-  'screen' : 100vh,
-);
-
-$max-height: (
-  'none'   : 0,
-  'full'   : 100%,
-  'screen' : 100vh,
-);
-
-$min-height: (
-  '0'      : 0, 
-  'full'   : 100%,
-  'screen' : 100vh,
-);
-
-$border-width: (
-  '0'       : 0,
-  'default' : 0.0625rem,
-  '2'       : 0.125rem,
-  '4'       : 0.25rem,
-  '8'       : 0.5rem,
-);
-
-$border-width-em: (
-  'default' : 0.0625em,
-  '2'       : 0.125em,
-  '4'       : 0.25em,
-  '8'       : 0.5em,
-);
-
-$border-radius: (
-  'none'    : 0,
-  'sm'      : 0.125rem,
-  'default' : 0.25rem,
-  'md'      : 0.375rem,
-  'lg'      : 0.5rem,
-  'full'    : 100vh,
-);
-
-$border-radius-em: (
-  'sm'      : 0.125em,
-  'default' : 0.25em,
-  'md'      : 0.375em,
-  'lg'      : 0.5em,
-);
-
-$opacity: (
-  '0'   : 0,
-  '25'  : 0.25,
-  '50'  : 0.5,
-  '75'  : 0.75,
-  '100' : 1,
-);
-
-$inset: (
-  '0'    : 0,
-  'auto' : auto,
- );
-
-$z-index: (
-  'auto': auto,
-  '0'   : 0,
-  '1'   : 1,
-  '2'   : 2,
-  '3'   : 3,
-);
-
-$z-index-negative: (
-  '1': -10,
-  '2': -20,
-);
-
-$order: (
-  'first' : -1,
-  'last'  : 999,
-  'none'  : 0,
-
-  '1' :  1,
-  '2' :  2,
-  '3' :  3,
-  '4' :  4,
-  '5' :  5,
-);
-
-$flex: (
-  'initial' : 0 1 auto,
-  '1'       : 1 1 0%,
-  'auto'    : 1 1 auto,
-  'none'    : none,
-);
-
-$flex-grow: (
-  '0'       : 0,
-  'default' : 1,
-);
-
-$flex-shrink: (
-  '0'       : 0,
-  'default' : 1,
-);
-
-$font-size: (
-  'xs'   : 0.740rem, // 12px — extrasmall
-  'sm'   : 0.833rem, // 13px — small
-  'base' : 1rem,     // 16px — base
-  'lg'   : 1.2rem,   // 19px — h6
-  'xl'   : 1.44rem,  // 20px — h5
-  '2xl'  : 1.728rem, // 23px — h4
-  '3xl'  : 2.074rem, // 27px — h3
-  '4xl'  : 2.488rem, // 33px — h2
-  '5xl'  : 2.985rem, // 47px — h1
-  '6xl'  : 3.582rem, // 57px — Hero
-);
-
-$font-size-em: (
-  'xs'   : 0.740em, // 12px — extrasmall
-  'sm'   : 0.833em, // 13px — small
-  'base' : 1em,     // 16px — base
-  'lg'   : 1.2em,   // 19px — h6
-  'xl'   : 1.44em,  // 20px — h5
-  '2xl'  : 1.728em, // 23px — h4
-  '3xl'  : 2.074em, // 27px — h3
-  '4xl'  : 2.488em, // 33px — h2
-  '5xl'  : 2.985em, // 47px — h1
-  '6xl'  : 3.582em, // 57px — Hero
-);
-
-$font-family: (
-  'sans': (
-    'Inter var',
-    'Inter',
-    '-apple-system',
-    'BlinkMacSystemFont',
-    'Segoe UI',
-    'Roboto',
-    'Helvetica Neue',
-    'Arial',
-    'Noto Sans',
-    'sans-serif',
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    'Noto Color Emoji',
-    sans-serif
+$max-width: () !default;
+$max-width: map.merge(
+  (
+    'xs'   : 20rem, // 320px
+    'sm'   : 24rem, // 384px
+    'md'   : 28rem, // 448px
+    'lg'   : 32rem, // 512px
+    'xl'   : 36rem, // 576px
+    '2xl'  : 42rem, // 672px
+    '3xl'  : 48rem, // 768px
+    '4xl'  : 56rem, // 896px
+    '5xl'  : 64rem, // 1024px
+    '6xl'  : 72rem, // 1152px
+    'full' : 100%,
+    'none' : none,
   ),
+  $max-width
+);
+
+// Add `min-width` screens from `$breakpoints`
+$max-width: map.merge(
+  $max-width,
+  get-min-width-screens($breakpoints)
+);
+
+$min-width: () !default;
+$min-width: map.merge(
+  (
+    '0'    : 0,
+    'full' : 100%
+  ),
+  $min-width
+);
+
+$height: () !default;
+$height: map.merge($height, $spacing);
+$height: map.merge(
+  $height,
+  (
+    'auto'   : auto,
+    'full'   : 100%,
+    'half'   : 50%,
+    'screen' : 100vh,
+  )
+);
+
+$max-height: () !default;
+$max-height: map.merge(
+  (
+    '0'      : 0,
+    'full'   : 100%,
+    'screen' : 100vh,
+  ),
+  $max-height
+);
+
+$min-height: () !default;
+$min-height: map.merge(
+  (
+    '0'      : 0, 
+    'full'   : 100%,
+    'screen' : 100vh,
+  ),
+  $min-height
+);
+
+$border-width: () !default;
+$border-width: map.merge(
+  (
+    '0'       : 0,
+    'default' : 0.0625rem,
+    '2'       : 0.125rem,
+    '4'       : 0.25rem,
+    '8'       : 0.5rem,
+  ),
+  $border-width
+);
+
+$stack-rule-width: () !default;
+$stack-rule-width: map.merge(
+  $border-width,
+  $stack-rule-width
+);
+
+$border-radius: () !default;
+$border-radius: map.merge(
+  (
+    'none'    : 0,
+    'sm'      : 0.125rem,
+    'default' : 0.25rem,
+    'md'      : 0.375rem,
+    'lg'      : 0.5rem,
+    'full'    : 100vh,
+  ),
+  $border-radius
+);
+
+$opacity: () !default;
+$opacity: map.merge(
+  (
+    '0'   : 0,
+    '25'  : 0.25,
+    '50'  : 0.5,
+    '75'  : 0.75,
+    '100' : 1,
+  ),
+  $opacity
+);
+
+$inset: () !default;
+$inset: map.merge(
+  (
+    '0'    : 0,
+    'auto' : auto,
+  ),
+  $inset
+);
+
+$z-index: () !default;
+$z-index: map.merge(
+  (
+    'auto': auto,
+    '-2'  : -2,
+    '-1'  : -1,
+     '0'  :  0,
+     '1'  :  1,
+     '2'  :  2,
+     '3'  :  3,
+  ),
+  $z-index
+);
+
+$grid-template-columns: () !default;
+$grid-template-columns: map.merge(
+  (
+    '1'    : repeat(1,  minmax(0, 1fr)),
+    '2'    : repeat(2,  minmax(0, 1fr)),
+    '3'    : repeat(3,  minmax(0, 1fr)),
+    '4'    : repeat(4,  minmax(0, 1fr)),
+    '5'    : repeat(5,  minmax(0, 1fr)),
+    '6'    : repeat(6,  minmax(0, 1fr)),
+    '7'    : repeat(7,  minmax(0, 1fr)),
+    '8'    : repeat(8,  minmax(0, 1fr)),
+    '9'    : repeat(9,  minmax(0, 1fr)),
+    '10'   : repeat(10, minmax(0, 1fr)),
+    '11'   : repeat(11, minmax(0, 1fr)),
+    '12'   : repeat(12, minmax(0, 1fr)),
+    'none' : none
+  ),
+  $grid-template-columns
+);
+
+$grid-column: () !default;
+$grid-column: map.merge(
+  (
+    'span-1' : span  1 / span 1,
+    'span-2' : span  2 / span 2,
+    'span-3' : span  3 / span 3,
+    'span-4' : span  4 / span 4,
+    'span-5' : span  5 / span 5,
+    'span-6' : span  6 / span 6,
+    'span-7' : span  7 / span 7,
+    'span-8' : span  8 / span 8,
+    'span-9' : span  9 / span 9,
+    'span-10': span 10 / span 10,
+    'span-11': span 11 / span 11,
+    'span-12': span 12 / span 12,
+    'auto'   : auto
+  ),
+  $grid-column
+);
+
+$grid-column-start: () !default;
+$grid-column-start: map.merge(
+  (
+    '1'    : 1,
+    '2'    : 2,
+    '3'    : 3,
+    '4'    : 4,
+    '5'    : 5,
+    '6'    : 6,
+    '7'    : 7,
+    '8'    : 8,
+    '9'    : 9,
+    '10'   : 10,
+    '11'   : 11,
+    '12'   : 12,
+    '13'   : 13,
+    'auto' : auto
+  ),
+  $grid-column-start
+);
+
+$grid-column-end: () !default;
+$grid-column-end: map.merge(
+  (
+    '1'    : 1,
+    '2'    : 2,
+    '3'    : 3,
+    '4'    : 4,
+    '5'    : 5,
+    '6'    : 6,
+    '7'    : 7,
+    '8'    : 8,
+    '9'    : 9,
+    '10'   : 10,
+    '11'   : 11,
+    '12'   : 12,
+    '13'   : 13,
+    'auto' : auto
+  ),
+  $grid-column-end
+);
+
+$grid-template-rows: () !default;
+$grid-template-rows: map.merge(
+  (
+    '1'    : repeat(1,  minmax(0, 1fr)),
+    '2'    : repeat(2,  minmax(0, 1fr)),
+    '3'    : repeat(3,  minmax(0, 1fr)),
+    '4'    : repeat(4,  minmax(0, 1fr)),
+    '5'    : repeat(5,  minmax(0, 1fr)),
+    '6'    : repeat(6,  minmax(0, 1fr)),
+    'none' : none
+  ),
+  $grid-template-rows
+);
+
+$grid-row: () !default;
+$grid-row: map.merge(
+  (
+    'span-1' : span 1 / span 1,
+    'span-2' : span 2 / span 2,
+    'span-3' : span 3 / span 3,
+    'span-4' : span 4 / span 4,
+    'span-5' : span 5 / span 5,
+    'span-6' : span 6 / span 6,
+    'auto'   : auto,
+  ),
+  $grid-row
+);
+
+$grid-row-start: () !default;
+$grid-row-start: map.merge(
+  (
+    '1'    : 1,
+    '2'    : 2,
+    '3'    : 3,
+    '4'    : 4,
+    '5'    : 5,
+    '6'    : 6,
+    '7'    : 7,
+    'auto' : auto
+  ),
+  $grid-row-start
+);
+
+$grid-row-end: () !default;
+$grid-row-end: map.merge(
+  (
+    '1'    : 1,
+    '2'    : 2,
+    '3'    : 3,
+    '4'    : 4,
+    '5'    : 5,
+    '6'    : 6,
+    '7'    : 7,
+    'auto' : auto
+  ),
+  $grid-row-end
+);
+
+$align-items: () !default;
+$align-items: map.merge(
+  (
+    'baseline' : baseline,
+    'center'   : center,
+    'end'      : flex-end,
+    'start'    : flex-start,
+    'stretch'  : stretch,
+  ),
+  $align-items
+);
+
+$place-items: () !default;
+$place-items: map.merge(
+  (
+    'center-end'   : center end,
+    'center-start' : center start,
+    'center'       : center,
+    'end-center'   : end center,
+    'end-start'    : end start,
+    'end'          : end,
+    'start-center' : start center,
+    'start-end'    : start end,
+    'start'        : start,
+  ),
+  $place-items
+);
+
+$place-content: () !default;
+$place-content: map.merge(
+  (
+    'center' : center,
+  ),
+  $place-content
+);
+
+$align-content: () !default;
+$align-content: map.merge(
+  (
+    'around'  : space-around,
+    'between' : space-between,
+    'center'  : center,
+    'end'     : flex-end,
+    'start'   : flex-start,
+  ),
+  $align-content
+);
+
+$order: () !default;
+$order: map.merge(
+  (
+    'first' : -1,
+    'last'  : 999,
+    'none'  : 0,
+    '1'     :  1,
+    '2'     :  2,
+    '3'     :  3,
+    '4'     :  4,
+    '5'     :  5,
+  ),
+  $order
+);
+
+$flex: () !default;
+$flex: map.merge(
+  (
+    'initial' : 0 1 auto,
+    '1'       : 1 1 0%,
+    'auto'    : 1 1 auto,
+    'none'    : none,
+  ),
+  $flex
+);
+
+$flex-grow: () !default;
+$flex-grow: map.merge(
+  (
+    '0'       : 0,
+    'default' : 1,
+  ),
+  $flex-grow
+);
+
+$flex-shrink: () !default;
+$flex-shrink: map.merge(
+  (
+    '0'       : 0,
+    'default' : 1,
+  ),
+  $flex-shrink
+);
+
+$font-size: () !default;
+$font-size: map.merge(
+  (
+    'xs'   : 0.740rem, // 12px — extrasmall
+    'sm'   : 0.833rem, // 13px — small
+    'base' : 1rem,     // 16px — base
+    'lg'   : 1.2rem,   // 19px — h6
+    'xl'   : 1.44rem,  // 20px — h5
+    '2xl'  : 1.728rem, // 23px — h4
+    '3xl'  : 2.074rem, // 27px — h3
+    '4xl'  : 2.488rem, // 33px — h2
+    '5xl'  : 2.985rem, // 47px — h1
+    '6xl'  : 3.582rem, // 57px — Hero
+  ),
+  $font-size
+);
+
+$font-family: () !default;
+$font-family: map.merge(
+  (
+    'sans': (
+      'Inter',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      'Segoe UI',
+      'Roboto',
+      'Helvetica Neue',
+      'Arial',
+      'Noto Sans',
+      'sans-serif',
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
+      'Noto Color Emoji',
+      sans-serif
+    ),
+    
+    'serif': (
+      'Bodoni 72',
+      'Bodoni MT',
+      'Times New Roman',
+      'Times',
+      'Georgia',
+      serif
+    ),
   
-  'serif': (
-    'Bodoni 72',
-    'Bodoni MT',
-    'Times New Roman',
-    'Times',
-    'Georgia',
-    serif
+    'monospace': (
+      'Victor Mono',
+      Menlo,
+      Monaco,
+      Consolas,
+      'Liberation Mono',
+      'Courier New',
+      monospace
+    ),
   ),
+  $font-family
+);
 
-  'monospace': (
-    'Victor Mono',
-    Menlo,
-    Monaco,
-    Consolas,
-    'Liberation Mono',
-    'Courier New',
-    monospace
+$leading: () !default;
+$leading: map.merge(
+  (
+    'none'    : 1,
+    'tight'   : 1.25,
+    'snug'    : 1.375,
+    'normal'  : 1.5,
+    'relaxed' : 1.625,
+    'loose'   : 2,
+    '3'       : 0.75rem,
+    '4'       : 1rem,
+    '5'       : 1.25rem,
+    '6'       : 1.5rem,
+    '7'       : 1.75rem,
+    '8'       : 2rem,
+    '9'       : 2.25rem,
+    '10'      : 2.5rem,
   ),
+  $leading
 );
 
-$leading: (
-  'none'    : 1,
-  'tight'   : 1.25,
-  'snug'    : 1.375,
-  'normal'  : 1.5,
-  'relaxed' : 1.625,
-  'loose'   : 2,
+$tracking: () !default;
+$tracking: map.merge(
+  (
+    'tighter' : -0.05em,
+    'tight'   : -0.025em,
+    'normal'  : 0,
+    'wide'    : 0.025em,
+    'wider'   : 0.05em,
+    'widest'  : 0.1em,
+  ),
+  $tracking
 );
 
-$tracking: (
-  'tighter' : -0.05em,
-  'tight'   : -0.025em,
-  'normal'  : 0,
-  'wide'    : 0.025em,
-  'wider'   : 0.05em,
-  'widest'  : 0.1em,
+$font-weight: () !default;
+$font-weight: map.merge(
+  (
+    'thin'       : 100,
+    'extra-light': 200,
+    'light'      : 300,
+    'normal'     : 400,
+    'medium'     : 500,
+    'semi-bold'  : 600,
+    'bold'       : 700,
+    'extra-bold' : 800,
+    'black'      : 900,
+  ),
+  $font-weight
 );
 
-$font-weight: (
-  'thin'       : 100,
-  'extra-light': 200,
-  'light'      : 300,
-  'normal'     : 400,
-  'medium'     : 500,
-  'semi-bold'  : 600,
-  'bold'       : 700,
-  'extra-bold' : 800,
-  'black'      : 900,
+$font-feature-settings: () !default;
+$font-feature-settings: map.merge(
+  (
+    // Numeric
+    'tnum' : 'tnum', // Tabular numbers
+    'zero' : 'zero', // Slashed zero
+    'lnum' : 'lnum', // Lining numbers
+    'frac' : 'frac', // Fractions
+    // Case
+    'smcp' : 'smcp', // Small Caps
+    'c2sc' : 'c2sc', // Capitals to Small Caps
+    'pcap' : 'pcap', // Petit Caps
+    'unic' : 'unic', // Unicase
+    'ordn' : 'ordn', // Ordinals
+    // Ligatures
+    'clig' : 'clig', // Contextual ligatures
+    'hlig' : 'hlig', // Historical ligatures
+    'liga' : 'liga', // Standard ligatures
+  ),
+  $font-feature-settings
 );
 
-$list-style-type: (
-  'none'    : none,
-  'disc'    : disc,
-  'decimal' : decimal,
+$list-style-type: () !default;
+$list-style-type: map.merge(
+  (
+    'none'    : none,
+    'disc'    : disc,
+    'decimal' : decimal,
+  ),
+  $list-style-type
 );
 
-$object-position: (
-  'top'          : top,
-  'right'        : right,
-  'bottom'       : bottom,
-  'left'         : left,
-  'top-right'    : top right,
-  'top-left'     : top left,
-  'bottom-right' : bottom right,
-  'bottom-left'  : bottom left
+$object-position: () !default;
+$object-position: map.merge(
+  (
+    'top'          : top,
+    'right'        : right,
+    'bottom'       : bottom,
+    'left'         : left,
+    'top-right'    : top right,
+    'top-left'     : top left,
+    'bottom-right' : bottom right,
+    'bottom-left'  : bottom left
+  ),
+  $object-position
 );
 
-$cursor: (
-  'auto'        : auto,
-  'default'     : default,
-  'pointer'     : pointer,
-  'wait'        : wait,
-  'text'        : text,
-  'move'        : move,
-  'not-allowed' : not-allowed,
+$cursor: () !default;
+$cursor: map.merge(
+  (
+    'auto'        : auto,
+    'default'     : default,
+    'pointer'     : pointer,
+    'wait'        : wait,
+    'text'        : text,
+    'move'        : move,
+    'not-allowed' : not-allowed,
+  ),
+  $cursor
 );
 
-$stroke-width: (
-  '0': 0,
-  '1': 1,
-  '2': 2,
+$line-clamp: () !default;
+$line-clamp: map.merge(
+  (
+    '1' : 1,
+    '2' : 2,
+    '3' : 3,
+    '4' : 4,
+  ),
+  $line-clamp
 );
 
-// ENABLE/DISABLE VARIANTS
-$variants: (
-  'align-content'         : true,
-  'align-items'           : [responsive],
-  'align-self'            : false,
-  'appearance'            : false,
-  'aspect-ratio'          : true,
-  'background-attachment' : true,
-  'background-color'      : [responsive hover group-hover],
-  'background-position'   : true,
-  'background-repeat'     : true,
-  'background-size'       : true,
-  'border-collapse'       : false,
-  'border-color'          : [hover],
-  'border-radius-em'      : true,
-  'border-radius'         : [responsive],
-  'border-style'          : true,
-  'border-width-em'       : true,
-  'border-width'          : [responsive],
-  'box-shadow'            : true,
-  'colors'                : [hover],
-  'column-count'          : true,
-  'column-gap'            : true,
-  'container'             : true,
-  'cursor'                : true,
-  'display'               : [responsive group-hover],
-  'fill'                  : true,
-  'flex-direction'        : [responsive],
-  'flex-grow'             : true,
-  'flex-shrink'           : true,
-  'flex-wrap'             : [responsive],
-  'flex'                  : [responsive],
-  'float'                 : true,
-  'font-family'           : true,
-  'font-size-em'          : true,
-  'font-size'             : [responsive],
-  'font-smoothing'        : true,
-  'font-style'            : true,
-  'font-weight'           : true,
-  'height'                : [responsive],
-  'inset'                 : true,
-  'justify-content'       : [responsive],
-  'letter-spacing'        : [responsive],
-  'line-height'           : [responsive],
-  'list-style-position'   : true,
-  'list-style-type'       : true,
-  'margin-negative'       : [responsive],
-  'margin'                : [responsive],
-  'max-height'            : true,
-  'max-width'             : [responsive],
-  'min-height'            : false,
-  'min-width'             : [responsive],
-  'object-fit'            : true,
-  'object-position'       : true,
-  'opacity'               : true,
-  'order'                 : false,
-  'outline'               : [focus],
-  'overflow'              : true,
-  'padding-ch'            : true,
-  'padding-em'            : true,
-  'padding'               : [responsive],
-  'pointer-events'        : true,
-  'position'              : true,
-  'resize'                : false,
-  'rotate'                : true,
-  'scale'                 : true,
-  'skew'                  : true,
-  'spacing'               : [responsive],
-  'stroke-width'          : [responsive],
-  'stroke'                : [responsive],
-  'table-layout'          : true,
-  'text-align'            : true,
-  'text-color'            : [responsive hover focus],
-  'text-decoration'       : true,
-  'text-delay'            : true,
-  'text-transform'        : true,
-  'transform-origin'      : [responsive],
-  'transform'             : [responsive],
-  'transition'            : [hover focus],
-  'translate'             : true,
-  'user-select'           : false,
-  'vertical-align'        : true,
-  'visibility'            : true,
-  'white-space'           : true,
-  'width'                 : [responsive],
-  'word-break'            : true,
-  'z-index-negative'      : [responsive],
-  'z-index'               : [responsive],
+$stroke-width: () !default;
+$stroke-width: map.merge(
+  (
+    '0': 0,
+    '1': 1,
+    '2': 2,
+  ),
+  $stroke-width
+);
+
+// Enable/Disable Variants
+$variants: () !default;
+$variants: map.merge(
+  (
+    'accessibility'         : true,
+    'align-content'         : true,
+    'align-items'           : [responsive],
+    'align-self'            : false,
+    'appearance'            : false,
+    'aspect-ratio'          : true,
+    'background-attachment' : true,
+    'background-color'      : [responsive hover group-hover],
+    'background-position'   : true,
+    'background-repeat'     : true,
+    'background-size'       : true,
+    'border-collapse'       : false,
+    'border-color'          : [hover],
+    'border-radius'         : [responsive],
+    'border-style'          : true,
+    'border-width'          : [responsive],
+    'box-shadow'            : true,
+    'caret-color'           : false,
+    'colors'                : [hover],
+    'column-count'          : false,
+    'column-gap'            : [responsive],
+    'column-rule-color'     : false,
+    'column-rule-style'     : false,
+    'column-rule-width'     : false,
+    'column-span'           : false,
+    'column-width'          : false,
+    'container'             : true,
+    'cursor'                : true,
+    'display'               : [responsive],
+    'fill'                  : true,
+    'flex-basis'            : true,
+    'flex-direction'        : [responsive],
+    'flex-grow'             : true,
+    'flex-shrink'           : true,
+    'flex-wrap'             : [responsive],
+    'flex'                  : [responsive],
+    'float'                 : true,
+    'font-family'           : true,
+    'font-feature-settings' : false,
+    'font-size'             : [responsive],
+    'font-smoothing'        : true,
+    'font-style'            : true,
+    'font-weight'           : true,
+    'gap'                   : [responsive],
+    'grid-auto-flow'        : [responsive],
+    'grid-column-end'       : [responsive],
+    'grid-column-start'     : [responsive],
+    'grid-column'           : [responsive],
+    'grid-row-end'          : [responsive],
+    'grid-row-start'        : [responsive],
+    'grid-row'              : [responsive],
+    'grid-template-columns' : [responsive],
+    'grid-template-rows'    : [responsive],
+    'height'                : [responsive],
+    'inset'                 : true,
+    'justify-content'       : [responsive],
+    'letter-spacing'        : [responsive],
+    'line-clamp'            : true,
+    'line-height'           : [responsive],
+    'link-stretch'          : true,
+    'list-style-position'   : true,
+    'list-style-type'       : true,
+    'margin'                : [responsive],
+    'max-height'            : true,
+    'max-width'             : [responsive],
+    'min-height'            : false,
+    'min-width'             : [responsive],
+    'object-fit'            : true,
+    'object-position'       : true,
+    'opacity'               : true,
+    'order'                 : false,
+    'outline'               : [focus],
+    'overflow'              : true,
+    'padding'               : [responsive],
+    'place-content'         : [responsive],
+    'place-items'           : [responsive],
+    'pointer-events'        : true,
+    'position'              : true,
+    'resize'                : false,
+    'rotate'                : true,
+    'row-gap'               : [responsive],
+    'scale'                 : true,
+    'skew'                  : true,
+    'stack-gap'             : [responsive],
+    'stack-rule-color'      : [responsive],
+    'stack-rule-style'      : [responsive],
+    'stack-rule-width'      : [responsive],
+    'stroke-width'          : [responsive],
+    'stroke'                : [responsive],
+    'table-layout'          : true,
+    'text-align'            : true,
+    'text-color'            : [responsive hover focus],
+    'text-decoration'       : true,
+    'text-delay'            : true,
+    'text-transform'        : true,
+    'transform-origin'      : [responsive],
+    'transform'             : [responsive],
+    'transition'            : [hover focus],
+    'translate'             : true,
+    'user-select'           : false,
+    'vertical-align'        : true,
+    'visibility'            : true,
+    'white-space'           : true,
+    'width'                 : [responsive],
+    'word-break'            : true,
+    'z-index'               : [responsive],
+  ),
+  $variants
 );

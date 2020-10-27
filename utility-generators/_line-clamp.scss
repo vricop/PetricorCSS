@@ -1,0 +1,19 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+// Clamp lines with a given number of lines
+// This is a legacy propietary feature that's been adopted by the W3C group.
+// https://drafts.csswg.org/css-overflow-3/#webkit-line-clamp
+@mixin line-clamp($screen: null) {
+  // This utility contains some preset declarations in `_base.scss` in order
+  // to work
+  
+  $args: ($line-clamp, map.get($variants, 'line-clamp'), $screen);
+
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}line-clamp#{$modifier}#{$state} {
+      -webkit-line-clamp: $value;
+    }
+  }
+}

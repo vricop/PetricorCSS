@@ -1,36 +1,45 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
-@mixin inset-classes($prefix, $modifier, $state, $value) { 
-  // Insets
-  .#{$prefix}inset#{$modifier}#{$state} { 
-    top: $value; 
-    right: $value; 
-    bottom: $value; 
-    left: $value;
-  }
-
-  .#{$prefix}inset-x#{$modifier}#{$state} { 
-    left: $value; 
-    right: $value;
-  }
-
-  .#{$prefix}inset-y#{$modifier}#{$state} { 
-    top: $value; 
-    bottom: $value;
-  }
-  
-  // Sides
-  @each $side in (top, right, bottom, left) {
-    .#{$prefix}#{$side}#{$modifier}#{$state} { #{$side}: $value; }
-  }
-}
-
 @mixin inset($screen: null) {
-  $args: config.$inset, map.get(config.$variants, 'inset'), $screen;
+  $args: ($inset, map.get($variants, 'inset'), $screen);
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
-    @include inset-classes($prefix, $modifier, $state, $value);
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    // The base class will contain a dash for negative sets only.
+    @if ($value != 'auto' and $value < 0) {
+      $prefix: '#{$prefix}-';
+    }
+
+    // Mimicking the `inset` property
+    //
+    // `inset` is a shorthand property for `top`, `right`, `bottom` and `left`
+    // properties all together. `inset` works the same way margins does. The W3C
+    // team is working on this new feature.
+    //
+    // https://drafts.csswg.org/css-logical/#propdef-inset
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/Inset
+    .#{$prefix}inset#{$modifier}#{$state} { 
+      top:    $value; 
+      right:  $value; 
+      bottom: $value; 
+      left:   $value;
+    }
+
+    .#{$prefix}inset-x#{$modifier}#{$state} { 
+      left:  $value; 
+      right: $value;
+    }
+
+    .#{$prefix}inset-y#{$modifier}#{$state} { 
+      top:    $value; 
+      bottom: $value;
+    }
+    
+    // Position sides
+    .#{$prefix}top#{$modifier}#{$state}    { top: $value;    }
+    .#{$prefix}right#{$modifier}#{$state}  { right: $value;  }
+    .#{$prefix}bottom#{$modifier}#{$state} { bottom: $value; }
+    .#{$prefix}left#{$modifier}#{$state}   { left: $value;   }
   }
 }

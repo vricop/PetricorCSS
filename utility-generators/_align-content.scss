@@ -1,15 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin align-content($screen: null) {
-  $args: map.get(config.$variants, 'align-content'), $screen;
-  
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
-    .#{$prefix}content-start#{$state} { align-content: flex-start; }
-    .#{$prefix}content-center#{$state} { align-content: center; }
-    .#{$prefix}content-end#{$state} { align-content: flex-end; }
-    .#{$prefix}content-between#{$state} { align-content: space-between; }
-    .#{$prefix}content-around#{$state} { align-content: space-around; }
+  $args: ($align-content, map.get($variants, 'align-content'), $screen);
+
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}content#{$modifier}#{$state} { align-content: $value; }
   }
 }

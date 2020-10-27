@@ -1,11 +1,11 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin max-width($screen: null) {
-  $args: config.$max-width, map.get(config.$variants, 'max-width'), $screen;
+  $args: ($max-width, map.get($variants, 'max-width'), $screen);
 
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}max-w#{$modifier}#{$state} { max-width: $value; }
   }
 }

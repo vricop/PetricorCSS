@@ -1,0 +1,9 @@
+@use 'sass:color' as *;
+
+// Takes $color and returns an hsl list (not a valid color yet). The return value
+// must be used insde css HSL() or HSLA() functions. The uppercase functions will
+// force sass to use the css version insetead of sass.
+// Source: https://css-tricks.com/when-sass-and-new-css-features-collide/#the-solution
+@function hsl-list($color) {
+  @return hue($color) / 1deg, saturation($color), lightness($color);
+}

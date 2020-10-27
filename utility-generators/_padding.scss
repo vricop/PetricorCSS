@@ -1,33 +1,26 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
-@mixin _padding-classes($prefix, $modifier, $state, $value) {
-  .#{$prefix}p#{$modifier}#{$state}  { padding: $value; }
-  .#{$prefix}px#{$modifier}#{$state} { padding: { left: $value; right: $value; } } 
-  .#{$prefix}py#{$modifier}#{$state} { padding: { top: $value; bottom: $value; } }
-  .#{$prefix}pt#{$modifier}#{$state} { padding-top: $value; };
-  .#{$prefix}pr#{$modifier}#{$state} { padding-right: $value; };
-  .#{$prefix}pb#{$modifier}#{$state} { padding-bottom: $value; };
-  .#{$prefix}pl#{$modifier}#{$state} { padding-left: $value; };
-}
-
 @mixin padding($screen: null) {
-  $args: config.$padding, map.get(config.$variants, 'padding'), $screen;
+  $args: ($padding, map.get($variants, 'padding'), $screen);
   
-  @include generate-variants.configurable($args...) using ($prefix, $modifier, $state, $value) {
-    @include _padding-classes($prefix, $modifier, $state, $value);
-  };
-  
-  $args_em: config.$padding-em, map.get(config.$variants, 'padding-em'), $screen;
-  
-  @include generate-variants.configurable($args_em...) using ($prefix, $modifier, $state, $value) {
-    @include _padding-classes($prefix, '#{$modifier}\\[em\\]', $state, $value);
-  };
-  
-  $args_ch: config.$padding-ch, map.get(config.$variants, 'padding-ch'), $screen;
-  
-  @include generate-variants.configurable($args_ch...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}px#{$modifier}\[ch\]#{$state} { padding: { left: $value; right: $value; } } 
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}p#{$modifier}#{$state} { padding: $value; }
+
+    .#{$prefix}px#{$modifier}#{$state} { 
+      padding-left: $value;
+      padding-right: $value;
+    }
+
+    .#{$prefix}py#{$modifier}#{$state} { 
+      padding-top:   $value;
+      padding-bottom: $value;
+    }
+
+    .#{$prefix}pt#{$modifier}#{$state} { padding-top:    $value; }
+    .#{$prefix}pr#{$modifier}#{$state} { padding-right:  $value; }
+    .#{$prefix}pb#{$modifier}#{$state} { padding-bottom: $value; }
+    .#{$prefix}pl#{$modifier}#{$state} { padding-left:   $value; }
   };
 }

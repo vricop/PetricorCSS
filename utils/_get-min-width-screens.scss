@@ -1,0 +1,23 @@
+@function get-min-width-screens($breakpoints) {
+  $result: ();
+  $is-collection-map: false;
+  $has-min-key: false;
+  $has-max-key: false;
+  
+  @each $screen, $collection in $breakpoints {
+    $is-collection-map: type-of($collection) == 'map';
+    
+    @if $is-collection-map {
+      $has-min-key: map-has-key($collection, 'min');
+      $has-max-key: map-has-key($collection, 'max');
+      
+      @if $has-min-key and not $has-max-key {
+        $value: map-get($collection, 'min');
+      
+        $result: map-merge($result, ('screen-#{$screen}': $value));
+      }
+    }
+  }
+  
+  @return $result;
+}

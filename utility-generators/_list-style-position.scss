@@ -1,12 +1,12 @@
-@use '../config';
-@use '../utils/generate-variants';
+@use '../config' as *;
+@use '../utils/build-non-configurable-variants' as *;
 @use 'sass:map';
 
 @mixin list-style-position($screen: null) {
-  $args: map.get(config.$variants, 'list-style-position'), $screen;
+  $args: (map.get($variants, 'list-style-position'), $screen);
 
-  @include generate-variants.non-configurable($args...) using ($prefix, $state) {
-    .#{$prefix}list-inside#{$state} { list-style-position: inside; }
+  @include build-non-configurable-variants($args...) using ($prefix, $state) {
+    .#{$prefix}list-inside#{$state}  { list-style-position: inside; }
     .#{$prefix}list-outside#{$state} { list-style-position: inside; }
   }
 }

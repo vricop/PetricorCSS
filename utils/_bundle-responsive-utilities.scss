@@ -1,24 +1,65 @@
 @use 'sass:map';
-@use 'mediaquery' as *;
+@use 'sass:list';
+@use 'sass:meta';
 
-@mixin bundle-responsive-utilities($breakpoint) {
-  @if map.has-key($breakpoint, 'min') and map.has-key($breakpoint, 'max') {
-    $args: (min: map.get($breakpoint, 'min'), max: map.get($breakpoint, 'max'));
-
-    @include mediaquery($args...) {
-      @content;
-    }
-  }
-
-  @else if map.has-key($breakpoint, 'min') {
-    @include mediaquery($min: map.get($breakpoint, 'min')) {
-      @content;
-    }
-  }
-
-  @else if map.has-key($breakpoint, 'max') {
-    @include mediaquery($max: map.get($breakpoint, 'max')) {
-      @content;
+@mixin bundle-responsive-utilities($breakpoints) {
+  @each $screen, $map in $breakpoints {
+    // 1. Build standard mediaqueries
+    @if meta.type-of($map) == 'map' {
+      $min: map.get($map, 'min');
+      $max: map.get($map, 'max');
+      $raw: map.get($map, 'raw');
+      
+      @if $min != null and $max == null {
+        @media (min-width: $min) {
+          @content($screen, $map); 
+        }
+      } @else if $max != null and $min == null {
+        @media (max-width: $max) {
+          @content($screen, $map);
+        }
+      } @else if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+          @content($screen, $map);
+        }
+      } @else if $raw != null {
+        @#{$raw} {
+          @content($screen, $map);
+        }
+      }
+    // 2. Build multirange mediaqueries
+    } @else if meta.type-of($map) == 'list' {
+      $mediaquery: null;
+      
+      @for $index from 1 through length($map) {
+        $inner-map: list.nth($map, $index);
+        $min: map.get($inner-map, 'min');
+        $max: map.get($inner-map, 'max');
+        
+        @if $min != null and $max == null {
+          @if $mediaquery != null {
+            $mediaquery: "#{$mediaquery}, (min-width: #{$min})";
+          } @else {
+            $mediaquery: "(min-width: #{$min})";
+          }
+        } @else if $max != null and $min == null {
+          @if $mediaquery != null {
+            $mediaquery: "#{$mediaquery}, (min-width: #{$max})";
+          } @else {
+            $mediaquery: "(max-width: #{$max})";
+          }
+        } @else if $min != null and $max != null {
+          @if $mediaquery != null {
+            $mediaquery: "#{$mediaquery}, (min-width: #{$min}) and (max-width: #{$max})";
+          } @else {
+            $mediaquery: "(min-width: #{$min}) and (max-width: #{$max})";
+          }
+        }
+      }
+        
+      @media #{$mediaquery} {
+        @content($screen, $map);
+      }
     }
   }
 }
