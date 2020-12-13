@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 @mixin caret-opacity($screen: null) {
-  $args: ($opacity, map.get($variants, 'opacity'), $screen);
+  $args: ($opacity, map.get($variants, ' caret-opacity'), $screen);
 
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
     .#{$prefix}caret-opacity#{$modifier}#{$state} {
