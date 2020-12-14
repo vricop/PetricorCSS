@@ -19,6 +19,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add `direction-{ltr|rtl}` utility
 - Add documentation
 
+## [1.0.1] - 2020-12-14
+
+- Fix `caret-*` utilities to allow variation configuration
+- Fix `cursor-default` utility not generating
+
 ## [1.0.0] - 2020-10-27
 
 ### Changed

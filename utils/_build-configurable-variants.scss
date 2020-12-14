@@ -14,7 +14,7 @@
       // 1. If there's a modifier named `default` and it's not `cursor`
       //    utility, then set modifier to null (no modifier).
       // 2. For the rest of modifiers add a dash as a prefix.
-      @if $modifier == 'default' and $utility-variants != 'cursor' {
+      @if $modifier == 'default' and $value != 'default' {
         $modifier: null; // 1.
       } @else if string.index($modifier, '-') != 1 {
         $modifier: '-#{$modifier}' // 2.
