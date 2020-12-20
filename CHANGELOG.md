@@ -19,6 +19,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add `direction-{ltr|rtl}` utility
 - Add documentation
 
+## [1.1.0] - 2020-12-20
+
+### Added
+
+- Expand `$spacing` scale
+- Expand `$inset` & `$translate` scales with `$spacing` & percentage units
+- Expand `$rotate` & `$skew` scale
+- Expand `$width` & `$min-width` scales with `min-content` & `max-content`
+
+### Changed
+
+- Change `xl` breakpoint from '1200' to '1280'
+- Remove `half` from `$max-height` scale
+- Remove `0` from `$max-height` scale
+
 ## [1.0.1] - 2020-12-14
 
 - Fix `caret-*` utilities to allow variation configuration

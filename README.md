@@ -1,8 +1,9 @@
 # Petricor CSS 💦
 
 Petricor CSS is an utility library for building web interfaces. It’s build
-in sass and provides a full collection of utility classes that helps you work
-faster and apply css without almost switching between css and html.
+in SASS and provides a full collection of utility classes that helps you work
+faster and apply css without almost switching between css and html. It's
+heavily influenced by [Tailwind CSS](https://tailwindcss.com/).
 
 ## Key concepts
 
