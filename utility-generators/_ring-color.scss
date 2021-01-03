@@ -1,0 +1,23 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+@use 'sass:list';
+
+@mixin ring-color($screen: null) {
+  $args: ($colors, map.get($variants, 'ring-color'), $screen);
+  $blacklist: currentColor currentcolor transparent;
+
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    // Build all utility colors but `currentColor` and `transparent`
+    @if not list.index($blacklist, $value) {
+      .#{$prefix}ring#{$modifier}#{$state} {
+        --pc-ring-color: hsla(var(--color#{$modifier}), var(--pc-ring-opacity, 1));
+      }
+    // Build utility colors for `currentColor` & `transparent`
+    } @else {
+      .#{$prefix}ring#{$modifier}#{$state} {
+        --pc-ring-color: $value;
+      }
+    }
+  } 
+}

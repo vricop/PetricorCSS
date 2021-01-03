@@ -24,7 +24,7 @@ table { border-collapse: collapse; }
 
 textarea { resize: vertical; }
 
-/**
+/*
  *  1. Better box model.
  *  2. Make border utilities much more straightforward to use (based on
  *     Tailwindcss)
@@ -42,7 +42,7 @@ textarea { resize: vertical; }
   border-color: currentcolor; /* 2 */
 }
 
-/** 
+/*
  * Apply a thin border at the bottom. The rest of the properties are already set
  * by the reset above.
  */
@@ -70,7 +70,7 @@ pre {
   margin: 0;
 }
 
-/**
+/*
  * Inspired by CSS Remedy, with `picture` added as well.
  *
  * https://github.com/mozdevs/cssremedy/issues/14
@@ -111,7 +111,7 @@ textarea::placeholder {
   color: get-config($colors, 'gray-500', #767676);
 }
 
-/**
+/*
  * Constrain images and videos to the parent width and preserve their intrinsic
  * aspect ratio.
  *
@@ -123,7 +123,7 @@ video {
   height: auto;
 }
 
-/**
+/*
  * Strengthen `hidden` attribute weakness, as it can be easily overwritten by
  * css.
  *
@@ -138,15 +138,17 @@ video {
   -webkit-box-orient: vertical;
 }
 
-// Composable transform utility preset
-//
-// This technique uses custom properties with stateless default values. It makes
-// working with transform utilities more intuitive —no need for extra classes.
-// The attribute selectors set these stateless defaults that can be overwritten
-// by `scale-{size}`, `{-?}skew-{axis}-{deg}`, `{-?}translate-{axis}-{size}` and
-// `{-?}rotate-{deg}` utilities.
-// 
-// Inspired by Tailwind: https://github.com/tailwindcss/tailwindcss/pull/1272
+/*
+ * Composable transform utility preset
+ *
+ * This technique uses custom properties with stateless default values. It makes
+ * working with transform utilities more intuitive —no need for extra classes.
+ * The attribute selectors set these stateless defaults that can be overwritten
+ * by `scale-{size}`, `{-?}skew-{axis}-{deg}`, `{-?}translate-{axis}-{size}` and
+ * `{-?}rotate-{deg}` utilities.
+ * 
+ * Inspired by Tailwind: https://github.com/tailwindcss/tailwindcss/pull/1272
+ */
 .transform {
  --transform-translate-x: 0;
  --transform-translate-y: 0;
@@ -163,3 +165,34 @@ video {
             scaleX(var(--transform-scale-x))
             scaleY(var(--transform-scale-y))
 }
+
+/*
+ * Default preset for composing ring-{*} utilities
+ * This is a cool trick from the guys behind TailwindCSS
+ */
+* {
+  --pc-ring-inset: var(--pc-empty, /*!*/ /*!*/);
+  --pc-ring-offset-width: 0px;
+  --pc-ring-offset-color: white;
+  --pc-ring-color: hsla(var(--color-info-500), .25);
+  --pc-ring-offset-shadow: 0 0 #0000;
+  --pc-ring-shadow: 0 0 #0000;
+  --pc-ring-opacity: 0.5;
+  --pc-shadow: 0 0 #000;
+}
+
+.ring-inset { --pc-ring-inset: inset; }
+
+.ring, [class*=ring-], .shadow, [class*=shadow-] {
+  box-shadow:
+    var(--pc-ring-offset-shadow),
+    var(--pc-ring-shadow),
+    var(--pc-shadow)
+  ;
+}
+
+/*
+ * Remove default outline on focus when using .ring-* ut
+ * ilities
+ */
+[class*=ring]:focus { outline: none; }

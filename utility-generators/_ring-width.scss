@@ -1,0 +1,23 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin ring-width($screen: null) {
+  $args: ($ring-width, map.get($variants, 'ring-width'), $screen);
+
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}ring#{$modifier}#{$state} {
+      --pc-ring-offset-shadow: 
+        var(--pc-ring-inset) 0 0 0
+        var(--pc-ring-offset-width)
+        var(--pc-ring-offset-color)
+      ;
+
+      --pc-ring-shadow:
+        var(--pc-ring-inset) 0 0 0
+        calc(#{$value} + var(--pc-ring-offset-width))
+        var(--pc-ring-color)
+      ;
+    }
+  } 
+}

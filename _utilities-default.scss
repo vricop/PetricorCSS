@@ -83,6 +83,11 @@
 @include utility.pointer-events;
 @include utility.position;
 @include utility.resize;
+@include utility.ring-color;
+@include utility.ring-offset-color;
+@include utility.ring-offset-width;
+@include utility.ring-opacity;
+@include utility.ring-width;
 @include utility.rotate;
 @include utility.row-gap;
 @include utility.scale;

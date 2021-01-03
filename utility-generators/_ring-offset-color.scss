@@ -1,0 +1,16 @@
+@use '../config' as *;
+@use '../utils/build-configurable-variants' as *;
+@use 'sass:map';
+
+@mixin ring-offset-color($screen: null) {
+  $args: ($colors, map.get($variants, 'ring-offset-color'), $screen);
+  
+  @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
+    .#{$prefix}ring-offset#{$modifier}#{$state} { 
+      --pc-ring-offset-color: hsla(
+        var(--color#{$modifier}),
+        var(--ring-opacity, 1)
+      );
+    }
+  } 
+}
