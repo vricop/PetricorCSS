@@ -2,12 +2,12 @@
 @use '../utils/build-configurable-variants' as *;
 @use 'sass:map';
 
-@mixin box-shadow($screen: null) {
-  $args: ($box-shadow, map.get($variants, 'box-shadow'), $screen);
-  
+@mixin ring-opacity($screen: null) {
+  $args: ($ring-opacity, map.get($variants, 'ring-opacity'), $screen);
+
   @include build-configurable-variants($args...) using ($prefix, $modifier, $state, $value) {
-    .#{$prefix}shadow#{$modifier}#{$state} {
-      --pc-shadow: #{$value};
+    .#{$prefix}ring-opacity#{$modifier}#{$state} {
+      --pc-ring-opacity: #{$value};
     }
   } 
 }
