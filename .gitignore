@@ -3,3 +3,6 @@ node_modules
 
 #VSCode workspace config
 .vscode
+
+# Remove annoying dropbox hidden file
+desktop.ini
