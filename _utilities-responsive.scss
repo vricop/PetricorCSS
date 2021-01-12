@@ -83,6 +83,11 @@
   @include utility.pointer-events($screen);
   @include utility.position($screen);
   @include utility.resize($screen);
+  @include utility.ring-color($screen);
+  @include utility.ring-offset-color($screen);
+  @include utility.ring-offset-width($screen);
+  @include utility.ring-opacity($screen);
+  @include utility.ring-width($screen);
   @include utility.rotate($screen);
   @include utility.row-gap($screen);
   @include utility.scale($screen);
