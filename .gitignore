@@ -1,8 +1,8 @@
 # Don't track node_modules
 node_modules
 
-#VSCode workspace config
+# VSCode workspace config
 .vscode
 
-#Hide annoying hidden file from dropbox
+# Hide annoying hidden file from dropbox
 desktop.ini
